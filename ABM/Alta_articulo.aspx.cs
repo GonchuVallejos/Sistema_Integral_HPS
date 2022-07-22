@@ -41,7 +41,7 @@ namespace Sistema_Integral_HPS.ABM
 
             MySqlDataAdapter da1 = new MySqlDataAdapter(cm1);
             DataTable dt1 = new DataTable();
-            da1.Fill(dt);
+            da1.Fill(dt1);
 
             MySqlDataAdapter da2 = new MySqlDataAdapter(cm2);
             DataTable dt2 = new DataTable();
@@ -55,13 +55,13 @@ namespace Sistema_Integral_HPS.ABM
 
             DropDownList2.DataValueField = "id";
             DropDownList2.DataTextField = "descripcion";
-            DropDownList2.DataSource = dt;
+            DropDownList2.DataSource = dt1;
             DropDownList2.DataBind();
 
 
             DropDownList3.DataValueField = "id";
             DropDownList3.DataTextField = "descripcion";
-            DropDownList3.DataSource = dt;
+            DropDownList3.DataSource = dt2;
             DropDownList3.DataBind();
 
             cn.desconectar();
