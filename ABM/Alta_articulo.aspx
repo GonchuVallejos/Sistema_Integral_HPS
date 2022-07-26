@@ -52,8 +52,8 @@
         <p>
             INVENTARIABLE:
             <asp:DropDownList ID="DropDownList4" runat="server" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged">
-                <asp:ListItem>SI</asp:ListItem>
-                <asp:ListItem>NO</asp:ListItem>
+                <asp:ListItem Value="1">SI</asp:ListItem>
+                <asp:ListItem Value="0">NO</asp:ListItem>
             </asp:DropDownList>
         </p>
         <p>

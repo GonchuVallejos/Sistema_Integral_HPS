@@ -70,11 +70,12 @@ namespace Sistema_Integral_HPS.ABM
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-             //  cn.conectar();
-               MySqlCommand cm = new MySqlCommand("INSERT INTO articulo (descripcion,descripcion_adicional,fk_familias,fk_unimedidas,stock,fk_desposito,stock_maximo,stock_minimo,stock_puntopedir,inventareable,habilitado,ultimo_precio) VALUES ('" + TextBox1.Text + "'),'" + TextBox2.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "','" + Convert.ToInt32(DropDownList3.SelectedValue) + "','" + TextBox3.Text + "','" + TextBox4.Text+ "')");
+            MySqlConnection coon = Conexion.getConexion();
+            MySqlCommand cm = new MySqlCommand("INSERT INTO articulo (descripcion,descripcion_adicional,fk_familias,fk_unimedidas,stock,fk_desposito,stock_maximo,stock_minimo,stock_puntopedir,inventareable,habilitado,ultimo_precio) VALUES ('" + TextBox1.Text + "'),'" + TextBox2.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "','" + TextBox3.Text  + "','" + Convert.ToInt32(DropDownList3.SelectedValue) + "','" + TextBox5.Text+ "','"+ TextBox4.Text +"','"+ TextBox6.Text + "','" + Convert.ToBoolean(Convert.ToInt32(DropDownList4.SelectedValue)) +"','"+ TextBox7.Text);
                cm.CommandType = System.Data.CommandType.Text;
                cm.ExecuteNonQuery();
-              
+            cn.desconectar();
+
         }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
