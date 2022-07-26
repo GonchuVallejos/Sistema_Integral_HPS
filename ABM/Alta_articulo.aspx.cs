@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using Sistema_Integral_HPS.ABM;
 
 
+
 namespace Sistema_Integral_HPS.ABM
 {
     public partial class Alta_articulo : System.Web.UI.Page
@@ -70,11 +71,30 @@ namespace Sistema_Integral_HPS.ABM
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
+
             MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm = new MySqlCommand("INSERT INTO articulo (descripcion,descripcion_adicional,fk_familias,fk_unimedidas,stock,fk_desposito,stock_maximo,stock_minimo,stock_puntopedir,inventareable,habilitado,ultimo_precio) VALUES ('" + TextBox1.Text + "'),'" + TextBox2.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "','" + TextBox3.Text  + "','" + Convert.ToInt32(DropDownList3.SelectedValue) + "','" + TextBox5.Text+ "','"+ TextBox4.Text +"','"+ TextBox6.Text + "','" + Convert.ToBoolean(DropDownList4.SelectedIndex) +"','"+ TextBox7.Text);
-               cm.CommandType = System.Data.CommandType.Text;
-               cm.ExecuteNonQuery();
-            cn.desconectar();
+            MySqlCommand cm = new MySqlCommand("SELECT COUNT(*) FROM articulo WHERE descripcion = '" + TextBox1.Text + "'", coon);
+            cm.CommandType = System.Data.CommandType.Text;
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cm);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            if (dt.Rows[0].ItemArray.GetValue(0).ToString() == "0")
+            {
+                MySqlCommand cm2 = new MySqlCommand("INSERT INTO articulo (id,descripcion,descripcion_adicional,fk_familias,fk_unimedidas,stock,fk_deposito,stock_minimo,stock_maximo,stock_puntopedir,inventariable,habilitado,ultimo_precio) VALUES (NULL,UPPER('" + TextBox1.Text + "'),'" + TextBox2.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "','','" + Convert.ToInt32(DropDownList3.SelectedValue) + "','" + TextBox4.Text + "','" + TextBox5.Text + "','" + TextBox6.Text + "','" + DropDownList4.SelectedValue + "','" + DropDownList5.SelectedValue + "','" + Convert.ToDouble(TextBox7.Text) + "')", coon);
+                cm2.CommandType = System.Data.CommandType.Text;
+                cm2.ExecuteNonQuery();
+                cn.desconectar();
+
+
+            }
+
+           
+           // MySqlCommand cm = new MySqlCommand("INSERT INTO articulo (id,descripcion,descripcion_adicional,fk_familias,fk_unimedidas,stock,fk_deposito,stock_minimo,stock_maximo,stock_puntopedir,inventariable,habilitado,ultimo_precio) VALUES (NULL,UPPER('" + TextBox1.Text + "'),'" + TextBox2.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "','','" + Convert.ToInt32(DropDownList3.SelectedValue) + "','" + TextBox4.Text+ "','"+ TextBox5.Text +"','"+ TextBox6.Text + "','" + DropDownList4.SelectedValue + "','"+ DropDownList5.SelectedValue + "','"+ Convert.ToDouble(TextBox7.Text)+"')",coon);
+              
+            
+            
 
         }
 

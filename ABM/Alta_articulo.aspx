@@ -34,10 +34,6 @@
             </asp:DropDownList>
         </p>
         <p>
-            STOCK QUE INGRESA:
-            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-        </p>
-        <p>
             STOCK MINIMO A TENER:
             <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
         </p>
@@ -51,9 +47,15 @@
         </p>
         <p>
             INVENTARIABLE:
-            <asp:DropDownList ID="DropDownList4" runat="server" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged">
-                <asp:ListItem Value="1">SI</asp:ListItem>
-                <asp:ListItem Value="0">NO</asp:ListItem>
+            <asp:DropDownList ID="DropDownList4" runat="server">
+                <asp:ListItem Value="NO">NO</asp:ListItem>
+                <asp:ListItem Value="SI">SI</asp:ListItem>
+            </asp:DropDownList>
+        </p>
+        <p>
+            HABILITADO? : <asp:DropDownList ID="DropDownList5" runat="server">
+                <asp:ListItem>SI</asp:ListItem>
+                <asp:ListItem>NO</asp:ListItem>
             </asp:DropDownList>
         </p>
         <p>
