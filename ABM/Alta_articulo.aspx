@@ -35,15 +35,15 @@
         </p>
         <p>
             STOCK QUE INGRESA:
-            <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            STOCK MINIMO A TENER:
             <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
         </p>
         <p>
-            STOCK MAXIMO A TENER:
+            STOCK MINIMO A TENER:
             <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            STOCK MAXIMO A TENER:
+            <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
         </p>
         <p>
             STOCK PUNTO A PEDIR:
@@ -51,7 +51,9 @@
         </p>
         <p>
             INVENTARIABLE:
-            <asp:DropDownList ID="DropDownList4" runat="server">
+            <asp:DropDownList ID="DropDownList4" runat="server" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged">
+                <asp:ListItem>SI</asp:ListItem>
+                <asp:ListItem>NO</asp:ListItem>
             </asp:DropDownList>
         </p>
         <p>
@@ -61,11 +63,10 @@
             <asp:Button ID="btn_guardar" runat="server" OnClick="btn_guardar_Click" Text="GUARDAR ARTICULO" />
         </p>
         <p>
-            <asp:Button ID="btn_cancelar" runat="server" Text="CANCELAR" />
+            <asp:Button ID="btn_cancelar" runat="server" Text="CANCELAR" OnClick="btn_cancelar_Click" />
         </p>
         <p>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
-        </p>
+            &nbsp;</p>
     </form>
 </body>
 </html>

@@ -10,18 +10,25 @@ namespace Sistema_Integral_HPS.ABM
 {
     public class Conexion
     {
-        public void conectar()
-        {
-            MySqlConnection coon = new MySqlConnection("server=localhost; port=3306; uid=root; pwd=''; database=test;");
-            coon.Open();
-        }
+        //MySqlConnection coon = new MySqlConnection("server=localhost; port=3306; uid=root; pwd=''; database=test;");
+        //public void conectar()
+        //{
+        //    MySqlConnection coon = new MySqlConnection("server=localhost; port=3306; uid=root; pwd=''; database=test;");
+        //    coon.Open();
+        //}
 
         public void desconectar()
         {
             MySqlConnection coon = new MySqlConnection("server=localhost; port=3306; uid=root; pwd=''; database=test;");
             coon.Close();
         }
-
+        public static MySqlConnection getConexion()
+        {
+            string c = "server=localhost; port=3306; uid=root; pwd=''; database=test;";
+            MySqlConnection coon = new MySqlConnection(c);
+            coon.Open();
+            return coon;
+        }
 
     }
 }

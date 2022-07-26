@@ -26,9 +26,10 @@ namespace Sistema_Integral_HPS.ABM
         protected void LlenarDrop()
         {
 
-            cn.conectar();
-            MySqlConnection coon = new MySqlConnection("server=localhost; port=3306; uid=root; pwd=''; database=test;");
-            MySqlCommand cm = new MySqlCommand("SELECT * FROM `familia`", coon);
+            // cn.conectar();
+            //MySqlConnection coon = new MySqlConnection("server=localhost; port=3306; uid=root; pwd=''; database=test;");
+            MySqlConnection coon = Conexion.getConexion();
+            MySqlCommand cm = new MySqlCommand("SELECT * FROM `familia`",coon);
             MySqlCommand cm1 = new MySqlCommand("SELECT * FROM `unidad_medida`",coon);
             MySqlCommand cm2 = new MySqlCommand("SELECT * FROM `deposito`",coon);
             cm.CommandType = System.Data.CommandType.Text;
@@ -69,11 +70,17 @@ namespace Sistema_Integral_HPS.ABM
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-            /*   cn.conectar();
-               MySqlCommand cm = new MySqlCommand("INSERT INTO articulo (descripcion,descripcion_adicional,fk_familias,fk_unimedidas,stock,fk_desposito,stock_maximo,stock_minimo,stock_puntopedir,inventareable,habilitado,ultimo_precio) VALUES ('" + TextBox1.Text + "'),'" + TextBox2.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "','" + Convert.ToInt32(DropDownList3.SelectedValue) + "','" + TextBox4.Text + "','" + TextBoxObservaciones.Text + "')", coon);
+             //  cn.conectar();
+               MySqlCommand cm = new MySqlCommand("INSERT INTO articulo (descripcion,descripcion_adicional,fk_familias,fk_unimedidas,stock,fk_desposito,stock_maximo,stock_minimo,stock_puntopedir,inventareable,habilitado,ultimo_precio) VALUES ('" + TextBox1.Text + "'),'" + TextBox2.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "','" + Convert.ToInt32(DropDownList3.SelectedValue) + "','" + TextBox3.Text + "','" + TextBox4.Text+ "')");
                cm.CommandType = System.Data.CommandType.Text;
                cm.ExecuteNonQuery();
-               */
+              
         }
+
+        protected void btn_cancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
