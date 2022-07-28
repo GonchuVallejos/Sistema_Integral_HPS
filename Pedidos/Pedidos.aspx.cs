@@ -31,14 +31,28 @@ namespace Sistema_Integral_HPS.Pedidos
             MySqlDataAdapter da = new MySqlDataAdapter(cm);
             DataTable dt = new DataTable();
             da.Fill(dt);
+          
             GridView1.DataSource = dt;
             GridView1.DataBind();
+            
 
             if (GridView1.Rows.Count==0)
             {
                 MessageBox.Show("¡NO EXISTE ARTICULO !");
             }
             cn.desconectar();
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TextBox2.Visible = true;
+            Button2.Visible= true;  
+            GridView1.Date
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

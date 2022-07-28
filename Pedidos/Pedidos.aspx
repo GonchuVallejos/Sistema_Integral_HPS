@@ -21,15 +21,18 @@
             <br />
             SELECCIONAR ARTICULO<br />
             <br />
-            <asp:GridView ID="GridView1" runat="server" style="margin-top: 6px">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" style="margin-top: 6px">
                 <Columns>
                     <asp:CommandField ShowSelectButton="True" />
+                    <asp:BoundField DataField="id" HeaderText="ID" />
+                    <asp:BoundField DataField="descripcion" HeaderText="Descripcion" />
+                    <asp:BoundField DataField="descripcion_adicional" HeaderText="Descripcion_adicional" />
                 </Columns>
             </asp:GridView>
             <br />
-            CANTIDAD : <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            CANTIDAD : <asp:TextBox ID="TextBox2" runat="server" Visible="False"></asp:TextBox>
 &nbsp;&nbsp;
-            <asp:Button ID="Button2" runat="server" Text="AGREGAR AL PEDIDO" />
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="AGREGAR AL PEDIDO" Visible="False" />
             <br />
             <br />
             <br />
