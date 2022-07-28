@@ -31,7 +31,7 @@ namespace Sistema_Integral_HPS.Pedidos
             MySqlDataAdapter da = new MySqlDataAdapter(cm);
             DataTable dt = new DataTable();
             da.Fill(dt);
-          
+            
             GridView1.DataSource = dt;
             GridView1.DataBind();
             
@@ -46,8 +46,10 @@ namespace Sistema_Integral_HPS.Pedidos
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             TextBox2.Visible = true;
-            Button2.Visible= true;  
-            GridView1.Date
+            Button2.Visible= true;
+            string idv =  GridView1.SelectedDataKey.Value.ToString();
+            //string idp = Convert.ToString(GridView1.SelectedRow.Cells[1].Value);
+            Label1.Text = Convert.ToString(idv);
         }
 
         protected void Button2_Click(object sender, EventArgs e)

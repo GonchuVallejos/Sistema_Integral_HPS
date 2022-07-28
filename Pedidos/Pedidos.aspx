@@ -21,7 +21,7 @@
             <br />
             SELECCIONAR ARTICULO<br />
             <br />
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" style="margin-top: 6px">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" style="margin-top: 6px" DataKeyNames="id">
                 <Columns>
                     <asp:CommandField ShowSelectButton="True" />
                     <asp:BoundField DataField="id" HeaderText="ID" />
@@ -33,6 +33,8 @@
             CANTIDAD : <asp:TextBox ID="TextBox2" runat="server" Visible="False"></asp:TextBox>
 &nbsp;&nbsp;
             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="AGREGAR AL PEDIDO" Visible="False" />
+            &nbsp;&nbsp;&nbsp;
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             <br />
             <br />
             <br />
