@@ -34,17 +34,25 @@
 &nbsp;&nbsp;
             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="AGREGAR AL PEDIDO" Visible="False" />
             &nbsp;&nbsp;&nbsp;
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
             <br />
             <br />
+            OBSERVACIONES:
+            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
             <br />
-            <asp:GridView ID="GridView2" runat="server">
+            <br />
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False">
+                <Columns>
+                    <asp:BoundField DataField="fk_articulo" HeaderText="ID ARTICULO" Visible="False" />
+                    <asp:BoundField HeaderText="ARTICULO" />
+                    <asp:BoundField DataField="cantidad" HeaderText="CANTIDAD" />
+                </Columns>
             </asp:GridView>
             <br />
             <br />
             <asp:Button ID="Button3" runat="server" Text="CANCELAR" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="Button4" runat="server" Text="FINALIZAR" />
+            <asp:Button ID="Button4" runat="server" Text="FINALIZAR" OnClick="Button4_Click" />
         </div>
     </form>
 </body>

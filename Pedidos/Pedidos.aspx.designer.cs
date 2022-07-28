@@ -78,6 +78,15 @@ namespace Sistema_Integral_HPS.Pedidos
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
+        /// Control TextBox3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+
+        /// <summary>
         /// Control GridView2.
         /// </summary>
         /// <remarks>
