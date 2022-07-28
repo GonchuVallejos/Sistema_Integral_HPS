@@ -21,11 +21,13 @@
             <br />
             SELECCIONAR ARTICULO<br />
             <br />
-            <asp:GridView ID="GridView1" runat="server">
+            <asp:GridView ID="GridView1" runat="server" style="margin-top: 6px">
+                <Columns>
+                    <asp:CommandField ShowSelectButton="True" />
+                </Columns>
             </asp:GridView>
             <br />
-            CANTIDAD :
-            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            CANTIDAD : <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
 &nbsp;&nbsp;
             <asp:Button ID="Button2" runat="server" Text="AGREGAR AL PEDIDO" />
             <br />

@@ -23,7 +23,7 @@ namespace Sistema_Integral_HPS.Pedidos
         protected void Button1_Click(object sender, EventArgs e)
         {
             MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm = new MySqlCommand("SELECT * FROM articulo WHERE descripcion LIKE '%" + TextBox1.Text + "%'", coon);
+            MySqlCommand cm = new MySqlCommand("SELECT id,descripcion,descripcion_adicional FROM articulo WHERE descripcion LIKE '%" + TextBox1.Text + "%' AND habilitado= 'SI'", coon);
             cm.CommandType = System.Data.CommandType.Text;
             cm.ExecuteNonQuery();
 
@@ -32,6 +32,7 @@ namespace Sistema_Integral_HPS.Pedidos
             da.Fill(dt);
             GridView1.DataSource = dt;
             GridView1.DataBind();
+            
             cn.desconectar();
         }
     }
