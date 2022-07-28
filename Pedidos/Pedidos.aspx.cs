@@ -9,6 +9,7 @@ using MySql.Data.MySqlClient;
 using MySql.Data;
 using System.Data.SqlClient;
 using Sistema_Integral_HPS.ABM;
+using System.Windows.Forms;
 
 namespace Sistema_Integral_HPS.Pedidos
 {
@@ -32,7 +33,11 @@ namespace Sistema_Integral_HPS.Pedidos
             da.Fill(dt);
             GridView1.DataSource = dt;
             GridView1.DataBind();
-            
+
+            if (GridView1.Rows.Count==0)
+            {
+                MessageBox.Show("¡NO EXISTE ARTICULO !");
+            }
             cn.desconectar();
         }
     }
