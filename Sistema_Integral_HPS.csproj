@@ -181,6 +181,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ABM DEPOSITO\" />
     <Folder Include="UserPages\Images\" />
   </ItemGroup>
   <PropertyGroup>
