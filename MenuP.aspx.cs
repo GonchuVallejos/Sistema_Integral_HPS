@@ -16,12 +16,12 @@ namespace Sistema_Integral_HPS
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Pedidos.aspx");
+            Response.Redirect("Pedidos/Pedidos.aspx");
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Alta_articulo.aspx");
+            Server.Transfer("ABM/Alta_articulo.aspx");
         }
     }
 }
