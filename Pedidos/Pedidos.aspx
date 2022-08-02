@@ -30,21 +30,25 @@
                 </Columns>
             </asp:GridView>
             <br />
+            <asp:Label ID="Label2" runat="server" Text="Label" Visible="False"></asp:Label>
+            <br />
+            <br />
             CANTIDAD : <asp:TextBox ID="TextBox2" runat="server" Visible="False"></asp:TextBox>
 &nbsp;&nbsp;
             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="AGREGAR AL PEDIDO" Visible="False" />
             &nbsp;&nbsp;&nbsp;
             <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
+            &nbsp;&nbsp;&nbsp;
             <br />
             <br />
             OBSERVACIONES:
             <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
             <br />
             <br />
-            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False">
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
                 <Columns>
-                    <asp:BoundField DataField="fk_articulo" HeaderText="ID ARTICULO" Visible="False" />
-                    <asp:BoundField HeaderText="ARTICULO" />
+                    <asp:BoundField DataField="id articulo" HeaderText="ID ARTICULO" />
+                    <asp:BoundField HeaderText="ARTICULO" DataField="articulo" />
                     <asp:BoundField DataField="cantidad" HeaderText="CANTIDAD" />
                 </Columns>
             </asp:GridView>
