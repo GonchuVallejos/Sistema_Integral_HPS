@@ -33,7 +33,9 @@ namespace Sistema_Integral_HPS.UserPages
                 MySqlDataReader dr = cmd.ExecuteReader();
                 if(dr.Read())
                 {
+                    Session["sesion"] = dr;
                     Session["usuariologgeado"] = dr["id"].ToString();
+                    Session["idpersona"] = dr["idp"].ToString();
                     Response.Redirect("LLEVA A LA PANTALLA PRINCIPAL");
                 }
                 else

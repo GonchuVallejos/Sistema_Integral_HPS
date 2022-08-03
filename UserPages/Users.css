@@ -1,6 +1,6 @@
 ﻿#login {
     margin-top: 20%;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(29, 127, 172);
     padding: 20px 20px 20px 20px;
     border-style: none;
     color: white;
@@ -24,4 +24,8 @@ body {
 
 .form-control {
     text-transform: uppercase;
+}
+
+.navbar {
+    background-color: #1D7FAC;
 }

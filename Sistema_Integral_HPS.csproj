@@ -117,6 +117,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ABM\Alta_articulo.aspx" />
+    <Content Include="Deposito\AArticulo.aspx" />
+    <Content Include="Deposito\APedido.aspx" />
+    <Content Include="Deposito\Deposito.css" />
+    <Content Include="Deposito\IndexDeposito.aspx" />
     <Content Include="MenuP.aspx" />
     <Content Include="Pedidos\Pedidos.aspx" />
     <Content Include="UserPages\Images\Logo-white.svg" />
@@ -136,6 +140,34 @@
       <DependentUpon>Alta_articulo.aspx</DependentUpon>
     </Compile>
     <Compile Include="ABM\Conexion.cs" />
+    <Compile Include="Deposito\AArticulo.aspx.cs">
+      <DependentUpon>AArticulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\AArticulo.aspx.designer.cs">
+      <DependentUpon>AArticulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deposito\APedido.aspx.cs">
+      <DependentUpon>APedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\APedido.aspx.designer.cs">
+      <DependentUpon>APedido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deposito\IndexDeposito.aspx.cs">
+      <DependentUpon>IndexDeposito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\IndexDeposito.aspx.designer.cs">
+      <DependentUpon>IndexDeposito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deposito\MasterDeposito.Master.cs">
+      <DependentUpon>MasterDeposito.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\MasterDeposito.Master.designer.cs">
+      <DependentUpon>MasterDeposito.Master</DependentUpon>
+    </Compile>
     <Compile Include="MenuP.aspx.cs">
       <DependentUpon>MenuP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -181,6 +213,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Deposito\MasterDeposito.Master" />
     <None Include="packages.config" />
     <Content Include="UserPages\MasterUser.Master" />
     <None Include="Web.Debug.config">
