@@ -1,0 +1,27 @@
+﻿#login {
+    margin-top: 20%;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 20px 20px 20px 20px;
+    border-style: none;
+    color: white;
+}
+
+.hr {
+    height: 8px;
+    background-color: rgba(255, 255, 255);
+}
+
+body {
+    background-image: url('Images/Logo-white.svg');
+    min-height: 100%;
+    background-repeat: repeat;
+    background-color: #A9ABAE;
+}
+
+.btn {
+    width: 50%;
+}
+
+.form-control {
+    text-transform: uppercase;
+}

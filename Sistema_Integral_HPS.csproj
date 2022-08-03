@@ -119,10 +119,12 @@
     <Content Include="ABM\Alta_articulo.aspx" />
     <Content Include="MenuP.aspx" />
     <Content Include="Pedidos\Pedidos.aspx" />
+    <Content Include="UserPages\Images\Logo-white.svg" />
     <Content Include="UserPages\JavaScript.js" />
     <Content Include="UserPages\Login.aspx" />
     <Content Include="UserPages\Register.aspx" />
     <Content Include="UserPages\Update.aspx" />
+    <Content Include="UserPages\Users.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -190,7 +192,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ABM DEPOSITO\" />
-    <Folder Include="UserPages\Images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
