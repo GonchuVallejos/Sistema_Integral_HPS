@@ -11,7 +11,15 @@ namespace Sistema_Integral_HPS.Deposito
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string id;
+            string usuario;
+            if (!IsPostBack)
+            {
+                id = Session["usuariologgeado"].ToString();
+                usuario = Session["usuario"].ToString();
 
+                Label1.Text = usuario;
+            }
         }
     }
 }

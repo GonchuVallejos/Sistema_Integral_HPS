@@ -22,21 +22,31 @@ namespace Sistema_Integral_HPS.UserPages
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string patron = "HPS";
             MySqlConnection coon = Conexion.getConexion();
             using (MySqlCommand cmd = new MySqlCommand("sesion", coon))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("NUSUARIO", MySqlDbType.VarChar).Value = TextBox1.Text;
-                cmd.Parameters.Add("CONTRASEÑA", MySqlDbType.VarChar).Value = TextBox2.Text;
-                cmd.Parameters.Add("PATRON", MySqlDbType.VarChar).Value = patron;
+                cmd.Parameters.Add("CONTRASENIA", MySqlDbType.VarChar).Value = TextBox2.Text;
                 MySqlDataReader dr = cmd.ExecuteReader();
                 if(dr.Read())
                 {
-                    Session["sesion"] = dr;
                     Session["usuariologgeado"] = dr["id"].ToString();
-                    Session["idpersona"] = dr["idp"].ToString();
-                    Response.Redirect("LLEVA A LA PANTALLA PRINCIPAL");
+
+                    using (MySqlCommand cm = new MySqlCommand("recupera_usuario", coon))
+                    {
+                        cm.CommandType = CommandType.StoredProcedure;
+                        cm.Parameters.Add("ID", MySqlDbType.VarChar).Value = dr["fk_persona"].ToString();
+                        dr.Close();
+                        MySqlDataReader usuario = cm.ExecuteReader();
+                        if(usuario.Read())
+                        {
+                            Session["usuario"] = usuario["nombre"].ToString() + " " + usuario["apellido"].ToString();
+                        }
+                    }
+
+                    Response.Redirect("/Deposito/IndexDeposito.aspx");
+
                 }
                 else
                 {
