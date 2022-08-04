@@ -98,5 +98,17 @@ namespace Sistema_Integral_HPS.Deposito
         {
 
         }
+
+        protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            dt = (DataTable)ViewState["RECORD"];
+            dt.Rows.RemoveAt(e.RowIndex);
+
+            //Guardo los nuevos valores
+            Session["RECORD"] = dt;
+
+            GridView2.DataSource = dt;
+            GridView2.DataBind();
+        }
     }
 }

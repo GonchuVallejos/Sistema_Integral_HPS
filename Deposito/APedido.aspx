@@ -54,11 +54,13 @@
     </div>
     <br />
     <br />
-    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
+    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" OnRowDeleting="GridView2_RowDeleting">
         <Columns>
             <asp:BoundField DataField="id articulo" HeaderText="ID ARTICULO" />
             <asp:BoundField HeaderText="ARTICULO" DataField="articulo" />
             <asp:BoundField DataField="cantidad" HeaderText="CANTIDAD" />
+            <asp:CommandField ShowEditButton="True" />
+            <asp:CommandField ShowDeleteButton="True" />
         </Columns>
     </asp:GridView>
     <br />
