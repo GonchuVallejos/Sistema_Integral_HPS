@@ -2,7 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <br />
     <asp:Label ID="Label3" class="justify-content-center h1" runat="server">REGISTRAR UN PEDIDO</asp:Label>
     <hr />
     <div class="row">
@@ -10,7 +9,7 @@
             <Label class="font-weight-normal">INGRESE NOMBRE DEL ARTICULO A PEDIR:</Label>
         </div>
         <div class="col-lg-2">
-            <asp:TextBox ID="TextBox1" runat="server" class="form-control" required></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" class="form-control" required="True"></asp:TextBox>
         </div>
         <div class="col-lg-4">
             <asp:Button ID="Button1" runat="server" class="btn btn-lg btn-info" OnClick="Button1_Click" Text="BUSCAR" />
@@ -34,7 +33,7 @@
             <Label class="font-weight-normal">CANTIDAD:</Label>
         </div>
         <div class="col-lg-2">
-            <asp:TextBox ID="TextBox2"  class="form-control" runat="server" Visible="False" required></asp:TextBox>
+            <asp:TextBox ID="TextBox2"  class="form-control" runat="server" Visible="False" required="True"></asp:TextBox>
         </div>
         <div class="col-lg-3">
             <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-primary" OnClick="Button2_Click" Text="AGREGAR AL PEDIDO" Visible="False" />
@@ -49,7 +48,7 @@
             <Label class="font-weight-normal">OBSERVACIONES:</Label>
         </div>
         <div class="col-lg-9">
-            <asp:TextBox ID="TextBox3" class="form-control" runat="server" required></asp:TextBox>
+            <asp:TextBox ID="TextBox3" class="form-control" runat="server" required="True"></asp:TextBox>
         </div>
     </div>
     <br />

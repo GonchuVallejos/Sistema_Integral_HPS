@@ -121,7 +121,6 @@
     <Content Include="Deposito\APedido.aspx" />
     <Content Include="Deposito\Deposito.css" />
     <Content Include="Deposito\IndexDeposito.aspx" />
-    <Content Include="MenuP.aspx" />
     <Content Include="Pedidos\Pedidos.aspx" />
     <Content Include="UserPages\Images\Logo-white.svg" />
     <Content Include="UserPages\JavaScript.js" />
@@ -140,6 +139,7 @@
       <DependentUpon>Alta_articulo.aspx</DependentUpon>
     </Compile>
     <Compile Include="ABM\Conexion.cs" />
+    <Compile Include="Conexion.cs" />
     <Compile Include="Deposito\AArticulo.aspx.cs">
       <DependentUpon>AArticulo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -167,13 +167,6 @@
     </Compile>
     <Compile Include="Deposito\MasterDeposito.Master.designer.cs">
       <DependentUpon>MasterDeposito.Master</DependentUpon>
-    </Compile>
-    <Compile Include="MenuP.aspx.cs">
-      <DependentUpon>MenuP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MenuP.aspx.designer.cs">
-      <DependentUpon>MenuP.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pedidos\Pedidos.aspx.cs">
       <DependentUpon>Pedidos.aspx</DependentUpon>
@@ -223,9 +216,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ABM DEPOSITO\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -6,15 +6,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
-using MySql.Data;
-using System.Data.SqlClient;
-using Sistema_Integral_HPS.ABM;
 
 namespace Sistema_Integral_HPS.Deposito
 {
     public partial class AArticulo : System.Web.UI.Page
     {
-        Conexion cn = new Conexion();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -24,9 +20,6 @@ namespace Sistema_Integral_HPS.Deposito
         }
         protected void LlenarDrop()
         {
-
-            // cn.conectar();
-            //MySqlConnection coon = new MySqlConnection("server=localhost; port=3306; uid=root; pwd=''; database=test;");
             MySqlConnection coon = Conexion.getConexion();
             MySqlCommand cm = new MySqlCommand("SELECT * FROM `familia`", coon);
             MySqlCommand cm1 = new MySqlCommand("SELECT * FROM `unidad_medida`", coon);
@@ -64,7 +57,7 @@ namespace Sistema_Integral_HPS.Deposito
             DropDownList3.DataSource = dt2;
             DropDownList3.DataBind();
 
-            cn.desconectar();
+            coon.Close();
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)
@@ -83,19 +76,8 @@ namespace Sistema_Integral_HPS.Deposito
                 MySqlCommand cm2 = new MySqlCommand("INSERT INTO articulo (id,descripcion,descripcion_adicional,fk_familias,fk_unimedidas,stock,fk_deposito,stock_minimo,stock_maximo,stock_puntopedir,inventariable,habilitado,ultimo_precio) VALUES (NULL,'" + TextBox2.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "','','" + Convert.ToInt32(DropDownList3.SelectedValue) + "','" + TextBox4.Text + "','" + TextBox5.Text + "','" + TextBox6.Text + "','" + DropDownList4.SelectedValue + "','" + DropDownList5.SelectedValue + "','" + Convert.ToDouble(TextBox7.Text) + "')", coon);
                 cm2.CommandType = System.Data.CommandType.Text;
                 cm2.ExecuteNonQuery();
-                cn.desconectar();
-
-
             }
-
-
-
-
-            // MySqlCommand cm = new MySqlCommand("INSERT INTO articulo (id,descripcion,descripcion_adicional,fk_familias,fk_unimedidas,stock,fk_deposito,stock_minimo,stock_maximo,stock_puntopedir,inventariable,habilitado,ultimo_precio) VALUES (NULL,UPPER('" + TextBox1.Text + "'),'" + TextBox2.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "','','" + Convert.ToInt32(DropDownList3.SelectedValue) + "','" + TextBox4.Text+ "','"+ TextBox5.Text +"','"+ TextBox6.Text + "','" + DropDownList4.SelectedValue + "','"+ DropDownList5.SelectedValue + "','"+ Convert.ToDouble(TextBox7.Text)+"')",coon);
-
-
-
-
+            coon.Close();
         }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)

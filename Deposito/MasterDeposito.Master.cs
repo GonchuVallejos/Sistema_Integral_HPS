@@ -15,11 +15,19 @@ namespace Sistema_Integral_HPS.Deposito
             string usuario;
             if (!IsPostBack)
             {
-                id = Session["usuariologgeado"].ToString();
-                usuario = Session["usuario"].ToString();
+                if (Session["usuario"] != null)
+                {
+                    id = Session["usuariologgeado"].ToString();
+                    usuario = Session["usuario"].ToString();
 
-                Label1.Text = usuario;
+                    Label1.Text = usuario;
+                }
+                else
+                {
+                    Response.Redirect("/UserPages/Login.aspx");
+                }
             }
+            
         }
     }
 }

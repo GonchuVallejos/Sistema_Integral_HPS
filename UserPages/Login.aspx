@@ -23,12 +23,12 @@
                         <hr class="hr" />
                         <p></p>
                         <asp:Label ID="Label2" class="row justify-content-center h3" runat="server">USUARIO</asp:Label>
-                        <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Ingrese usuario" required></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Ingrese usuario" required ="True"></asp:TextBox>
                         <p></p>
                         <asp:Label ID="Label3" class="row justify-content-center h3" runat="server">CONTRASEÑA</asp:Label>
-                        <asp:TextBox ID="TextBox2" runat="server" class="form-control" placeholder="Ingrese contraseña" TextMode="Password" required></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" class="form-control" placeholder="Ingrese contraseña" TextMode="Password" required="True"></asp:TextBox>
                         <p></p>
-                        <asp:Button ID="Button1" runat="server" class="btn btn-lg btn-primary" Text="INGRESAR" OnClick="Button1_Click" />
+                        <asp:Button ID="Button1" runat="server" class="btn btn-lg btn-primary" Text="INGRESAR" OnClick="Button1_Click" OnClientClick="Alerta" />
                     </div>
                 </div>
             </div>
