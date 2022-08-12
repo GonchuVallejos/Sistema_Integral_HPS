@@ -81,19 +81,46 @@ namespace Sistema_Integral_HPS.Deposito
             coon.Close();
         }
 
-        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             dt = (DataTable)ViewState["RECORD"];
             dt.Rows.RemoveAt(e.RowIndex);
 
-            //Guardo los nuevos valores
             Session["RECORD"] = dt;
 
+            GridView2.DataSource = dt;
+            GridView2.DataBind();
+        }
+
+        protected void GridView2_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            DataTable dt = (DataTable)ViewState["RECORD"];
+
+            GridViewRow row = GridView2.Rows[e.RowIndex];
+            dt.Rows[row.DataItemIndex]["CANTIDAD"] = ((TextBox)(row.Cells[2].Controls[0])).Text;
+
+            GridView2.EditIndex = -1;
+
+            Session["RECORD"] = dt;
+
+            GridView2.DataSource = dt;
+            GridView2.DataBind();
+        }
+
+        protected void GridView2_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridView2.EditIndex = e.NewEditIndex;
+
+            dt = (DataTable)ViewState["RECORD"];
+            GridView2.DataSource = dt;
+            GridView2.DataBind();
+        }
+
+        protected void GridView2_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView2.EditIndex = -1;
+
+            dt = (DataTable)ViewState["RECORD"];
             GridView2.DataSource = dt;
             GridView2.DataBind();
         }

@@ -48,12 +48,12 @@
             <Label class="font-weight-normal">OBSERVACIONES:</Label>
         </div>
         <div class="col-lg-9">
-            <asp:TextBox ID="TextBox3" class="form-control" runat="server" required="True"></asp:TextBox>
+            <asp:TextBox ID="TextBox3" class="form-control" runat="server"></asp:TextBox>
         </div>
     </div>
     <br />
     <br />
-    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" OnRowDeleting="GridView2_RowDeleting">
+    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView2_RowDeleting" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating">
         <Columns>
             <asp:BoundField DataField="id articulo" HeaderText="ID ARTICULO" />
             <asp:BoundField HeaderText="ARTICULO" DataField="articulo" />
