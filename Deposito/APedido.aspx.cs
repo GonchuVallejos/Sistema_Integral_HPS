@@ -13,7 +13,7 @@ namespace Sistema_Integral_HPS.Deposito
     {
         DataTable dt = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {   
             if (!IsPostBack)
             {
 
@@ -74,8 +74,17 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button4_Click(object sender, EventArgs e)
         {
+            int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
+
             MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_pedido(id,fk_pedido,fk_articulo,cantidad,observacion) VALUES (NULL,'1000001','" + Label1.Text + "','" + TextBox2.Text + "','')", coon);
+            MySqlCommand cm1 = new MySqlCommand("INSERT INTO pedido(id,fk_usuario,fecha) VALUES (NULL,"+idp+","+DateTime.Now.ToString()+"')", coon);
+            cm1.CommandType = CommandType.Text;
+            cm1.ExecuteNonQuery();
+            coon.Close();
+
+
+           
+            MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_pedido(id,fk_pedido,fk_articulo,cantidad,observacion) VALUES (NULL,'1000001','" + Label1.Text + "','" + TextBox2.Text + "','" + TextBox3.Text + "')", coon);
             cm.CommandType = CommandType.Text;
             cm.ExecuteNonQuery();
             coon.Close();
@@ -123,6 +132,11 @@ namespace Sistema_Integral_HPS.Deposito
             dt = (DataTable)ViewState["RECORD"];
             GridView2.DataSource = dt;
             GridView2.DataBind();
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
     }
 }
