@@ -75,7 +75,7 @@ namespace Sistema_Integral_HPS.Deposito
         protected void Button4_Click(object sender, EventArgs e)
         {
             MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_pedido(id,fk_pedido,fk_articulo,cantidad,observacion) VALUES (NULL,'1000001','" + Label1.Text + "','" + TextBox2.Text + "','" + TextBox3.Text + "')", coon);
+            MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_pedido(id,fk_pedido,fk_articulo,cantidad,observacion) VALUES (NULL,'1000001','" + Label1.Text + "','" + TextBox2.Text + "','')", coon);
             cm.CommandType = CommandType.Text;
             cm.ExecuteNonQuery();
             coon.Close();

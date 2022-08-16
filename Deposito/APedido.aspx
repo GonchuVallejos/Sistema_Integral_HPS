@@ -5,7 +5,7 @@
     <asp:Label ID="Label3" class="justify-content-center h1" runat="server">REGISTRAR UN PEDIDO</asp:Label>
     <hr />
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <Label class="font-weight-normal">INGRESE NOMBRE DEL ARTICULO A PEDIR:</Label>
         </div>
         <div class="col-lg-2">
@@ -16,44 +16,34 @@
         </div>
     </div>
     <Label class="font-weight-normal">SELECCIONAR ARTICULO</Label>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" style="margin-top: 6px" DataKeyNames="id">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" style="margin-top: 6px; text-align: center; width:90%" DataKeyNames="id" HorizontalAlign="Center">
         <Columns>
             <asp:CommandField ShowSelectButton="True" />
             <asp:BoundField DataField="id" HeaderText="ID" />
             <asp:BoundField DataField="descripcion" HeaderText="Descripcion" />
             <asp:BoundField DataField="descripcion_adicional" HeaderText="Descripcion_adicional" />
         </Columns>
+        <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
     </asp:GridView>
     <br />
     <asp:Label ID="Label2" runat="server" Text="Label" Visible="False"></asp:Label>
     <br />
     <br />
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <Label class="font-weight-normal">CANTIDAD:</Label>
         </div>
         <div class="col-lg-2">
             <asp:TextBox ID="TextBox2"  class="form-control" runat="server" Visible="False" required="True"></asp:TextBox>
         </div>
-        <div class="col-lg-3">
-            <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-primary" OnClick="Button2_Click" Text="AGREGAR AL PEDIDO" Visible="False" />
+        <div class="col-lg-4">
+            <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-primary" OnClick="Button2_Click" Text="AGREGAR" Visible="False" />
         </div>
     </div>
     
     <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
     <br />
-    <br />
-    <div class="row">
-        <div class="col-lg-3">
-            <Label class="font-weight-normal">OBSERVACIONES:</Label>
-        </div>
-        <div class="col-lg-9">
-            <asp:TextBox ID="TextBox3" class="form-control" runat="server"></asp:TextBox>
-        </div>
-    </div>
-    <br />
-    <br />
-    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView2_RowDeleting" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating">
+    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView2_RowDeleting" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center">
         <Columns>
             <asp:BoundField DataField="id articulo" HeaderText="ID ARTICULO" />
             <asp:BoundField HeaderText="ARTICULO" DataField="articulo" />
@@ -61,6 +51,7 @@
             <asp:CommandField ShowEditButton="True" />
             <asp:CommandField ShowDeleteButton="True" />
         </Columns>
+        <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
     </asp:GridView>
     <br />
     <br />
