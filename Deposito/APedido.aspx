@@ -69,7 +69,7 @@
 
         </div>
         <div class="col-lg-4">
-            <asp:Button ID="Button3" class="btn btn-lg btn-danger" runat="server" Text="CANCELAR" />
+            <asp:Button ID="Button3" class="btn btn-lg btn-danger" runat="server" Text="CANCELAR" OnClick="Button3_Click" />
         </div>
         <div class="col-lg-2">
 
