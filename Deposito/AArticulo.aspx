@@ -7,7 +7,12 @@
         <p>
             NOMBRE :
             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Buscar" />
+            <asp:GridView ID="GridView1" runat="server">
+            </asp:GridView>
+            <asp:Button ID="Button2" runat="server" Text="No existe" visible="false" OnClick="Button2_Click"/>
         </p>
+    <asp:Panel ID="Panel1" runat="server" Visible="false">
         <p>
             DESCRIPCION ADICIONAL:
             <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
@@ -58,6 +63,7 @@
             <asp:Button ID="btn_guardar" runat="server" OnClick="btn_guardar_Click" Text="GUARDAR ARTICULO" />
         </p>
         <p>
+            </asp:Panel>
             <asp:Button ID="btn_cancelar" runat="server" Text="CANCELAR" OnClick="btn_cancelar_Click" />
         </p>
         <p>
