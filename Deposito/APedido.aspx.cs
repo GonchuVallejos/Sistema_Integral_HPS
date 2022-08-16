@@ -77,17 +77,32 @@ namespace Sistema_Integral_HPS.Deposito
             int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
 
             MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm1 = new MySqlCommand("INSERT INTO pedido(id,fk_usuario,fecha) VALUES (NULL,"+idp+","+DateTime.Now.ToString()+"')", coon);
+            MySqlCommand cm1 = new MySqlCommand("INSERT INTO pedido(id,fk_usuario,fecha) VALUES (NULL,'"+idp+"','"+ DateTime.Now.Date +"')", coon);
             cm1.CommandType = CommandType.Text;
             cm1.ExecuteNonQuery();
+
+            MySqlCommand cm2 = new MySqlCommand("SELECT MAX(id) FROM pedido", coon);
+            cm2.CommandType = System.Data.CommandType.Text;
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cm2);
+            DataTable dt2 = new DataTable();
+            da.Fill(dt2);
+
+            int idped = Convert.ToInt32(dt2.Rows[0].ItemArray.GetValue(0).ToString());
+            
+            dt = (DataTable)ViewState["RECORD"];
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                int ida=Convert.ToInt32(dt.Rows[i]["ID ARTICULO"].ToString());
+                int cant =Convert.ToInt32(dt.Rows[i]["CANTIDAD"].ToString());
+                MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_pedido(id,fk_pedido,fk_articulo,cantidad,observacion) VALUES (NULL,'"+idped+"','" + ida + "','" + cant + "','')", coon);
+                cm.CommandType = CommandType.Text;
+                cm.ExecuteNonQuery();
+                
+            }
             coon.Close();
 
-
-           
-            MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_pedido(id,fk_pedido,fk_articulo,cantidad,observacion) VALUES (NULL,'1000001','" + Label1.Text + "','" + TextBox2.Text + "','" + TextBox3.Text + "')", coon);
-            cm.CommandType = CommandType.Text;
-            cm.ExecuteNonQuery();
-            coon.Close();
         }
 
         protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)

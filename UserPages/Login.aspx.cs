@@ -25,7 +25,7 @@ namespace Sistema_Integral_HPS.UserPages
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("NUSUARIO", MySqlDbType.VarChar).Value = TextBox1.Text;
                 cmd.Parameters.Add("CONTRASEÑA", MySqlDbType.VarChar).Value = TextBox2.Text;
-                MySqlDataReader dr = cmd.ExecuteReader();
+                 MySqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
                     Session["usuariologgeado"] = dr["id"].ToString();

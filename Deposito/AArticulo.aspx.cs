@@ -84,5 +84,38 @@ namespace Sistema_Integral_HPS.Deposito
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            MySqlConnection coon = Conexion.getConexion();
+            MySqlCommand cm = new MySqlCommand("SELECT id,descripcion,descripcion_adicional FROM articulo WHERE descripcion LIKE '%" + TextBox1.Text + "%' AND habilitado= 'SI'", coon);
+            cm.CommandType = CommandType.Text;
+            cm.ExecuteNonQuery();
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cm);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+
+            if (GridView1.Rows.Count != 0)
+            {
+               Panel1.Visible = false;
+                Button2.Visible = true;
+                
+            }
+            else 
+            {
+                Panel1.Visible = true;
+            }
+            coon.Close();
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Panel1.Visible = true;
+            Button2.Visible = false;
+        }
     }
 }
