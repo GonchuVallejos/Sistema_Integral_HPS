@@ -122,7 +122,11 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            
+            GridView1.PageIndex = e.NewPageIndex;
+            DataTable dt = new DataTable();
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+
         }
     }
 }
