@@ -119,5 +119,10 @@ namespace Sistema_Integral_HPS.Deposito
             Panel1.Visible = true;
             Button2.Visible = false;
         }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            
+        }
     }
 }
