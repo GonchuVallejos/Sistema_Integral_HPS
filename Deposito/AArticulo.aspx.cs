@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace Sistema_Integral_HPS.Deposito
 {
@@ -73,9 +74,10 @@ namespace Sistema_Integral_HPS.Deposito
 
             if (dt.Rows[0].ItemArray.GetValue(0).ToString() == "0")
             {
-                MySqlCommand cm2 = new MySqlCommand("INSERT INTO articulo (id,descripcion,descripcion_adicional,fk_familias,fk_unimedidas,stock,fk_deposito,stock_minimo,stock_maximo,stock_puntopedir,inventariable,habilitado,ultimo_precio) VALUES (NULL,'" + TextBox1.Text + "','" + TextBox2.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "','','" + Convert.ToInt32(DropDownList3.SelectedValue) + "','" + TextBox4.Text + "','" + TextBox5.Text + "','" + TextBox6.Text + "','" + DropDownList4.SelectedValue + "','" + DropDownList5.SelectedValue + "','" + Convert.ToDouble(TextBox7.Text) + "')", coon);
+                MySqlCommand cm2 = new MySqlCommand("INSERT INTO articulo (id,descripcion,descripcion_adicional,fk_familias,fk_unimedidas,stock,fk_deposito,stock_minimo,stock_maximo,stock_puntopedir,inventariable,habilitado,ultimo_precio) VALUES (NULL,'" + TextBox1.Text + "','" + TextBox2.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "','"+Convert.ToInt32(TextBox7.Text)+"','" + Convert.ToInt32(DropDownList3.SelectedValue) + "','" + TextBox4.Text + "','" + TextBox5.Text + "','" + TextBox6.Text + "','" + DropDownList4.SelectedValue + "','" + DropDownList5.SelectedValue + "',NULL)", coon);
                 cm2.CommandType = System.Data.CommandType.Text;
                 cm2.ExecuteNonQuery();
+                MessageBox.Show("¡ EL ARTICULO A SIDO CARGADO CORRECTAMENTE !");
             }
             coon.Close();
         }
