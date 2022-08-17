@@ -12,6 +12,7 @@ namespace Sistema_Integral_HPS.Deposito
 {
     public partial class AArticulo : System.Web.UI.Page
     {
+        DataTable dta = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -69,10 +70,10 @@ namespace Sistema_Integral_HPS.Deposito
             cm.CommandType = System.Data.CommandType.Text;
 
             MySqlDataAdapter da = new MySqlDataAdapter(cm);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+           // DataTable dta = new DataTable();
+            da.Fill(dta);
 
-            if (dt.Rows[0].ItemArray.GetValue(0).ToString() == "0")
+            if (dta.Rows[0].ItemArray.GetValue(0).ToString() == "0")
             {
                 MySqlCommand cm2 = new MySqlCommand("INSERT INTO articulo (id,descripcion,descripcion_adicional,fk_familias,fk_unimedidas,stock,fk_deposito,stock_minimo,stock_maximo,stock_puntopedir,inventariable,habilitado,ultimo_precio) VALUES (NULL,'" + TextBox1.Text + "','" + TextBox2.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "','"+Convert.ToInt32(TextBox7.Text)+"','" + Convert.ToInt32(DropDownList3.SelectedValue) + "','" + TextBox4.Text + "','" + TextBox5.Text + "','" + TextBox6.Text + "','" + DropDownList4.SelectedValue + "','" + DropDownList5.SelectedValue + "',NULL)", coon);
                 cm2.CommandType = System.Data.CommandType.Text;
@@ -95,10 +96,10 @@ namespace Sistema_Integral_HPS.Deposito
             cm.ExecuteNonQuery();
 
             MySqlDataAdapter da = new MySqlDataAdapter(cm);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            //DataTable dt = new DataTable();
+            da.Fill(dta);
 
-            GridView1.DataSource = dt;
+            GridView1.DataSource = dta;
             GridView1.DataBind();
 
             if (GridView1.Rows.Count != 0)
@@ -111,6 +112,7 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 Panel1.Visible = true;
             }
+            ViewState["RECORD"] = dta;
             coon.Close();
         }
 
@@ -120,13 +122,18 @@ namespace Sistema_Integral_HPS.Deposito
             Button2.Visible = false;
         }
 
+
+        protected void GridView1_PageIndexChanged(object sender, EventArgs e)
+        {
+        }
+
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
-            DataTable dt = new DataTable();
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
 
+            dta = (DataTable)ViewState["RECORD"];
+            GridView1.DataSource = dta;
+            GridView1.DataBind();
         }
     }
 }
