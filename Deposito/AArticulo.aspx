@@ -2,73 +2,75 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-            <p>
-            REGISTRO DE UN NUEVO ARTICULO</p>
-        <p>
-            NOMBRE :
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Buscar" />
-            <asp:GridView ID="GridView1" runat="server" PageSize="5" >
-            </asp:GridView>
-            <asp:Button ID="Button2" runat="server" Text="Agregar Nuevo" visible="false" OnClick="Button2_Click"/>
-        </p>
-    <asp:Panel ID="Panel1" runat="server" Visible="false">
-        <p>
-            DESCRIPCION ADICIONAL:
-            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            FAMILIA:
-            <asp:DropDownList ID="DropDownList1" runat="server">
+    <asp:Label ID="Label3" class="justify-content-center h1" runat="server">REGISTRAR UN NUEVO ARTICULO</asp:Label>
+    <hr />
+    <div class="row">
+        <div class="col-lg-4">
+            <Label class="font-weight-normal">INGRESE UN NUEVO ARTICULO:</Label>
+        </div>
+        <div class="col-lg-2">
+            <asp:TextBox ID="TextBox1" runat="server" class="form-control" required="True"></asp:TextBox>
+        </div>
+        <div class="col-lg-4">
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" class="btn btn-lg btn-info" Text="Buscar" />
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <asp:GridView ID="GridView1" runat="server" PageSize="5" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AllowPaging="True">
+            <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+        </asp:GridView>
+    </div>
+    <div class="col-lg-4">
+        <asp:Button ID="Button2" runat="server" Text="Agregar Nuevo" visible="false" CssClass="btn btn-lg btn-warning" OnClick="Button2_Click"/>
+    </div>
+    <asp:Panel ID="Panel1" runat="server" CssClass="form-control" Visible="false">
+        <Label class="font-weight-normal">DESCRIPCION ADICIONAL:</Label>
+        <asp:TextBox ID="TextBox2" runat="server" class="form-control" required="True"></asp:TextBox>
+        <br />
+        <Label class="font-weight-normal">FAMILIA:</Label>
+            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
             </asp:DropDownList>
-        </p>
-        <p>
-            MEDIDA: <asp:DropDownList ID="DropDownList2" runat="server">
+        <br />
+        <Label class="font-weight-normal">FAMILIA:</Label>
+            <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control">
             </asp:DropDownList>
-        </p>
-        <p>
-            DEPOSITO:
-            <asp:DropDownList ID="DropDownList3" runat="server">
+        <br />
+        <Label class="font-weight-normal">DEPOSITO:</Label>
+            <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-control">
             </asp:DropDownList>
-        </p>
-        <p>
-            STOCK:
-            <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            STOCK MINIMO A TENER:
-            <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            STOCK MAXIMO A TENER:
-            <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            STOCK PUNTO A PEDIR:
-            <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            INVENTARIABLE:
-            <asp:DropDownList ID="DropDownList4" runat="server">
+        <br />
+        <Label class="font-weight-normal">STOCK:</Label>
+        <asp:TextBox ID="TextBox7" runat="server" class="form-control" required="True"></asp:TextBox>
+        <br />
+        <Label class="font-weight-normal">MINIMO A TENER:</Label>
+        <asp:TextBox ID="TextBox4" runat="server" class="form-control" required="True"></asp:TextBox>
+        <br />
+        <Label class="font-weight-normal">MAXIMO A TENER:</Label>
+        <asp:TextBox ID="TextBox5" runat="server" class="form-control" required="True"></asp:TextBox>
+        <br />
+        <Label class="font-weight-normal">STOCK PUNTO A PEDIR:</Label>
+        <asp:TextBox ID="TextBox6" runat="server" class="form-control" required="True"></asp:TextBox>
+        <br />
+        <Label class="font-weight-normal">INVENTARIABLE:</Label>
+            <asp:DropDownList ID="DropDownList4" runat="server" CssClass="form-control">
                 <asp:ListItem Value="NO">NO</asp:ListItem>
                 <asp:ListItem Value="SI">SI</asp:ListItem>
             </asp:DropDownList>
-        </p>
-        <p>
-            HABILITADO? : <asp:DropDownList ID="DropDownList5" runat="server">
+        <br />
+        <Label class="font-weight-normal">HABILITADO?:</Label>
+            <asp:DropDownList ID="DropDownList5" runat="server" CssClass="form-control">
                 <asp:ListItem>SI</asp:ListItem>
                 <asp:ListItem>NO</asp:ListItem>
             </asp:DropDownList>
-        </p>
-        <p>
-            &nbsp;</p>
-        <p>
-            <asp:Button ID="btn_guardar" runat="server" OnClick="btn_guardar_Click" Text="GUARDAR ARTICULO" />
-        </p>
-        <p>
-            </asp:Panel>
-            <asp:Button ID="btn_cancelar" runat="server" Text="CANCELAR" OnClick="btn_cancelar_Click" />
-        </p>
-        <p>
-            &nbsp;</p>
+        <div class="row">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4">
+                <asp:Button ID="btn_guardar" runat="server" class="btn btn-lg btn-success" OnClick="btn_guardar_Click" Text="GUARDAR ARTICULO" />
+            </div>
+        </div>
+    </asp:Panel>
+        <div class="col-lg-4">
+            <asp:Button ID="btn_cancelar" runat="server" Text="CANCELAR" class="btn btn-lg btn-danger" OnClick="btn_cancelar_Click" />
+        </div>
 </asp:Content>
