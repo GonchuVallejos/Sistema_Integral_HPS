@@ -121,7 +121,7 @@
     <Content Include="Deposito\APedido.aspx" />
     <Content Include="Deposito\Deposito.css" />
     <Content Include="Deposito\IndexDeposito.aspx" />
-    <Content Include="Deposito\VPedidos.aspx" />
+    <Content Include="Deposito\VPedido.aspx" />
     <Content Include="Pedidos\Pedidos.aspx" />
     <Content Include="UserPages\Images\Logo-white.svg" />
     <Content Include="UserPages\JavaScript.js" />
@@ -169,12 +169,12 @@
     <Compile Include="Deposito\MasterDeposito.Master.designer.cs">
       <DependentUpon>MasterDeposito.Master</DependentUpon>
     </Compile>
-    <Compile Include="Deposito\VPedidos.aspx.cs">
-      <DependentUpon>VPedidos.aspx</DependentUpon>
+    <Compile Include="Deposito\VPedido.aspx.cs">
+      <DependentUpon>VPedido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Deposito\VPedidos.aspx.designer.cs">
-      <DependentUpon>VPedidos.aspx</DependentUpon>
+    <Compile Include="Deposito\VPedido.aspx.designer.cs">
+      <DependentUpon>VPedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pedidos\Pedidos.aspx.cs">
       <DependentUpon>Pedidos.aspx</DependentUpon>
