@@ -41,7 +41,12 @@ namespace Sistema_Integral_HPS.Deposito
 
             if (GridView1.Rows.Count == 0)
             {
-                //MessageBox.Show("¡NO EXISTE ARTICULO !");
+                string msg = "ARTÍCULO SIN EXISTENCIA!";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+            }
+            else
+            {
+                Panel1.Visible = true;
             }
             coon.Close();
         }
@@ -50,9 +55,10 @@ namespace Sistema_Integral_HPS.Deposito
         {
             TextBox2.Visible = true;
             Button2.Visible = true;
+            Label4.Visible = true;
             string idv = GridView1.SelectedDataKey.Value.ToString();
             Label1.Text = Convert.ToString(idv);
-            Label2.Visible = true;
+            Label2.Visible = false;
             Label2.Text = Convert.ToString(GridView1.SelectedRow.Cells[2].Text);
         }
 
@@ -77,7 +83,7 @@ namespace Sistema_Integral_HPS.Deposito
             int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
 
             MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm1 = new MySqlCommand("INSERT INTO pedido(id,fk_usuario,fecha) VALUES (NULL,'"+idp+"','"+ DateTime.Now.Date +"')", coon);
+            MySqlCommand cm1 = new MySqlCommand("INSERT INTO pedido(id,fk_usuario) VALUES (NULL,'"+idp+"')", coon);
             cm1.CommandType = CommandType.Text;
             cm1.ExecuteNonQuery();
 
@@ -102,7 +108,7 @@ namespace Sistema_Integral_HPS.Deposito
                 
             }
             coon.Close();
-
+            Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
 
         protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -149,14 +155,14 @@ namespace Sistema_Integral_HPS.Deposito
             GridView2.DataBind();
         }
 
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/Deposito/IndexDeposito.aspx");
-        }
-
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
     }
 }

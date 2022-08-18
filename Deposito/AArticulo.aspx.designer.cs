@@ -159,15 +159,6 @@ namespace Sistema_Integral_HPS.Deposito
         protected global::System.Web.UI.WebControls.DropDownList DropDownList5;
 
         /// <summary>
-        /// Control btn_guardar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_guardar;
-
-        /// <summary>
         /// Control btn_cancelar.
         /// </summary>
         /// <remarks>
@@ -175,5 +166,14 @@ namespace Sistema_Integral_HPS.Deposito
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_cancelar;
+
+        /// <summary>
+        /// Control btn_guardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_guardar;
     }
 }

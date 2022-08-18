@@ -9,7 +9,7 @@
             <Label class="font-weight-normal">INGRESE UN NUEVO ARTICULO:</Label>
         </div>
         <div class="col-lg-2">
-            <asp:TextBox ID="TextBox1" runat="server" class="form-control" required="True"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" class="form-control"></asp:TextBox>
         </div>
         <div class="col-lg-4">
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" class="btn btn-lg btn-info" Text="Buscar" />
@@ -64,13 +64,13 @@
             </asp:DropDownList>
         <div class="row">
             <div class="col-lg-4">
+                <asp:Button ID="btn_cancelar" runat="server" Text="CANCELAR" class="btn btn-lg btn-danger" OnClick="btn_cancelar_Click" />
+            </div>
+            <div class="col-lg-4">
             </div>
             <div class="col-lg-4">
                 <asp:Button ID="btn_guardar" runat="server" class="btn btn-lg btn-success" OnClick="btn_guardar_Click" Text="GUARDAR ARTICULO" />
             </div>
         </div>
     </asp:Panel>
-        <div class="col-lg-4">
-            <asp:Button ID="btn_cancelar" runat="server" Text="CANCELAR" class="btn btn-lg btn-danger" OnClick="btn_cancelar_Click" />
-        </div>
 </asp:Content>

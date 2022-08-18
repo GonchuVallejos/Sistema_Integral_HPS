@@ -22,6 +22,7 @@
                 </Columns>
             </asp:GridView>
         </div>
+        <br />
         <asp:Button ID="Button2" runat="server" Text="REALIZAR SUMINISTRO" />
     </form>
 </body>

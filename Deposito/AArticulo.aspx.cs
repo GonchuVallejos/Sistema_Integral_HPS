@@ -85,7 +85,7 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
 
         protected void Button1_Click(object sender, EventArgs e)
