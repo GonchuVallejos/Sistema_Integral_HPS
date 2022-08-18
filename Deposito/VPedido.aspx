@@ -8,6 +8,10 @@
         <asp:GridView ID="GridView1" runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False">
             <Columns>
                 <asp:CommandField HeaderText="VER" ShowSelectButton="True" />
+                <asp:BoundField DataField="id" HeaderText="ID" />
+                <asp:BoundField DataField="NOMBRE Y APELLIDO" HeaderText="USUARIO" />
+                <asp:BoundField DataField="descripcion" HeaderText="SECTOR" />
+                <asp:BoundField DataField="fecha" HeaderText="FECHA DE PEDIDO" />
             </Columns>
             <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
         </asp:GridView>

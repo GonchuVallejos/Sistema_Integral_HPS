@@ -15,7 +15,7 @@ namespace Sistema_Integral_HPS.Deposito
 		{
             DataTable dta = new DataTable();
             MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm = new MySqlCommand("SELECT * FROM pedido WHERE estado = 'PENDIENTE'", coon);
+            MySqlCommand cm = new MySqlCommand("SELECT pedido.id, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion, pedido.fecha FROM pedido INNER JOIN usuario ON pedido.fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE estado = 'PENDIENTE'", coon);
             cm.CommandType = CommandType.Text;
             cm.ExecuteNonQuery();
 
