@@ -153,5 +153,10 @@ namespace Sistema_Integral_HPS.Deposito
         {
             Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
+
+        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

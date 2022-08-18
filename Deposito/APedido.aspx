@@ -43,7 +43,7 @@
     
     <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
     <br />
-    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView2_RowDeleting" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center">
+    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView2_RowDeleting" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
         <Columns>
             <asp:BoundField DataField="id articulo" HeaderText="ID ARTICULO" />
             <asp:BoundField HeaderText="ARTICULO" DataField="articulo" />

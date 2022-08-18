@@ -10,12 +10,12 @@ namespace Sistema_Integral_HPS
     {
         public void desconectar()
         {
-            MySqlConnection coon = new MySqlConnection("server=localhost; port=3306; uid=root; pwd=''; database=hps_deposito;");
+            MySqlConnection coon = new MySqlConnection("server=localhost; port=3306; uid=root; pwd=''; database=hps_deposito;Convert Zero Datetime=True;");
             coon.Close();
         }
         public static MySqlConnection getConexion()
         {
-            string c = "server=localhost; port=3306; uid=root; pwd=''; database=hps_deposito;";
+            string c = "server=localhost; port=3306; uid=root; pwd=''; database=hps_deposito;Convert Zero Datetime=True;";
             MySqlConnection coon = new MySqlConnection(c);
             coon.Open();
             return coon;
