@@ -9,10 +9,10 @@ using System.Web.UI.WebControls;
 
 namespace Sistema_Integral_HPS.Deposito
 {
-    public partial class VPedido : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+	public partial class VPedido : System.Web.UI.Page
+	{
+		protected void Page_Load(object sender, EventArgs e)
+		{
             DataTable dta = new DataTable();
             MySqlConnection coon = Conexion.getConexion();
             MySqlCommand cm = new MySqlCommand("SELECT * FROM pedido WHERE estado = 'PENDIENTE'", coon);
@@ -27,5 +27,5 @@ namespace Sistema_Integral_HPS.Deposito
 
             coon.Close();
         }
-    }
+	}
 }
