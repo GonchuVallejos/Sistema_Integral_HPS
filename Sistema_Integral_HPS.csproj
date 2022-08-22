@@ -116,13 +116,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ABM\Alta_articulo.aspx" />
     <Content Include="Deposito\AArticulo.aspx" />
+    <Content Include="Deposito\Adquisicion.aspx" />
     <Content Include="Deposito\APedido.aspx" />
     <Content Include="Deposito\Deposito.css" />
     <Content Include="Deposito\IndexDeposito.aspx" />
+    <Content Include="Deposito\VMovimiento.aspx" />
     <Content Include="Deposito\VPedido.aspx" />
-    <Content Include="Pedidos\Pedidos.aspx" />
     <Content Include="UserPages\Images\Logo-white.svg" />
     <Content Include="UserPages\JavaScript.js" />
     <Content Include="UserPages\Login.aspx" />
@@ -132,14 +132,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABM\Alta_articulo.aspx.cs">
-      <DependentUpon>Alta_articulo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ABM\Alta_articulo.aspx.designer.cs">
-      <DependentUpon>Alta_articulo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ABM\Conexion.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Deposito\AArticulo.aspx.cs">
       <DependentUpon>AArticulo.aspx</DependentUpon>
@@ -147,6 +139,13 @@
     </Compile>
     <Compile Include="Deposito\AArticulo.aspx.designer.cs">
       <DependentUpon>AArticulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deposito\Adquisicion.aspx.cs">
+      <DependentUpon>Adquisicion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\Adquisicion.aspx.designer.cs">
+      <DependentUpon>Adquisicion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Deposito\APedido.aspx.cs">
       <DependentUpon>APedido.aspx</DependentUpon>
@@ -169,19 +168,19 @@
     <Compile Include="Deposito\MasterDeposito.Master.designer.cs">
       <DependentUpon>MasterDeposito.Master</DependentUpon>
     </Compile>
+    <Compile Include="Deposito\VMovimiento.aspx.cs">
+      <DependentUpon>VMovimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\VMovimiento.aspx.designer.cs">
+      <DependentUpon>VMovimiento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Deposito\VPedido.aspx.cs">
       <DependentUpon>VPedido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Deposito\VPedido.aspx.designer.cs">
       <DependentUpon>VPedido.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pedidos\Pedidos.aspx.cs">
-      <DependentUpon>Pedidos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pedidos\Pedidos.aspx.designer.cs">
-      <DependentUpon>Pedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserPages\Login.aspx.cs">

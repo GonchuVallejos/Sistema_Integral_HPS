@@ -2,12 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:Label ID="Label1" class="justify-content-center h1" runat="server">CONSULTAR PEDIDOS</asp:Label>
+    <hr />
     <asp:Panel ID="Panel1" runat="server">
-        <asp:Label ID="Label1" class="justify-content-center h1" runat="server">CONSULTAR PEDIDOS</asp:Label>
-        <hr />
         <asp:GridView ID="GridView1" runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <Columns>
-                <asp:CommandField HeaderText="VER" ShowSelectButton="True" />
+                <asp:CommandField HeaderText="VER" ShowSelectButton="True" ButtonType="Button" >
+                <ControlStyle CssClass="form-control" />
+                </asp:CommandField>
                 <asp:BoundField DataField="id" HeaderText="ID" />
                 <asp:BoundField DataField="NOMBRE Y APELLIDO" HeaderText="USUARIO QUE SOLICITA" />
                 <asp:BoundField DataField="descripcion" HeaderText="SECTOR" />
@@ -40,7 +42,9 @@
         <hr />
         <asp:GridView ID="GridView2" runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating" DataKeyNames="iddetalle">
             <Columns>
-                <asp:CommandField HeaderText="Editar" ShowEditButton="True" />
+                <asp:CommandField HeaderText="Editar" ShowEditButton="True" ButtonType="Button" >
+                <ControlStyle CssClass="form-control" />
+                </asp:CommandField>
                 <asp:BoundField DataField="fk_articulo" HeaderText="ID ARTICULO" />
                 <asp:BoundField DataField="descripcion" HeaderText="DESCRIPCION DEL ARTICULO" />
                 <asp:BoundField DataField="cantidad" HeaderText="CANTIDAD" />
