@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Label ID="Label1" class="h1 justify-content-center" runat="server">VER TODOS LOS MOVIMIENTOS</asp:Label>
     <hr />
-     <asp:GridView ID="GridView1"  runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False">
+     <asp:GridView ID="GridView1"  runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
          <Columns>
              <asp:CommandField ShowSelectButton="True" />
              <asp:BoundField DataField="id_movimiento" FooterText="Holaaaa" HeaderText="ID" />

@@ -37,11 +37,15 @@
                <li class="nav-item">
               <a class="nav-link active" href="Adquisicion.aspx">Adquisicion</a>
             </li>
-                <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link active" href="VMovimiento.aspx">Ver Movimientos</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link active" href="Ajustes.aspx">Ajustes</a>
             </li>
           </ul>
         </div>
+
         <div>
             <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         </div>

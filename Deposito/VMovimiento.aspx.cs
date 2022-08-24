@@ -28,5 +28,10 @@ namespace Sistema_Integral_HPS.Deposito
 
             coon.Close();
         }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

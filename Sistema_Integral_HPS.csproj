@@ -118,6 +118,7 @@
   <ItemGroup>
     <Content Include="Deposito\AArticulo.aspx" />
     <Content Include="Deposito\Adquisicion.aspx" />
+    <Content Include="Deposito\Ajustes.aspx" />
     <Content Include="Deposito\APedido.aspx" />
     <Content Include="Deposito\Deposito.css" />
     <Content Include="Deposito\IndexDeposito.aspx" />
@@ -146,6 +147,13 @@
     </Compile>
     <Compile Include="Deposito\Adquisicion.aspx.designer.cs">
       <DependentUpon>Adquisicion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deposito\Ajustes.aspx.cs">
+      <DependentUpon>Ajustes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\Ajustes.aspx.designer.cs">
+      <DependentUpon>Ajustes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Deposito\APedido.aspx.cs">
       <DependentUpon>APedido.aspx</DependentUpon>
