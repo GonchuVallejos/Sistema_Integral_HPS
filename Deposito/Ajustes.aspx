@@ -23,8 +23,8 @@
     <br />
     <asp:Label ID="Label4" runat="server" Text="INGRESE EL TIPO DE AJUSTE:" Visible="False"></asp:Label>
     <asp:DropDownList ID="DropDownList1" runat="server" Visible="False">
-        <asp:ListItem>Positivo</asp:ListItem>
-        <asp:ListItem>Negativo</asp:ListItem>
+        <asp:ListItem Value="1">Positivo</asp:ListItem>
+        <asp:ListItem Value="0">Negativo</asp:ListItem>
     </asp:DropDownList>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:Label ID="Label7" runat="server" Text="ID ARTICULO SELECCIONADO:" Visible="False"></asp:Label>
@@ -43,7 +43,11 @@
     <asp:GridView ID="GridView2" runat="server">
     </asp:GridView>
     <br />
+    <asp:Button ID="Button2" class="btn btn-lg btn-info" runat="server" Text="Agregar al Ajuste" OnClick="Button2_Click" Visible="False" />
     <br />
-    <asp:Button ID="Button2" class="btn btn-lg btn-info" runat="server" Text="REALIZAR AJUSTE" OnClick="Button2_Click" Visible="False" />
     <br />
+    <br />
+    <br />
+    <br />
+    <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Finalizar el Ajuste" />
 </asp:Content>
