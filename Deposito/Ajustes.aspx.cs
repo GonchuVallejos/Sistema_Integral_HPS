@@ -122,6 +122,11 @@ namespace Sistema_Integral_HPS.Deposito
                     MySqlCommand cm3 = new MySqlCommand("UPDATE articulo SET stock = stock + '" + Convert.ToInt16(dt.Rows[i]["CANTIDAD"].ToString()) + "' WHERE id = '" + Convert.ToInt16(dt.Rows[i]["ID ARTICULO"].ToString()) + "'", coon);
                     cm3.CommandType = CommandType.Text;
                     cm3.ExecuteNonQuery();
+
+                    //SE INSERTA EL MOVIMIENTO AJUSTO POSITIVO--- EN PROCESO NO LO TERMINE XD -- SALTA ERROR EN SQL-- TENIA PENSADO HACERLA FACIL Y TRAER EL ID DEL AJUSTE A UN LABEL E INSERTARLO, PERO ESO ES DE COBARDES XD
+/*ACA SALTA ERROR*/ MySqlCommand cm6 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado) VALUES (NULL, 1005, NULL, NULL,'"+ dt2.Rows[0].ToString() + "', '" + idp + "','CONFIRMADO')", coon);
+                    cm6.CommandType = CommandType.Text;
+                    cm6.ExecuteNonQuery();
                 }
                 else
                 {
@@ -129,10 +134,16 @@ namespace Sistema_Integral_HPS.Deposito
                     MySqlCommand cm3 = new MySqlCommand("UPDATE articulo SET stock = stock - '" + Convert.ToInt16(dt.Rows[i]["CANTIDAD"].ToString()) + "' WHERE id = '" + Convert.ToInt16(dt.Rows[i]["ID ARTICULO"].ToString()) + "'", coon);
                     cm3.CommandType = CommandType.Text;
                     cm3.ExecuteNonQuery();
+                     
+                    //SE INSERTA EL MOVIMIENTO AJUSTE NEGATIVO --- EN PROCESO NO LO TERMINE XD -- SALTA ERROR EN SQL -- TENIA PENSADO HACERLA FACIL Y TRAER EL ID DEL AJUSTE A UN LABEL E INSERTARLO, PERO ESO ES DE COBARDES XD
+/*ACA SALTA ERROR*/ MySqlCommand cm7 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado) VALUES (NULL, 1006, NULL, NULL,'" + dt2.Rows[0].ToString() + "', '" + idp + "','CONFIRMADO')", coon);
+                    cm7.CommandType = CommandType.Text;
+                    cm7.ExecuteNonQuery();
                 }
                
             }
             MessageBox.Show("¡ EL AJUSTE A SIDO CARGADO CORRECTAMENTE !"); // SI LLEGAS HASTA AQUI, TODO TA PIOLA Y ADRIEL SE PAGA SANDWICHES !
+            
             coon.Close();
             Response.Redirect("/Deposito/IndexDeposito.aspx");
         }

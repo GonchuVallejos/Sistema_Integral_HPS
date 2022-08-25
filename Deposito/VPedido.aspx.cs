@@ -115,7 +115,7 @@ namespace Sistema_Integral_HPS.Deposito
                 cm.ExecuteNonQuery();
 
                 //SE ACTUALIZA EL STOCK DE ARTICULOS, RESTANDO EL ACTUAL MENOS LO SUMINISTRADO
-                MySqlCommand cm3 = new MySqlCommand("UPDATE articulo SET stock = stock - '" + Convert.ToInt16(dta1.Rows[i]["CANTIDAD"].ToString()) + "' WHERE id = '" + Convert.ToInt16(dta1.Rows[i]["fk_articulo"].ToString())+ "'", coon);
+                MySqlCommand cm3 = new MySqlCommand("UPDATE articulo SET stock = stock - '" + Convert.ToInt16(dta1.Rows[i]["CANTIDAD"].ToString()) + "' WHERE id = '" + Convert.ToInt16(dta1.Rows[i]["fk_articulo"].ToString()) + "'", coon);
                 cm3.CommandType = CommandType.Text;
                 cm3.ExecuteNonQuery();
             }
@@ -135,5 +135,6 @@ namespace Sistema_Integral_HPS.Deposito
             coon.Close();
             Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
+
     }
 }
