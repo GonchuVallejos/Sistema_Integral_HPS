@@ -124,7 +124,7 @@ namespace Sistema_Integral_HPS.Deposito
                     cm3.ExecuteNonQuery();
 
                     //SE INSERTA EL MOVIMIENTO AJUSTO POSITIVO--- EN PROCESO NO LO TERMINE XD -- SALTA ERROR EN SQL-- TENIA PENSADO HACERLA FACIL Y TRAER EL ID DEL AJUSTE A UN LABEL E INSERTARLO, PERO ESO ES DE COBARDES XD
-/*ACA SALTA ERROR*/ MySqlCommand cm6 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado) VALUES (NULL, 1005, NULL, NULL,'"+ dt2.Rows[0].ToString() + "', '" + idp + "','CONFIRMADO')", coon);
+/*ACA SALTA ERROR*/ MySqlCommand cm6 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado) VALUES (NULL, 1005, NULL, NULL,'" + idajuste + "', '" + idp + "','CONFIRMADO')", coon);
                     cm6.CommandType = CommandType.Text;
                     cm6.ExecuteNonQuery();
                 }
@@ -136,16 +136,38 @@ namespace Sistema_Integral_HPS.Deposito
                     cm3.ExecuteNonQuery();
                      
                     //SE INSERTA EL MOVIMIENTO AJUSTE NEGATIVO --- EN PROCESO NO LO TERMINE XD -- SALTA ERROR EN SQL -- TENIA PENSADO HACERLA FACIL Y TRAER EL ID DEL AJUSTE A UN LABEL E INSERTARLO, PERO ESO ES DE COBARDES XD
-/*ACA SALTA ERROR*/ MySqlCommand cm7 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado) VALUES (NULL, 1006, NULL, NULL,'" + dt2.Rows[0].ToString() + "', '" + idp + "','CONFIRMADO')", coon);
+/*ACA SALTA ERROR*/ MySqlCommand cm7 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado) VALUES (NULL, 1006, NULL, NULL,'" + idajuste + "', '" + idp + "','CONFIRMADO')", coon);
                     cm7.CommandType = CommandType.Text;
                     cm7.ExecuteNonQuery();
                 }
                
             }
-            MessageBox.Show("¡ EL AJUSTE A SIDO CARGADO CORRECTAMENTE !"); // SI LLEGAS HASTA AQUI, TODO TA PIOLA Y ADRIEL SE PAGA SANDWICHES !
+            MessageBox.Show("¡ EL AJUSTE A SIDO CARGADO CORRECTAMENTE !"); // LLEGUE ASI Q PINTAN BIRRAS:)
+
             
             coon.Close();
             Response.Redirect("/Deposito/IndexDeposito.aspx");
+        }
+
+        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridView2_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+
+        }
+
+        protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            dt = (DataTable)ViewState["RECORD"];
+            dt.Rows.RemoveAt(e.RowIndex);
+
+            Session["RECORD"] = dt;
+
+            GridView2.DataSource = dt;
+            GridView2.DataBind();
         }
     }
 }

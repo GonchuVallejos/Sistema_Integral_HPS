@@ -40,7 +40,10 @@
     <asp:TextBox ID="TextBox3" runat="server" Height="63px" Visible="False" Width="723px"></asp:TextBox>
     <br />
     <br />
-    <asp:GridView ID="GridView2" runat="server">
+    <asp:GridView ID="GridView2" runat="server" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" OnRowDeleted="GridView2_RowDeleted" OnRowDeleting="GridView2_RowDeleting">
+        <Columns>
+            <asp:CommandField ShowDeleteButton="True" />
+        </Columns>
     </asp:GridView>
     <br />
     <asp:Button ID="Button2" class="btn btn-lg btn-info" runat="server" Text="Agregar al Ajuste" OnClick="Button2_Click" Visible="False" />
