@@ -111,7 +111,7 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 int ida = Convert.ToInt32(dt.Rows[i]["ID ARTICULO"].ToString());
                 int cant = Convert.ToInt32(dt.Rows[i]["CANTIDAD"].ToString());
-                MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_ajuste(id,fk_ajuste,fk_articulo,cantidad,tipo_ajuste,observacion) VALUES (NULL,'" + idajuste + "','" + ida + "','" + cant + "','"+ DropDownList1.SelectedValue + "','" + TextBox3.Text + "')", coon);
+                MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_ajuste(id,fk_ajuste,fk_articulo,cantidad,tipo_ajuste,observacion) VALUES (NULL,'" + idajuste + "','" + ida + "','" + cant + "','" + DropDownList1.SelectedValue + "','" + TextBox3.Text + "')", coon);
                 cm.CommandType = CommandType.Text;
                 cm.ExecuteNonQuery();
 

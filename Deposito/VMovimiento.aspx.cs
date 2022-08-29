@@ -51,7 +51,7 @@ namespace Sistema_Integral_HPS.Deposito
             if (idm ==1003)
             {
                 int idp= Convert.ToInt32(GridView1.SelectedRow.Cells[6].Text);
-                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_pedido.fk_articulo,detalle_pedido.cantidad,articulo.descripcion,detalle_pedido.observacion FROM detalle_pedido INNER JOIN articulo WHERE fk_pedido='"+idp +"' GROUP BY detalle_pedido.fk_articulo", coon);
+                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_pedido.fk_articulo AS 'ID ARTICULO',detalle_pedido.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO',detalle_pedido.observacion AS 'OBSERVACION' FROM detalle_pedido INNER JOIN articulo  ON detalle_pedido.fk_articulo=articulo.id WHERE detalle_pedido.fk_pedido='" + idp +"' GROUP BY detalle_pedido.fk_articulo", coon);
                 MySqlDataAdapter da = new MySqlDataAdapter(cm1);
                 da.Fill(dta2);
                 GridView2.DataSource = dta2;
@@ -61,7 +61,7 @@ namespace Sistema_Integral_HPS.Deposito
             if (idm == 1005 || idm==1006)
             {
                 int idp = Convert.ToInt32(GridView1.SelectedRow.Cells[7].Text);
-                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_ajuste.fk_articulo,detalle_ajuste.cantidad,articulo.descripcion,detalle_ajuste.tipo_ajuste,detalle_ajuste.observacion FROM detalle_ajuste INNER JOIN articulo WHERE fk_ajuste='" + idp + "' GROUP BY detalle_ajuste.fk_articulo", coon); 
+                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_ajuste.fk_articulo AS 'ID ARTICULO',detalle_ajuste.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO',detalle_ajuste.tipo_ajuste,detalle_ajuste.observacion AS 'OBSERVACION' FROM detalle_ajuste INNER JOIN articulo ON detalle_ajuste.fk_articulo=articulo.id WHERE fk_ajuste='" + idp + "' GROUP BY detalle_ajuste.fk_articulo", coon); 
                 MySqlDataAdapter da = new MySqlDataAdapter(cm1);
                 da.Fill(dta2);
                 GridView2.DataSource = dta2;
@@ -71,7 +71,7 @@ namespace Sistema_Integral_HPS.Deposito
             if (idm == 1001)
             {
                 int idp = Convert.ToInt32(GridView1.SelectedRow.Cells[9].Text);
-                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_adquisicion.fk_articulo,detalle_adquisiciom.cantidad,articulo.descripcion,detalle_adquisicion.observacion FROM detalle_adquisicion INNER JOIN articulo WHERE fk_adquisicion='" + idp + "' GROUP BY detalle_adquisicion.fk_articulo", coon);
+                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_adquisicion.fk_articulo AS 'ID ARTICULO',detalle_adquisicion.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO',detalle_adquisicion.observacion AS 'OBSERVACION' FROM detalle_adquisicion INNER JOIN articulo ON detalle_adquisicion.fk_articulo=articulo.id WHERE fk_adquisicion='" + idp + "' GROUP BY detalle_adquisicion.fk_articulo", coon);
                 MySqlDataAdapter da = new MySqlDataAdapter(cm1);
                 da.Fill(dta2);
                 GridView2.DataSource = dta2;

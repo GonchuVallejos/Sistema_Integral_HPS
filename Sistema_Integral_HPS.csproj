@@ -116,6 +116,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Adquisicion.aspx" />
     <Content Include="Deposito\AArticulo.aspx" />
     <Content Include="Deposito\Adquisicion.aspx" />
     <Content Include="Deposito\Ajustes.aspx" />
@@ -133,6 +134,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adquisicion.aspx.cs">
+      <DependentUpon>Adquisicion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Adquisicion.aspx.designer.cs">
+      <DependentUpon>Adquisicion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Conexion.cs" />
     <Compile Include="Deposito\AArticulo.aspx.cs">
       <DependentUpon>AArticulo.aspx</DependentUpon>
