@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sistema_Integral_HPS
+namespace Sistema_Integral_HPS.RexyReport
 {
 
 
-    public partial class Adquisicion
+    public partial class IndexRexy
     {
     }
 }

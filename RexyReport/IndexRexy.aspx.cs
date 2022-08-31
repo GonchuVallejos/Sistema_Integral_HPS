@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Sistema_Integral_HPS
+namespace Sistema_Integral_HPS.RexyReport
 {
-    public partial class Adquisicion : System.Web.UI.Page
+    public partial class IndexRexy : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -116,7 +116,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Adquisicion.aspx" />
+    <Content Include="css\styles.css" />
     <Content Include="Deposito\AArticulo.aspx" />
     <Content Include="Deposito\Adquisicion.aspx" />
     <Content Include="Deposito\Ajustes.aspx" />
@@ -126,6 +126,7 @@
     <Content Include="Deposito\VMovimiento.aspx" />
     <Content Include="Deposito\VPedido.aspx" />
     <Content Include="Deposito\stock.aspx" />
+    <Content Include="RexyReport\IndexRexy.aspx" />
     <Content Include="UserPages\Images\Logo-white.svg" />
     <Content Include="UserPages\JavaScript.js" />
     <Content Include="UserPages\Login.aspx" />
@@ -135,13 +136,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adquisicion.aspx.cs">
-      <DependentUpon>Adquisicion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Adquisicion.aspx.designer.cs">
-      <DependentUpon>Adquisicion.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Conexion.cs" />
     <Compile Include="Deposito\AArticulo.aspx.cs">
       <DependentUpon>AArticulo.aspx</DependentUpon>
@@ -207,6 +201,20 @@
     <Compile Include="Deposito\stock.aspx.designer.cs">
       <DependentUpon>stock.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RexyReport\IndexRexy.aspx.cs">
+      <DependentUpon>IndexRexy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RexyReport\IndexRexy.aspx.designer.cs">
+      <DependentUpon>IndexRexy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RexyReport\MasterRexy.Master.cs">
+      <DependentUpon>MasterRexy.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RexyReport\MasterRexy.Master.designer.cs">
+      <DependentUpon>MasterRexy.Master</DependentUpon>
+    </Compile>
     <Compile Include="UserPages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -240,6 +248,7 @@
     <Content Include="Deposito\MasterDeposito.Master" />
     <None Include="packages.config" />
     <Content Include="UserPages\MasterUser.Master" />
+    <Content Include="RexyReport\MasterRexy.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
