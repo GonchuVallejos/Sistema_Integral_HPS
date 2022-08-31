@@ -127,6 +127,7 @@
     <Content Include="Deposito\VPedido.aspx" />
     <Content Include="Deposito\stock.aspx" />
     <Content Include="RexyReport\IndexRexy.aspx" />
+    <Content Include="RexyReport\Vista.aspx" />
     <Content Include="UserPages\Images\Logo-white.svg" />
     <Content Include="UserPages\JavaScript.js" />
     <Content Include="UserPages\Login.aspx" />
@@ -214,6 +215,13 @@
     </Compile>
     <Compile Include="RexyReport\MasterRexy.Master.designer.cs">
       <DependentUpon>MasterRexy.Master</DependentUpon>
+    </Compile>
+    <Compile Include="RexyReport\Vista.aspx.cs">
+      <DependentUpon>Vista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RexyReport\Vista.aspx.designer.cs">
+      <DependentUpon>Vista.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
