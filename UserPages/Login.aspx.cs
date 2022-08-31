@@ -29,7 +29,9 @@ namespace Sistema_Integral_HPS.UserPages
                 if (dr.Read())
                 {
                     Session["usuariologgeado"] = dr["id"].ToString();
-
+                    Session["direccion"] = dr["fk_direccion"].ToString();
+                    Session["servicio_division"] = Convert.ToInt16(dr["fk_servicio_division"].ToString());
+                    Session["unidad_seccion"] = Convert.ToInt16(dr["fk_unidad_seccion"].ToString());
                     using (MySqlCommand cm = new MySqlCommand("recupera_usuario", coon))
                     {
                         cm.CommandType = CommandType.StoredProcedure;

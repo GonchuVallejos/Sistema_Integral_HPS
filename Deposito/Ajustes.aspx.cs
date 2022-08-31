@@ -21,6 +21,8 @@ namespace Sistema_Integral_HPS.Deposito
                 DataColumn ID = dt.Columns.Add("ID ARTICULO", typeof(Int32));
                 DataColumn ART = dt.Columns.Add("ARTICULO", typeof(string));
                 DataColumn CANTIDAD = dt.Columns.Add("CANTIDAD", typeof(Int32));
+                DataColumn TIPO = dt.Columns.Add("TIPO", typeof(Int32));
+                DataColumn OBSERVACION = dt.Columns.Add("OBSERVACION", typeof(string));
                 ViewState["RECORD"] = dt;
 
             }
@@ -80,6 +82,8 @@ namespace Sistema_Integral_HPS.Deposito
             row["ID ARTICULO"] = Label6.Text;
             row["ARTICULO"] = Convert.ToString(GridView1.SelectedRow.Cells[2].Text); ;
             row["CANTIDAD"] = TextBox2.Text;
+            row["TIPO"] = DropDownList1.SelectedValue;
+            row["OBSERVACION"] = TextBox3.Text;
 
             dt.Rows.Add(row);
             dt.AcceptChanges();
@@ -111,12 +115,14 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 int ida = Convert.ToInt32(dt.Rows[i]["ID ARTICULO"].ToString());
                 int cant = Convert.ToInt32(dt.Rows[i]["CANTIDAD"].ToString());
-                MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_ajuste(id,fk_ajuste,fk_articulo,cantidad,tipo_ajuste,observacion) VALUES (NULL,'" + idajuste + "','" + ida + "','" + cant + "','" + DropDownList1.SelectedValue + "','" + TextBox3.Text + "')", coon);
+                int tipo = Convert.ToInt32(dt.Rows[i]["TIPO"].ToString());
+                string obs = dt.Rows[i]["OBSERVACION"].ToString();
+                MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_ajuste(id,fk_ajuste,fk_articulo,cantidad,tipo_ajuste,observacion) VALUES (NULL,'" + idajuste + "','" + ida + "','" + cant + "','" + tipo + "','" + obs + "')", coon);
                 cm.CommandType = CommandType.Text;
                 cm.ExecuteNonQuery();
+                
 
-
-                if (DropDownList1.SelectedValue.Equals("1")) //COMPARO UNO A UNO LOS ARTICULOS SI ES AJUSTE POSITIVO O NEGATIVO, EN BASE A ESO DESCUENTO O SUMO STOCK
+                if (tipo == 1) //COMPARO UNO A UNO LOS ARTICULOS SI ES AJUSTE POSITIVO O NEGATIVO, EN BASE A ESO DESCUENTO O SUMO STOCK
                 {
                     //SE ACTUALIZA EL STOCK DE ARTICULOS, SUMANDO EL ACTUAL MAS EL AJUSTE
                     MySqlCommand cm3 = new MySqlCommand("UPDATE articulo SET stock = stock + '" + Convert.ToInt16(dt.Rows[i]["CANTIDAD"].ToString()) + "' WHERE id = '" + Convert.ToInt16(dt.Rows[i]["ID ARTICULO"].ToString()) + "'", coon);
@@ -136,7 +142,7 @@ namespace Sistema_Integral_HPS.Deposito
                     cm3.ExecuteNonQuery();
                      
                     //SE INSERTA EL MOVIMIENTO AJUSTE NEGATIVO --- EN PROCESO NO LO TERMINE XD -- SALTA ERROR EN SQL -- TENIA PENSADO HACERLA FACIL Y TRAER EL ID DEL AJUSTE A UN LABEL E INSERTARLO, PERO ESO ES DE COBARDES XD
-/*ACA SALTA ERROR*/ MySqlCommand cm7 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado) VALUES (NULL, 1006, NULL, NULL,'" + idajuste + "', '" + idp + "','CONFIRMADO')", coon);
+/*ACA SALTA ERROR*/ MySqlCommand cm7 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado) VALUES (NULL, 1005, NULL, NULL,'" + idajuste + "', '" + idp + "','CONFIRMADO')", coon);
                     cm7.CommandType = CommandType.Text;
                     cm7.ExecuteNonQuery();
                 }

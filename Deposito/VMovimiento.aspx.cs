@@ -47,10 +47,10 @@ namespace Sistema_Integral_HPS.Deposito
             //MySqlDataAdapter dat1 = new MySqlDataAdapter(cm);
             //Convert.ToString(GridView1.SelectedRow.Cells[7].Text)
             
-            int idm = Convert.ToInt32(GridView1.SelectedRow.Cells[8].Text);
+            int idm = Convert.ToInt32(dta1.Rows[0]["fk_tipo_movimiento"].ToString());
             if (idm ==1003)
             {
-                int idp= Convert.ToInt32(GridView1.SelectedRow.Cells[6].Text);
+                int idp= Convert.ToInt32(GridView1.SelectedDataKey.Values[0].ToString());
                 MySqlCommand cm1 = new MySqlCommand("SELECT detalle_pedido.fk_articulo AS 'ID ARTICULO',detalle_pedido.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO',detalle_pedido.observacion AS 'OBSERVACION' FROM detalle_pedido INNER JOIN articulo  ON detalle_pedido.fk_articulo=articulo.id WHERE detalle_pedido.fk_pedido='" + idp +"' GROUP BY detalle_pedido.fk_articulo", coon);
                 MySqlDataAdapter da = new MySqlDataAdapter(cm1);
                 da.Fill(dta2);
@@ -60,7 +60,7 @@ namespace Sistema_Integral_HPS.Deposito
             }
             if (idm == 1005 || idm==1006)
             {
-                int idp = Convert.ToInt32(GridView1.SelectedRow.Cells[7].Text);
+                int idp = Convert.ToInt32(GridView1.SelectedDataKey.Values[1].ToString());
                 MySqlCommand cm1 = new MySqlCommand("SELECT detalle_ajuste.fk_articulo AS 'ID ARTICULO',detalle_ajuste.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO',detalle_ajuste.tipo_ajuste,detalle_ajuste.observacion AS 'OBSERVACION' FROM detalle_ajuste INNER JOIN articulo ON detalle_ajuste.fk_articulo=articulo.id WHERE fk_ajuste='" + idp + "' GROUP BY detalle_ajuste.fk_articulo", coon); 
                 MySqlDataAdapter da = new MySqlDataAdapter(cm1);
                 da.Fill(dta2);
@@ -70,7 +70,7 @@ namespace Sistema_Integral_HPS.Deposito
             }
             if (idm == 1001)
             {
-                int idp = Convert.ToInt32(GridView1.SelectedRow.Cells[9].Text);
+                int idp = Convert.ToInt32(GridView1.SelectedDataKey.Values[2].ToString());
                 MySqlCommand cm1 = new MySqlCommand("SELECT detalle_adquisicion.fk_articulo AS 'ID ARTICULO',detalle_adquisicion.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO',detalle_adquisicion.observacion AS 'OBSERVACION' FROM detalle_adquisicion INNER JOIN articulo ON detalle_adquisicion.fk_articulo=articulo.id WHERE fk_adquisicion='" + idp + "' GROUP BY detalle_adquisicion.fk_articulo", coon);
                 MySqlDataAdapter da = new MySqlDataAdapter(cm1);
                 da.Fill(dta2);
@@ -91,7 +91,7 @@ namespace Sistema_Integral_HPS.Deposito
 
             MySqlConnection coon = Conexion.getConexion();
 
-            MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "'  ", coon);
+            MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento,unidad_seccion.descripcion AS unidad_seccion FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN unidad_seccion ON usuario.fk_unidad_seccion = unidad_seccion.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "' GROUP BY movimiento.fk_pedido, movimiento.fk_adquisicion, movimiento.fk_ajuste ", coon);
             cm.CommandType = CommandType.Text;
             cm.ExecuteNonQuery();
 

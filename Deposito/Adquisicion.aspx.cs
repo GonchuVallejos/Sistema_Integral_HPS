@@ -44,6 +44,8 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 string msg = "ARTÍCULO SIN EXISTENCIA!";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+                MessageBox.Show("ARTICULO SIN EXITENCIA!!");               
+                Response.Redirect("AArticulo.aspx");
             }
             else
             {
@@ -92,7 +94,7 @@ namespace Sistema_Integral_HPS.Deposito
             int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
 
             MySqlConnection coon = Conexion.getConexion(); // AQUI EMPIEZO A GUARDAR LA "CABECERA DE ADQUISICION" DIGAMOS ALGO PARECIDO A PEDIDO Y DETALLE DE PEDIDO
-            MySqlCommand cm1 = new MySqlCommand("INSERT INTO adquisicion(id,fk_usuario,fecha,orden_compra,año) VALUES (NULL,'" + idp + "',NULL,'" + TextBox5.Text + "','" + TextBox2.Text + "')", coon);  /* ACA HAY UN ERROR DE LA FECHA*/
+            MySqlCommand cm1 = new MySqlCommand("INSERT INTO adquisicion(id,fk_usuario,fecha,orden_compra,año,nexpediente,nremito,tipo) VALUES (NULL,'" + idp + "',NULL,'" + TextBox5.Text + "','" + TextBox2.Text + "','" + TextBox6.Text + "','" + TextBox7.Text + "','" + DropDownList1.Text + "')", coon);  /* ACA HAY UN ERROR DE LA FECHA*/
             cm1.CommandType = CommandType.Text;
             cm1.ExecuteNonQuery();
 
@@ -133,6 +135,20 @@ namespace Sistema_Integral_HPS.Deposito
 
             coon.Close();
             Response.Redirect("/Deposito/IndexDeposito.aspx");
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            if (DropDownList1.SelectedValue.Equals("PROPIA"))
+            {
+                Panel1.Visible = true;
+                Panel2.Visible=true;
+            }
+            if (DropDownList1.SelectedValue.Equals("DONACION"))
+            {
+                Panel1.Visible = false;
+                Panel2.Visible = true;
+            }
         }
     }
 }

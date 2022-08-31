@@ -28,7 +28,7 @@
         <asp:TextBox ID="TextBox2" runat="server" class="form-control" required="True"></asp:TextBox>
         <br />
         <Label class="font-weight-normal">FAMILIA:</Label>
-            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
+            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
             </asp:DropDownList>
         <br />
         <Label class="font-weight-normal">FAMILIA:</Label>

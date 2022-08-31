@@ -135,5 +135,10 @@ namespace Sistema_Integral_HPS.Deposito
             GridView1.DataSource = dta;
             GridView1.DataBind();
         }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

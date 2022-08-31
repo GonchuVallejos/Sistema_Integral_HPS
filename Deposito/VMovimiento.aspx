@@ -16,7 +16,7 @@
                 <asp:Button ID="Button1" runat="server" class="btn btn-lg btn-info" Text="BUSCAR" OnClick="Button1_Click" />
             </div>
     </div>
-     <asp:GridView ID="GridView1"  runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Visible="False">
+     <asp:GridView ID="GridView1"  runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Visible="False" DataKeyNames="fk_pedido, fk_ajuste, fk_adquisicion">
          <Columns>
              <asp:CommandField ShowSelectButton="True" />
              <asp:BoundField DataField="id_movimiento" FooterText="Holaaaa" HeaderText="ID" />
@@ -24,10 +24,11 @@
              <asp:BoundField DataField="estado" HeaderText="ESTADO" />
              <asp:BoundField DataField="fecha_alta" HeaderText="FECHA DE APROBACIÓN" />
              <asp:BoundField DataField="observacion" HeaderText="OBSERVACIONES" />
-             <asp:BoundField DataField="fk_pedido" HeaderText="fk_pedido" />
-             <asp:BoundField DataField="fk_ajuste" HeaderText="fk_ajuste" />
-             <asp:BoundField DataField="fk_tipo_movimiento" HeaderText="fk_tipo_movimiento" />
-             <asp:BoundField DataField="fk_adquisicion" HeaderText="fk_adquisicion" />
+             <asp:BoundField DataField="fk_pedido" HeaderText="fk_pedido" Visible="False" />
+             <asp:BoundField DataField="fk_ajuste" HeaderText="fk_ajuste" Visible="False" />
+             <asp:BoundField DataField="fk_tipo_movimiento" HeaderText="fk_tipo_movimiento" Visible="False" />
+             <asp:BoundField DataField="fk_adquisicion" HeaderText="fk_adquisicion" Visible="False" />
+             <asp:BoundField DataField="unidad_seccion" HeaderText="DESTINO" />
          </Columns>
          <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
      </asp:GridView>

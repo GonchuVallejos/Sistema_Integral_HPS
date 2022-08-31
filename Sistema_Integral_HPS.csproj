@@ -125,6 +125,7 @@
     <Content Include="Deposito\IndexDeposito.aspx" />
     <Content Include="Deposito\VMovimiento.aspx" />
     <Content Include="Deposito\VPedido.aspx" />
+    <Content Include="Deposito\stock.aspx" />
     <Content Include="UserPages\Images\Logo-white.svg" />
     <Content Include="UserPages\JavaScript.js" />
     <Content Include="UserPages\Login.aspx" />
@@ -199,6 +200,13 @@
       <DependentUpon>VPedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Deposito\stock.aspx.cs">
+      <DependentUpon>stock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\stock.aspx.designer.cs">
+      <DependentUpon>stock.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserPages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -81,9 +81,12 @@ namespace Sistema_Integral_HPS.Deposito
         protected void Button4_Click(object sender, EventArgs e)
         {
             int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
+            string dir = Session["direccion"].ToString();
+            int serdiv = Convert.ToInt32(Session["servicio_division"].ToString());
+            int unisec = Convert.ToInt32(Session["unidad_seccion"].ToString());
 
             MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm1 = new MySqlCommand("INSERT INTO pedido(id,fk_usuario) VALUES (NULL,'"+idp+"')", coon);
+            MySqlCommand cm1 = new MySqlCommand("INSERT INTO pedido(id,fk_usuario, direccion, servicio_division, unidad_seccion) VALUES (NULL,'"+idp+"', '"+dir+ "', '" + serdiv + "', '" + unisec + "')", coon);
             cm1.CommandType = CommandType.Text;
             cm1.ExecuteNonQuery();
 
