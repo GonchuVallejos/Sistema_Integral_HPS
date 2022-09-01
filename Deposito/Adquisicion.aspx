@@ -18,9 +18,14 @@
         <Label class="font-weight-normal">INGRESE EL AÑO:</Label>
             <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
             <br />
-            <br />
-            INGRESE ORDEN DE COMPRA:<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
-            <br />
+        <br />
+        SELECCIONE PROVEEDOR:
+        <asp:DropDownList ID="DropDownList2" runat="server">
+        </asp:DropDownList>
+        <br />
+        <br />
+        INGRESE ORDEN DE COMPRA:<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+        <br />
         <br />
         N° EXPEDIENTE:
         <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
@@ -35,10 +40,13 @@
 
           <div class="col-lg-4">
             
-            <br />
-            <Label class="font-weight-normal">INGRESE NOMBRE DEL ARTICULO A ADQUIRIR:</Label>
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-        &nbsp;<br />
+              INGRESE NOMBRE DE DONADOR/PRESTADOR:&nbsp;<asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+              <br />
+              <Label class="font-weight-normal">
+              <br />
+              INGRESE NOMBRE DEL ARTICULO A ADQUIRIR:</Label>
+              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+              &nbsp;<br />
             <asp:Button ID="Button1" class="btn btn-lg btn-info" runat="server" Text="BUSCAR" OnClick="Button1_Click" />
             <br />
             <br />
@@ -48,12 +56,16 @@
             <asp:CommandField ShowSelectButton="True" />
         </Columns>
     </asp:GridView>
-    <br />
-    CANTIDAD:
+          <br />
+          ARTICULO:
+          <asp:Label ID="Label4" runat="server" Text="Label" Visible="False"></asp:Label>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <asp:Label ID="Label5" runat="server" Text="Label" Visible="False"></asp:Label>
+          <br />
+          <br />
+          CANTIDAD:
     <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ARTICULO:
-<asp:Label ID="Label4" runat="server" Text="Label" Visible="False"></asp:Label>
-    <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
     OBSERVACIONES:<br />
     <br />

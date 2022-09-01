@@ -13,10 +13,12 @@ namespace Sistema_Integral_HPS.Deposito
     public partial class Adquisicion : System.Web.UI.Page
     {
         DataTable dt = new DataTable();
+        DataTable dt2 = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+
 
                 DataColumn ID = dt.Columns.Add("ID ARTICULO", typeof(Int32));
                 DataColumn ART = dt.Columns.Add("ARTICULO", typeof(string));
@@ -58,6 +60,9 @@ namespace Sistema_Integral_HPS.Deposito
         {
             Label4.Text = Convert.ToString(GridView1.SelectedRow.Cells[1].Text);
             Label4.Visible = true;
+            Label5.Text = Convert.ToString(GridView1.SelectedRow.Cells[2].Text);
+            Label5.Visible = true;
+            GridView1.Visible=false;
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -91,50 +96,101 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
-
-            MySqlConnection coon = Conexion.getConexion(); // AQUI EMPIEZO A GUARDAR LA "CABECERA DE ADQUISICION" DIGAMOS ALGO PARECIDO A PEDIDO Y DETALLE DE PEDIDO
-            MySqlCommand cm1 = new MySqlCommand("INSERT INTO adquisicion(id,fk_usuario,fecha,orden_compra,año,nexpediente,nremito,tipo) VALUES (NULL,'" + idp + "',NULL,'" + TextBox5.Text + "','" + TextBox2.Text + "','" + TextBox6.Text + "','" + TextBox7.Text + "','" + DropDownList1.Text + "')", coon);  /* ACA HAY UN ERROR DE LA FECHA*/
-            cm1.CommandType = CommandType.Text;
-            cm1.ExecuteNonQuery();
-
-            MySqlCommand cm2 = new MySqlCommand("SELECT MAX(id) FROM adquisicion", coon); // COMO HIZO GONZA DE BUSCAR EL ULTIMO AJUSTE CARGADO PARA EMPEZAR A CARGAR EL DETALLE
-            cm2.CommandType = System.Data.CommandType.Text;
-
-            MySqlDataAdapter da = new MySqlDataAdapter(cm2);
-            DataTable dt2 = new DataTable();
-            da.Fill(dt2);
-
-            int idadquisicion = Convert.ToInt32(dt2.Rows[0].ItemArray.GetValue(0).ToString()); // SELECCIONO ESE ID AJUSTE
-
-            dt = (DataTable)ViewState["RECORD"];
-
-            for (int i = 0; i < dt.Rows.Count; i++) //EMPIEZO A CARGAR EL detalle_adquisicion A MODO DE CARRITO DE COMPRA, OSEA SI DESEA AJUSTAR 1 O MAS ARTICULOS
+            if (DropDownList1.SelectedValue.Equals("PROPIA"))
             {
-                int ida = Convert.ToInt32(dt.Rows[i]["ID ARTICULO"].ToString());
-                int cant = Convert.ToInt32(dt.Rows[i]["CANTIDAD"].ToString());
-                MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_adquisicion(id,fk_adquisicion,fk_articulo,cantidad,observacion) VALUES (NULL,'" + idadquisicion + "','" + ida + "','" + cant + "','" + TextBox4.Text + "')", coon);
-                cm.CommandType = CommandType.Text;
-                cm.ExecuteNonQuery();
+                int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
+
+                MySqlConnection coon = Conexion.getConexion(); // AQUI EMPIEZO A GUARDAR LA "CABECERA DE ADQUISICION" DIGAMOS ALGO PARECIDO A PEDIDO Y DETALLE DE PEDIDO
+                MySqlCommand cm1 = new MySqlCommand("INSERT INTO adquisicion(id,fk_usuario,fecha,orden_compra,año,nexpediente,nremito,tipo,fk_proveedor) VALUES (NULL,'" + idp + "',NULL,'" + TextBox5.Text + "','" + TextBox2.Text + "','" + TextBox6.Text + "','" + TextBox7.Text + "','" + DropDownList1.Text + "','" + DropDownList2.Text + "')", coon);  /* ACA HAY UN ERROR DE LA FECHA*/
+                cm1.CommandType = CommandType.Text;
+                cm1.ExecuteNonQuery();
+
+                MySqlCommand cm2 = new MySqlCommand("SELECT MAX(id) FROM adquisicion", coon); // COMO HIZO GONZA DE BUSCAR EL ULTIMO AJUSTE CARGADO PARA EMPEZAR A CARGAR EL DETALLE
+                cm2.CommandType = System.Data.CommandType.Text;
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cm2);
+                DataTable dt2 = new DataTable();
+                da.Fill(dt2);
+
+                int idadquisicion = Convert.ToInt32(dt2.Rows[0].ItemArray.GetValue(0).ToString()); // SELECCIONO ESE ID AJUSTE
+
+                dt = (DataTable)ViewState["RECORD"];
+
+                for (int i = 0; i < dt.Rows.Count; i++) //EMPIEZO A CARGAR EL detalle_adquisicion A MODO DE CARRITO DE COMPRA, OSEA SI DESEA AJUSTAR 1 O MAS ARTICULOS
+                {
+                    int ida = Convert.ToInt32(dt.Rows[i]["ID ARTICULO"].ToString());
+                    int cant = Convert.ToInt32(dt.Rows[i]["CANTIDAD"].ToString());
+                    MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_adquisicion(id,fk_adquisicion,fk_articulo,cantidad,observacion) VALUES (NULL,'" + idadquisicion + "','" + ida + "','" + cant + "','" + TextBox4.Text + "')", coon);
+                    cm.CommandType = CommandType.Text;
+                    cm.ExecuteNonQuery();
 
 
-                MySqlCommand cm3 = new MySqlCommand("UPDATE articulo SET stock = stock + '" + Convert.ToInt16(dt.Rows[i]["CANTIDAD"].ToString()) + "' WHERE id = '" + Convert.ToInt16(dt.Rows[i]["ID ARTICULO"].ToString()) + "'", coon);
-                cm3.CommandType = CommandType.Text;
-                cm3.ExecuteNonQuery();
+                    MySqlCommand cm3 = new MySqlCommand("UPDATE articulo SET stock = stock + '" + Convert.ToInt16(dt.Rows[i]["CANTIDAD"].ToString()) + "' WHERE id = '" + Convert.ToInt16(dt.Rows[i]["ID ARTICULO"].ToString()) + "'", coon);
+                    cm3.CommandType = CommandType.Text;
+                    cm3.ExecuteNonQuery();
 
-                //SE INSERTA EL MOVIMIENTO ADQUISICION --- EN PROCESO NO LO TERMINE XD -- SALTA ERROR EN SQL -- TENIA PENSADO HACERLA FACIL Y TRAER EL ID DEL AJUSTE A UN LABEL E INSERTARLO, PERO ESO ES DE COBARDES XD
-                /*ACA SALTA ERROR*/
-                MySqlCommand cm7 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado) VALUES (NULL, 1001, NULL, '" + idadquisicion + "', NULL, '" + idp + "','CONFIRMADO')", coon);
-                cm7.CommandType = CommandType.Text;
-                cm7.ExecuteNonQuery();
+                    //SE INSERTA EL MOVIMIENTO ADQUISICION --- EN PROCESO NO LO TERMINE XD -- SALTA ERROR EN SQL -- TENIA PENSADO HACERLA FACIL Y TRAER EL ID DEL AJUSTE A UN LABEL E INSERTARLO, PERO ESO ES DE COBARDES XD
+                    /*ACA SALTA ERROR*/
+                    MySqlCommand cm7 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado) VALUES (NULL, 1001, NULL, '" + idadquisicion + "', NULL, '" + idp + "','CONFIRMADO')", coon);
+                    cm7.CommandType = CommandType.Text;
+                    cm7.ExecuteNonQuery();
 
+                }
+                MessageBox.Show("¡ LA ADQUISICION A SIDO CARGADO CORRECTAMENTE !"); // LLEGUE ASI Q PINTAN BIRRAS:)
+                                                                                    //SE ACTUALIZA EL STOCK DE ARTICULOS, sumando EL ACTUAL MAS LO ADQUIRIDO
+
+
+                coon.Close();
+                Response.Redirect("/Deposito/IndexDeposito.aspx");
             }
-            MessageBox.Show("¡ LA ADQUISICION A SIDO CARGADO CORRECTAMENTE !"); // LLEGUE ASI Q PINTAN BIRRAS:)
-                                                                                //SE ACTUALIZA EL STOCK DE ARTICULOS, sumando EL ACTUAL MAS LO ADQUIRIDO
-           
+            if (DropDownList1.SelectedValue.Equals("DONACION"))
+            {
+                int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
 
-            coon.Close();
-            Response.Redirect("/Deposito/IndexDeposito.aspx");
+                MySqlConnection coon = Conexion.getConexion(); // AQUI EMPIEZO A GUARDAR LA "CABECERA DE ADQUISICION" DIGAMOS ALGO PARECIDO A PEDIDO Y DETALLE DE PEDIDO
+                MySqlCommand cm1 = new MySqlCommand("INSERT INTO adquisicion(id,fk_usuario,fecha,orden_compra,año,nexpediente,nremito,tipo,dona_presta) VALUES (NULL,'" + idp + "',NULL,NULL,NULL,NULL,NULL,'" + DropDownList1.Text + "','" + TextBox8.Text + "')", coon);  /* ACA HAY UN ERROR DE LA FECHA*/
+                cm1.CommandType = CommandType.Text;
+                cm1.ExecuteNonQuery();
+
+                MySqlCommand cm2 = new MySqlCommand("SELECT MAX(id) FROM adquisicion", coon); // COMO HIZO GONZA DE BUSCAR EL ULTIMO AJUSTE CARGADO PARA EMPEZAR A CARGAR EL DETALLE
+                cm2.CommandType = System.Data.CommandType.Text;
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cm2);
+                DataTable dt2 = new DataTable();
+                da.Fill(dt2);
+
+                int idadquisicion = Convert.ToInt32(dt2.Rows[0].ItemArray.GetValue(0).ToString()); // SELECCIONO ESE ID AJUSTE
+
+                dt = (DataTable)ViewState["RECORD"];
+
+                for (int i = 0; i < dt.Rows.Count; i++) //EMPIEZO A CARGAR EL detalle_adquisicion A MODO DE CARRITO DE COMPRA, OSEA SI DESEA AJUSTAR 1 O MAS ARTICULOS
+                {
+                    int ida = Convert.ToInt32(dt.Rows[i]["ID ARTICULO"].ToString());
+                    int cant = Convert.ToInt32(dt.Rows[i]["CANTIDAD"].ToString());
+                    MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_adquisicion(id,fk_adquisicion,fk_articulo,cantidad,observacion) VALUES (NULL,'" + idadquisicion + "','" + ida + "','" + cant + "','" + TextBox4.Text + "')", coon);
+                    cm.CommandType = CommandType.Text;
+                    cm.ExecuteNonQuery();
+
+
+                    MySqlCommand cm3 = new MySqlCommand("UPDATE articulo SET stock = stock + '" + Convert.ToInt16(dt.Rows[i]["CANTIDAD"].ToString()) + "' WHERE id = '" + Convert.ToInt16(dt.Rows[i]["ID ARTICULO"].ToString()) + "'", coon);
+                    cm3.CommandType = CommandType.Text;
+                    cm3.ExecuteNonQuery();
+
+                    //SE INSERTA EL MOVIMIENTO ADQUISICION --- EN PROCESO NO LO TERMINE XD -- SALTA ERROR EN SQL -- TENIA PENSADO HACERLA FACIL Y TRAER EL ID DEL AJUSTE A UN LABEL E INSERTARLO, PERO ESO ES DE COBARDES XD
+                    /*ACA SALTA ERROR*/
+                    MySqlCommand cm7 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado) VALUES (NULL, 1001, NULL, '" + idadquisicion + "', NULL, '" + idp + "','CONFIRMADO')", coon);
+                    cm7.CommandType = CommandType.Text;
+                    cm7.ExecuteNonQuery();
+
+                }
+                MessageBox.Show("¡ LA ADQUISICION A SIDO CARGADO CORRECTAMENTE !"); // LLEGUE ASI Q PINTAN BIRRAS:)
+                                                                                    //SE ACTUALIZA EL STOCK DE ARTICULOS, sumando EL ACTUAL MAS LO ADQUIRIDO
+
+
+                coon.Close();
+                Response.Redirect("/Deposito/IndexDeposito.aspx");
+            }
+
         }
 
         protected void Button4_Click(object sender, EventArgs e)
@@ -143,6 +199,19 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 Panel1.Visible = true;
                 Panel2.Visible=true;
+                MySqlConnection coon = Conexion.getConexion();
+
+                MySqlCommand cm2 = new MySqlCommand("SELECT id, descripcion FROM proveedor", coon);
+                cm2.CommandType = System.Data.CommandType.Text;
+
+                MySqlDataAdapter da1 = new MySqlDataAdapter(cm2);
+                DataTable dt2 = new DataTable();
+                da1.Fill(dt2);
+
+                DropDownList2.DataValueField = "id";
+                DropDownList2.DataTextField = "descripcion";
+                DropDownList2.DataSource = dt2;
+                DropDownList2.DataBind();
             }
             if (DropDownList1.SelectedValue.Equals("DONACION"))
             {

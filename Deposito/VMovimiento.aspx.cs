@@ -87,25 +87,79 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            GridView1.Visible = true;
+            if (DropDownList1.SelectedValue.ToString() == "1003")
+            {
+                GridView4.Visible = false;
+                GridView1.Visible = true;
+                GridView3.Visible = false;
+                MySqlConnection coon = Conexion.getConexion();
 
-            MySqlConnection coon = Conexion.getConexion();
+                MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento,unidad_seccion.descripcion AS unidad_seccion FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN unidad_seccion ON usuario.fk_unidad_seccion = unidad_seccion.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "' GROUP BY movimiento.fk_pedido, movimiento.fk_adquisicion, movimiento.fk_ajuste ", coon);
+                cm.CommandType = CommandType.Text;
+                cm.ExecuteNonQuery();
 
-            MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento,unidad_seccion.descripcion AS unidad_seccion FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN unidad_seccion ON usuario.fk_unidad_seccion = unidad_seccion.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "' GROUP BY movimiento.fk_pedido, movimiento.fk_adquisicion, movimiento.fk_ajuste ", coon);
-            cm.CommandType = CommandType.Text;
-            cm.ExecuteNonQuery();
+                MySqlDataAdapter da = new MySqlDataAdapter(cm);
+                da.Fill(dta);
 
-            MySqlDataAdapter da = new MySqlDataAdapter(cm);
-            da.Fill(dta);
+                GridView1.DataSource = dta;
+                ViewState["RECORD2"] = dta;
+                GridView1.DataBind();
 
-            GridView1.DataSource = dta;
+                coon.Close();
+                GridView2.DataSource = null;
+                GridView2.DataBind();
+            }
+            else
+            {
+                if (DropDownList1.SelectedValue.ToString() == "1001")
+                {
+                    GridView4.Visible = false;
+                    GridView3.Visible = true;
+                    GridView1.Visible = false;
+                    MySqlConnection coon = Conexion.getConexion();
 
-            ViewState["RECORD2"] = dta;
-            GridView1.DataBind();
-          
-            coon.Close();
-            GridView2.DataSource = null;
-            GridView2.DataBind();
+                    MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento,unidad_seccion.descripcion AS unidad_seccion FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN unidad_seccion ON usuario.fk_unidad_seccion = unidad_seccion.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "' GROUP BY movimiento.fk_pedido, movimiento.fk_adquisicion, movimiento.fk_ajuste ", coon);
+                    cm.CommandType = CommandType.Text;
+                    cm.ExecuteNonQuery();
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cm);
+                    da.Fill(dta);
+
+                    GridView3.DataSource = dta;
+                    ViewState["RECORD3"] = dta;
+                    GridView3.DataBind();
+
+                    coon.Close();
+                    GridView2.DataSource = null;
+                    GridView2.DataBind();
+                }
+                else
+                {
+                    if (DropDownList1.SelectedValue.ToString() == "1005" || DropDownList1.SelectedValue.ToString() == "1006")
+                    {
+                        GridView4.Visible = true;
+                        GridView3.Visible = false;
+                        GridView1.Visible = false;
+                        MySqlConnection coon = Conexion.getConexion();
+
+                        MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento,unidad_seccion.descripcion AS unidad_seccion FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN unidad_seccion ON usuario.fk_unidad_seccion = unidad_seccion.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "' GROUP BY movimiento.fk_pedido, movimiento.fk_adquisicion, movimiento.fk_ajuste ", coon);
+                        cm.CommandType = CommandType.Text;
+                        cm.ExecuteNonQuery();
+
+                        MySqlDataAdapter da = new MySqlDataAdapter(cm);
+                        da.Fill(dta);
+
+                        GridView4.DataSource = dta;
+                        ViewState["RECORD4"] = dta;
+                        GridView4.DataBind();
+
+                        coon.Close();
+                        GridView2.DataSource = null;
+                        GridView2.DataBind();
+                    }
+                }
+            }
+
         }
     }
 }
