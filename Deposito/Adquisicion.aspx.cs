@@ -217,6 +217,7 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 Panel1.Visible = false;
                 Panel2.Visible = true;
+                Panel3.Visible = true;
             }
         }
     }

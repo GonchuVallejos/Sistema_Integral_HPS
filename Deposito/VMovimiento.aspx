@@ -32,7 +32,7 @@
          </Columns>
          <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
      </asp:GridView>
-     <asp:GridView ID="GridView3"  runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Visible="False" DataKeyNames="fk_pedido,fk_ajuste,fk_adquisicion">
+     <asp:GridView ID="GridView3"  runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView3_SelectedIndexChanged" Visible="False" DataKeyNames="fk_pedido,fk_ajuste,fk_adquisicion">
          <Columns>
              <asp:CommandField ShowSelectButton="True" />
              <asp:BoundField DataField="id_movimiento" FooterText="Holaaaa" HeaderText="ID" />
@@ -47,7 +47,7 @@
          </Columns>
          <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
      </asp:GridView>
-     <asp:GridView ID="GridView4"  runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Visible="False" DataKeyNames="fk_pedido,fk_ajuste,fk_adquisicion">
+     <asp:GridView ID="GridView4"  runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView4_SelectedIndexChanged" Visible="False" DataKeyNames="fk_pedido,fk_ajuste,fk_adquisicion">
          <Columns>
              <asp:CommandField ShowSelectButton="True" />
              <asp:BoundField DataField="id_movimiento" FooterText="Holaaaa" HeaderText="ID" />

@@ -35,12 +35,20 @@
         <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
         <br />
     </asp:Panel>
+    <asp:Panel ID="Panel3" runat="server" Visible="false">
+
+         INGRESE NOMBRE DE DONADOR/PRESTADOR:&nbsp;<asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+    </asp:Panel>
+    
 
     <asp:Panel ID="Panel2" runat="server" Visible="false">
 
+
+
+
           <div class="col-lg-4">
             
-              INGRESE NOMBRE DE DONADOR/PRESTADOR:&nbsp;<asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+             
               <br />
               <Label class="font-weight-normal">
               <br />

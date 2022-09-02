@@ -175,5 +175,10 @@ namespace Sistema_Integral_HPS.Deposito
             GridView2.DataSource = dt;
             GridView2.DataBind();
         }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

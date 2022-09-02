@@ -58,26 +58,7 @@ namespace Sistema_Integral_HPS.Deposito
                 GridView2.DataBind();
               //  ViewState["RECORD2"] = dta1;
             }
-            if (idm == 1005 || idm==1006)
-            {
-                int idp = Convert.ToInt32(GridView1.SelectedDataKey.Values[1].ToString());
-                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_ajuste.fk_articulo AS 'ID ARTICULO',detalle_ajuste.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO',detalle_ajuste.tipo_ajuste,detalle_ajuste.observacion AS 'OBSERVACION' FROM detalle_ajuste INNER JOIN articulo ON detalle_ajuste.fk_articulo=articulo.id WHERE fk_ajuste='" + idp + "' GROUP BY detalle_ajuste.fk_articulo", coon); 
-                MySqlDataAdapter da = new MySqlDataAdapter(cm1);
-                da.Fill(dta2);
-                GridView2.DataSource = dta2;
-                GridView2.DataBind();
-               // ViewState["RECORD2"] = dta1;
-            }
-            if (idm == 1001)
-            {
-                int idp = Convert.ToInt32(GridView1.SelectedDataKey.Values[2].ToString());
-                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_adquisicion.fk_articulo AS 'ID ARTICULO',detalle_adquisicion.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO',detalle_adquisicion.observacion AS 'OBSERVACION' FROM detalle_adquisicion INNER JOIN articulo ON detalle_adquisicion.fk_articulo=articulo.id WHERE fk_adquisicion='" + idp + "' GROUP BY detalle_adquisicion.fk_articulo", coon);
-                MySqlDataAdapter da = new MySqlDataAdapter(cm1);
-                da.Fill(dta2);
-                GridView2.DataSource = dta2;
-                GridView2.DataBind();
-                //ViewState["RECORD2"] = dta1;
-            }
+                   
 
 
 
@@ -113,7 +94,7 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 if (DropDownList1.SelectedValue.ToString() == "1001")
                 {
-                    GridView4.Visible = false;
+
                     GridView3.Visible = true;
                     GridView1.Visible = false;
                     MySqlConnection coon = Conexion.getConexion();
@@ -161,5 +142,65 @@ namespace Sistema_Integral_HPS.Deposito
             }
 
         }
+        protected void GridView4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridView4.Visible = false;
+            DataTable dta1 = (DataTable)ViewState["RECORD4"];
+            DataTable dta2 = new DataTable();
+            //DataTable dta1 = new DataTable();
+            MySqlConnection coon = Conexion.getConexion();
+            ////
+            //MySqlCommand cm = new MySqlCommand("SELECT fk_tipo_movimiento FROM movimiento", coon);            cm.CommandType = CommandType.Text;
+            //cm.ExecuteNonQuery();
+            //MySqlDataAdapter dat1 = new MySqlDataAdapter(cm);
+            //Convert.ToString(GridView1.SelectedRow.Cells[7].Text)
+
+            int idm = Convert.ToInt32(dta1.Rows[0]["fk_tipo_movimiento"].ToString());
+           
+            if (idm == 1005 || idm == 1006)
+            {
+                int idp = Convert.ToInt32(GridView4.SelectedDataKey.Values[1].ToString());
+                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_ajuste.fk_articulo AS 'ID ARTICULO',detalle_ajuste.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO',detalle_ajuste.tipo_ajuste AS 'TIPO AJUSTE',detalle_ajuste.observacion AS 'OBSERVACION' FROM detalle_ajuste INNER JOIN articulo ON detalle_ajuste.fk_articulo=articulo.id WHERE fk_ajuste='" + idp + "' GROUP BY detalle_ajuste.fk_articulo", coon);
+                MySqlDataAdapter da = new MySqlDataAdapter(cm1);
+                da.Fill(dta2);
+                GridView2.DataSource = dta2;
+                GridView2.DataBind();
+                
+               
+                // ViewState["RECORD2"] = dta1;
+            }
+            coon.Close();
+
+        }
+
+        protected void GridView3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridView3.Visible = false;
+            DataTable dta1 = (DataTable)ViewState["RECORD3"];
+            DataTable dta3 = new DataTable();
+            //DataTable dta1 = new DataTable();
+            MySqlConnection coon = Conexion.getConexion();
+            ////
+            //MySqlCommand cm = new MySqlCommand("SELECT fk_tipo_movimiento FROM movimiento", coon);            cm.CommandType = CommandType.Text;
+            //cm.ExecuteNonQuery();
+            //MySqlDataAdapter dat1 = new MySqlDataAdapter(cm);
+            //Convert.ToString(GridView1.SelectedRow.Cells[7].Text)
+
+            int idm = Convert.ToInt32(dta1.Rows[0]["fk_tipo_movimiento"].ToString());
+
+            if (idm == 1001)
+            {
+                int idp = Convert.ToInt32(GridView3.SelectedDataKey.Values[2].ToString());
+                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_adquisicion.fk_articulo AS 'ID ARTICULO',detalle_adquisicion.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO',adquisicion.tipo AS 'TIPO',detalle_adquisicion.observacion AS 'OBSERVACION' FROM detalle_adquisicion INNER JOIN articulo ON detalle_adquisicion.fk_articulo=articulo.id INNER JOIN adquisicion ON adquisicion.id=detalle_adquisicion.fk_adquisicion WHERE fk_adquisicion='" + idp + "' GROUP BY detalle_adquisicion.fk_articulo", coon);
+                MySqlDataAdapter da1 = new MySqlDataAdapter(cm1);
+                da1.Fill(dta3);
+                GridView2.DataSource = dta3;
+                GridView2.DataBind();
+                //ViewState["RECORD2"] = dta1;
+            }
+            coon.Close();
+
+        }
+
     }
 }

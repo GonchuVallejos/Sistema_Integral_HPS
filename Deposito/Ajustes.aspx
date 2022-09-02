@@ -22,7 +22,7 @@
     </asp:GridView>
     <br />
     <asp:Label ID="Label4" runat="server" Text="INGRESE EL TIPO DE AJUSTE:" Visible="False"></asp:Label>
-    <asp:DropDownList ID="DropDownList1" runat="server" Visible="False">
+    <asp:DropDownList ID="DropDownList1" runat="server" Visible="False" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
         <asp:ListItem Value="1">Positivo</asp:ListItem>
         <asp:ListItem Value="0">Negativo</asp:ListItem>
     </asp:DropDownList>
