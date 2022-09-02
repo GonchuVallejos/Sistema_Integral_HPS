@@ -136,5 +136,9 @@ namespace Sistema_Integral_HPS.Deposito
             Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
 
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

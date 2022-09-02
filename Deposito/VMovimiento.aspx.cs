@@ -39,13 +39,8 @@ namespace Sistema_Integral_HPS.Deposito
             GridView1.Visible = false;
             DataTable dta1 = (DataTable)ViewState["RECORD2"];
             DataTable dta2 = new DataTable();
-            //DataTable dta1 = new DataTable();
+     
             MySqlConnection coon = Conexion.getConexion();
-            ////
-            //MySqlCommand cm = new MySqlCommand("SELECT fk_tipo_movimiento FROM movimiento", coon);            cm.CommandType = CommandType.Text;
-            //cm.ExecuteNonQuery();
-            //MySqlDataAdapter dat1 = new MySqlDataAdapter(cm);
-            //Convert.ToString(GridView1.SelectedRow.Cells[7].Text)
             
             int idm = Convert.ToInt32(dta1.Rows[0]["fk_tipo_movimiento"].ToString());
             if (idm ==1003)
@@ -56,7 +51,6 @@ namespace Sistema_Integral_HPS.Deposito
                 da.Fill(dta2);
                 GridView2.DataSource = dta2;
                 GridView2.DataBind();
-              //  ViewState["RECORD2"] = dta1;
             }
                    
 
@@ -99,9 +93,19 @@ namespace Sistema_Integral_HPS.Deposito
                     GridView1.Visible = false;
                     MySqlConnection coon = Conexion.getConexion();
 
+                    //********************************************
+                    //FILTRAR POR TIPO DE ADQUISICION: DONACION O PROPIA
+                    //********************************************
+
                     MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento,unidad_seccion.descripcion AS unidad_seccion, adquisicion.tipo AS tipo FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN unidad_seccion ON usuario.fk_unidad_seccion = unidad_seccion.id INNER JOIN adquisicion ON movimiento.fk_adquisicion = adquisicion.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "' GROUP BY movimiento.fk_pedido, movimiento.fk_adquisicion, movimiento.fk_ajuste ", coon);
                     cm.CommandType = CommandType.Text;
                     cm.ExecuteNonQuery();
+
+                    //********************************************
+                    //MOSTRAR EN EL DETALLE ADQUISICION, UN ENCABEZADO CON LOS CAMPOS 
+                    //ORDEN DE COMPRA, EXPEDIENTE, REMITO, PROVEEDOR, AÑO Y ESTADO
+                    // ASI COMO EN 'VER PEDIDOS'
+                    //********************************************
 
                     MySqlDataAdapter da = new MySqlDataAdapter(cm);
                     da.Fill(dta);
@@ -147,13 +151,8 @@ namespace Sistema_Integral_HPS.Deposito
             GridView4.Visible = false;
             DataTable dta1 = (DataTable)ViewState["RECORD4"];
             DataTable dta2 = new DataTable();
-            //DataTable dta1 = new DataTable();
+
             MySqlConnection coon = Conexion.getConexion();
-            ////
-            //MySqlCommand cm = new MySqlCommand("SELECT fk_tipo_movimiento FROM movimiento", coon);            cm.CommandType = CommandType.Text;
-            //cm.ExecuteNonQuery();
-            //MySqlDataAdapter dat1 = new MySqlDataAdapter(cm);
-            //Convert.ToString(GridView1.SelectedRow.Cells[7].Text)
 
             int idm = Convert.ToInt32(dta1.Rows[0]["fk_tipo_movimiento"].ToString());
            
@@ -165,9 +164,7 @@ namespace Sistema_Integral_HPS.Deposito
                 da.Fill(dta2);
                 GridView2.DataSource = dta2;
                 GridView2.DataBind();
-                
-               
-                // ViewState["RECORD2"] = dta1;
+            
             }
             coon.Close();
 
@@ -178,13 +175,9 @@ namespace Sistema_Integral_HPS.Deposito
             GridView3.Visible = false;
             DataTable dta1 = (DataTable)ViewState["RECORD3"];
             DataTable dta3 = new DataTable();
-            //DataTable dta1 = new DataTable();
+
             MySqlConnection coon = Conexion.getConexion();
-            ////
-            //MySqlCommand cm = new MySqlCommand("SELECT fk_tipo_movimiento FROM movimiento", coon);            cm.CommandType = CommandType.Text;
-            //cm.ExecuteNonQuery();
-            //MySqlDataAdapter dat1 = new MySqlDataAdapter(cm);
-            //Convert.ToString(GridView1.SelectedRow.Cells[7].Text)
+
 
             int idm = Convert.ToInt32(dta1.Rows[0]["fk_tipo_movimiento"].ToString());
 
@@ -196,7 +189,7 @@ namespace Sistema_Integral_HPS.Deposito
                 da1.Fill(dta3);
                 GridView2.DataSource = dta3;
                 GridView2.DataBind();
-                //ViewState["RECORD2"] = dta1;
+  
             }
             coon.Close();
 

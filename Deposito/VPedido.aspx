@@ -28,7 +28,7 @@
                 <asp:Label ID="Label3" class="row justify-content-center h3" runat="server" Text="Usuario solicitante:"></asp:Label>
             </div>
             <div class="col-lg-3">
-                <asp:TextBox ID="TextBox1" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox1" class="form-control" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
             </div>
             <div class="col-lg-3">
                 <asp:Label ID="Label4" class="row justify-content-center h3" runat="server" Text="Fecha de solicitud:"></asp:Label>
