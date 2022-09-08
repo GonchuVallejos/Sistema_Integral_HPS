@@ -16,7 +16,7 @@
                 <asp:Button ID="Button1" runat="server" class="btn btn-lg btn-info" Text="BUSCAR" OnClick="Button1_Click" />
             </div>
     </div>
-     <asp:GridView ID="GridView1"  runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Visible="False" DataKeyNames="fk_pedido, fk_ajuste, fk_adquisicion">
+     <asp:GridView ID="GridView1"  runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Visible="False" DataKeyNames="fk_pedido,fk_ajuste,fk_adquisicion">
          <Columns>
              <asp:CommandField ShowSelectButton="True" />
              <asp:BoundField DataField="id_movimiento" FooterText="Holaaaa" HeaderText="ID" />
@@ -29,6 +29,7 @@
              <asp:BoundField DataField="fk_tipo_movimiento" HeaderText="fk_tipo_movimiento" Visible="False" />
              <asp:BoundField DataField="fk_adquisicion" HeaderText="fk_adquisicion" Visible="False" />
              <asp:BoundField DataField="unidad_seccion" HeaderText="DESTINO" />
+             <asp:BoundField DataField="Retiró" HeaderText="RETIRÓ" />
          </Columns>
          <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
      </asp:GridView>
@@ -64,7 +65,7 @@
          <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
      </asp:GridView>
     <br />
-    <asp:GridView ID="GridView2" runat="server">
+    <asp:GridView ID="GridView2" runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center">
     </asp:GridView>
     <br />
 </asp:Content>

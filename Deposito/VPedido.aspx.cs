@@ -128,7 +128,7 @@ namespace Sistema_Integral_HPS.Deposito
             cm2.ExecuteNonQuery();
 
             //SE INSERTA EL MOVIMIENTO
-            MySqlCommand cm1 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado) VALUES (NULL, 1003, '" + dta1.Rows[0]["idpedido"].ToString() + "', NULL, NULL, '" + id + "','CONFIRMADO')", coon);
+            MySqlCommand cm1 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado,retira) VALUES (NULL, 1003, '" + dta1.Rows[0]["idpedido"].ToString() + "', NULL, NULL, '" + id + "','CONFIRMADO', '" + TextBox3.Text + "')", coon);
             cm1.CommandType = CommandType.Text;
             cm1.ExecuteNonQuery();
 
@@ -139,6 +139,11 @@ namespace Sistema_Integral_HPS.Deposito
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        protected void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

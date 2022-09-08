@@ -58,8 +58,8 @@ namespace Sistema_Integral_HPS.Deposito
             Label4.Visible = true;
             string idv = GridView1.SelectedDataKey.Value.ToString();
             Label1.Text = Convert.ToString(idv);
-            Label2.Visible = false;
-            Label2.Text = Convert.ToString(GridView1.SelectedRow.Cells[2].Text);
+            Label2.Visible = true;
+            Label2.Text ="Articulo seleccionado a pedir : " +Convert.ToString(GridView1.SelectedRow.Cells[2].Text);
         }
 
         protected void Button2_Click(object sender, EventArgs e)

@@ -34,9 +34,19 @@
                 <asp:Label ID="Label4" class="row justify-content-center h3" runat="server" Text="Fecha de solicitud:"></asp:Label>
             </div>
             <div class="col-lg-3">
-                <asp:TextBox ID="TextBox2" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox2" class="form-control" runat="server" Height="24px"></asp:TextBox>
             </div>
         </div>
+
+        <div>
+            <asp:Label ID="Label6"  class="row justify-content-center h3" runat="server" Text="Retira:"></asp:Label>
+        </div>
+        
+        <div>
+            <asp:TextBox ID="TextBox3" class="form-control" runat="server" Height="24px"></asp:TextBox>
+
+        </div>
+        
         <br />
         <asp:Label ID="Label5" class="row justify-content-center h2" runat="server" Text="DETALLE"></asp:Label>
         <hr />

@@ -46,6 +46,9 @@
             <li class="nav-item active">
               <a class="nav-link active" href="stock.aspx">Consultar Stock</a>
             </li>
+              <li class="nav-item active">
+              <a class="nav-link active" href="RConsumo.aspx">Ver consumo servicio</a>
+            </li>
           </ul>
         </div>
 

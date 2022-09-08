@@ -31,7 +31,7 @@
             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
             </asp:DropDownList>
         <br />
-        <Label class="font-weight-normal">FAMILIA:</Label>
+        <Label class="font-weight-normal">UNIDAD:</Label>
             <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control">
             </asp:DropDownList>
         <br />
