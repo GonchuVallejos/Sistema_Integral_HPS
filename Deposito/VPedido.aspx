@@ -1,7 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Deposito/MasterDeposito.Master" AutoEventWireup="true" CodeBehind="VPedido.aspx.cs" Inherits="Sistema_Integral_HPS.Deposito.VPedido" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Deposito/MasterDeposito.Master" AutoEventWireup="true" CodeBehind="VPedido.aspx.cs" Inherits="Sistema_Integral_HPS.Deposito.VPedido"  EnableEventValidation = "false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <header>
+      
+
+
+    </header>   
     <asp:Label ID="Label1" class="justify-content-center h1" runat="server">CONSULTAR PEDIDOS</asp:Label>
     <hr />
     <asp:Panel ID="Panel1" runat="server">
@@ -50,6 +56,7 @@
         <br />
         <asp:Label ID="Label5" class="row justify-content-center h2" runat="server" Text="DETALLE"></asp:Label>
         <hr />
+       
         <asp:GridView ID="GridView2" runat="server" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AutoGenerateColumns="False" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating" DataKeyNames="iddetalle">
             <Columns>
                 <asp:CommandField HeaderText="Editar" ShowEditButton="True" ButtonType="Button" >
@@ -73,6 +80,13 @@
             </div>
             <div class="col-lg-4">
                 <asp:Button ID="btn_guardar" runat="server" class="btn btn-lg btn-success" Text="CONFIRMAR" OnClick="btn_guardar_Click" />
+                <br />
+                <br />
+               
+            </div>
+
+            <div>
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
             </div>
         </div>
     </asp:Panel>

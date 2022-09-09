@@ -1,7 +1,11 @@
-﻿using MySql.Data.MySqlClient;
+﻿using iTextSharp.text;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.text.pdf;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -33,6 +37,12 @@ namespace Sistema_Integral_HPS.Deposito
                 coon.Close();
             }
            
+        }
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            //required to avoid the runtime error "  
+            //Control 'GridView1' of type 'GridView' must be placed inside a form tag with runat=server."  
         }
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -147,5 +157,43 @@ namespace Sistema_Integral_HPS.Deposito
         {
 
         }
+
+        protected void Table1_DataBinding(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void lnkPrint_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void ExportGridToPDF()
+        {
+
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-disposition", "attachment;filename=Comprobante.pdf");
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter hw = new HtmlTextWriter(sw);
+            GridView2.RenderControl(hw);
+            StringReader sr = new StringReader(sw.ToString());
+            Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+            HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
+            PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
+            pdfDoc.Open();
+            htmlparser.Parse(sr);
+            pdfDoc.Close();
+            Response.Write(pdfDoc);
+            Response.End();
+            GridView1.AllowPaging = true;
+            GridView1.DataBind();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            ExportGridToPDF();
+        }
+        
     }
+      
 }
