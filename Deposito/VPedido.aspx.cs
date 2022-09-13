@@ -65,6 +65,7 @@ namespace Sistema_Integral_HPS.Deposito
             coon.Close();
 
             Panel2.Visible = true;
+            GridView1.Visible = false;
         }
         protected void GridView2_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
@@ -110,7 +111,10 @@ namespace Sistema_Integral_HPS.Deposito
         {
             Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
-
+        protected void btn_verpedidos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Deposito/VPedido.aspx");
+        }
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
             MySqlConnection coon = Conexion.getConexion();
@@ -193,7 +197,13 @@ namespace Sistema_Integral_HPS.Deposito
         {
             ExportGridToPDF();
         }
-        
+
+        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
       
 }

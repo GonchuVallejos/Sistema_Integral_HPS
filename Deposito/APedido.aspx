@@ -6,8 +6,9 @@
     <hr />
     <div class="row">
         <div class="col-lg-4">
-            <Label class="font-weight-normal">INGRESE NOMBRE DEL ARTICULO A PEDIR:</Label>
-        </div>
+            <Label class="font-weight-normal">INGRESE NOMBRE DEL ARTICULO A PEDIR:<br />
+            </Label>
+        &nbsp;</div>
         <div class="col-lg-2">
             <asp:TextBox ID="TextBox1" runat="server" class="form-control"></asp:TextBox>
         </div>
@@ -17,6 +18,9 @@
     </div>
     <asp:Panel ID="Panel1" runat="server" Visible="false">
         <Label class="font-weight-normal">SELECCIONAR ARTICULO</Label>
+        <br />
+        &nbsp;<br />
+        <asp:Label ID="Label5" runat="server" Text="Label" Visible="False"></asp:Label>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" style="margin-top: 6px; text-align: center; width:90%" DataKeyNames="id" HorizontalAlign="Center">
             <Columns>
                 <asp:CommandField ShowSelectButton="True" HeaderText="SELECCIONAR" />
@@ -34,8 +38,6 @@
             </div>
             <div class="col-lg-2">
                 <asp:TextBox ID="TextBox2"  class="form-control" runat="server" Visible="False" required="True"></asp:TextBox>
-            </div>
-            <div class="col-lg-4">
                 <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-primary" OnClick="Button2_Click" Text="AGREGAR" Visible="False" />
             </div>
         </div>

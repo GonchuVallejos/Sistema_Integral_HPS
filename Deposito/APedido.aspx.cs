@@ -16,7 +16,7 @@ namespace Sistema_Integral_HPS.Deposito
         {   
             if (!IsPostBack)
             {
-
+                
                 DataColumn ID = dt.Columns.Add("ID ARTICULO", typeof(Int32));
                 DataColumn ART = dt.Columns.Add("ARTICULO", typeof(string));
                 DataColumn CANTIDAD = dt.Columns.Add("CANTIDAD", typeof(Int32));
@@ -27,6 +27,8 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            Label1.Text = "Este es el texto";
+            GridView1.Visible = true;
             MySqlConnection coon = Conexion.getConexion();
             MySqlCommand cm = new MySqlCommand("SELECT id,descripcion,descripcion_adicional FROM articulo WHERE descripcion LIKE '%" + TextBox1.Text + "%' AND habilitado= 'SI'", coon);
             cm.CommandType = CommandType.Text;
@@ -60,6 +62,8 @@ namespace Sistema_Integral_HPS.Deposito
             Label1.Text = Convert.ToString(idv);
             Label2.Visible = true;
             Label2.Text ="Articulo seleccionado a pedir : " +Convert.ToString(GridView1.SelectedRow.Cells[2].Text);
+            GridView1.Visible = false;
+      
         }
 
         protected void Button2_Click(object sender, EventArgs e)

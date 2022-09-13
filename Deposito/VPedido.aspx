@@ -75,16 +75,17 @@
         <div class="row">
             <div class="col-lg-2">
             </div>
-            <div class="col-lg-4">
-                <asp:Button ID="btn_cancelar" runat="server" class="btn btn-lg btn-danger" Text="CANCELAR" OnClick="btn_cancelar_Click" />
+           <div class="col-lg-4">
+                <asp:Button ID="btn_verpedidos" runat="server" class="btn btn-lg btn-success" OnClick="btn_verpedidos_Click" Text="VER PEDIDOS" />
             </div>
             <div class="col-lg-4">
                 <asp:Button ID="btn_guardar" runat="server" class="btn btn-lg btn-success" Text="CONFIRMAR" OnClick="btn_guardar_Click" />
-                <br />
-                <br />
-               
             </div>
-
+            <div class="col-lg-4">
+                <asp:Button ID="btn_cancelar" runat="server" class="btn btn-lg btn-danger" Text="CANCELAR" OnClick="btn_cancelar_Click" />
+            </div>
+                <br />
+                <br />
             <div>
                 <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
             </div>
