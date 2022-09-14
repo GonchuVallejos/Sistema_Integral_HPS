@@ -62,7 +62,8 @@ namespace Sistema_Integral_HPS.Deposito
             Label4.Visible = true;
             Label5.Text = Convert.ToString(GridView1.SelectedRow.Cells[2].Text);
             Label5.Visible = true;
-           // GridView1.Visible=false;
+            GridView1.Visible = false;
+          
         }
 
         protected void Button2_Click(object sender, EventArgs e)

@@ -120,7 +120,7 @@ namespace Sistema_Integral_HPS.Deposito
                 }
                 else
                 {
-                    if (DropDownList1.SelectedValue.ToString() == "1005" || DropDownList1.SelectedValue.ToString() == "1006")
+                    if (DropDownList1.SelectedValue.ToString() == "1005")
                     {
                         GridView4.Visible = true;
                         GridView3.Visible = false;

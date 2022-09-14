@@ -68,13 +68,14 @@ namespace Sistema_Integral_HPS.Deposito
             TextBox3.Visible = true;
             Button2.Visible = true;
 
-           
+            GridView1.Visible = false;
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            
             int idp = Convert.ToInt32(Session["usuariologgeado"].ToString()); // GUARDO USUARIO EN VARIABLE
-
+            
             dt = (DataTable)ViewState["RECORD"]; // CARGO EL GRID VIEW CON LOS ARTICULOS SELECCIONADOS A AJUSTAR YA SEA POSITIVO O NEGATIVO (A MODO DE CARRITO DE COMPRAS)
 
             DataRow row = dt.NewRow();

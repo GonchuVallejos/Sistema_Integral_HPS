@@ -119,7 +119,10 @@ namespace Sistema_Integral_HPS.Deposito
         protected void Button2_Click(object sender, EventArgs e)
         {
             Panel1.Visible = true;
+            GridView1.Visible= false;
             Button2.Visible = false;
+            Button1.Visible = false;
+            
         }
 
 
@@ -137,6 +140,11 @@ namespace Sistema_Integral_HPS.Deposito
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

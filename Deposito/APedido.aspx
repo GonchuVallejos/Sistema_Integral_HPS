@@ -17,10 +17,9 @@
         </div>
     </div>
     <asp:Panel ID="Panel1" runat="server" Visible="false">
-        <Label class="font-weight-normal">SELECCIONAR ARTICULO</Label>
+        &nbsp;<asp:Label ID="Label6" runat="server" Text="Label" Visible="False"></asp:Label>
         <br />
-        &nbsp;<br />
-        <asp:Label ID="Label5" runat="server" Text="Label" Visible="False"></asp:Label>
+&nbsp;<asp:Label ID="Label5" runat="server" Text="Label" Visible="False"></asp:Label>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" style="margin-top: 6px; text-align: center; width:90%" DataKeyNames="id" HorizontalAlign="Center">
             <Columns>
                 <asp:CommandField ShowSelectButton="True" HeaderText="SELECCIONAR" />
@@ -30,7 +29,6 @@
             </Columns>
             <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
         </asp:GridView>
-        <br />
         <asp:Label ID="Label2" runat="server" Text="Label" Visible="False"></asp:Label>
         <div class="row">
             <div class="col-lg-2">
@@ -53,7 +51,6 @@
             </Columns>
             <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
         </asp:GridView>
-        <br />
         <br />
         <div class="row">
             <div class="col-lg-2">

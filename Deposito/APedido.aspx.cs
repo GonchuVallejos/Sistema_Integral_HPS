@@ -27,7 +27,7 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Label1.Text = "Este es el texto";
+            
             GridView1.Visible = true;
             MySqlConnection coon = Conexion.getConexion();
             MySqlCommand cm = new MySqlCommand("SELECT id,descripcion,descripcion_adicional FROM articulo WHERE descripcion LIKE '%" + TextBox1.Text + "%' AND habilitado= 'SI'", coon);
@@ -48,7 +48,12 @@ namespace Sistema_Integral_HPS.Deposito
             }
             else
             {
+                Label6.Visible = true;
+               Label6.Text = "SELECCIONAR ARTICULO";
                 Panel1.Visible = true;
+                Label4.Visible = false;
+                TextBox2.Visible = false;
+                Button2.Visible = false;
             }
             coon.Close();
         }
@@ -63,7 +68,7 @@ namespace Sistema_Integral_HPS.Deposito
             Label2.Visible = true;
             Label2.Text ="Articulo seleccionado a pedir : " +Convert.ToString(GridView1.SelectedRow.Cells[2].Text);
             GridView1.Visible = false;
-      
+           Label6.Visible = false;
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -80,6 +85,12 @@ namespace Sistema_Integral_HPS.Deposito
             dt.AcceptChanges();
             GridView2.DataSource = dt;
             GridView2.DataBind();
+            //LIMPIA LOS TEXT BOX DE ARTICULO Y CANTIDAD
+            
+            TextBox1.Text = null;
+            TextBox2.Text = " ";
+            Label6.Visible = false;
+            Label2.Visible = false;
         }
 
         protected void Button4_Click(object sender, EventArgs e)
