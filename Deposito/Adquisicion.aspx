@@ -55,6 +55,7 @@
               INGRESE NOMBRE DEL ARTICULO A ADQUIRIR:</Label>
               <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
               &nbsp;<br />
+
             <asp:Button ID="Button1" class="btn btn-lg btn-info" runat="server" Text="BUSCAR" OnClick="Button1_Click" />
             <br />
             <br />
@@ -73,9 +74,14 @@
           <br />
           CANTIDAD:
     <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <br />
-    OBSERVACIONES:<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+          <br />
+        <asp:Label ID="Label1" runat="server" Text="PRECIO: "></asp:Label>
+          <asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <br />
+          OBSERVACIONES:<br />
     <br />
     <asp:TextBox ID="TextBox4" runat="server" Height="96px" Width="544px"></asp:TextBox>
     <br />

@@ -18,8 +18,6 @@ namespace Sistema_Integral_HPS.Deposito
         {
             if (!IsPostBack)
             {
-
-
                 DataColumn ID = dt.Columns.Add("ID ARTICULO", typeof(Int32));
                 DataColumn ART = dt.Columns.Add("ARTICULO", typeof(string));
                 DataColumn CANTIDAD = dt.Columns.Add("CANTIDAD", typeof(Int32));
@@ -99,6 +97,8 @@ namespace Sistema_Integral_HPS.Deposito
         {
             if (DropDownList1.SelectedValue.Equals("PROPIA"))
             {
+                Label1.Visible = true;
+                TextBox9.Visible = true;
                 int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
 
                 MySqlConnection coon = Conexion.getConexion(); // AQUI EMPIEZO A GUARDAR LA "CABECERA DE ADQUISICION" DIGAMOS ALGO PARECIDO A PEDIDO Y DETALLE DE PEDIDO
@@ -121,7 +121,7 @@ namespace Sistema_Integral_HPS.Deposito
                 {
                     int ida = Convert.ToInt32(dt.Rows[i]["ID ARTICULO"].ToString());
                     int cant = Convert.ToInt32(dt.Rows[i]["CANTIDAD"].ToString());
-                    MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_adquisicion(id,fk_adquisicion,fk_articulo,cantidad,observacion) VALUES (NULL,'" + idadquisicion + "','" + ida + "','" + cant + "','" + TextBox4.Text + "')", coon);
+                    MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_adquisicion(id,fk_adquisicion,fk_articulo,cantidad,precio,observacion) VALUES (NULL,'" + idadquisicion + "','" + ida + "','" + cant + "','" + TextBox9.Text + "','" + TextBox4.Text + "')", coon);
                     cm.CommandType = CommandType.Text;
                     cm.ExecuteNonQuery();
 
@@ -146,6 +146,8 @@ namespace Sistema_Integral_HPS.Deposito
             }
             if (DropDownList1.SelectedValue.Equals("DONACION"))
             {
+                Label1.Visible = false;
+                TextBox9.Visible = false;
                 int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
 
                 MySqlConnection coon = Conexion.getConexion(); // AQUI EMPIEZO A GUARDAR LA "CABECERA DE ADQUISICION" DIGAMOS ALGO PARECIDO A PEDIDO Y DETALLE DE PEDIDO

@@ -184,7 +184,7 @@ namespace Sistema_Integral_HPS.Deposito
             if (idm == 1001)
             {
                 int idp = Convert.ToInt32(GridView3.SelectedDataKey.Values[2].ToString());
-                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_adquisicion.fk_articulo AS 'ID ARTICULO',detalle_adquisicion.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO',adquisicion.tipo AS 'TIPO',detalle_adquisicion.observacion AS 'OBSERVACION' FROM detalle_adquisicion INNER JOIN articulo ON detalle_adquisicion.fk_articulo=articulo.id INNER JOIN adquisicion ON adquisicion.id=detalle_adquisicion.fk_adquisicion WHERE fk_adquisicion='" + idp + "' GROUP BY detalle_adquisicion.fk_articulo", coon);
+                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_adquisicion.fk_articulo AS 'ID ARTICULO',detalle_adquisicion.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO', detalle_adquisicion.precio AS PRECIO,adquisicion.tipo AS 'TIPO',detalle_adquisicion.observacion AS 'OBSERVACION' FROM detalle_adquisicion INNER JOIN articulo ON detalle_adquisicion.fk_articulo=articulo.id INNER JOIN adquisicion ON adquisicion.id=detalle_adquisicion.fk_adquisicion WHERE fk_adquisicion='" + idp + "' GROUP BY detalle_adquisicion.fk_articulo", coon);
                 MySqlDataAdapter da1 = new MySqlDataAdapter(cm1);
                 da1.Fill(dta3);
                 GridView2.DataSource = dta3;
