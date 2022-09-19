@@ -96,6 +96,15 @@ namespace Sistema_Integral_HPS.Deposito
         protected global::System.Web.UI.WebControls.TextBox TextBox7;
 
         /// <summary>
+        /// Control TextBox10.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+
+        /// <summary>
         /// Control Panel3.
         /// </summary>
         /// <remarks>

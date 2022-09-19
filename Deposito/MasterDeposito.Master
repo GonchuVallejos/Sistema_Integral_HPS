@@ -49,6 +49,12 @@
               <li class="nav-item active">
               <a class="nav-link active" href="RConsumo.aspx">Ver consumo servicio</a>
             </li>
+              <li class="nav-item active">
+              <a class="nav-link active" href="AServicio.aspx">Alta Servicio</a>
+            </li>
+                <li class="nav-item active">
+              <a class="nav-link active" href="AProveedores.aspx">Alta Proveedor</a>
+            </li>
           </ul>
         </div>
 

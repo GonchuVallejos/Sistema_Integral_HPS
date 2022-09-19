@@ -148,9 +148,11 @@
     <Content Include="Deposito\Adquisicion.aspx" />
     <Content Include="Deposito\Ajustes.aspx" />
     <Content Include="Deposito\APedido.aspx" />
+    <Content Include="Deposito\AServicio.aspx" />
     <Content Include="Deposito\Deposito.css" />
     <Content Include="Deposito\IndexDeposito.aspx" />
     <Content Include="Deposito\RConsumo.aspx" />
+    <Content Include="Deposito\AProveedores.aspx" />
     <Content Include="Deposito\VMovimiento.aspx" />
     <Content Include="Deposito\VPedido.aspx" />
     <Content Include="Deposito\stock.aspx" />
@@ -208,6 +210,13 @@
     <Compile Include="Deposito\APedido.aspx.designer.cs">
       <DependentUpon>APedido.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Deposito\AServicio.aspx.cs">
+      <DependentUpon>AServicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\AServicio.aspx.designer.cs">
+      <DependentUpon>AServicio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Deposito\IndexDeposito.aspx.cs">
       <DependentUpon>IndexDeposito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -228,6 +237,13 @@
     </Compile>
     <Compile Include="Deposito\RConsumo.aspx.designer.cs">
       <DependentUpon>RConsumo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deposito\AProveedores.aspx.cs">
+      <DependentUpon>AProveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\AProveedores.aspx.designer.cs">
+      <DependentUpon>AProveedores.aspx</DependentUpon>
     </Compile>
     <Compile Include="Deposito\Reportes\reporte.cs" />
     <Compile Include="Deposito\VMovimiento.aspx.cs">

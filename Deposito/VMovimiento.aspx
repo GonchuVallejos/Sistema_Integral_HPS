@@ -47,6 +47,7 @@
              <asp:BoundField DataField="fk_tipo_movimiento" HeaderText="fk_tipo_movimiento" Visible="False" />
              <asp:BoundField DataField="fk_adquisicion" HeaderText="fk_adquisicion" Visible="False" />
              <asp:BoundField DataField="tipo" HeaderText="TIPO" />
+             <asp:BoundField DataField="DYS" HeaderText="DYS" />
          </Columns>
          <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
      </asp:GridView>

@@ -88,16 +88,17 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 if (DropDownList1.SelectedValue.ToString() == "1001")
                 {
-
-                    GridView3.Visible = true;
                     GridView1.Visible = false;
+                    GridView3.Visible = true;
+                    GridView4.Visible = false; 
+                    
                     MySqlConnection coon = Conexion.getConexion();
 
                     //********************************************
                     //FILTRAR POR TIPO DE ADQUISICION: DONACION O PROPIA
                     //********************************************
 
-                    MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento,unidad_seccion.descripcion AS unidad_seccion, adquisicion.tipo AS tipo FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN unidad_seccion ON usuario.fk_unidad_seccion = unidad_seccion.id INNER JOIN adquisicion ON movimiento.fk_adquisicion = adquisicion.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "' GROUP BY movimiento.fk_pedido, movimiento.fk_adquisicion, movimiento.fk_ajuste ", coon);
+                    MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento,unidad_seccion.descripcion AS unidad_seccion, adquisicion.tipo AS tipo,adquisicion.dys AS dys FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN unidad_seccion ON usuario.fk_unidad_seccion = unidad_seccion.id INNER JOIN adquisicion ON movimiento.fk_adquisicion = adquisicion.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "' GROUP BY movimiento.fk_pedido, movimiento.fk_adquisicion, movimiento.fk_ajuste ", coon);
                     cm.CommandType = CommandType.Text;
                     cm.ExecuteNonQuery();
 
@@ -156,7 +157,7 @@ namespace Sistema_Integral_HPS.Deposito
 
             int idm = Convert.ToInt32(dta1.Rows[0]["fk_tipo_movimiento"].ToString());
            
-            if (idm == 1005 || idm == 1006)
+            if (idm == 1005)
             {
                 int idp = Convert.ToInt32(GridView4.SelectedDataKey.Values[1].ToString());
                 MySqlCommand cm1 = new MySqlCommand("SELECT detalle_ajuste.fk_articulo AS 'ID ARTICULO',detalle_ajuste.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO',detalle_ajuste.tipo_ajuste AS 'TIPO AJUSTE',detalle_ajuste.observacion AS 'OBSERVACION' FROM detalle_ajuste INNER JOIN articulo ON detalle_ajuste.fk_articulo=articulo.id WHERE fk_ajuste='" + idp + "' GROUP BY detalle_ajuste.fk_articulo", coon);
@@ -184,7 +185,7 @@ namespace Sistema_Integral_HPS.Deposito
             if (idm == 1001)
             {
                 int idp = Convert.ToInt32(GridView3.SelectedDataKey.Values[2].ToString());
-                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_adquisicion.fk_articulo AS 'ID ARTICULO',detalle_adquisicion.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO', detalle_adquisicion.precio AS PRECIO,adquisicion.tipo AS 'TIPO',detalle_adquisicion.observacion AS 'OBSERVACION' FROM detalle_adquisicion INNER JOIN articulo ON detalle_adquisicion.fk_articulo=articulo.id INNER JOIN adquisicion ON adquisicion.id=detalle_adquisicion.fk_adquisicion WHERE fk_adquisicion='" + idp + "' GROUP BY detalle_adquisicion.fk_articulo", coon);
+                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_adquisicion.fk_articulo AS 'ID ARTICULO',detalle_adquisicion.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO', detalle_adquisicion.precio AS PRECIO,adquisicion.tipo AS 'TIPO',adquisicion.dys AS 'DYS',detalle_adquisicion.observacion AS 'OBSERVACION' FROM detalle_adquisicion INNER JOIN articulo ON detalle_adquisicion.fk_articulo=articulo.id INNER JOIN adquisicion ON adquisicion.id=detalle_adquisicion.fk_adquisicion WHERE fk_adquisicion='" + idp + "' GROUP BY detalle_adquisicion.fk_articulo", coon);
                 MySqlDataAdapter da1 = new MySqlDataAdapter(cm1);
                 da1.Fill(dta3);
                 GridView2.DataSource = dta3;

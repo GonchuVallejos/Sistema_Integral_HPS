@@ -34,6 +34,10 @@
         N° REMITO:
         <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
         <br />
+        <br />
+        N° de DYS:
+        <asp:TextBox ID="TextBox10" runat="server"></asp:TextBox>
+        <br />
     </asp:Panel>
     <asp:Panel ID="Panel3" runat="server" Visible="false">
 
@@ -89,7 +93,7 @@
     <asp:Button ID="Button2" class="btn btn-lg btn-info" runat="server" Text="AGREGAR ITEM" OnClick="Button2_Click" />
     <br />
 <br />
-<asp:GridView ID="GridView2" runat="server" OnRowDeleting="GridView2_RowDeleting">
+<asp:GridView ID="GridView2" runat="server" OnRowDeleting="GridView2_RowDeleting" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
     <Columns>
         <asp:CommandField ShowDeleteButton="True" />
     </Columns>
