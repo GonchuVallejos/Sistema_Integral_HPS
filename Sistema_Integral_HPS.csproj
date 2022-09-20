@@ -159,6 +159,7 @@
     <Content Include="Deposito\IndexDeposito.aspx" />
     <Content Include="Deposito\RConsumo.aspx" />
     <Content Include="Deposito\AProveedores.aspx" />
+    <Content Include="Deposito\VHistorico.aspx" />
     <Content Include="Deposito\VMovimiento.aspx" />
     <Content Include="Deposito\VPedido.aspx" />
     <Content Include="Deposito\stock.aspx" />
@@ -253,6 +254,13 @@
       <DependentUpon>AProveedores.aspx</DependentUpon>
     </Compile>
     <Compile Include="Deposito\Reportes\reporte.cs" />
+    <Compile Include="Deposito\VHistorico.aspx.cs">
+      <DependentUpon>VHistorico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\VHistorico.aspx.designer.cs">
+      <DependentUpon>VHistorico.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Deposito\VMovimiento.aspx.cs">
       <DependentUpon>VMovimiento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

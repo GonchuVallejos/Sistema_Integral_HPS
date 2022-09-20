@@ -55,6 +55,9 @@
                 <li class="nav-item active">
               <a class="nav-link active" href="AProveedores.aspx">Alta Proveedor</a>
             </li>
+              <li class="nav-item active">
+              <a class="nav-link active" href="VHistorico.aspx">Precios por Articulo</a>
+            </li>
           </ul>
         </div>
 
