@@ -1,7 +1,9 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
+using iTextSharp.tool.xml;
 using MySql.Data.MySqlClient;
+using Sistema_Integral_HPS.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,6 +12,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Drawing.Printing;
+using System.Drawing;
+using System.Text;
+using System.ComponentModel;
+using System.Configuration;
+using LibPrintTicket;
 
 namespace Sistema_Integral_HPS.Deposito
 {
@@ -173,34 +181,141 @@ namespace Sistema_Integral_HPS.Deposito
         }
         private void ExportGridToPDF()
         {
+          /*  string Texto_Html = string.Empty;
+          //  Texto_Html = Resources.PDFPedido.ToString();
+            Texto_Html = Texto_Html.Replace("@fecharegistro", DateTime.Now.ToString());
+            string filas = string.Empty;
+            foreach (GridView row in GridView1.Rows)
+            {
+                //ver la parte de agregar los datos del gridview al pdf 
+                //filas += "<tr>";
+                //filas += "<td>" + row.["Codigo"].Value.ToString() + "</td>";
+                //filas += "<td>" + row.["Articulo"].Value.ToString() + "</td>";
+                //filas += "<td>" + row.["Cantidad"].Value.ToString() + "</td>";
 
-            Response.ContentType = "application/pdf";
-            Response.AddHeader("content-disposition", "attachment;filename=Comprobante.pdf");
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            StringWriter sw = new StringWriter();
-            HtmlTextWriter hw = new HtmlTextWriter(sw);
-            GridView2.RenderControl(hw);
-            StringReader sr = new StringReader(sw.ToString());
-            Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
-            HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
-            PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
-            pdfDoc.Open();
-            htmlparser.Parse(sr);
-            pdfDoc.Close();
-            Response.Write(pdfDoc);
-            Response.End();
-            GridView1.AllowPaging = true;
-            GridView1.DataBind();
+            }
+            //Texto_Html = Texto_Html.Replace("@filas", filas);
+            //SaveFileDialog savefile = new SaveFileDialog();
+            //savefile.FileName = string.Format("Salida_{0}.pdf");
+            //savefile.Filter = "Pdf Files|*.pdf";
+
+            //if (savefile.ShowDialog() == DialogResult.OK)
+            //{
+            //    using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
+            //    {
+            //        //Creamos un nuevo documento y lo definimos como PDF
+            //        Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
+
+            //        PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+            //        pdfDoc.Open();
+
+            //        bool obtenido = true;
+            //        // byte[] byteimage = DatoLogica.Instancia.ObtenerLogo(out obtenido);
+            //        if (obtenido)
+            //        {
+            //            iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(byteimage);
+            //            img.ScaleToFit(60, 60);
+            //            img.Alignment = iTextSharp.text.Image.UNDERLYING;
+            //            img.SetAbsolutePosition(pdfDoc.Left, pdfDoc.GetTop(51));
+            //            pdfDoc.Add(img);
+            //        }
+
+            //        using (StringReader sr = new StringReader(Texto_Html))
+            //        {
+            //            XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+            //        }
+
+            //        pdfDoc.Close();
+            //        stream.Close();
+            //        MessageBox.Show("Documento Generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+                //Response.ContentType = "application/pdf";
+                //Response.AddHeader("content-disposition", "attachment;filename=Comprobante.pdf");
+                //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                //StringWriter sw = new StringWriter();
+                //HtmlTextWriter hw = new HtmlTextWriter(sw);
+                //GridView2.RenderControl(hw);
+                //StringReader sr = new StringReader(sw.ToString());
+                //Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                //HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
+                //PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
+                //pdfDoc.Open();
+                //htmlparser.Parse(sr);
+                //pdfDoc.Close();
+                //Response.Write(pdfDoc);
+                //Response.End();
+                //GridView1.AllowPaging = true;
+                //GridView1.DataBind();
+            //}*/
         }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
-            ExportGridToPDF();
+           
         }
 
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public class TicketInventario
+        {
+            #region Methods
+
+            public void imprimirTiket(String IdVenta, String nombreEmpleado, DataTable datos)
+            {
+                Ticket ticket = new Ticket();
+                Double subtotal = 0.0, total = 0.0;
+                //Image image = Image.FromFile("~\\SaludDeAcero\\Imagenes\\logoSA.png");
+                // Set the position  on the form.
+                //ticket.HeaderImage = image; //esta propiedad no es obligatoria
+
+                ticket.AddHeaderLine("SALUD DE ACERO");
+                ticket.AddHeaderLine("EXPEDIDO EN:");
+                ticket.AddHeaderLine("CALLE PALOMAR NO. 1 LOC. 1");
+                ticket.AddHeaderLine("MEXICO, FRESNILLO ZACATECAS");
+                ticket.AddHeaderLine("RFC: CSI-020226-MV4");
+
+                //El metodo AddSubHeaderLine es lo mismo al de AddHeaderLine con la diferencia
+                //de que al final de cada linea agrega una linea punteada "=========="
+                ticket.AddSubHeaderLine("Caja # 1 - Ticket #" + IdVenta);
+                ticket.AddSubHeaderLine("Le atendió: " + nombreEmpleado);
+                ticket.AddSubHeaderLine("Fecha de venta: " + DateTime.Now.ToString());
+                ticket.AddSubHeaderLine(" ");
+                // ticket.AddSubHeaderLine("Num. Socio: " + numSocio + " Socio:" + nombreSocio);
+
+                //El metodo AddItem requeire 3 parametros, el primero es cantidad, el segundo es la descripcion
+                //del producto y el tercero es el precio
+                foreach (DataRow item in datos.Rows)
+                {
+                    ticket.AddItem(item["Clave"].ToString(), item["Clave"].ToString(), item["Costo"].ToString());
+                    subtotal = Convert.ToDouble(item["Subtotal"].ToString());
+                    total = Convert.ToDouble(item["Total"].ToString());
+                }
+                ticket.AddItem(" ", " ", " ");
+
+                //El metodo AddTotal requiere 2 parametros, la descripcion del total, y el precio
+                ticket.AddTotal("SUBTOTAL", subtotal.ToString());
+                ticket.AddTotal("IVA", "0");
+                ticket.AddTotal("TOTAL", total.ToString());
+                ticket.AddTotal("", ""); //Ponemos un total en blanco que sirve de espacio
+                                         // ticket.AddTotal("RECIBIDO", recibido);
+                                         //  ticket.AddTotal("CAMBIO", (Convert.ToDouble(recibido) - Convert.ToDouble(Costo)).ToString());
+                ticket.AddTotal("", "");//Ponemos un total en blanco que sirve de espacio
+                ticket.AddTotal("USTED AHORRO", "0.00");
+
+                //El metodo AddFooterLine funciona igual que la cabecera
+                ticket.AddFooterLine("TU SALUD ES NUESTRA PASION...");
+                ticket.AddFooterLine("VIVE LA EXPERIENCIA SALUD DE ACERO");
+                ticket.AddFooterLine("GRACIAS POR SU PREFERENCIA");
+
+                //Y por ultimo llamamos al metodo PrintTicket para imprimir el ticket, este metodo necesita un
+                //parametro de tipo string que debe de ser el nombre de la impresora.
+                // ticket.PrintTicket("Epson 720X");
+                ticket.PrintTicket(ConfigurationManager.AppSettings["Impresora"]);
+            }
+
+            #endregion Methods
         }
 
 
