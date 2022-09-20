@@ -154,6 +154,8 @@
     <Content Include="Deposito\APedido.aspx" />
     <Content Include="Deposito\AServicio.aspx" />
     <Content Include="Deposito\Deposito.css" />
+    <Content Include="Deposito\img\0_9U_PkckAUtKGrb_R.png" />
+    <Content Include="Deposito\img\Logo HPS.png" />
     <Content Include="Deposito\IndexDeposito.aspx" />
     <Content Include="Deposito\RConsumo.aspx" />
     <Content Include="Deposito\AProveedores.aspx" />

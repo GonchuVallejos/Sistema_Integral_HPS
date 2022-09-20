@@ -17,15 +17,28 @@ using System.Drawing;
 using System.Text;
 using System.ComponentModel;
 using System.Configuration;
-using LibPrintTicket;
+using System.Runtime.InteropServices;
+
+
 
 namespace Sistema_Integral_HPS.Deposito
 {
 	public partial class VPedido : System.Web.UI.Page
 	{
+       
         DataTable dt = new DataTable();
         string id;
-        
+        //Declaramos variables
+        System.Drawing.Font printFont = null;
+        SolidBrush myBrush = new SolidBrush(Color.Black);
+        string fontName = "Lucida Console";
+        int fontSize = 8;
+        Graphics gfx = null;
+        int PosX=10,PosY=5;
+        int PosXi = 180, PosYi = 5;
+
+        public System.Drawing.Font PrintFont { get => printFont; set => printFont = value; }
+
         protected void Page_Load(object sender, EventArgs e)
 		{
             if (!IsPostBack)
@@ -248,9 +261,34 @@ namespace Sistema_Integral_HPS.Deposito
                 //GridView1.DataBind();
             //}*/
         }
+       
         protected void Button1_Click(object sender, EventArgs e)
         {
-           
+            // Permito que el usuario seleccione una impresora
+            // Abro el cuadro de dialogo
+            System.Windows.Forms.PrintDialog pd = new System.Windows.Forms.PrintDialog();
+
+            // Creo la instacia de la configuarion de impresion
+            pd.PrinterSettings = new PrinterSettings();
+
+            // Creo el tipo de letra que se va a usar
+            printFont = new System.Drawing.Font(fontName, fontSize, FontStyle.Regular);
+
+            //creo el documento con el que vamos a trabjar
+            PrintDocument doc = new PrintDocument();
+
+            //Determina la impresora que vamos a usar es la que seleccionamos en la configuracion
+            doc.PrinterSettings.PrinterName = pd.PrinterSettings.PrinterName;
+
+            //Nombre en del documento
+            doc.DocumentName = "Impresion de Prueba";
+
+            //Organiza la pagina para posteriomente imprimirla
+            doc.PrintPage += new PrintPageEventHandler(pr_PrintPage);
+
+            //Imprime el documento
+            doc.Print();
+
         }
 
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
@@ -258,67 +296,39 @@ namespace Sistema_Integral_HPS.Deposito
 
         }
 
-        public class TicketInventario
+        //funcion que se encarga de imprimir
+        private void pr_PrintPage(Object sender, PrintPageEventArgs e)
         {
-            #region Methods
-
-            public void imprimirTiket(String IdVenta, String nombreEmpleado, DataTable datos)
+            RectangleF srcRect = new RectangleF(50.0F, 50.0F, 150.0F, 150.0F);
+            GraphicsUnit units = GraphicsUnit.Pixel;
+            System.Drawing.Image newImage = System.Drawing.Image.FromFile("C:/Users/SISTEMAS-SIS/Source/Repos/Sistema_Integral_HPS/Deposito/img/Logo HPS.png");
+            e.Graphics.PageUnit = GraphicsUnit.Millimeter; //unidades de la impresion
+            gfx = e.Graphics;
+            gfx.DrawImage(newImage,PosXi,PosYi,15,15);
+            gfx.DrawString("HOSPITAL PABLO SORIA\n\n\n", printFont, myBrush, PosX, PosY, new StringFormat());
+            gfx.DrawString("------------------------------\n \n", printFont, myBrush, PosX, PosY+5, new StringFormat());
+            gfx.DrawString("ID ARTICULO\n \n \n", printFont, myBrush, PosX, PosY+10, new StringFormat());
+            gfx.DrawString("DESCRIPCION\n \n \n", printFont, myBrush, PosX+30, PosY + 10, new StringFormat());
+            gfx.DrawString("CANTIDAD\n \n \n", printFont, myBrush, PosX+100, PosY + 10, new StringFormat());
+            //Agregamos tantas lineas como querramos y posiciones variadas.
+            for (int i = 0; i <  GridView2.Rows.Count; i++)
             {
-                Ticket ticket = new Ticket();
-                Double subtotal = 0.0, total = 0.0;
-                //Image image = Image.FromFile("~\\SaludDeAcero\\Imagenes\\logoSA.png");
-                // Set the position  on the form.
-                //ticket.HeaderImage = image; //esta propiedad no es obligatoria
+                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[1].Text+ "\n \n", printFont, myBrush, PosX, PosY+(i*10), new StringFormat());
+                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[2].Text + "\n \n", printFont, myBrush, PosX+30, PosY + (i * 10), new StringFormat());
+                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[3].Text + "\n \n", printFont, myBrush, PosX+100, PosY + (i * 10), new StringFormat());
 
-                ticket.AddHeaderLine("SALUD DE ACERO");
-                ticket.AddHeaderLine("EXPEDIDO EN:");
-                ticket.AddHeaderLine("CALLE PALOMAR NO. 1 LOC. 1");
-                ticket.AddHeaderLine("MEXICO, FRESNILLO ZACATECAS");
-                ticket.AddHeaderLine("RFC: CSI-020226-MV4");
-
-                //El metodo AddSubHeaderLine es lo mismo al de AddHeaderLine con la diferencia
-                //de que al final de cada linea agrega una linea punteada "=========="
-                ticket.AddSubHeaderLine("Caja # 1 - Ticket #" + IdVenta);
-                ticket.AddSubHeaderLine("Le atendió: " + nombreEmpleado);
-                ticket.AddSubHeaderLine("Fecha de venta: " + DateTime.Now.ToString());
-                ticket.AddSubHeaderLine(" ");
-                // ticket.AddSubHeaderLine("Num. Socio: " + numSocio + " Socio:" + nombreSocio);
-
-                //El metodo AddItem requeire 3 parametros, el primero es cantidad, el segundo es la descripcion
-                //del producto y el tercero es el precio
-                foreach (DataRow item in datos.Rows)
-                {
-                    ticket.AddItem(item["Clave"].ToString(), item["Clave"].ToString(), item["Costo"].ToString());
-                    subtotal = Convert.ToDouble(item["Subtotal"].ToString());
-                    total = Convert.ToDouble(item["Total"].ToString());
-                }
-                ticket.AddItem(" ", " ", " ");
-
-                //El metodo AddTotal requiere 2 parametros, la descripcion del total, y el precio
-                ticket.AddTotal("SUBTOTAL", subtotal.ToString());
-                ticket.AddTotal("IVA", "0");
-                ticket.AddTotal("TOTAL", total.ToString());
-                ticket.AddTotal("", ""); //Ponemos un total en blanco que sirve de espacio
-                                         // ticket.AddTotal("RECIBIDO", recibido);
-                                         //  ticket.AddTotal("CAMBIO", (Convert.ToDouble(recibido) - Convert.ToDouble(Costo)).ToString());
-                ticket.AddTotal("", "");//Ponemos un total en blanco que sirve de espacio
-                ticket.AddTotal("USTED AHORRO", "0.00");
-
-                //El metodo AddFooterLine funciona igual que la cabecera
-                ticket.AddFooterLine("TU SALUD ES NUESTRA PASION...");
-                ticket.AddFooterLine("VIVE LA EXPERIENCIA SALUD DE ACERO");
-                ticket.AddFooterLine("GRACIAS POR SU PREFERENCIA");
-
-                //Y por ultimo llamamos al metodo PrintTicket para imprimir el ticket, este metodo necesita un
-                //parametro de tipo string que debe de ser el nombre de la impresora.
-                // ticket.PrintTicket("Epson 720X");
-                ticket.PrintTicket(ConfigurationManager.AppSettings["Impresora"]);
             }
 
-            #endregion Methods
+            gfx.DrawString("FIRMA RECIBE: \n \n", printFont, myBrush, PosXi-30, PosY+((GridView2.Rows.Count + 1)*10), new StringFormat());
+            gfx.DrawString("________________________________Linea de corte________________________________\n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 2) * 10), new StringFormat());
+
         }
 
 
+
+
     }
-      
+
+
 }
+      
