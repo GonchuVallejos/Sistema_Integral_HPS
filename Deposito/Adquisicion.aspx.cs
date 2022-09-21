@@ -21,14 +21,15 @@ namespace Sistema_Integral_HPS.Deposito
                 DataColumn ID = dt.Columns.Add("ID ARTICULO", typeof(Int32));
                 DataColumn ART = dt.Columns.Add("ARTICULO", typeof(string));
                 DataColumn CANTIDAD = dt.Columns.Add("CANTIDAD", typeof(Int32));
-                DataColumn PRECIO = dt.Columns.Add("PRECIO", typeof(float));
+                DataColumn PRECIO = dt.Columns.Add("PRECIO", typeof(double));
                 ViewState["RECORD"] = dt;
 
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
-        {   
+        {
+            GridView1.Visible = true;
             MySqlConnection coon = Conexion.getConexion();
             MySqlCommand cm = new MySqlCommand("SELECT id,descripcion,descripcion_adicional,stock FROM articulo WHERE descripcion LIKE '%" + TextBox1.Text + "%' AND habilitado= 'SI'", coon);
             cm.CommandType = CommandType.Text;
@@ -76,7 +77,7 @@ namespace Sistema_Integral_HPS.Deposito
             row["ID ARTICULO"] = Label4.Text;
             row["ARTICULO"] = Convert.ToString(GridView1.SelectedRow.Cells[2].Text); ;
             row["CANTIDAD"] = TextBox3.Text;
-            row["PRECIO"] = TextBox9.Text;
+            row["PRECIO"] =Convert.ToDouble(TextBox9.Text);
 
             dt.Rows.Add(row);
             dt.AcceptChanges();
@@ -124,7 +125,7 @@ namespace Sistema_Integral_HPS.Deposito
                 {
                     int ida = Convert.ToInt32(dt.Rows[i]["ID ARTICULO"].ToString());
                     int cant = Convert.ToInt32(dt.Rows[i]["CANTIDAD"].ToString());
-                    MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_adquisicion(id,fk_adquisicion,fk_articulo,cantidad,precio,observacion) VALUES (NULL,'" + idadquisicion + "','" + ida + "','" + cant + "','" + TextBox9.Text + "','" + TextBox4.Text + "')", coon);
+                    MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_adquisicion(id,fk_adquisicion,fk_articulo,cantidad,precio,observacion) VALUES (NULL,'" + idadquisicion + "','" + ida + "','" + cant + "','" +Convert.ToDouble( TextBox9.Text) + "','" + TextBox4.Text + "')", coon);
                     cm.CommandType = CommandType.Text;
                     cm.ExecuteNonQuery();
 
@@ -227,6 +228,11 @@ namespace Sistema_Integral_HPS.Deposito
         }
 
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TextBox9_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -18,6 +18,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Configuration;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 
 
@@ -194,74 +195,104 @@ namespace Sistema_Integral_HPS.Deposito
         }
         private void ExportGridToPDF()
         {
-          /*  string Texto_Html = string.Empty;
-          //  Texto_Html = Resources.PDFPedido.ToString();
-            Texto_Html = Texto_Html.Replace("@fecharegistro", DateTime.Now.ToString());
-            string filas = string.Empty;
-            foreach (GridView row in GridView1.Rows)
+              string Texto_Html = string.Empty;
+             Texto_Html =Properties.Resources.PDFPedido.ToString();
+              Texto_Html = Texto_Html.Replace("@fecharegistro", DateTime.Now.ToString());
+              string filas = string.Empty;
+           /*   foreach (GridView row in GridView2.Rows)
+              {
+                 // ver la parte de agregar los datos del gridview al pdf 
+                  filas += "<tr>";
+                  filas += "<td>" + row.["Codigo"].Value.ToString() + "</td>";
+                  filas += "<td>" + row.["Articulo"].Value.ToString() + "</td>";
+                  filas += "<td>" + row.["Cantidad"].Value.ToString() + "</td>";
+
+              }
+           */
+
+            for (int i = 0; i < GridView2.Rows.Count; i++)
             {
-                //ver la parte de agregar los datos del gridview al pdf 
-                //filas += "<tr>";
-                //filas += "<td>" + row.["Codigo"].Value.ToString() + "</td>";
-                //filas += "<td>" + row.["Articulo"].Value.ToString() + "</td>";
-                //filas += "<td>" + row.["Cantidad"].Value.ToString() + "</td>";
+
+                filas += "<tr>";
+                filas += "<td>" + GridView2.Rows[i].Cells[1].Text + "</td>";
+                filas += "<td>" + GridView2.Rows[i].Cells[2].Text + "</td>";
+                filas += "<td>" + GridView2.Rows[i].Cells[3].Text + "</td>";
+               
+
+
 
             }
-            //Texto_Html = Texto_Html.Replace("@filas", filas);
-            //SaveFileDialog savefile = new SaveFileDialog();
-            //savefile.FileName = string.Format("Salida_{0}.pdf");
-            //savefile.Filter = "Pdf Files|*.pdf";
+            Texto_Html = Texto_Html.Replace("@filas", filas);
 
-            //if (savefile.ShowDialog() == DialogResult.OK)
-            //{
-            //    using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
-            //    {
-            //        //Creamos un nuevo documento y lo definimos como PDF
-            //        Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
 
-            //        PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
-            //        pdfDoc.Open();
+            Thread t = new Thread((ThreadStart)(() => {
+                System.Windows.Forms.SaveFileDialog savefile = new System.Windows.Forms.SaveFileDialog();
+                savefile.FileName = string.Format("Ticket.pdf");
+                savefile.Filter = "Pdf Files|*.pdf";
+                if (savefile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
+                    {
+                        //Creamos un nuevo documento y lo definimos como PDF
+                        Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
 
-            //        bool obtenido = true;
-            //        // byte[] byteimage = DatoLogica.Instancia.ObtenerLogo(out obtenido);
-            //        if (obtenido)
-            //        {
-            //            iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(byteimage);
-            //            img.ScaleToFit(60, 60);
-            //            img.Alignment = iTextSharp.text.Image.UNDERLYING;
-            //            img.SetAbsolutePosition(pdfDoc.Left, pdfDoc.GetTop(51));
-            //            pdfDoc.Add(img);
-            //        }
+                        PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                        pdfDoc.Open();
 
-            //        using (StringReader sr = new StringReader(Texto_Html))
-            //        {
-            //            XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
-            //        }
+                        bool obtenido = true;
+                        // byte[] byteimage = DatoLogica.Instancia.ObtenerLogo(out obtenido);
+                        if (obtenido)
+                        {
+                            System.Drawing.Image newImage = System.Drawing.Image.FromFile("C:/Users/SISTEMAS-SIS/Source/Repos/Sistema_Integral_HPS/Deposito/img/Logo HPS.png");
+                            // iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(byteimage);
+                            iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(newImage, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            pdfImage.ScaleToFit(60, 60);
+                            pdfImage.Alignment = iTextSharp.text.Image.UNDERLYING;
+                            pdfImage.SetAbsolutePosition(pdfDoc.Left, pdfDoc.GetTop(51));
+                            pdfDoc.Add(pdfImage);
+                        }
 
-            //        pdfDoc.Close();
-            //        stream.Close();
-            //        MessageBox.Show("Documento Generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
-                //Response.ContentType = "application/pdf";
-                //Response.AddHeader("content-disposition", "attachment;filename=Comprobante.pdf");
-                //Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                //StringWriter sw = new StringWriter();
-                //HtmlTextWriter hw = new HtmlTextWriter(sw);
-                //GridView2.RenderControl(hw);
-                //StringReader sr = new StringReader(sw.ToString());
-                //Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
-                //HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
-                //PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
-                //pdfDoc.Open();
-                //htmlparser.Parse(sr);
-                //pdfDoc.Close();
-                //Response.Write(pdfDoc);
-                //Response.End();
-                //GridView1.AllowPaging = true;
-                //GridView1.DataBind();
-            //}*/
+                        using (StringReader sr = new StringReader(Texto_Html))
+                        {
+                            XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                        }
+
+                        pdfDoc.Close();
+                        stream.Close();
+                        System.Windows.Forms.MessageBox.Show("Documento Generado", "Mensaje");
+                    }
+                    //Response.ContentType = "application/pdf";
+                    //Response.AddHeader("content-disposition", "attachment;filename=Comprobante.pdf");
+                    //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                    //StringWriter sw = new StringWriter();
+                    //HtmlTextWriter hw = new HtmlTextWriter(sw);
+                    //GridView2.RenderControl(hw);
+                    //StringReader sr = new StringReader(sw.ToString());
+                    //Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                    //HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
+                    //PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
+                    //pdfDoc.Open();
+                    //htmlparser.Parse(sr);
+                    //pdfDoc.Close();
+                    //Response.Write(pdfDoc);
+                    //Response.End();
+                    //GridView1.AllowPaging = true;
+                    //GridView1.DataBind();
+                }
+
+            }));
+
+            // Ejecute su código desde un hilo que se une al hilo de STA
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+            t.Join();
+
+            
+
+
+           
         }
-       
+
         protected void Button1_Click(object sender, EventArgs e)
         {
             // Permito que el usuario seleccione una impresora
@@ -291,6 +322,11 @@ namespace Sistema_Integral_HPS.Deposito
 
         }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            ExportGridToPDF();
+        }
+
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -306,6 +342,10 @@ namespace Sistema_Integral_HPS.Deposito
             gfx = e.Graphics;
             gfx.DrawImage(newImage,PosXi,PosYi,15,15);
             gfx.DrawString("HOSPITAL PABLO SORIA\n\n\n", printFont, myBrush, PosX, PosY, new StringFormat());
+            gfx.DrawString("Fecha de retiro: "+DateTime.Now, printFont, myBrush, PosX+50, PosY, new StringFormat());
+            gfx.DrawString("ID PEDIDO: " + GridView1.SelectedRow.Cells[1].Text, printFont, myBrush, PosX + 130, PosY, new StringFormat());
+            gfx.DrawString("Sumistrado a: " + GridView1.SelectedRow.Cells[3].Text, printFont, myBrush, PosX, PosY+3, new StringFormat());
+            gfx.DrawString("Pedido por: " + GridView1.SelectedRow.Cells[2].Text, printFont, myBrush, PosX+50, PosY + 3, new StringFormat());
             gfx.DrawString("------------------------------\n \n", printFont, myBrush, PosX, PosY+5, new StringFormat());
             gfx.DrawString("ID ARTICULO\n \n \n", printFont, myBrush, PosX, PosY+10, new StringFormat());
             gfx.DrawString("DESCRIPCION\n \n \n", printFont, myBrush, PosX+30, PosY + 10, new StringFormat());
@@ -320,7 +360,7 @@ namespace Sistema_Integral_HPS.Deposito
             }
 
             gfx.DrawString("FIRMA RECIBE: \n \n", printFont, myBrush, PosXi-30, PosY+((GridView2.Rows.Count + 1)*10), new StringFormat());
-            gfx.DrawString("________________________________Linea de corte________________________________\n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 2) * 10), new StringFormat());
+            gfx.DrawString("____________________________________________Linea de corte____________________________________________\n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 2) * 10), new StringFormat());
 
         }
 

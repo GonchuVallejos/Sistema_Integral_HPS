@@ -17,9 +17,6 @@
             <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="CARGAR" />
             <br />
             <br />
-            <br />
-            <br />
-            <br />
             <asp:Label ID="Label3" runat="server" Text="INGRESE EL NOMBRE DEL ARTICULO A BUSCAR:" Visible="False"></asp:Label>
             </Label>
 &nbsp;<asp:TextBox ID="TextBox1" runat="server" Visible="False"></asp:TextBox>
@@ -34,9 +31,8 @@
             <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-info" Text="VER FAMILIA" OnClick="Button2_Click" Visible="False" />
             <br />
             <br />
-            <br />
             <asp:Label ID="Label5" runat="server" Text="INGRESE ID:" Visible="False"></asp:Label>
-            <asp:TextBox ID="TextBox2" runat="server" Visible="False"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" runat="server" Visible="False" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
             <asp:Button ID="Button3"  class="btn btn-lg btn-info" runat="server" Text="BUSCAR" OnClick="Button3_Click" Visible="False" />
         </div>
     <asp:GridView ID="GridView1" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" runat="server">

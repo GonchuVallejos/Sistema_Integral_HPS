@@ -30,9 +30,22 @@ namespace Sistema_Integral_HPS.Deposito
             GridView1.DataSource = dt;
             GridView1.DataBind();
 
+            MySqlConnection coon2 = Conexion.getConexion();
+            MySqlCommand cm1 = new MySqlCommand("SELECT SUM(precio) AS 'TOTAL ADQUISICION DEL ARTICULO' FROM historial_precio  WHERE fk_articulo LIKE '%" + TextBox1.Text + "%'", coon2);
+            cm1.CommandType = CommandType.Text;
+            cm1.ExecuteNonQuery();
+
+            MySqlDataAdapter da1 = new MySqlDataAdapter(cm1);
+            DataTable dt1 = new DataTable();
+            da1.Fill(dt1);
+
+            GridView2.DataSource = dt1;
+            GridView2.DataBind();
+            // SI SE LES OCURRE UNA MEJOR FORMA, HÀGALO!
+
             if (GridView1.Rows.Count == 0)
             {
-                string msg = "ARTÍCULO SIN EXISTENCIA!";
+                string msg = "ARTÍCULO SIN PRECIOS ACTUALES!";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
             }
 

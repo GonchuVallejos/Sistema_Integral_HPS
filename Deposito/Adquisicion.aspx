@@ -81,7 +81,7 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
           <br />
         <asp:Label ID="Label1" runat="server" Text="PRECIO: "></asp:Label>
-          <asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
+          <asp:TextBox ID="TextBox9" runat="server" OnTextChanged="TextBox9_TextChanged"></asp:TextBox>
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <br />
