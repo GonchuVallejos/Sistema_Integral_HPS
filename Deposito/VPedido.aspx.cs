@@ -195,20 +195,55 @@ namespace Sistema_Integral_HPS.Deposito
         }
         private void ExportGridToPDF()
         {
-              string Texto_Html = string.Empty;
-             Texto_Html =Properties.Resources.PDFPedido.ToString();
-              Texto_Html = Texto_Html.Replace("@fecharegistro", DateTime.Now.ToString());
-              string filas = string.Empty;
-           /*   foreach (GridView row in GridView2.Rows)
-              {
-                 // ver la parte de agregar los datos del gridview al pdf 
-                  filas += "<tr>";
-                  filas += "<td>" + row.["Codigo"].Value.ToString() + "</td>";
-                  filas += "<td>" + row.["Articulo"].Value.ToString() + "</td>";
-                  filas += "<td>" + row.["Cantidad"].Value.ToString() + "</td>";
+             
+           
+        }
 
-              }
-           */
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            // Permito que el usuario seleccione una impresora
+            // Abro el cuadro de dialogo
+            System.Windows.Forms.PrintDialog pd = new System.Windows.Forms.PrintDialog();
+
+            // Creo la instacia de la configuarion de impresion
+            pd.PrinterSettings = new PrinterSettings();
+
+            // Creo el tipo de letra que se va a usar
+            printFont = new System.Drawing.Font(fontName, fontSize, FontStyle.Regular);
+
+            //creo el documento con el que vamos a trabjar
+            PrintDocument doc = new PrintDocument();
+
+            //Determina la impresora que vamos a usar es la que seleccionamos en la configuracion
+            doc.PrinterSettings.PrinterName = pd.PrinterSettings.PrinterName;
+
+            //Nombre en del documento
+            doc.DocumentName = "Impresion de Prueba";
+
+            //Organiza la pagina para posteriomente imprimirla
+            doc.PrintPage += new PrintPageEventHandler(pr_PrintPage);
+
+            //Imprime el documento
+            doc.Print();
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            string Texto_Html = string.Empty;
+            Texto_Html = Properties.Resources.PDFPedido.ToString();
+            Texto_Html = Texto_Html.Replace("@fecharegistro", DateTime.Now.ToString());
+            string filas = string.Empty;
+            /*   foreach (GridView row in GridView2.Rows)
+               {
+                  // ver la parte de agregar los datos del gridview al pdf 
+                   filas += "<tr>";
+                   filas += "<td>" + row.["Codigo"].Value.ToString() + "</td>";
+                   filas += "<td>" + row.["Articulo"].Value.ToString() + "</td>";
+                   filas += "<td>" + row.["Cantidad"].Value.ToString() + "</td>";
+
+               }
+            */
 
             for (int i = 0; i < GridView2.Rows.Count; i++)
             {
@@ -217,7 +252,7 @@ namespace Sistema_Integral_HPS.Deposito
                 filas += "<td>" + GridView2.Rows[i].Cells[1].Text + "</td>";
                 filas += "<td>" + GridView2.Rows[i].Cells[2].Text + "</td>";
                 filas += "<td>" + GridView2.Rows[i].Cells[3].Text + "</td>";
-               
+
 
 
 
@@ -287,44 +322,9 @@ namespace Sistema_Integral_HPS.Deposito
             t.Start();
             t.Join();
 
-            
 
 
-           
-        }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            // Permito que el usuario seleccione una impresora
-            // Abro el cuadro de dialogo
-            System.Windows.Forms.PrintDialog pd = new System.Windows.Forms.PrintDialog();
-
-            // Creo la instacia de la configuarion de impresion
-            pd.PrinterSettings = new PrinterSettings();
-
-            // Creo el tipo de letra que se va a usar
-            printFont = new System.Drawing.Font(fontName, fontSize, FontStyle.Regular);
-
-            //creo el documento con el que vamos a trabjar
-            PrintDocument doc = new PrintDocument();
-
-            //Determina la impresora que vamos a usar es la que seleccionamos en la configuracion
-            doc.PrinterSettings.PrinterName = pd.PrinterSettings.PrinterName;
-
-            //Nombre en del documento
-            doc.DocumentName = "Impresion de Prueba";
-
-            //Organiza la pagina para posteriomente imprimirla
-            doc.PrintPage += new PrintPageEventHandler(pr_PrintPage);
-
-            //Imprime el documento
-            doc.Print();
-
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            ExportGridToPDF();
         }
 
         protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)

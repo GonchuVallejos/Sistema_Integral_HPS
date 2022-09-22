@@ -164,6 +164,9 @@
     <Content Include="Deposito\VPedido.aspx" />
     <Content Include="Deposito\stock.aspx" />
     <Content Include="Resources\PDFPedido.html" />
+    <Content Include="RexyReport\img\0_9U_PkckAUtKGrb_R.png" />
+    <Content Include="RexyReport\img\Logo HPS.png" />
+    <Content Include="RexyReport\img\rexy1.jpg" />
     <Content Include="RexyReport\IndexRexy.aspx" />
     <Content Include="RexyReport\Vista.aspx" />
     <Content Include="SqlServerTypes\readme.htm" />
