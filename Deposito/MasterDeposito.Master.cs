@@ -29,5 +29,11 @@ namespace Sistema_Integral_HPS.Deposito
             }
             
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session["usuario"] = null;
+            Response.Redirect("/UserPages/Login.aspx");
+        }
     }
 }

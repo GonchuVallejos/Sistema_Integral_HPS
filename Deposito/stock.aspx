@@ -2,13 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <br />
     <asp:Label ID="Label1" class="h1 justify-content-center" runat="server">VER STOCK</asp:Label>
     <hr />
      <div class="col-lg-4">
             <Label class="font-weight-normal">
             <asp:Label ID="Label2" runat="server" Text="VER POR"></asp:Label>
             :
-            <asp:DropDownList ID="DropDownList1" runat="server" OnPreRender="DropDownList1_PreRender" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" OnTextChanged="DropDonList1_TextChanged">
+            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select" OnPreRender="DropDownList1_PreRender" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" OnTextChanged="DropDonList1_TextChanged">
                 <asp:ListItem>NOMBRE</asp:ListItem>
                 <asp:ListItem>FAMILIA</asp:ListItem>
                 <asp:ListItem>ID</asp:ListItem>
@@ -24,7 +25,7 @@
             <br />
             <br />
             <asp:Label ID="Label4" runat="server" Text="SELECCIONE FAMILIA:" Visible="False"></asp:Label>
-            <asp:DropDownList ID="DropDownList2" runat="server" Visible="False">
+            <asp:DropDownList ID="DropDownList2" CssClass="form-select" runat="server" Visible="False">
             </asp:DropDownList>
 &nbsp;<br />
             <br />

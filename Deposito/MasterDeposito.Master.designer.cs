@@ -24,6 +24,15 @@ namespace Sistema_Integral_HPS.Deposito
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
 
         /// <summary>
+        /// Control form1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
         /// Control Label1.
         /// </summary>
         /// <remarks>
@@ -33,13 +42,13 @@ namespace Sistema_Integral_HPS.Deposito
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Control form1.
+        /// Control LinkButton1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
 
         /// <summary>
         /// Control ContentPlaceHolder1.

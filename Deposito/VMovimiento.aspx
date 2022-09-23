@@ -2,14 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <br />
     <asp:Label ID="Label1" class="h1 justify-content-center" runat="server">VER TODOS LOS MOVIMIENTOS</asp:Label>
     <hr />
     <div class="row">
             <div class="col-lg-3">
-                <asp:Label ID="Label3" class="row justify-content-center h3" runat="server" Text="Seleccione movimiento:"></asp:Label>
+                <asp:Label ID="Label3" class="font-weight-normal" runat="server" Text="Seleccione movimiento:"></asp:Label>
             </div>
             <div class="col-lg-3">
-                <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server" DataTextField="descripcion" DataValueField="id">
+                <asp:DropDownList ID="DropDownList1" CssClass="form-select" runat="server" DataTextField="descripcion" DataValueField="id" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
             <div class="col-lg-3">

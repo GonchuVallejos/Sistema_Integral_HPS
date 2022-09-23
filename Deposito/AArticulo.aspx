@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <br />
     <asp:Label ID="Label3" class="justify-content-center h1" runat="server">REGISTRAR UN NUEVO ARTICULO</asp:Label>
     <hr />
     <div class="row">
@@ -16,7 +17,7 @@
         </div>
     </div>
     <div class="col-lg-8">
-        <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive" PageSize="10" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AllowPaging="True" OnPageIndexChanged="GridView1_PageIndexChanged" OnPageIndexChanging="GridView1_PageIndexChanging">
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive" PageSize="10" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging">
             <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
         </asp:GridView>
     </div>
@@ -28,15 +29,15 @@
         <asp:TextBox ID="TextBox2" runat="server" class="form-control" required="True"></asp:TextBox>
         <br />
         <Label class="font-weight-normal">FAMILIA:</Label>
-            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
             </asp:DropDownList>
         <br />
         <Label class="font-weight-normal">UNIDAD:</Label>
-            <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control">
+            <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-select">
             </asp:DropDownList>
         <br />
         <Label class="font-weight-normal">DEPOSITO:</Label>
-            <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-control">
+            <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-select">
             </asp:DropDownList>
         <br />
         <Label class="font-weight-normal">STOCK:</Label>
@@ -52,13 +53,13 @@
         <asp:TextBox ID="TextBox6" runat="server" class="form-control" required="True"></asp:TextBox>
         <br />
         <Label class="font-weight-normal">INVENTARIABLE:</Label>
-            <asp:DropDownList ID="DropDownList4" runat="server" CssClass="form-control">
+            <asp:DropDownList ID="DropDownList4" runat="server" CssClass="form-select">
                 <asp:ListItem Value="NO">NO</asp:ListItem>
                 <asp:ListItem Value="SI">SI</asp:ListItem>
             </asp:DropDownList>
         <br />
         <Label class="font-weight-normal">HABILITADO?:</Label>
-            <asp:DropDownList ID="DropDownList5" runat="server" CssClass="form-control">
+            <asp:DropDownList ID="DropDownList5" runat="server" CssClass="form-select">
                 <asp:ListItem>SI</asp:ListItem>
                 <asp:ListItem>NO</asp:ListItem>
             </asp:DropDownList>

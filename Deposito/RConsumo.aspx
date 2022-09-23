@@ -2,13 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <br />
     <asp:Label ID="Label1" class="justify-content-center h1" runat="server">REPORTE CONSUMO POR SERVICIOS</asp:Label>
     <hr />
 
     <asp:Panel runat="server" ID="Panel1">
         <asp:Label ID="Label2" runat="server" class="justify-content-center" Text="Seleccione el servicio: "></asp:Label>
-        <asp:DropDownList ID="DropDownList1" runat="server">
+        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select">
         </asp:DropDownList>
 
 

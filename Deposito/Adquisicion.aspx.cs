@@ -192,7 +192,7 @@ namespace Sistema_Integral_HPS.Deposito
                     cm7.ExecuteNonQuery();
 
                 }
-                MessageBox.Show("¡ LA ADQUISICION A SIDO CARGADO CORRECTAMENTE !"); 
+                MessageBox.Show("¡ EL INGRESO A SIDO CARGADO CORRECTAMENTE !"); 
                 coon.Close();
                 Response.Redirect("/Deposito/IndexDeposito.aspx");
             }

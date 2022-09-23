@@ -9,101 +9,60 @@
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="../css/styles.css" />
     <script src="JavaScript.js"></script>
-    <title></title>
+    <title>SISTEMA DE DEPOSITO HPS</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body style="display: grid; min-height: 100vh; grid-template-rows: auto 1fr auto;">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="IndexDeposito.aspx">SISTEMA DE DEPOSITO</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">PEDIDOS</a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="APedido.aspx">ALTA PEDIDOS</a></li>
-                            <li><a class="dropdown-item" href="VPedido.aspx">VER PEDIDOS</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">MOVIMIENTOS</a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="VPedido.aspx">REALIZAR SUMINISTRO</a></li>
-                            <li><a class="dropdown-item" href="Adquisicion.aspx">REALIZAR ADQUISICIONES</a></li>
-                            <li><a class="dropdown-item" href="Ajustes.aspx">REALIZAR AJUSTES</a></li>
-                            <li><a class="dropdown-item" href="VMovimiento.aspx">CONSULTAR MOVIMIENTOS</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">ARTICULOS</a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="AArticulo.aspx">REGISTRAR ARTICULO</a></li>
-                            <li><a class="dropdown-item" href="stock.aspx">CONSULTAR STOCK</a></li>
-                            <li><a class="dropdown-item" href="VHistorico.aspx">HISTORICO DE PRECIOS</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">VARIOS</a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="RConsumo.aspx">CONSULTAR CONSUMOS/SERVICIOS</a></li>
-                            <li><a class="dropdown-item" href="AServicio.aspx">REGISTRAR SERVICIOS</a></li>
-                            <li><a class="dropdown-item" href="AProveedores.aspx">REGISTRAR PROVEEDOR</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="APedido.aspx">CERRAR SESIÓN</a></li>
-                        </ul>
-                    </li>
-                    <%--<li class="nav-item">
-              <a class="nav-link active" href="APedido.aspx">Alta Pedidos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="AArticulo.aspx">Alta Articulos</a>
-            </li>
-              <li class="nav-item">
-              <a class="nav-link active" href="VPedido.aspx">Ver Pedidos</a>
-            </li>
-               <li class="nav-item">
-              <a class="nav-link active" href="Adquisicion.aspx">Adquisicion</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="VMovimiento.aspx">Ver Movimientos</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link active" href="Ajustes.aspx">Ajustes</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link active" href="stock.aspx">Consultar Stock</a>
-            </li>
-              <li class="nav-item active">
-              <a class="nav-link active" href="RConsumo.aspx">Ver consumo servicio</a>
-            </li>
-              <li class="nav-item active">
-              <a class="nav-link active" href="AServicio.aspx">Alta Servicio</a>
-            </li>
-                <li class="nav-item active">
-              <a class="nav-link active" href="AProveedores.aspx">Alta Proveedor</a>
-            </li>
-              <li class="nav-item active">
-              <a class="nav-link active" href="VHistorico.aspx">Precios por Articulo</a>
-            </li> 
-          </ul>
-        </div>
-
-
-        <div>
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-        </div>--%>
-            </div>
-    </nav>
-
+<body style="display:grid; min-height:100vh; grid-template-rows:auto 1fr auto;">
     <form id="form1" runat="server">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="IndexDeposito.aspx">SISTEMA DE DEPOSITO</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">PEDIDOS</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="APedido.aspx">ALTA PEDIDOS</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">MOVIMIENTOS</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="VPedido.aspx">REALIZAR SUMINISTRO</a></li>
+                                <li><a class="dropdown-item" href="Adquisicion.aspx">REALIZAR INGRESO</a></li>
+                                <li><a class="dropdown-item" href="Ajustes.aspx">REALIZAR AJUSTES</a></li>
+                                <li><a class="dropdown-item" href="VMovimiento.aspx">CONSULTAR MOVIMIENTOS</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">ARTICULOS</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="AArticulo.aspx">REGISTRAR ARTICULO</a></li>
+                                <li><a class="dropdown-item" href="stock.aspx">CONSULTAR STOCK</a></li>
+                                <li><a class="dropdown-item" href="VHistorico.aspx">HISTORICO DE PRECIOS</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">VARIOS</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="RConsumo.aspx">CONSULTAR CONSUMOS/SERVICIOS</a></li>
+                                <li><a class="dropdown-item" href="AServicio.aspx">REGISTRAR SERVICIOS</a></li>
+                                <li><a class="dropdown-item" href="AProveedores.aspx">REGISTRAR PROVEEDOR</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <asp:Label ID="Label1" CssClass="text-uppercase" runat="server" Text="Label"></asp:Label></a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li class="d-flex justify-content-center">
+                                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="link-danger" OnClick="LinkButton1_Click">CERRAR SESIÓN</asp:LinkButton></li>
+                            </ul>
+                        </li>
+                </div>
+        </nav>
         <div class="container">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
@@ -111,41 +70,11 @@
     </form>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Footer -->
+    <%--<footer class="py-2" style="background-color: #1D7FAC; margin-top: 1em">
+        <div class="container">
+            <p class="m-0 text-center text-white" id="clfooter">&copy; HOSPITAL PABLO SORIA - 2022</p>
+        </div>
+    </footer>--%>
 </body>
 </html>
-
-<%--<html>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="IndexRexy.aspx">REXY REPORT BY CÑOMPUTOS</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="Vista.aspx">Principal</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">aaaaaaaaaaa</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider" /></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            </div>
-        </div>
-    </nav>
-    <form id="form1" runat="server">
-        <div class="container">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-    </form>
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>--%>

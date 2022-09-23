@@ -1,20 +1,17 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Deposito/MasterDeposito.Master" AutoEventWireup="true" CodeBehind="VPedido.aspx.cs" Inherits="Sistema_Integral_HPS.Deposito.VPedido"  EnableEventValidation = "false"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Deposito/MasterDeposito.Master" AutoEventWireup="true" CodeBehind="VPedido.aspx.cs" Inherits="Sistema_Integral_HPS.Deposito.VPedido" EnableEventValidation="false" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <header>
-      
-
-
-    </header>   
+    <br />
     <asp:Label ID="Label1" class="justify-content-center h1" runat="server">CONSULTAR PEDIDOS</asp:Label>
     <hr />
     <asp:Panel ID="Panel1" runat="server">
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <Columns>
-                <asp:CommandField HeaderText="VER" ShowSelectButton="True" ButtonType="Button" >
-                <ControlStyle CssClass="form-control" />
+                <asp:CommandField HeaderText="VER" ShowSelectButton="True" ButtonType="Button">
+                    <ControlStyle CssClass="form-control" />
                 </asp:CommandField>
                 <asp:BoundField DataField="id" HeaderText="ID" />
                 <asp:BoundField DataField="NOMBRE Y APELLIDO" HeaderText="USUARIO QUE SOLICITA" />
@@ -26,41 +23,36 @@
         <br />
     </asp:Panel>
     <asp:Panel ID="Panel2" runat="server" Visible="False">
-
-        <asp:Label ID="Label2" class="row justify-content-center h2" runat="server" Text="PEDIDO"></asp:Label>
+        <asp:Label ID="Label2" class="justify-content-center h2" runat="server" Text="PEDIDO"></asp:Label>
         <hr />
         <div class="row">
-            <div class="col-lg-3">
-                <asp:Label ID="Label3" class="row justify-content-center h3" runat="server" Text="Usuario solicitante:"></asp:Label>
+            <div class="col-lg-2">
+                <asp:Label ID="Label3" class="font-weight-normal" runat="server" Text="Usuario solicitante:"></asp:Label>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <asp:TextBox ID="TextBox1" class="form-control" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
             </div>
-            <div class="col-lg-3">
-                <asp:Label ID="Label4" class="row justify-content-center h3" runat="server" Text="Fecha de solicitud:"></asp:Label>
+            <div class="col-lg-2">
+                <asp:Label ID="Label4" class="font-weight-normal" runat="server" Text="Fecha de solicitud:"></asp:Label>
+            </div>
+            <div class="col-lg-2">
+                <asp:TextBox ID="TextBox2" class="form-control" runat="server"></asp:TextBox>
+            </div>
+            <div class="col-lg-1">
+                <asp:Label ID="Label6" class="font-weight-normal" runat="server" Text="Retira:"></asp:Label>
             </div>
             <div class="col-lg-3">
-                <asp:TextBox ID="TextBox2" class="form-control" runat="server" Height="24px"></asp:TextBox>
+                <asp:TextBox ID="TextBox3" class="form-control" runat="server"></asp:TextBox>
             </div>
         </div>
-
-        <div>
-            <asp:Label ID="Label6"  class="row justify-content-center h3" runat="server" Text="Retira:"></asp:Label>
-        </div>
-        
-        <div>
-            <asp:TextBox ID="TextBox3" class="form-control" runat="server" Height="24px"></asp:TextBox>
-
-        </div>
-        
         <br />
         <asp:Label ID="Label5" class="row justify-content-center h2" runat="server" Text="DETALLE"></asp:Label>
         <hr />
-       
+
         <asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating" DataKeyNames="iddetalle">
             <Columns>
-                <asp:CommandField HeaderText="Editar" ShowEditButton="True" ButtonType="Button" >
-                <ControlStyle CssClass="form-control" />
+                <asp:CommandField HeaderText="Editar" ShowEditButton="True" ButtonType="Button">
+                    <ControlStyle CssClass="form-control" />
                 </asp:CommandField>
                 <asp:BoundField DataField="fk_articulo" HeaderText="ID ARTICULO" />
                 <asp:BoundField DataField="descripcion" HeaderText="DESCRIPCION DEL ARTICULO" />
@@ -75,7 +67,7 @@
         <div class="row">
             <div class="col-lg-2">
             </div>
-           <div class="col-lg-4">
+            <div class="col-lg-4">
                 <asp:Button ID="btn_verpedidos" runat="server" class="btn btn-lg btn-success" OnClick="btn_verpedidos_Click" Text="VER PEDIDOS" />
             </div>
             <div class="col-lg-4">
@@ -84,8 +76,8 @@
             <div class="col-lg-4">
                 <asp:Button ID="btn_cancelar" runat="server" class="btn btn-lg btn-danger" Text="CANCELAR" OnClick="btn_cancelar_Click" />
             </div>
-                <br />
-                <br />
+            <br />
+            <br />
             <div>
                 <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Imprimir" />
                 <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Imprimir Adriel" Visible="False" />

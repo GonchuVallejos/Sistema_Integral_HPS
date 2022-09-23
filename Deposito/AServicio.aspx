@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <br />
     <asp:Label ID="Label3" runat="server" class="justify-content-center h1">ALTA SERVICIO</asp:Label>
     <hr />
     <br />

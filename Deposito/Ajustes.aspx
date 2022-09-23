@@ -2,9 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <br />
     <asp:Label ID="Label3" runat="server" class="justify-content-center h1">AJUSTES</asp:Label>
-    <br />
-    <br />
+    <hr />
      <div class="col-lg-4">
             <Label class="font-weight-normal">INGRESE NOMBRE DEL ARTICULO A AJUSTAR:</Label>
         </div>
@@ -23,7 +23,7 @@
     </asp:GridView>
     <br />
     <asp:Label ID="Label4" runat="server" Text="INGRESE EL TIPO DE AJUSTE:" Visible="False"></asp:Label>
-    <asp:DropDownList ID="DropDownList1" runat="server" Visible="False" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select" Visible="False" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
         <asp:ListItem Value="1">Positivo</asp:ListItem>
         <asp:ListItem Value="0">Negativo</asp:ListItem>
     </asp:DropDownList>

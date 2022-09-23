@@ -196,5 +196,9 @@ namespace Sistema_Integral_HPS.Deposito
 
         }
 
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
