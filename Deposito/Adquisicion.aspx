@@ -64,10 +64,11 @@
             <br />
             <br />
     </div>
-    <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+    <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <Columns>
             <asp:CommandField ShowSelectButton="True" />
         </Columns>
+        <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
     </asp:GridView>
           <br />
           ARTICULO:
@@ -93,10 +94,11 @@
     <asp:Button ID="Button2" class="btn btn-lg btn-info" runat="server" Text="AGREGAR ITEM" OnClick="Button2_Click" />
     <br />
 <br />
-<asp:GridView ID="GridView2" runat="server" OnRowDeleting="GridView2_RowDeleting" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
+<asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-condensed table-responsive" OnRowDeleting="GridView2_RowDeleting" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
     <Columns>
         <asp:CommandField ShowDeleteButton="True" />
     </Columns>
+    <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
 </asp:GridView>
     <br />
     <br />

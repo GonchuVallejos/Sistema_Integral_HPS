@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="col-lg-8">
-        <asp:GridView ID="GridView1" runat="server" PageSize="10" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AllowPaging="True" OnPageIndexChanged="GridView1_PageIndexChanged" OnPageIndexChanging="GridView1_PageIndexChanging">
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive" PageSize="10" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" AllowPaging="True" OnPageIndexChanged="GridView1_PageIndexChanged" OnPageIndexChanging="GridView1_PageIndexChanging">
             <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
         </asp:GridView>
     </div>

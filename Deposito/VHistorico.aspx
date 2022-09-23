@@ -10,9 +10,11 @@
     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="BUSCAR" />
     <br />
     <br />
-    <asp:GridView ID="GridView1" runat="server">
+    <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive">
+        <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
     </asp:GridView>
-    <asp:GridView ID="GridView2" runat="server">
+    <asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-condensed table-responsive">
+        <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
     </asp:GridView>
     <br />
     <br />

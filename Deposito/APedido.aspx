@@ -20,7 +20,7 @@
         &nbsp;<asp:Label ID="Label6" runat="server" Text="Label" Visible="False"></asp:Label>
         <br />
 &nbsp;<asp:Label ID="Label5" runat="server" Text="Label" Visible="False"></asp:Label>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" style="margin-top: 6px; text-align: center; width:90%" DataKeyNames="id" HorizontalAlign="Center">
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" DataKeyNames="id" HorizontalAlign="Center">
             <Columns>
                 <asp:CommandField ShowSelectButton="True" HeaderText="SELECCIONAR" />
                 <asp:BoundField DataField="id" HeaderText="ID" />
@@ -41,7 +41,7 @@
         </div>
         <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
         <br />
-        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnRowDeleting="GridView2_RowDeleting" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
+        <asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-condensed table-responsive" AutoGenerateColumns="False" OnRowDeleting="GridView2_RowDeleting" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating" HorizontalAlign="Center" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="id articulo" HeaderText="ID ARTICULO" />
                 <asp:BoundField HeaderText="ARTICULO" DataField="articulo" />

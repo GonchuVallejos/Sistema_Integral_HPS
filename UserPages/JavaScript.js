@@ -7,3 +7,6 @@
         leer.readAsDataURL(input.file[0]);
     }
 }
+$('.menu li a '.click(function () {
+    window.location.href = $(this).attr("href")
+})

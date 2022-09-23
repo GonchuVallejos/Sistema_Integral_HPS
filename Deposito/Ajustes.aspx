@@ -15,10 +15,11 @@
             <asp:Button ID="Button1" class="btn btn-lg btn-info" runat="server" Text="BUSCAR" OnClick="Button1_Click" />
             <br />
         </div>
-    <asp:GridView ID="GridView1" style="margin-top: 6px; text-align: center; width:90%" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+    <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <Columns>
             <asp:CommandField ShowSelectButton="True" />
         </Columns>
+        <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
     </asp:GridView>
     <br />
     <asp:Label ID="Label4" runat="server" Text="INGRESE EL TIPO DE AJUSTE:" Visible="False"></asp:Label>
@@ -40,10 +41,11 @@
     <asp:TextBox ID="TextBox3" runat="server" Height="63px" Visible="False" Width="723px"></asp:TextBox>
     <br />
     <br />
-    <asp:GridView ID="GridView2" runat="server" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" OnRowDeleted="GridView2_RowDeleted" OnRowDeleting="GridView2_RowDeleting">
+    <asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-condensed table-responsive" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" OnRowDeleted="GridView2_RowDeleted" OnRowDeleting="GridView2_RowDeleting">
         <Columns>
             <asp:CommandField ShowDeleteButton="True" />
         </Columns>
+        <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
     </asp:GridView>
     <br />
     <asp:Button ID="Button2" class="btn btn-lg btn-info" runat="server" Text="Agregar al Ajuste" OnClick="Button2_Click" Visible="False" />
