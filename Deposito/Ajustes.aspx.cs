@@ -21,7 +21,7 @@ namespace Sistema_Integral_HPS.Deposito
                 DataColumn ID = dt.Columns.Add("ID ARTICULO", typeof(Int32));
                 DataColumn ART = dt.Columns.Add("ARTICULO", typeof(string));
                 DataColumn CANTIDAD = dt.Columns.Add("CANTIDAD", typeof(Int32));
-                DataColumn TIPO = dt.Columns.Add("TIPO", typeof(Int32));
+                DataColumn TIPO = dt.Columns.Add("TIPO", typeof(string));
                 DataColumn OBSERVACION = dt.Columns.Add("OBSERVACION", typeof(string));
                 ViewState["RECORD"] = dt;
 
@@ -116,14 +116,14 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 int ida = Convert.ToInt32(dt.Rows[i]["ID ARTICULO"].ToString());
                 int cant = Convert.ToInt32(dt.Rows[i]["CANTIDAD"].ToString());
-                int tipo = Convert.ToInt32(dt.Rows[i]["TIPO"].ToString());
+                string tipo = dt.Rows[i]["TIPO"].ToString();
                 string obs = dt.Rows[i]["OBSERVACION"].ToString();
                 MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_ajuste(id,fk_ajuste,fk_articulo,cantidad,tipo_ajuste,observacion) VALUES (NULL,'" + idajuste + "','" + ida + "','" + cant + "','" + tipo + "','" + obs + "')", coon);
                 cm.CommandType = CommandType.Text;
                 cm.ExecuteNonQuery();
                 
 
-                if (tipo == 1) //COMPARO UNO A UNO LOS ARTICULOS SI ES AJUSTE POSITIVO O NEGATIVO, EN BASE A ESO DESCUENTO O SUMO STOCK
+                if (tipo == "Positivo") //COMPARO UNO A UNO LOS ARTICULOS SI ES AJUSTE POSITIVO O NEGATIVO, EN BASE A ESO DESCUENTO O SUMO STOCK
                 {
                     //SE ACTUALIZA EL STOCK DE ARTICULOS, SUMANDO EL ACTUAL MAS EL AJUSTE
                     MySqlCommand cm3 = new MySqlCommand("UPDATE articulo SET stock = stock + '" + Convert.ToInt16(dt.Rows[i]["CANTIDAD"].ToString()) + "' WHERE id = '" + Convert.ToInt16(dt.Rows[i]["ID ARTICULO"].ToString()) + "'", coon);

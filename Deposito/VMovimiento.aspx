@@ -20,7 +20,7 @@
      <asp:GridView ID="GridView1"  runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Visible="False" DataKeyNames="fk_pedido,fk_ajuste,fk_adquisicion">
          <Columns>
              <asp:CommandField ShowSelectButton="True" />
-             <asp:BoundField DataField="idmov" FooterText="Holaaaa" HeaderText="ID" />
+             <asp:BoundField DataField="idpedido" FooterText="Holaaaa" HeaderText="ID Pedido" />
              <asp:BoundField DataField="fk_pedido" HeaderText="fk_pedido" Visible="False" />
              <asp:BoundField DataField="usuario_confirma" HeaderText="APROBADO POR" />
              <asp:BoundField DataField="estado" HeaderText="ESTADO" />

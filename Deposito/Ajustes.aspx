@@ -24,8 +24,8 @@
     <br />
     <asp:Label ID="Label4" runat="server" Text="INGRESE EL TIPO DE AJUSTE:" Visible="False"></asp:Label>
     <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select" Visible="False" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-        <asp:ListItem Value="1">Positivo</asp:ListItem>
-        <asp:ListItem Value="0">Negativo</asp:ListItem>
+        <asp:ListItem Value="Positivo">Positivo</asp:ListItem>
+        <asp:ListItem Value="Negativo">Negativo</asp:ListItem>
     </asp:DropDownList>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:Label ID="Label7" runat="server" Text="ID ARTICULO SELECCIONADO:" Visible="False"></asp:Label>

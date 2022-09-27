@@ -50,15 +50,8 @@
         INGRESE NOMBRE DE DONADOR/PRESTADOR:&nbsp;<asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
     </asp:Panel>
 
-
     <asp:Panel ID="Panel2" runat="server" Visible="false">
-
-
-
-
-        <div class="col-lg-4">
-
-
+              <div class="col-lg-4">
             <br />
             <label class="font-weight-normal">
                 <br />
@@ -109,9 +102,5 @@
         <br />
         <br />
         <asp:Button ID="Button3" class="btn btn-lg btn-info" runat="server" Text="FINALIZAR INGRESO" OnClick="Button3_Click" />
-
-
-
-    </asp:Panel>
-
+  </asp:Panel>
 </asp:Content>

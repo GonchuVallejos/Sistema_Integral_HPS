@@ -18,7 +18,6 @@ namespace Sistema_Integral_HPS
                 LlenarDrop();
             }
         }
-
         protected void LlenarDrop()
         {
             MySqlConnection coon = Conexion.getConexion();
@@ -37,11 +36,6 @@ namespace Sistema_Integral_HPS
             DropDownList2.DataTextField = "descripcion";
             DropDownList2.DataSource = dt;
             DropDownList2.DataBind();
-
-
-
-
-         
 
             coon.Close();
         }
@@ -90,7 +84,6 @@ namespace Sistema_Integral_HPS
                 GridView1.Visible = false;
             }
         }
-
         protected void DropDonList1_TextChanged(object sender, EventArgs e)
         {
 

@@ -17,6 +17,8 @@ namespace Sistema_Integral_HPS.Deposito
         {
             if (!IsPostBack)
             {
+                TextBox1.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
+                TextBox2.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
                 LlenarDrop();
             }
            

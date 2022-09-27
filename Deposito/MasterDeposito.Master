@@ -49,6 +49,7 @@
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">VARIOS</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="RConsumo.aspx">CONSULTAR CONSUMOS/SERVICIOS</a></li>
+                                <li><a class="dropdown-item" href="RArticulo.aspx">CONSULTAR CONSUMOS DE ARTICULO</a></li>
                                 <li><a class="dropdown-item" href="AServicio.aspx">REGISTRAR SERVICIOS</a></li>
                                 <li><a class="dropdown-item" href="AProveedores.aspx">REGISTRAR PROVEEDOR</a></li>
                             </ul>

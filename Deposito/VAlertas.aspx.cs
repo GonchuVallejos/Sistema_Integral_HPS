@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace Sistema_Integral_HPS.Deposito
 {
-    public partial class IndexDeposito : System.Web.UI.Page
+    public partial class VAlertas : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             DataTable dta1 = new DataTable();
             DataTable dta2 = new DataTable();
-           
+
 
             MySqlConnection coon = Conexion.getConexion();
             MySqlCommand cm = new MySqlCommand("SELECT id AS ID, descripcion AS DESCRIPCION, descripcion_adicional AS 'DESC. ADICIONAL', stock AS 'STOCK ACTUAL', stock_minimo AS 'STOCK MINIMO', ultimo_precio AS 'ULTIMO PRECIO' FROM articulo WHERE stock<=stock_minimo", coon);
@@ -43,15 +43,15 @@ namespace Sistema_Integral_HPS.Deposito
             GridView1.DataBind();
             ViewState["RECORD2"] = dta1;
 
-
+            
             GridView2.DataSource = dta2;
             GridView2.DataBind();
             ViewState["RECORD3"] = dta2;
 
 
-           
+
             coon.Close();
-            
+
             if (GridView1.Rows.Count > 0)
             {
                 Panel1.Visible = true;
@@ -62,7 +62,6 @@ namespace Sistema_Integral_HPS.Deposito
                 Panel2.Visible = true;
             }
 
-           
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,14 +69,9 @@ namespace Sistema_Integral_HPS.Deposito
 
         }
 
-        protected void LinkButton3_Click(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Deposito/VAlertas.aspx");
-        }
-
-        protected void LinkButton2_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/Deposito/VAlertas.aspx");
+            Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
     }
 }
