@@ -48,22 +48,41 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            DateTime ini = Convert.ToDateTime(TextBox1.Text);
-            DateTime fin = Convert.ToDateTime(TextBox2.Text);
-            MySqlConnection coon = Conexion.getConexion();
 
-            MySqlCommand cm = new MySqlCommand("SELECT pedido.id AS 'Id Pedido',detalle_pedido.fk_articulo AS 'Id Articulo',articulo.descripcion AS 'Descripcion' ,SUM(detalle_pedido.cantidad) AS 'Cantidad',unidad_medida.descripcion AS 'Medida' FROM detalle_pedido INNER JOIN pedido ON pedido.id=detalle_pedido.fk_pedido INNER JOIN articulo ON articulo.id=detalle_pedido.fk_articulo INNER JOIN unidad_medida ON articulo.fk_unimedidas=unidad_medida.id WHERE pedido.servicio_division=" + DropDownList1.Text+ " AND pedido.estado='CONFIRMADO' AND DATE(pedido.fecha) >= '" + ini.ToString("yyyy-MM-dd") +"' AND DATE(pedido.fecha) <= '" + fin.ToString("yyyy-MM-dd") +"' GROUP BY articulo.descripcion", coon);
-            cm.CommandType = CommandType.Text;
-            cm.ExecuteNonQuery();
+            if ((Convert.ToDateTime(TextBox1.Text).Date <= DateTime.Now.Date) && (Convert.ToDateTime(TextBox2.Text).Date <= DateTime.Now.Date))
+            {
+                if (Convert.ToDateTime(TextBox1.Text).Date <= Convert.ToDateTime(TextBox2.Text).Date)
+                {
+                    DateTime ini = Convert.ToDateTime(TextBox1.Text);
+                    DateTime fin = Convert.ToDateTime(TextBox2.Text);
+                    MySqlConnection coon = Conexion.getConexion();
 
-            MySqlDataAdapter da = new MySqlDataAdapter(cm);
-            da.Fill(dta);
+                    MySqlCommand cm = new MySqlCommand("SELECT pedido.id AS 'Id Pedido',detalle_pedido.fk_articulo AS 'Id Articulo',articulo.descripcion AS 'Descripcion' ,SUM(detalle_pedido.cantidad) AS 'Cantidad',unidad_medida.descripcion AS 'Medida' FROM detalle_pedido INNER JOIN pedido ON pedido.id=detalle_pedido.fk_pedido INNER JOIN articulo ON articulo.id=detalle_pedido.fk_articulo INNER JOIN unidad_medida ON articulo.fk_unimedidas=unidad_medida.id WHERE pedido.servicio_division=" + DropDownList1.Text + " AND pedido.estado='CONFIRMADO' AND DATE(pedido.fecha) >= '" + ini.ToString("yyyy-MM-dd") + "' AND DATE(pedido.fecha) <= '" + fin.ToString("yyyy-MM-dd") + "' GROUP BY articulo.descripcion", coon);
+                    cm.CommandType = CommandType.Text;
+                    cm.ExecuteNonQuery();
 
-            GridView1.DataSource = dta;
-            ViewState["RECORD2"] = dta;
-            GridView1.DataBind();
+                    MySqlDataAdapter da = new MySqlDataAdapter(cm);
+                    da.Fill(dta);
 
-            coon.Close();
+                    GridView1.DataSource = dta;
+                    ViewState["RECORD2"] = dta;
+                    GridView1.DataBind();
+
+                    coon.Close();
+                }
+                else
+                {
+                    string msg = "LA FECHA DE INICIO DEBE SER MENOR QUE LA FINAL";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+                }
+            }
+            else
+            {
+                string msg = "FECHA INGRESADA INCORRECTA, DEBE SER MENOR A LA FECHA ACTUAL";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+            }
+
+            
         }
     }
 }

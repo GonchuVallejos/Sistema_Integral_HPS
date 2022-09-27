@@ -138,7 +138,30 @@ namespace Sistema_Integral_HPS.Deposito
             Response.Redirect("/Deposito/VPedido.aspx");
         }
         protected void btn_guardar_Click(object sender, EventArgs e)
-        {
+        {    // Permito que el usuario seleccione una impresora
+            // Abro el cuadro de dialogo
+            System.Windows.Forms.PrintDialog pd = new System.Windows.Forms.PrintDialog();
+
+            // Creo la instacia de la configuarion de impresion
+            pd.PrinterSettings = new PrinterSettings();
+
+            // Creo el tipo de letra que se va a usar
+            printFont = new System.Drawing.Font(fontName, fontSize, FontStyle.Regular);
+
+            //creo el documento con el que vamos a trabjar
+            PrintDocument doc = new PrintDocument();
+
+            //Determina la impresora que vamos a usar es la que seleccionamos en la configuracion
+            doc.PrinterSettings.PrinterName = pd.PrinterSettings.PrinterName;
+
+            //Nombre en del documento
+            doc.DocumentName = "Impresion de Prueba";
+
+            //Organiza la pagina para posteriomente imprimirla
+            doc.PrintPage += new PrintPageEventHandler(pr_PrintPage);
+
+            //Imprime el documento
+            doc.Print();
             MySqlConnection coon = Conexion.getConexion();
 
             DataTable dta1 = (DataTable)ViewState["RECORD2"];
@@ -171,7 +194,8 @@ namespace Sistema_Integral_HPS.Deposito
             coon.Close();
             Response.Redirect("/Deposito/IndexDeposito.aspx");
 
-            
+           
+
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -201,31 +225,7 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            // Permito que el usuario seleccione una impresora
-            // Abro el cuadro de dialogo
-            System.Windows.Forms.PrintDialog pd = new System.Windows.Forms.PrintDialog();
-
-            // Creo la instacia de la configuarion de impresion
-            pd.PrinterSettings = new PrinterSettings();
-
-            // Creo el tipo de letra que se va a usar
-            printFont = new System.Drawing.Font(fontName, fontSize, FontStyle.Regular);
-
-            //creo el documento con el que vamos a trabjar
-            PrintDocument doc = new PrintDocument();
-
-            //Determina la impresora que vamos a usar es la que seleccionamos en la configuracion
-            doc.PrinterSettings.PrinterName = pd.PrinterSettings.PrinterName;
-
-            //Nombre en del documento
-            doc.DocumentName = "Impresion de Prueba";
-
-            //Organiza la pagina para posteriomente imprimirla
-            doc.PrintPage += new PrintPageEventHandler(pr_PrintPage);
-
-            //Imprime el documento
-            doc.Print();
-
+          
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -353,14 +353,39 @@ namespace Sistema_Integral_HPS.Deposito
             //Agregamos tantas lineas como querramos y posiciones variadas.
             for (int i = 0; i <  GridView2.Rows.Count; i++)
             {
-                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[1].Text+ "\n \n", printFont, myBrush, PosX, PosY+(i*10), new StringFormat());
-                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[2].Text + "\n \n", printFont, myBrush, PosX+30, PosY + (i * 10), new StringFormat());
-                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[3].Text + "\n \n", printFont, myBrush, PosX+100, PosY + (i * 10), new StringFormat());
+                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[1].Text+ "\n ", printFont, myBrush, PosX, PosY+(i*10), new StringFormat());
+                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[2].Text + "\n", printFont, myBrush, PosX+30, PosY + (i * 10), new StringFormat());
+                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[3].Text + "\n", printFont, myBrush, PosX+100, PosY + (i * 10), new StringFormat());
 
             }
 
             gfx.DrawString("FIRMA RECIBE: \n \n", printFont, myBrush, PosXi-30, PosY+((GridView2.Rows.Count + 1)*10), new StringFormat());
-            gfx.DrawString("____________________________________________Linea de corte____________________________________________\n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 2) * 10), new StringFormat());
+            gfx.DrawString("____________________________________________Linea de corte____________________________________________\n ", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 2) * 10), new StringFormat());
+
+            //duplicado
+
+            gfx.DrawImage(newImage, PosXi, PosY + ((GridView2.Rows.Count + 1) * 20), 15, 15);
+            gfx.DrawString("HOSPITAL PABLO SORIA\n\n\n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * 20), new StringFormat());
+            gfx.DrawString("Fecha de retiro: " + DateTime.Now, printFont, myBrush, PosX + 50, PosY + ((GridView2.Rows.Count + 1) * 20), new StringFormat());
+            gfx.DrawString("ID PEDIDO: " + GridView1.SelectedRow.Cells[1].Text, printFont, myBrush, PosX + 130, PosY + ((GridView2.Rows.Count + 1) * 20), new StringFormat());
+            gfx.DrawString("Sumistrado a: " + GridView1.SelectedRow.Cells[3].Text, printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * 20) + 3, new StringFormat());
+            gfx.DrawString("Pedido por: " + GridView1.SelectedRow.Cells[2].Text, printFont, myBrush, PosX + 50, PosY + ((GridView2.Rows.Count + 1) * 20) + 3, new StringFormat());
+            gfx.DrawString("------------------------------\n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * 20) + 5, new StringFormat());
+            gfx.DrawString("ID ARTICULO\n \n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * 20) + 10, new StringFormat());
+            gfx.DrawString("DESCRIPCION\n \n \n", printFont, myBrush, PosX + 30, PosY + ((GridView2.Rows.Count + 1) * 20) + 10, new StringFormat());
+            gfx.DrawString("CANTIDAD\n \n \n", printFont, myBrush, PosX + 100, PosY + ((GridView2.Rows.Count + 1) * 20) + 10, new StringFormat());
+            //Agregamos tantas lineas como querramos y posiciones variadas.
+            for (int i = 0; i < GridView2.Rows.Count; i++)
+            {
+                gfx.DrawString("\n \n \n \n \n " + GridView2.Rows[i].Cells[1].Text + "\n ", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * 20) + (i * 10), new StringFormat());
+                gfx.DrawString("\n \n \n \n  \n" + GridView2.Rows[i].Cells[2].Text + "\n ", printFont, myBrush, PosX + 30, PosY + ((GridView2.Rows.Count + 1) * 20) + (i * 10), new StringFormat());
+                gfx.DrawString("\n \n \n \n \n " + GridView2.Rows[i].Cells[3].Text + "\n ", printFont, myBrush, PosX + 100, PosY + ((GridView2.Rows.Count + 1) * 20) + (i * 10), new StringFormat());
+
+            }
+
+            gfx.DrawString("FIRMA ENTREGA: \n \n", printFont, myBrush, PosXi - 30, PosY + ((GridView2.Rows.Count + 1) * 20) + ((GridView2.Rows.Count + 1) * 10), new StringFormat());
+            gfx.DrawString("____________________________________________Linea de corte____________________________________________\n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * 20) + ((GridView2.Rows.Count + 2) * 10), new StringFormat());
+
 
         }
 
