@@ -37,6 +37,7 @@ namespace Sistema_Integral_HPS.Deposito
         Graphics gfx = null;
         int PosX=10,PosY=5;
         int PosXi = 180, PosYi = 5;
+        int n = 16, m=8;
 
         public System.Drawing.Font PrintFont { get => printFont; set => printFont = value; }
 
@@ -345,7 +346,7 @@ namespace Sistema_Integral_HPS.Deposito
             gfx.DrawString("Fecha de retiro: "+DateTime.Now, printFont, myBrush, PosX+50, PosY, new StringFormat());
             gfx.DrawString("ID PEDIDO: " + GridView1.SelectedRow.Cells[1].Text, printFont, myBrush, PosX + 130, PosY, new StringFormat());
             gfx.DrawString("Sumistrado a: " + GridView1.SelectedRow.Cells[3].Text, printFont, myBrush, PosX, PosY+3, new StringFormat());
-            gfx.DrawString("Pedido por: " + GridView1.SelectedRow.Cells[2].Text, printFont, myBrush, PosX+50, PosY + 3, new StringFormat());
+            gfx.DrawString("Pedido por: " + GridView1.SelectedRow.Cells[2].Text, printFont, myBrush, PosX+110, PosY + 3, new StringFormat());
             gfx.DrawString("------------------------------\n \n", printFont, myBrush, PosX, PosY+5, new StringFormat());
             gfx.DrawString("ID ARTICULO\n \n \n", printFont, myBrush, PosX, PosY+10, new StringFormat());
             gfx.DrawString("DESCRIPCION\n \n \n", printFont, myBrush, PosX+30, PosY + 10, new StringFormat());
@@ -353,38 +354,38 @@ namespace Sistema_Integral_HPS.Deposito
             //Agregamos tantas lineas como querramos y posiciones variadas.
             for (int i = 0; i <  GridView2.Rows.Count; i++)
             {
-                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[1].Text+ "\n ", printFont, myBrush, PosX, PosY+(i*10), new StringFormat());
-                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[2].Text + "\n", printFont, myBrush, PosX+30, PosY + (i * 10), new StringFormat());
-                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[3].Text + "\n", printFont, myBrush, PosX+100, PosY + (i * 10), new StringFormat());
+                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[1].Text+ "\n ", printFont, myBrush, PosX, PosY+(i*m), new StringFormat());
+                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[2].Text + "\n", printFont, myBrush, PosX+30, PosY + (i * m), new StringFormat());
+                gfx.DrawString("\n \n \n \n \n" + GridView2.Rows[i].Cells[3].Text + "\n", printFont, myBrush, PosX+100, PosY + (i * m ), new StringFormat());
 
             }
 
             gfx.DrawString("FIRMA RECIBE: \n \n", printFont, myBrush, PosXi-30, PosY+((GridView2.Rows.Count + 1)*10), new StringFormat());
-            gfx.DrawString("____________________________________________Linea de corte____________________________________________\n ", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 2) * 10), new StringFormat());
+            gfx.DrawString("____________________________________________Linea de corte____________________________________________\n ", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 2) * m), new StringFormat());
 
             //duplicado
 
-            gfx.DrawImage(newImage, PosXi, PosY + ((GridView2.Rows.Count + 1) * 20), 15, 15);
-            gfx.DrawString("HOSPITAL PABLO SORIA\n\n\n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * 20), new StringFormat());
-            gfx.DrawString("Fecha de retiro: " + DateTime.Now, printFont, myBrush, PosX + 50, PosY + ((GridView2.Rows.Count + 1) * 20), new StringFormat());
-            gfx.DrawString("ID PEDIDO: " + GridView1.SelectedRow.Cells[1].Text, printFont, myBrush, PosX + 130, PosY + ((GridView2.Rows.Count + 1) * 20), new StringFormat());
-            gfx.DrawString("Sumistrado a: " + GridView1.SelectedRow.Cells[3].Text, printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * 20) + 3, new StringFormat());
-            gfx.DrawString("Pedido por: " + GridView1.SelectedRow.Cells[2].Text, printFont, myBrush, PosX + 50, PosY + ((GridView2.Rows.Count + 1) * 20) + 3, new StringFormat());
-            gfx.DrawString("------------------------------\n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * 20) + 5, new StringFormat());
-            gfx.DrawString("ID ARTICULO\n \n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * 20) + 10, new StringFormat());
-            gfx.DrawString("DESCRIPCION\n \n \n", printFont, myBrush, PosX + 30, PosY + ((GridView2.Rows.Count + 1) * 20) + 10, new StringFormat());
-            gfx.DrawString("CANTIDAD\n \n \n", printFont, myBrush, PosX + 100, PosY + ((GridView2.Rows.Count + 1) * 20) + 10, new StringFormat());
+            gfx.DrawImage(newImage, PosXi, PosY + ((GridView2.Rows.Count + 1) * n), 15, 15);
+            gfx.DrawString("HOSPITAL PABLO SORIA\n\n\n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * n), new StringFormat());
+            gfx.DrawString("Fecha de retiro: " + DateTime.Now, printFont, myBrush, PosX + 50, PosY + ((GridView2.Rows.Count + 1) * n), new StringFormat());
+            gfx.DrawString("ID PEDIDO: " + GridView1.SelectedRow.Cells[1].Text, printFont, myBrush, PosX + 130, PosY + ((GridView2.Rows.Count + 1) * n), new StringFormat());
+            gfx.DrawString("Sumistrado a: " + GridView1.SelectedRow.Cells[3].Text, printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * n) + 3, new StringFormat());
+            gfx.DrawString("Pedido por: " + GridView1.SelectedRow.Cells[2].Text, printFont, myBrush, PosX + 110, PosY + ((GridView2.Rows.Count + 1) * n) + 3, new StringFormat());
+            gfx.DrawString("------------------------------\n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * n) + 5, new StringFormat());
+            gfx.DrawString("ID ARTICULO\n \n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * n) + 10, new StringFormat());
+            gfx.DrawString("DESCRIPCION\n \n \n", printFont, myBrush, PosX + 30, PosY + ((GridView2.Rows.Count + 1) * n) + 10, new StringFormat());
+            gfx.DrawString("CANTIDAD\n \n \n", printFont, myBrush, PosX + 100, PosY + ((GridView2.Rows.Count + 1) * n) + 10, new StringFormat());
             //Agregamos tantas lineas como querramos y posiciones variadas.
             for (int i = 0; i < GridView2.Rows.Count; i++)
             {
-                gfx.DrawString("\n \n \n \n \n " + GridView2.Rows[i].Cells[1].Text + "\n ", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * 20) + (i * 10), new StringFormat());
-                gfx.DrawString("\n \n \n \n  \n" + GridView2.Rows[i].Cells[2].Text + "\n ", printFont, myBrush, PosX + 30, PosY + ((GridView2.Rows.Count + 1) * 20) + (i * 10), new StringFormat());
-                gfx.DrawString("\n \n \n \n \n " + GridView2.Rows[i].Cells[3].Text + "\n ", printFont, myBrush, PosX + 100, PosY + ((GridView2.Rows.Count + 1) * 20) + (i * 10), new StringFormat());
+                gfx.DrawString("\n \n \n \n \n " + GridView2.Rows[i].Cells[1].Text + "\n ", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * n) + (i * 10), new StringFormat());
+                gfx.DrawString("\n \n \n \n  \n" + GridView2.Rows[i].Cells[2].Text + "\n ", printFont, myBrush, PosX + 30, PosY + ((GridView2.Rows.Count + 1) * n) + (i * 10), new StringFormat());
+                gfx.DrawString("\n \n \n \n \n " + GridView2.Rows[i].Cells[3].Text + "\n ", printFont, myBrush, PosX + 100, PosY + ((GridView2.Rows.Count + 1) * n) + (i * 10), new StringFormat());
 
             }
 
-            gfx.DrawString("FIRMA ENTREGA: \n \n", printFont, myBrush, PosXi - 30, PosY + ((GridView2.Rows.Count + 1) * 20) + ((GridView2.Rows.Count + 1) * 10), new StringFormat());
-            gfx.DrawString("____________________________________________Linea de corte____________________________________________\n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * 20) + ((GridView2.Rows.Count + 2) * 10), new StringFormat());
+            gfx.DrawString("FIRMA ENTREGA: \n \n", printFont, myBrush, PosXi - 30, PosY + ((GridView2.Rows.Count + 1) * n) + ((GridView2.Rows.Count + 1) * 10), new StringFormat());
+            gfx.DrawString("____________________________________________Linea de corte____________________________________________\n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * n) + ((GridView2.Rows.Count + 2) * m), new StringFormat());
 
 
         }
