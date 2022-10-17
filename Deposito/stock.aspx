@@ -15,7 +15,7 @@
                 <asp:ListItem>ID</asp:ListItem>
             </asp:DropDownList>
             &nbsp;
-            <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="CARGAR" />
+            <asp:Button ID="Button4" class="btn btn-lg btn-info" runat="server" OnClick="Button4_Click" Text="CARGAR" />
             <br />
             <br />
             <asp:Label ID="Label3" runat="server" Text="INGRESE EL NOMBRE DEL ARTICULO A BUSCAR:" Visible="False"></asp:Label>

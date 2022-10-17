@@ -151,6 +151,7 @@
     <Content Include="Deposito\AArticulo.aspx" />
     <Content Include="Deposito\Adquisicion.aspx" />
     <Content Include="Deposito\Ajustes.aspx" />
+    <Content Include="Deposito\APedido_Provision.aspx" />
     <Content Include="Deposito\APedido.aspx" />
     <Content Include="Deposito\AServicio.aspx" />
     <Content Include="Deposito\Deposito.css" />
@@ -163,6 +164,9 @@
     <Content Include="Deposito\VAlertas.aspx" />
     <Content Include="Deposito\VHistorico.aspx" />
     <Content Include="Deposito\VMovimiento.aspx" />
+    <Content Include="Deposito\VPedido_Provision_Usuario.aspx" />
+    <Content Include="Deposito\VPedido_Usuario.aspx" />
+    <Content Include="Deposito\VPedido_Provision.aspx" />
     <Content Include="Deposito\VPedido.aspx" />
     <Content Include="Deposito\stock.aspx" />
     <Content Include="Images\Logo HPS.svg" />
@@ -216,6 +220,13 @@
     </Compile>
     <Compile Include="Deposito\Ajustes.aspx.designer.cs">
       <DependentUpon>Ajustes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deposito\APedido_Provision.aspx.cs">
+      <DependentUpon>APedido_Provision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\APedido_Provision.aspx.designer.cs">
+      <DependentUpon>APedido_Provision.aspx</DependentUpon>
     </Compile>
     <Compile Include="Deposito\APedido.aspx.cs">
       <DependentUpon>APedido.aspx</DependentUpon>
@@ -287,6 +298,27 @@
     </Compile>
     <Compile Include="Deposito\VMovimiento.aspx.designer.cs">
       <DependentUpon>VMovimiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deposito\VPedido_Provision_Usuario.aspx.cs">
+      <DependentUpon>VPedido_Provision_Usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\VPedido_Provision_Usuario.aspx.designer.cs">
+      <DependentUpon>VPedido_Provision_Usuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deposito\VPedido_Usuario.aspx.cs">
+      <DependentUpon>VPedido_Usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\VPedido_Usuario.aspx.designer.cs">
+      <DependentUpon>VPedido_Usuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deposito\VPedido_Provision.aspx.cs">
+      <DependentUpon>VPedido_Provision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\VPedido_Provision.aspx.designer.cs">
+      <DependentUpon>VPedido_Provision.aspx</DependentUpon>
     </Compile>
     <Compile Include="Deposito\VPedido.aspx.cs">
       <DependentUpon>VPedido.aspx</DependentUpon>

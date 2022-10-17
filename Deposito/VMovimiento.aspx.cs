@@ -52,12 +52,28 @@ namespace Sistema_Integral_HPS.Deposito
                 GridView2.DataSource = dta2;
                 GridView2.DataBind();
             }
-                 
-
-
-
             coon.Close();
-           
+        }
+
+        protected void GridView5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridView5.Visible = false;
+            DataTable dta1 = (DataTable)ViewState["RECORD2"];
+            DataTable dta2 = new DataTable();
+
+            MySqlConnection coon = Conexion.getConexion();
+
+            int idm = Convert.ToInt32(dta1.Rows[0]["fk_tipo_movimiento"].ToString());
+            if (idm == 1002)
+            {
+                int idp = Convert.ToInt32(GridView5.SelectedDataKey.Values[3].ToString());
+                MySqlCommand cm1 = new MySqlCommand("SELECT detalle_pedido_provision.fk_articulo AS 'ID ARTICULO',detalle_pedido_provision.cantidad AS 'CANTIDAD',articulo.descripcion AS 'ARTICULO',detalle_pedido_provision.observacion AS 'OBSERVACION' FROM detalle_pedido_provision INNER JOIN articulo  ON detalle_pedido_provision.fk_articulo=articulo.id WHERE detalle_pedido_provision.fk_pedido_provision='" + idp + "' GROUP BY detalle_pedido_provision.fk_articulo", coon);
+                MySqlDataAdapter da = new MySqlDataAdapter(cm1);
+                da.Fill(dta2);
+                GridView2.DataSource = dta2;
+                GridView2.DataBind();
+            }
+            coon.Close();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -67,6 +83,7 @@ namespace Sistema_Integral_HPS.Deposito
                 GridView4.Visible = false;
                 GridView1.Visible = true;
                 GridView3.Visible = false;
+                GridView5.Visible = false;
                 MySqlConnection coon = Conexion.getConexion();
 
                 MySqlCommand cm = new MySqlCommand("SELECT pedido.id AS idpedido, fk_pedido, fk_tipo_movimiento, fk_adquisicion, fk_ajuste, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario_confirma, movimiento.estado AS estado, movimiento.observacion AS observacion, pedido.servicio_division AS idservicio, servicio_division.descripcion AS servicio_pide, movimiento.retira AS retira, movimiento.fecha_alta AS fecha_alta FROM `movimiento` INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN pedido ON movimiento.fk_pedido = pedido.id INNER JOIN servicio_division ON servicio_division.id = pedido.servicio_division WHERE `fk_tipo_movimiento` = '" + DropDownList1.SelectedValue + "' ORDER BY pedido.id", coon);
@@ -90,8 +107,9 @@ namespace Sistema_Integral_HPS.Deposito
                 {
                     GridView1.Visible = false;
                     GridView3.Visible = true;
-                    GridView4.Visible = false; 
-                    
+                    GridView4.Visible = false;
+                    GridView5.Visible = false;
+
                     MySqlConnection coon = Conexion.getConexion();
 
                     //********************************************
@@ -126,6 +144,7 @@ namespace Sistema_Integral_HPS.Deposito
                         GridView4.Visible = true;
                         GridView3.Visible = false;
                         GridView1.Visible = false;
+                        GridView5.Visible = false;
                         MySqlConnection coon = Conexion.getConexion();
 
                         MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "' GROUP BY movimiento.fk_pedido, movimiento.fk_adquisicion, movimiento.fk_ajuste ", coon);
@@ -138,6 +157,29 @@ namespace Sistema_Integral_HPS.Deposito
                         GridView4.DataSource = dta;
                         ViewState["RECORD4"] = dta;
                         GridView4.DataBind();
+
+                        coon.Close();
+                        GridView2.DataSource = null;
+                        GridView2.DataBind();
+                    }
+                    else
+                    {
+                        GridView4.Visible = false;
+                        GridView1.Visible = false;
+                        GridView3.Visible = false;
+                        GridView5.Visible = true;
+                        MySqlConnection coon = Conexion.getConexion();
+
+                        MySqlCommand cm = new MySqlCommand("SELECT pedido_provision.id AS idpedido, fk_pedido, fk_pedido_provision, fk_tipo_movimiento, fk_adquisicion, fk_ajuste,CONCAT(persona.nombre, ' ', persona.apellido) AS usuario_confirma, movimiento.estado AS estado, movimiento.observacion AS observacion, pedido_provision.servicio_division AS idservicio, servicio_division.descripcion AS servicio_pide, movimiento.retira AS retira, movimiento.fecha_alta AS fecha_alta FROM `movimiento` INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN pedido_provision ON movimiento.fk_pedido_provision = pedido_provision.id INNER JOIN servicio_division ON servicio_division.id = pedido_provision.servicio_division WHERE `fk_tipo_movimiento` = '" + DropDownList1.SelectedValue + "' ORDER BY pedido_provision.id", coon);
+                        cm.CommandType = CommandType.Text;
+                        cm.ExecuteNonQuery();
+
+                        MySqlDataAdapter da = new MySqlDataAdapter(cm);
+                        da.Fill(dta);
+
+                        GridView5.DataSource = dta;
+                        ViewState["RECORD2"] = dta;
+                        GridView5.DataBind();
 
                         coon.Close();
                         GridView2.DataSource = null;
@@ -196,9 +238,18 @@ namespace Sistema_Integral_HPS.Deposito
 
         }
 
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+           
+
+            protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
+        protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

@@ -11,7 +11,7 @@ namespace Sistema_Integral_HPS.Deposito
 {
 
 
-    public partial class VPedido
+    public partial class VPedido_Provision
     {
 
         /// <summary>

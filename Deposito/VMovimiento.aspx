@@ -35,6 +35,26 @@
          </Columns>
          <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
      </asp:GridView>
+
+         <asp:GridView ID="GridView5"  runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" Visible="False" DataKeyNames="fk_pedido,fk_ajuste,fk_adquisicion,fk_pedido_provision" OnSelectedIndexChanged="GridView5_SelectedIndexChanged">
+         <Columns>
+             <asp:CommandField ShowSelectButton="True" />
+             <asp:BoundField DataField="idpedido" FooterText="Holaaaa" HeaderText="ID Pedido" />
+             <asp:BoundField DataField="fk_pedido_provision" HeaderText="fk_pedido_provision" Visible="False" />
+             <asp:BoundField DataField="usuario_confirma" HeaderText="APROBADO POR" />
+             <asp:BoundField DataField="estado" HeaderText="ESTADO" />
+             <asp:BoundField DataField="fecha_alta" HeaderText="FECHA DE APROBACIÓN" />
+             <asp:BoundField DataField="observacion" HeaderText="OBSERVACIONES" />
+             <asp:BoundField DataField="fk_ajuste" HeaderText="fk_ajuste" Visible="False" />
+             <asp:BoundField DataField="fk_tipo_movimiento" HeaderText="fk_tipo_movimiento" Visible="False" />
+             <asp:BoundField DataField="fk_adquisicion" HeaderText="fk_adquisicion" Visible="False" />
+             <asp:BoundField DataField="servicio_pide" HeaderText="DESTINO" />
+             <asp:BoundField DataField="retira" HeaderText="RETIRÓ" />
+             <asp:BoundField DataField="idservicio" HeaderText="ID servicio" Visible="False" />
+         </Columns>
+         <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+     </asp:GridView>
+
      <asp:GridView ID="GridView3"  runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView3_SelectedIndexChanged" Visible="False" DataKeyNames="fk_pedido,fk_ajuste,fk_adquisicion">
          <Columns>
              <asp:CommandField ShowSelectButton="True" />
@@ -68,7 +88,7 @@
          <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
      </asp:GridView>
     <br />
-    <asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center">
+    <asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
         <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
     </asp:GridView>
     <br />

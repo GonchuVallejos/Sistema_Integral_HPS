@@ -24,7 +24,7 @@ using System.Threading;
 
 namespace Sistema_Integral_HPS.Deposito
 {
-	public partial class VPedido : System.Web.UI.Page
+	public partial class VPedido_Provision : System.Web.UI.Page
 	{
        
         DataTable dt = new DataTable();
@@ -47,7 +47,7 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 DataTable dta = new DataTable();
                 MySqlConnection coon = Conexion.getConexion();
-                MySqlCommand cm = new MySqlCommand("SELECT pedido.id, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion, pedido.fecha FROM pedido INNER JOIN usuario ON pedido.fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE estado = 'PENDIENTE'", coon);
+                MySqlCommand cm = new MySqlCommand("SELECT pedido_provision.id, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion, pedido_provision.fecha FROM pedido_provision INNER JOIN usuario ON pedido_provision.fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE estado = 'PENDIENTE'", coon);
                 cm.CommandType = CommandType.Text;
                 cm.ExecuteNonQuery();
 
@@ -76,7 +76,7 @@ namespace Sistema_Integral_HPS.Deposito
             TextBox12.Text = Convert.ToString(GridView11.SelectedRow.Cells[4].Text);
             
             MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm = new MySqlCommand("SELECT detalle_pedido.id as iddetalle, detalle_pedido.fk_pedido as idpedido, detalle_pedido.fk_articulo,articulo.descripcion,detalle_pedido.cantidad,unidad_medida.descripcion AS unidad_medida,detalle_pedido.observacion FROM detalle_pedido INNER JOIN articulo ON detalle_pedido.fk_articulo = articulo.id INNER JOIN unidad_medida ON articulo.fk_unimedidas=unidad_medida.id INNER JOIN pedido ON detalle_pedido.fk_pedido='" + Convert.ToString(GridView11.SelectedRow.Cells[1].Text) + "'GROUP BY detalle_pedido.fk_articulo", coon);
+            MySqlCommand cm = new MySqlCommand("SELECT detalle_pedido_provision.id as iddetalle, detalle_pedido_provision.fk_pedido_provision as idpedido, detalle_pedido_provision.fk_articulo,articulo.descripcion,detalle_pedido_provision.cantidad,unidad_medida.descripcion AS unidad_medida,detalle_pedido_provision.observacion FROM detalle_pedido_provision INNER JOIN articulo ON detalle_pedido_provision.fk_articulo = articulo.id INNER JOIN unidad_medida ON articulo.fk_unimedidas=unidad_medida.id INNER JOIN pedido_provision ON detalle_pedido_provision.fk_pedido_provision='" + Convert.ToString(GridView11.SelectedRow.Cells[1].Text) + "'GROUP BY detalle_pedido_provision.fk_articulo", coon);
             cm.CommandType = CommandType.Text;
             cm.ExecuteNonQuery();
 
@@ -87,7 +87,7 @@ namespace Sistema_Integral_HPS.Deposito
             ViewState["RECORD2"] = dta1;
             coon.Close();
 
-            Panel2.Visible = true;
+            Panel12.Visible = true;
             GridView11.Visible = false;
         }
         protected void GridView12_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -105,7 +105,7 @@ namespace Sistema_Integral_HPS.Deposito
             GridView12.DataSource = dta1;
             GridView12.DataBind();
 
-            btn_guardar1.Visible = true;
+            btn_guardar.Visible = true;
         }
 
         protected void GridView12_RowEditing(object sender, GridViewEditEventArgs e)
@@ -116,7 +116,7 @@ namespace Sistema_Integral_HPS.Deposito
             GridView12.DataSource = dta1;
             GridView12.DataBind();
 
-            btn_guardar1.Visible = false;
+            btn_guardar.Visible = false;
         }
 
         protected void GridView12_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
@@ -127,18 +127,18 @@ namespace Sistema_Integral_HPS.Deposito
             GridView12.DataSource = dta1;
             GridView12.DataBind();
 
-            btn_guardar1.Visible = true;
+            btn_guardar.Visible = true;
         }
 
-        protected void btn_cancelar1_Click(object sender, EventArgs e)
+        protected void btn_cancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
-        protected void btn_verpedidos1_Click(object sender, EventArgs e)
+        protected void btn_verpedidos_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Deposito/VPedido.aspx");
+            Response.Redirect("/Deposito/VPedido_Provision.aspx");
         }
-        protected void btn_guardar1_Click(object sender, EventArgs e)
+        protected void btn_guardar_Click(object sender, EventArgs e)
         {    // Permito que el usuario seleccione una impresora
             // Abro el cuadro de dialogo
             System.Windows.Forms.PrintDialog pd = new System.Windows.Forms.PrintDialog();
@@ -170,25 +170,25 @@ namespace Sistema_Integral_HPS.Deposito
             for (int i = 0; i < dta1.Rows.Count; i++)
             {
                 //SE MODIFICA LA CANTIDAD SOLICITADA Y SE AGREGA LA OBSERVACION DE PORQUE SE MODIFICA
-                MySqlCommand cm = new MySqlCommand("UPDATE detalle_pedido SET detalle_pedido.cantidad = '" + dta1.Rows[i]["CANTIDAD"].ToString() + "', detalle_pedido.observacion = '" + dta1.Rows[i]["OBSERVACION"].ToString() + "' WHERE id = '" + dta1.Rows[i]["iddetalle"].ToString() + "';", coon);
+                MySqlCommand cm = new MySqlCommand("UPDATE detalle_pedido_provision SET detalle_pedido_provision.cantidad = '" + dta1.Rows[i]["CANTIDAD"].ToString() + "', detalle_pedido_provision.observacion = '" + dta1.Rows[i]["OBSERVACION"].ToString() + "' WHERE id = '" + dta1.Rows[i]["iddetalle"].ToString() + "';", coon);
                 cm.CommandType = CommandType.Text;
                 cm.ExecuteNonQuery();
 
                 //SE ACTUALIZA EL STOCK DE ARTICULOS, RESTANDO EL ACTUAL MENOS LO SUMINISTRADO
-                MySqlCommand cm3 = new MySqlCommand("UPDATE articulo SET stock = stock - '" + Convert.ToInt16(dta1.Rows[i]["CANTIDAD"].ToString()) + "' WHERE id = '" + Convert.ToInt16(dta1.Rows[i]["fk_articulo"].ToString()) + "'", coon);
-                cm3.CommandType = CommandType.Text;
-                cm3.ExecuteNonQuery();
+                //MySqlCommand cm3 = new MySqlCommand("UPDATE articulo SET stock = stock - '" + Convert.ToInt16(dta1.Rows[i]["CANTIDAD"].ToString()) + "' WHERE id = '" + Convert.ToInt16(dta1.Rows[i]["fk_articulo"].ToString()) + "'", coon);
+                //cm3.CommandType = CommandType.Text;
+                //cm3.ExecuteNonQuery();
             }
 
             id = Session["usuariologgeado"].ToString();
 
             //SE ACTUALIZA EL ESTADO DEL PEDIDO A CONFIRMADO
-            MySqlCommand cm2 = new MySqlCommand("UPDATE pedido SET estado = 'CONFIRMADO' WHERE id = '" + dta1.Rows[0]["idpedido"].ToString() + "'", coon);
+            MySqlCommand cm2 = new MySqlCommand("UPDATE pedido_provision SET estado = 'CONFIRMADO' WHERE id = '" + dta1.Rows[0]["idpedido"].ToString() + "'", coon);
             cm2.CommandType = CommandType.Text;
             cm2.ExecuteNonQuery();
 
             //SE INSERTA EL MOVIMIENTO
-            MySqlCommand cm1 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado,retira) VALUES (NULL, 1003, '" + dta1.Rows[0]["idpedido"].ToString() + "', NULL, NULL, '" + id + "','CONFIRMADO', '" + TextBox13.Text + "')", coon);
+            MySqlCommand cm1 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_pedido_provision, fk_adquisicion, fk_ajuste, fk_usuario, estado,retira) VALUES (NULL, 1002, NULL, '" + dta1.Rows[0]["idpedido"].ToString() + "', NULL, NULL, '" + id + "','CONFIRMADO', '" + TextBox13.Text + "')", coon);
             cm1.CommandType = CommandType.Text;
             cm1.ExecuteNonQuery();
 
@@ -224,7 +224,7 @@ namespace Sistema_Integral_HPS.Deposito
            
         }
 
-        protected void Button11_Click(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)
         {
           
         }
@@ -234,7 +234,7 @@ namespace Sistema_Integral_HPS.Deposito
 
         }
 
-        protected void Button12_Click(object sender, EventArgs e)
+        protected void Button2_Click(object sender, EventArgs e)
         {
             string Texto_Html = string.Empty;
             Texto_Html = Properties.Resources.PDFPedido.ToString();
@@ -258,6 +258,7 @@ namespace Sistema_Integral_HPS.Deposito
                 filas += "<td>" + GridView12.Rows[i].Cells[1].Text + "</td>";
                 filas += "<td>" + GridView12.Rows[i].Cells[2].Text + "</td>";
                 filas += "<td>" + GridView12.Rows[i].Cells[3].Text + "</td>";
+                filas += "<td>" + GridView12.Rows[i].Cells[5].Text + "</td>";
 
             }
             Texto_Html = Texto_Html.Replace("@filas", filas);
@@ -342,48 +343,52 @@ namespace Sistema_Integral_HPS.Deposito
             gfx = e.Graphics;
             gfx.DrawImage(newImage,PosXi,PosYi,15,15);
             gfx.DrawString("HOSPITAL PABLO SORIA\n\n\n", printFont, myBrush, PosX, PosY, new StringFormat());
-            gfx.DrawString("Fecha de retiro: "+DateTime.Now, printFont, myBrush, PosX+50, PosY, new StringFormat());
-            gfx.DrawString("ID PEDIDO: " + GridView11.SelectedRow.Cells[1].Text, printFont, myBrush, PosX + 130, PosY, new StringFormat());
-            gfx.DrawString("Sumistrado a: " + GridView11.SelectedRow.Cells[3].Text, printFont, myBrush, PosX, PosY+3, new StringFormat());
+            gfx.DrawString("Fecha de pedido: "+DateTime.Now, printFont, myBrush, PosX+50, PosY, new StringFormat());
+            gfx.DrawString("ID Pedido Caja Chica: " + GridView11.SelectedRow.Cells[1].Text, printFont, myBrush, PosX + 130, PosY, new StringFormat());
+            gfx.DrawString("Provision a: " + GridView11.SelectedRow.Cells[3].Text, printFont, myBrush, PosX, PosY+3, new StringFormat());
             gfx.DrawString("Pedido por: " + GridView11.SelectedRow.Cells[2].Text, printFont, myBrush, PosX+110, PosY + 3, new StringFormat());
             gfx.DrawString("------------------------------\n \n", printFont, myBrush, PosX, PosY+5, new StringFormat());
             gfx.DrawString("ID ARTICULO\n \n \n", printFont, myBrush, PosX, PosY+10, new StringFormat());
             gfx.DrawString("DESCRIPCION\n \n \n", printFont, myBrush, PosX+30, PosY + 10, new StringFormat());
             gfx.DrawString("CANTIDAD\n \n \n", printFont, myBrush, PosX+100, PosY + 10, new StringFormat());
+            gfx.DrawString("OBS\n \n \n", printFont, myBrush, PosX + 120, PosY + 10, new StringFormat());
             //Agregamos tantas lineas como querramos y posiciones variadas.
             for (int i = 0; i <  GridView12.Rows.Count; i++)
             {
                 gfx.DrawString("\n \n \n \n \n" + GridView12.Rows[i].Cells[1].Text+ "\n ", printFont, myBrush, PosX, PosY+(i*m), new StringFormat());
                 gfx.DrawString("\n \n \n \n \n" + GridView12.Rows[i].Cells[2].Text + "\n", printFont, myBrush, PosX+30, PosY + (i * m), new StringFormat());
                 gfx.DrawString("\n \n \n \n \n" + GridView12.Rows[i].Cells[3].Text + "\n", printFont, myBrush, PosX+100, PosY + (i * m ), new StringFormat());
+                gfx.DrawString("\n \n \n \n \n" + GridView12.Rows[i].Cells[5].Text + "\n", printFont, myBrush, PosX + 120, PosY + (i * m), new StringFormat());
 
             }
 
-            gfx.DrawString("FIRMA RECIBE: \n \n", printFont, myBrush, PosXi-30, PosY+((GridView12.Rows.Count + 1)*10), new StringFormat());
+            gfx.DrawString("FIRMA Quien pide: \n \n", printFont, myBrush, PosXi-30, PosY+((GridView12.Rows.Count + 1)*10), new StringFormat());
             gfx.DrawString("____________________________________________Linea de corte____________________________________________\n ", printFont, myBrush, PosX, PosY + ((GridView12.Rows.Count + 2) * m), new StringFormat());
 
             //duplicado
 
             gfx.DrawImage(newImage, PosXi, PosY + ((GridView12.Rows.Count + 1) * n), 15, 15);
             gfx.DrawString("HOSPITAL PABLO SORIA\n\n\n", printFont, myBrush, PosX, PosY + ((GridView12.Rows.Count + 1) * n), new StringFormat());
-            gfx.DrawString("Fecha de retiro: " + DateTime.Now, printFont, myBrush, PosX + 50, PosY + ((GridView12.Rows.Count + 1) * n), new StringFormat());
-            gfx.DrawString("ID PEDIDO: " + GridView11.SelectedRow.Cells[1].Text, printFont, myBrush, PosX + 130, PosY + ((GridView12.Rows.Count + 1) * n), new StringFormat());
-            gfx.DrawString("Sumistrado a: " + GridView11.SelectedRow.Cells[3].Text, printFont, myBrush, PosX, PosY + ((GridView12.Rows.Count + 1) * n) + 3, new StringFormat());
+            gfx.DrawString("Fecha de pedido: " + DateTime.Now, printFont, myBrush, PosX + 50, PosY + ((GridView12.Rows.Count + 1) * n), new StringFormat());
+            gfx.DrawString("ID Pedido Caja Chica: " + GridView11.SelectedRow.Cells[1].Text, printFont, myBrush, PosX + 130, PosY + ((GridView12.Rows.Count + 1) * n), new StringFormat());
+            gfx.DrawString("Provision a: " + GridView11.SelectedRow.Cells[3].Text, printFont, myBrush, PosX, PosY + ((GridView12.Rows.Count + 1) * n) + 3, new StringFormat());
             gfx.DrawString("Pedido por: " + GridView11.SelectedRow.Cells[2].Text, printFont, myBrush, PosX + 110, PosY + ((GridView12.Rows.Count + 1) * n) + 3, new StringFormat());
             gfx.DrawString("------------------------------\n \n", printFont, myBrush, PosX, PosY + ((GridView12.Rows.Count + 1) * n) + 5, new StringFormat());
             gfx.DrawString("ID ARTICULO\n \n \n", printFont, myBrush, PosX, PosY + ((GridView12.Rows.Count + 1) * n) + 10, new StringFormat());
             gfx.DrawString("DESCRIPCION\n \n \n", printFont, myBrush, PosX + 30, PosY + ((GridView12.Rows.Count + 1) * n) + 10, new StringFormat());
             gfx.DrawString("CANTIDAD\n \n \n", printFont, myBrush, PosX + 100, PosY + ((GridView12.Rows.Count + 1) * n) + 10, new StringFormat());
+            gfx.DrawString("OBS\n \n \n", printFont, myBrush, PosX + 120, PosY + ((GridView12.Rows.Count + 1) * n) + 10, new StringFormat());
             //Agregamos tantas lineas como querramos y posiciones variadas.
             for (int i = 0; i < GridView12.Rows.Count; i++)
             {
                 gfx.DrawString("\n \n \n \n \n " + GridView12.Rows[i].Cells[1].Text + "\n ", printFont, myBrush, PosX, PosY + ((GridView12.Rows.Count + 1) * n) + (i * 10), new StringFormat());
                 gfx.DrawString("\n \n \n \n  \n" + GridView12.Rows[i].Cells[2].Text + "\n ", printFont, myBrush, PosX + 30, PosY + ((GridView12.Rows.Count + 1) * n) + (i * 10), new StringFormat());
                 gfx.DrawString("\n \n \n \n \n " + GridView12.Rows[i].Cells[3].Text + "\n ", printFont, myBrush, PosX + 100, PosY + ((GridView12.Rows.Count + 1) * n) + (i * 10), new StringFormat());
+                gfx.DrawString("\n \n \n \n \n " + GridView12.Rows[i].Cells[5].Text + "\n ", printFont, myBrush, PosX + 120, PosY + ((GridView12.Rows.Count + 1) * n) + (i * 10), new StringFormat());
 
             }
 
-            gfx.DrawString("FIRMA ENTREGA: \n \n", printFont, myBrush, PosXi - 30, PosY + ((GridView12.Rows.Count + 1) * n) + ((GridView12.Rows.Count + 1) * 10), new StringFormat());
+            gfx.DrawString("FIRMA Responsable Deposito: \n \n", printFont, myBrush, PosXi - 30, PosY + ((GridView12.Rows.Count + 1) * n) + ((GridView12.Rows.Count + 1) * 10), new StringFormat());
             gfx.DrawString("____________________________________________Linea de corte____________________________________________\n \n", printFont, myBrush, PosX, PosY + ((GridView12.Rows.Count + 1) * n) + ((GridView12.Rows.Count + 2) * m), new StringFormat());
 
 

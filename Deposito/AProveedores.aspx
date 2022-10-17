@@ -9,7 +9,7 @@
      <asp:Label ID="Label5" runat="server" Text="INGRESE NOMBRE DEL PROVEEDOR: "></asp:Label>
 &nbsp;<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
     &nbsp;
-    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="BUSCAR" />
+    <asp:Button ID="Button2" class="btn btn-lg btn-info" runat="server" OnClick="Button2_Click" Text="BUSCAR" />
     <br />
     <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive">
     <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -17,5 +17,5 @@
     <asp:Label ID="Label4" runat="server" Text="AGREGAR PROVEEDOR NUEVO: " Visible="False"></asp:Label>
 &nbsp;<asp:TextBox ID="TextBox2" runat="server" Visible="False"></asp:TextBox>
     <br />
-&nbsp;<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="AGREGAR NUEVO" Visible="False" />
+&nbsp;<asp:Button ID="Button1" class="btn btn-lg btn-info" runat="server" OnClick="Button1_Click" Text="AGREGAR NUEVO" Visible="False" />
 </asp:Content>

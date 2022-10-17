@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Deposito/MasterDeposito.Master" AutoEventWireup="true" CodeBehind="VPedido.aspx.cs" Inherits="Sistema_Integral_HPS.Deposito.VPedido" EnableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Deposito/MasterDeposito.Master" AutoEventWireup="true" CodeBehind="VPedido_Provision.aspx.cs" Inherits="Sistema_Integral_HPS.Deposito.VPedido_Provision" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -68,19 +68,19 @@
             <div class="col-lg-2">
             </div>
             <div class="col-lg-4">
-                <asp:Button ID="btn_verpedidos1" runat="server" class="btn btn-lg btn-success" OnClick="btn_verpedidos1_Click" Text="VER PEDIDOS" />
+                <asp:Button ID="btn_verpedidos1" runat="server" class="btn btn-lg btn-success" OnClick="btn_verpedidos_Click" Text="VER PEDIDOS" />
             </div>
             <div class="col-lg-4">
-                <asp:Button ID="btn_guardar1" runat="server" class="btn btn-lg btn-success" Text="CONFIRMAR" OnClick="btn_guardar1_Click" />
+                <asp:Button ID="btn_guardar1" runat="server" class="btn btn-lg btn-success" Text="CONFIRMAR" OnClick="btn_guardar_Click" />
             </div>
             <div class="col-lg-4">
-                <asp:Button ID="btn_cancelar1" runat="server" class="btn btn-lg btn-danger" Text="CANCELAR" OnClick="btn_cancelar1_Click" />
+                <asp:Button ID="btn_cancelar1" runat="server" class="btn btn-lg btn-danger" Text="CANCELAR" OnClick="btn_cancelar_Click" />
             </div>
             <br />
             <br />
             <div>
-                <asp:Button ID="Button11" runat="server" OnClick="Button11_Click" Text="Imprimir" Visible="False" />
-                <asp:Button ID="Button12" runat="server" OnClick="Button12_Click" Text="Imprimir Adriel" Visible="False" />
+                <asp:Button ID="Button11" runat="server" OnClick="Button1_Click" Text="Imprimir" Visible="False" />
+                <asp:Button ID="Button12" runat="server" OnClick="Button2_Click" Text="Imprimir Adriel" Visible="False" />
             </div>
         </div>
     </asp:Panel>

@@ -21,7 +21,7 @@ namespace Sistema_Integral_HPS.Deposito
            
 
             MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm = new MySqlCommand("SELECT id AS ID, descripcion AS DESCRIPCION, descripcion_adicional AS 'DESC. ADICIONAL', stock AS 'STOCK ACTUAL', stock_minimo AS 'STOCK MINIMO', ultimo_precio AS 'ULTIMO PRECIO' FROM articulo WHERE stock<=stock_minimo", coon);
+            MySqlCommand cm = new MySqlCommand("SELECT id AS ID, descripcion AS DESCRIPCION, descripcion_adicional AS 'DESC. ADICIONAL', stock AS 'STOCK ACTUAL', stock_minimo AS 'STOCK MINIMO', ultimo_precio AS 'ULTIMO PRECIO' FROM articulo WHERE stock<=stock_minimo AND habilitado='SI'", coon);
             cm.CommandType = CommandType.Text;
             cm.ExecuteNonQuery();
 
@@ -29,7 +29,7 @@ namespace Sistema_Integral_HPS.Deposito
             da.Fill(dta1);
 
             MySqlConnection coon2 = Conexion.getConexion();
-            MySqlCommand cm2 = new MySqlCommand("SELECT id AS ID, descripcion AS DESCRIPCION, descripcion_adicional AS 'DESC. ADICIONAL', stock AS 'STOCK ACTUAL', stock_puntopedir AS 'LIMITE A PEDIR', ultimo_precio AS 'ULTIMO PRECIO' FROM articulo WHERE stock>=stock_minimo AND stock<=stock_puntopedir ", coon);
+            MySqlCommand cm2 = new MySqlCommand("SELECT id AS ID, descripcion AS DESCRIPCION, descripcion_adicional AS 'DESC. ADICIONAL', stock AS 'STOCK ACTUAL', stock_puntopedir AS 'LIMITE A PEDIR', ultimo_precio AS 'ULTIMO PRECIO' FROM articulo WHERE stock>=stock_minimo AND stock<=stock_puntopedir AND habilitado='SI' ", coon);
             cm2.CommandType = CommandType.Text;
             cm2.ExecuteNonQuery();
 

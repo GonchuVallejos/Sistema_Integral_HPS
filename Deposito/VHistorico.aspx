@@ -8,7 +8,7 @@
     <asp:Label ID="Label2" runat="server" Text="INGRESE EL ID DEL ARTICULO A BUSCAR:" Visible="True"></asp:Label>
     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 &nbsp;
-    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="BUSCAR" />
+    <asp:Button ID="Button1" class="btn btn-lg btn-info" runat="server" OnClick="Button1_Click" Text="BUSCAR" />
     <br />
     <br />
     <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive">

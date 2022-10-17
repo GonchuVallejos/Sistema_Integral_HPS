@@ -23,15 +23,28 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">PEDIDOS</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">NUEVO PEDIDO</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="APedido.aspx">ALTA PEDIDOS</a></li>
+                                <li><a class="dropdown-item" href="APedido.aspx">SUMINISTRO</a></li>
+                                <li><a class="dropdown-item" href="APedido_Provision.aspx">PROVISION (CAJA CHICA)</a></li>
                             </ul>
+
                         </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">MIS PEDIDOS</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="VPedido_Usuario.aspx">PEDIDOS PENDIENTES</a></li>
+                                <li><a class="dropdown-item" href="VPedido_Provision_Usuario.aspx">HISTORIAL PEDIDOS</a></li>
+                            </ul>
+
+                        </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">MOVIMIENTOS</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="VPedido.aspx">REALIZAR SUMINISTRO</a></li>
+                                <li><a class="dropdown-item" href="VPedido_Provision.aspx">CONFIRMAR PEDIDO CAJA CHICA</a></li>
                                 <li><a class="dropdown-item" href="Adquisicion.aspx">REALIZAR INGRESO</a></li>
                                 <li><a class="dropdown-item" href="Ajustes.aspx">REALIZAR AJUSTES</a></li>
                                 <li><a class="dropdown-item" href="VMovimiento.aspx">CONSULTAR MOVIMIENTOS</a></li>

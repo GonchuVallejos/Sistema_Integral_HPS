@@ -56,6 +56,7 @@
             <asp:DropDownList ID="DropDownList4" runat="server" CssClass="form-select">
                 <asp:ListItem Value="NO">NO</asp:ListItem>
                 <asp:ListItem Value="SI">SI</asp:ListItem>
+                <asp:ListItem Value="PENDIENTE">PENDIENTE</asp:ListItem>
             </asp:DropDownList>
         <br />
         <Label class="font-weight-normal">HABILITADO?:</Label>

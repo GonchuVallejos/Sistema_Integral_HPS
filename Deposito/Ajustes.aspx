@@ -54,5 +54,5 @@
     <br />
     <br />
     <br />
-    <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Finalizar el Ajuste" />
+    <asp:Button ID="Button3" class="btn btn-lg btn-info" runat="server" OnClick="Button3_Click" Text="Finalizar el Ajuste" />
 </asp:Content>
