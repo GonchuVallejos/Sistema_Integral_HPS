@@ -71,7 +71,7 @@ namespace Sistema_Integral_HPS.Deposito
         {
             DataTable dta1 = new DataTable();
             Panel12.Visible = true;
-            Panel11.Visible = true;
+            Panel1.Visible = true;
             TextBox11.Text = Convert.ToString(GridView11.SelectedRow.Cells[2].Text); 
             TextBox12.Text = Convert.ToString(GridView11.SelectedRow.Cells[4].Text);
             
