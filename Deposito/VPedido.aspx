@@ -8,7 +8,7 @@
     <asp:Label ID="Label11" class="justify-content-center h1" runat="server">CONSULTAR PEDIDOS</asp:Label>
     <hr />
     <asp:Panel ID="Panel1" runat="server">
-        <asp:GridView ID="GridView11" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+        <asp:GridView ID="GridView11" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView11_SelectedIndexChanged">
             <Columns>
                 <asp:CommandField HeaderText="VER" ShowSelectButton="True" ButtonType="Button">
                     <ControlStyle CssClass="form-control" />
@@ -49,7 +49,7 @@
         <asp:Label ID="Label15" class="row justify-content-center h2" runat="server" Text="DETALLE"></asp:Label>
         <hr />
 
-        <asp:GridView ID="GridView12" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating" DataKeyNames="iddetalle" OnSelectedIndexChanged="GridView2_SelectedIndexChanged1">
+        <asp:GridView ID="GridView12" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" OnRowCancelingEdit="GridView12_RowCancelingEdit" OnRowEditing="GridView12_RowEditing" OnRowUpdating="GridView12_RowUpdating" DataKeyNames="iddetalle" OnSelectedIndexChanged="GridView12_SelectedIndexChanged1">
             <Columns>
                 <asp:CommandField HeaderText="Editar" ShowEditButton="True" ButtonType="Button">
                     <ControlStyle CssClass="form-control" />

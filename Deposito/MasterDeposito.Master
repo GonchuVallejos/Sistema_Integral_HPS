@@ -43,10 +43,10 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">MOVIMIENTOS</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="VPedido.aspx">REALIZAR SUMINISTRO</a></li>
-                                <li><a class="dropdown-item" href="VPedido_Provision.aspx">CONFIRMAR PEDIDO CAJA CHICA</a></li>
+                                <li><a class="dropdown-item" href="VPedido.aspx">REALIZAR SUMINISTRO</a></li>                        
                                 <li><a class="dropdown-item" href="Adquisicion.aspx">REALIZAR INGRESO</a></li>
                                 <li><a class="dropdown-item" href="Ajustes.aspx">REALIZAR AJUSTES</a></li>
+                                <li><a class="dropdown-item" href="VPedido_Provision.aspx">CONFIRMAR PEDIDO CAJA CHICA</a></li>
                                 <li><a class="dropdown-item" href="VMovimiento.aspx">CONSULTAR MOVIMIENTOS</a></li>
                             </ul>
                         </li>

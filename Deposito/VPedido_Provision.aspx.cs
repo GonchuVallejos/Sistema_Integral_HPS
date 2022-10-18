@@ -82,8 +82,9 @@ namespace Sistema_Integral_HPS.Deposito
 
             MySqlDataAdapter da = new MySqlDataAdapter(cm);
             da.Fill(dta1);
-            GridView12.DataSource = dta1;
-            GridView12.DataBind();
+            //ojo
+            GridView11.DataSource = dta1;
+            GridView11.DataBind();
             ViewState["RECORD2"] = dta1;
             coon.Close();
 
@@ -199,7 +200,7 @@ namespace Sistema_Integral_HPS.Deposito
 
         }
 
-        protected void TextBox11_TextChanged(object sender, EventArgs e)
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
             
         }
