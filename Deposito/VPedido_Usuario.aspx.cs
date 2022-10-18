@@ -54,8 +54,8 @@ namespace Sistema_Integral_HPS.Deposito
                 MySqlDataAdapter da = new MySqlDataAdapter(cm);
                 da.Fill(dta);
 
-                GridView1.DataSource = dta;
-                GridView1.DataBind();
+                GridView11.DataSource = dta;
+                GridView11.DataBind();
                 ViewState["RECORD"] = dt;
                 coon.Close();
             }
@@ -67,16 +67,16 @@ namespace Sistema_Integral_HPS.Deposito
             //required to avoid the runtime error "  
             //Control 'GridView1' of type 'GridView' must be placed inside a form tag with runat=server."  
         }
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void GridView11_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable dta1 = new DataTable();
             Panel12.Visible = true;
             Panel11.Visible = true;
-            TextBox11.Text = Convert.ToString(GridView1.SelectedRow.Cells[2].Text); 
-            TextBox12.Text = Convert.ToString(GridView1.SelectedRow.Cells[4].Text);
+            TextBox11.Text = Convert.ToString(GridView11.SelectedRow.Cells[2].Text); 
+            TextBox12.Text = Convert.ToString(GridView11.SelectedRow.Cells[4].Text);
             
             MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm = new MySqlCommand("SELECT detalle_pedido.id as iddetalle, detalle_pedido.fk_pedido as idpedido, detalle_pedido.fk_articulo,articulo.descripcion,detalle_pedido.cantidad,unidad_medida.descripcion AS unidad_medida,detalle_pedido.observacion FROM detalle_pedido INNER JOIN articulo ON detalle_pedido.fk_articulo = articulo.id INNER JOIN unidad_medida ON articulo.fk_unimedidas=unidad_medida.id INNER JOIN pedido ON detalle_pedido.fk_pedido='" + Convert.ToString(GridView1.SelectedRow.Cells[1].Text) + "'GROUP BY detalle_pedido.fk_articulo", coon);
+            MySqlCommand cm = new MySqlCommand("SELECT detalle_pedido.id as iddetalle, detalle_pedido.fk_pedido as idpedido, detalle_pedido.fk_articulo,articulo.descripcion,detalle_pedido.cantidad,unidad_medida.descripcion AS unidad_medida,detalle_pedido.observacion FROM detalle_pedido INNER JOIN articulo ON detalle_pedido.fk_articulo = articulo.id INNER JOIN unidad_medida ON articulo.fk_unimedidas=unidad_medida.id INNER JOIN pedido ON detalle_pedido.fk_pedido='" + Convert.ToString(GridView11.SelectedRow.Cells[1].Text) + "'GROUP BY detalle_pedido.fk_articulo", coon);
             cm.CommandType = CommandType.Text;
             cm.ExecuteNonQuery();
 
@@ -88,7 +88,7 @@ namespace Sistema_Integral_HPS.Deposito
             coon.Close();
 
             Panel12.Visible = true;
-            GridView1.Visible = false;
+            GridView11.Visible = false;
         }
         protected void GridView2_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
@@ -343,9 +343,9 @@ namespace Sistema_Integral_HPS.Deposito
             gfx.DrawImage(newImage,PosXi,PosYi,15,15);
             gfx.DrawString("HOSPITAL PABLO SORIA\n\n\n", printFont, myBrush, PosX, PosY, new StringFormat());
             gfx.DrawString("Fecha de retiro: "+DateTime.Now, printFont, myBrush, PosX+50, PosY, new StringFormat());
-            gfx.DrawString("ID PEDIDO: " + GridView1.SelectedRow.Cells[1].Text, printFont, myBrush, PosX + 130, PosY, new StringFormat());
-            gfx.DrawString("Sumistrado a: " + GridView1.SelectedRow.Cells[3].Text, printFont, myBrush, PosX, PosY+3, new StringFormat());
-            gfx.DrawString("Pedido por: " + GridView1.SelectedRow.Cells[2].Text, printFont, myBrush, PosX+110, PosY + 3, new StringFormat());
+            gfx.DrawString("ID PEDIDO: " + GridView11.SelectedRow.Cells[1].Text, printFont, myBrush, PosX + 130, PosY, new StringFormat());
+            gfx.DrawString("Sumistrado a: " + GridView11.SelectedRow.Cells[3].Text, printFont, myBrush, PosX, PosY+3, new StringFormat());
+            gfx.DrawString("Pedido por: " + GridView11.SelectedRow.Cells[2].Text, printFont, myBrush, PosX+110, PosY + 3, new StringFormat());
             gfx.DrawString("------------------------------\n \n", printFont, myBrush, PosX, PosY+5, new StringFormat());
             gfx.DrawString("ID ARTICULO\n \n \n", printFont, myBrush, PosX, PosY+10, new StringFormat());
             gfx.DrawString("DESCRIPCION\n \n \n", printFont, myBrush, PosX+30, PosY + 10, new StringFormat());
@@ -367,9 +367,9 @@ namespace Sistema_Integral_HPS.Deposito
             gfx.DrawImage(newImage, PosXi, PosY + ((GridView2.Rows.Count + 1) * n), 15, 15);
             gfx.DrawString("HOSPITAL PABLO SORIA\n\n\n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * n), new StringFormat());
             gfx.DrawString("Fecha de retiro: " + DateTime.Now, printFont, myBrush, PosX + 50, PosY + ((GridView2.Rows.Count + 1) * n), new StringFormat());
-            gfx.DrawString("ID PEDIDO: " + GridView1.SelectedRow.Cells[1].Text, printFont, myBrush, PosX + 130, PosY + ((GridView2.Rows.Count + 1) * n), new StringFormat());
-            gfx.DrawString("Sumistrado a: " + GridView1.SelectedRow.Cells[3].Text, printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * n) + 3, new StringFormat());
-            gfx.DrawString("Pedido por: " + GridView1.SelectedRow.Cells[2].Text, printFont, myBrush, PosX + 110, PosY + ((GridView2.Rows.Count + 1) * n) + 3, new StringFormat());
+            gfx.DrawString("ID PEDIDO: " + GridView11.SelectedRow.Cells[1].Text, printFont, myBrush, PosX + 130, PosY + ((GridView2.Rows.Count + 1) * n), new StringFormat());
+            gfx.DrawString("Sumistrado a: " + GridView11.SelectedRow.Cells[3].Text, printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * n) + 3, new StringFormat());
+            gfx.DrawString("Pedido por: " + GridView11.SelectedRow.Cells[2].Text, printFont, myBrush, PosX + 110, PosY + ((GridView2.Rows.Count + 1) * n) + 3, new StringFormat());
             gfx.DrawString("------------------------------\n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * n) + 5, new StringFormat());
             gfx.DrawString("ID ARTICULO\n \n \n", printFont, myBrush, PosX, PosY + ((GridView2.Rows.Count + 1) * n) + 10, new StringFormat());
             gfx.DrawString("DESCRIPCION\n \n \n", printFont, myBrush, PosX + 30, PosY + ((GridView2.Rows.Count + 1) * n) + 10, new StringFormat());

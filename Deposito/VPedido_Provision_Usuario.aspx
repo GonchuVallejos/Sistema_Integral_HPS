@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Deposito/MasterDeposito.Master" AutoEventWireup="true" CodeBehind="VPedido_Provision_Usuario.aspx.cs" Inherits="Sistema_Integral_HPS.Deposito.VPedido_Provision" EnableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Deposito/MasterDeposito.Master" AutoEventWireup="true" CodeBehind="VPedido_Provision_Usuario.aspx.cs" Inherits="Sistema_Integral_HPS.Deposito.VPedido_Provision_Usuario" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -8,7 +8,7 @@
     <asp:Label ID="Label1" class="justify-content-center h1" runat="server">CONSULTAR PEDIDOS</asp:Label>
     <hr />
     <asp:Panel ID="Panel11" runat="server">
-        <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+        <asp:GridView ID="GridView11" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView11_SelectedIndexChanged">
             <Columns>
                 <asp:CommandField HeaderText="VER" ShowSelectButton="True" ButtonType="Button">
                     <ControlStyle CssClass="form-control" />

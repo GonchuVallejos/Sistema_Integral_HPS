@@ -70,10 +70,10 @@ namespace Sistema_Integral_HPS.Deposito
         protected void GridView11_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable dta1 = new DataTable();
-            Panel12.Visible = true;
+            Panel2.Visible = true;
             Panel1.Visible = true;
-            TextBox11.Text = Convert.ToString(GridView11.SelectedRow.Cells[2].Text); 
-            TextBox12.Text = Convert.ToString(GridView11.SelectedRow.Cells[4].Text);
+            TextBox1.Text = Convert.ToString(GridView11.SelectedRow.Cells[2].Text); 
+            TextBox2.Text = Convert.ToString(GridView11.SelectedRow.Cells[4].Text);
             
             MySqlConnection coon = Conexion.getConexion();
             MySqlCommand cm = new MySqlCommand("SELECT detalle_pedido_provision.id as iddetalle, detalle_pedido_provision.fk_pedido_provision as idpedido, detalle_pedido_provision.fk_articulo,articulo.descripcion,detalle_pedido_provision.cantidad,unidad_medida.descripcion AS unidad_medida,detalle_pedido_provision.observacion FROM detalle_pedido_provision INNER JOIN articulo ON detalle_pedido_provision.fk_articulo = articulo.id INNER JOIN unidad_medida ON articulo.fk_unimedidas=unidad_medida.id INNER JOIN pedido_provision ON detalle_pedido_provision.fk_pedido_provision='" + Convert.ToString(GridView11.SelectedRow.Cells[1].Text) + "'GROUP BY detalle_pedido_provision.fk_articulo", coon);
@@ -87,7 +87,7 @@ namespace Sistema_Integral_HPS.Deposito
             ViewState["RECORD2"] = dta1;
             coon.Close();
 
-            Panel12.Visible = true;
+            Panel2.Visible = true;
             GridView11.Visible = false;
         }
         protected void GridView12_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -105,7 +105,7 @@ namespace Sistema_Integral_HPS.Deposito
             GridView12.DataSource = dta1;
             GridView12.DataBind();
 
-            btn_guardar.Visible = true;
+            btn_guardar1.Visible = true;
         }
 
         protected void GridView12_RowEditing(object sender, GridViewEditEventArgs e)
@@ -116,7 +116,7 @@ namespace Sistema_Integral_HPS.Deposito
             GridView12.DataSource = dta1;
             GridView12.DataBind();
 
-            btn_guardar.Visible = false;
+            btn_guardar1.Visible = false;
         }
 
         protected void GridView12_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
@@ -127,7 +127,7 @@ namespace Sistema_Integral_HPS.Deposito
             GridView12.DataSource = dta1;
             GridView12.DataBind();
 
-            btn_guardar.Visible = true;
+            btn_guardar1.Visible = true;
         }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
