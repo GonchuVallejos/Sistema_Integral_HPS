@@ -41,6 +41,7 @@ namespace Sistema_Integral_HPS.UserPages
                         if (usuario.Read())
                         {
                             Session["usuario"] = usuario["nombre"].ToString() + " " + usuario["apellido"].ToString();
+
                         }
                     }
 

@@ -83,8 +83,8 @@ namespace Sistema_Integral_HPS.Deposito
             MySqlDataAdapter da = new MySqlDataAdapter(cm);
             da.Fill(dta1);
             //ojo
-            GridView11.DataSource = dta1;
-            GridView11.DataBind();
+            GridView12.DataSource = dta1;
+            GridView12.DataBind();
             ViewState["RECORD2"] = dta1;
             coon.Close();
 

@@ -5,9 +5,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
-    <asp:Label ID="Label1" class="justify-content-center h1" runat="server">CONSULTAR PEDIDOS</asp:Label>
+    <asp:Label ID="Label1" class="justify-content-center h1" runat="server">CONSULTAR PEDIDOS PENDIENTES DE CAJA CHICA</asp:Label>
     <hr />
     <asp:Panel ID="Panel11" runat="server">
+        <asp:Label ID="Label7" class="justify-content-center h3" runat="server" Text="Label"></asp:Label>
         <asp:GridView ID="GridView11" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView11_SelectedIndexChanged">
             <Columns>
                 <asp:CommandField HeaderText="VER" ShowSelectButton="True" ButtonType="Button">
@@ -71,7 +72,7 @@
                 <asp:Button ID="btn_verpedidos" runat="server" class="btn btn-lg btn-success" OnClick="btn_verpedidos_Click" Text="VER PEDIDOS" />
             </div>
             <div class="col-lg-4">
-                <asp:Button ID="btn_guardar" runat="server" class="btn btn-lg btn-success" Text="CONFIRMAR" OnClick="btn_guardar_Click" />
+                <asp:Button ID="btn_guardar" runat="server" class="btn btn-lg btn-success" Text="CONFIRMAR" OnClick="btn_guardar_Click" Visible="False" />
             </div>
             <div class="col-lg-4">
                 <asp:Button ID="btn_cancelar" runat="server" class="btn btn-lg btn-danger" Text="CANCELAR" OnClick="btn_cancelar_Click" />

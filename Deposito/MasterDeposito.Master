@@ -35,7 +35,7 @@
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">MIS PEDIDOS</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="VPedido_Usuario.aspx">PEDIDOS PENDIENTES</a></li>
-                                <li><a class="dropdown-item" href="VPedido_Provision_Usuario.aspx">HISTORIAL PEDIDOS</a></li>
+                                <li><a class="dropdown-item" href="VPedido_Provision_Usuario.aspx">PEDIDOS PENDIENTES CAJA CHICA</a></li>
                             </ul>
 
                         </li>

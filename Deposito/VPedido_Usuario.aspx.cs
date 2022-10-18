@@ -47,16 +47,26 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 DataTable dta = new DataTable();
                 MySqlConnection coon = Conexion.getConexion();
-                MySqlCommand cm = new MySqlCommand("SELECT pedido.id, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion, pedido.fecha FROM pedido INNER JOIN usuario ON pedido.fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE estado = 'PENDIENTE'", coon);
+                MySqlCommand cm = new MySqlCommand("SELECT pedido.id, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion, pedido.fecha FROM pedido INNER JOIN usuario ON pedido.fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE estado = 'PENDIENTE' AND pedido.servicio_division = '" + Session["servicio_division"].ToString() + "' ", coon);
                 cm.CommandType = CommandType.Text;
                 cm.ExecuteNonQuery();
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cm);
                 da.Fill(dta);
 
-                GridView11.DataSource = dta;
-                GridView11.DataBind();
-                ViewState["RECORD"] = dt;
+                if (dta.Rows.Count == 0)
+                {
+                    //string msg = "EL SERVICIO NO TIENE PEDIDOS PENDIENTES";
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+                    Label7.Text = "NO EXISTEN PEDIDOS PENDIENTES PARA EL SERVICIO";
+                }
+                else
+                {
+                    GridView11.DataSource = dta;
+                    GridView11.DataBind();
+                    ViewState["RECORD"] = dt;
+                    Label7.Text = "";
+                }
                 coon.Close();
             }
            
@@ -136,7 +146,7 @@ namespace Sistema_Integral_HPS.Deposito
         }
         protected void btn_verpedidos_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Deposito/VPedido.aspx");
+            Response.Redirect("/Deposito/VPedido_Usuario.aspx");
         }
         protected void btn_guardar_Click(object sender, EventArgs e)
         {    // Permito que el usuario seleccione una impresora
