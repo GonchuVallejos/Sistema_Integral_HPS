@@ -7,7 +7,7 @@
     <br />
     <asp:Label ID="Label1" class="justify-content-center h1" runat="server">CONSULTAR PEDIDOS</asp:Label>
     <hr />
-    <asp:Panel ID="Panel1" runat="server">
+    <asp:Panel ID="Panel11" runat="server">
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <Columns>
                 <asp:CommandField HeaderText="VER" ShowSelectButton="True" ButtonType="Button">
@@ -22,7 +22,7 @@
         </asp:GridView>
         <br />
     </asp:Panel>
-    <asp:Panel ID="Panel2" runat="server" Visible="False">
+    <asp:Panel ID="Panel12" runat="server" Visible="False">
         <asp:Label ID="Label2" class="justify-content-center h2" runat="server" Text="PEDIDO"></asp:Label>
         <hr />
         <div class="row">
@@ -30,13 +30,13 @@
                 <asp:Label ID="Label3" class="font-weight-normal" runat="server" Text="Usuario solicitante:"></asp:Label>
             </div>
             <div class="col-lg-2">
-                <asp:TextBox ID="TextBox1" class="form-control" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="TextBox11" class="form-control" runat="server" OnTextChanged="TextBox11_TextChanged"></asp:TextBox>
             </div>
             <div class="col-lg-2">
                 <asp:Label ID="Label4" class="font-weight-normal" runat="server" Text="Fecha de solicitud:"></asp:Label>
             </div>
             <div class="col-lg-2">
-                <asp:TextBox ID="TextBox2" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox12" class="form-control" runat="server"></asp:TextBox>
             </div>
             <div class="col-lg-1">
                 <asp:Label ID="Label6" class="font-weight-normal" runat="server" Text="Retira:"></asp:Label>

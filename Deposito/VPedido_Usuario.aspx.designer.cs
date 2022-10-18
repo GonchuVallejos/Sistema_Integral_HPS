@@ -24,13 +24,13 @@ namespace Sistema_Integral_HPS.Deposito
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Control Panel1.
+        /// Control Panel11.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel Panel11;
 
         /// <summary>
         /// Control GridView1.
@@ -42,13 +42,13 @@ namespace Sistema_Integral_HPS.Deposito
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// Control Panel2.
+        /// Control Panel12.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel2;
+        protected global::System.Web.UI.WebControls.Panel Panel12;
 
         /// <summary>
         /// Control Label2.
@@ -69,13 +69,13 @@ namespace Sistema_Integral_HPS.Deposito
         protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control TextBox11.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TextBox11;
 
         /// <summary>
         /// Control Label4.
@@ -87,13 +87,13 @@ namespace Sistema_Integral_HPS.Deposito
         protected global::System.Web.UI.WebControls.Label Label4;
 
         /// <summary>
-        /// Control TextBox2.
+        /// Control TextBox12.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox TextBox12;
 
         /// <summary>
         /// Control Label6.

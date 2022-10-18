@@ -70,10 +70,10 @@ namespace Sistema_Integral_HPS.Deposito
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable dta1 = new DataTable();
-            Panel2.Visible = true;
-            Panel1.Visible = true;
-            TextBox1.Text = Convert.ToString(GridView1.SelectedRow.Cells[2].Text); 
-            TextBox2.Text = Convert.ToString(GridView1.SelectedRow.Cells[4].Text);
+            Panel12.Visible = true;
+            Panel11.Visible = true;
+            TextBox11.Text = Convert.ToString(GridView1.SelectedRow.Cells[2].Text); 
+            TextBox12.Text = Convert.ToString(GridView1.SelectedRow.Cells[4].Text);
             
             MySqlConnection coon = Conexion.getConexion();
             MySqlCommand cm = new MySqlCommand("SELECT detalle_pedido.id as iddetalle, detalle_pedido.fk_pedido as idpedido, detalle_pedido.fk_articulo,articulo.descripcion,detalle_pedido.cantidad,unidad_medida.descripcion AS unidad_medida,detalle_pedido.observacion FROM detalle_pedido INNER JOIN articulo ON detalle_pedido.fk_articulo = articulo.id INNER JOIN unidad_medida ON articulo.fk_unimedidas=unidad_medida.id INNER JOIN pedido ON detalle_pedido.fk_pedido='" + Convert.ToString(GridView1.SelectedRow.Cells[1].Text) + "'GROUP BY detalle_pedido.fk_articulo", coon);
@@ -87,7 +87,7 @@ namespace Sistema_Integral_HPS.Deposito
             ViewState["RECORD2"] = dta1;
             coon.Close();
 
-            Panel2.Visible = true;
+            Panel12.Visible = true;
             GridView1.Visible = false;
         }
         protected void GridView2_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -199,12 +199,12 @@ namespace Sistema_Integral_HPS.Deposito
 
         }
 
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        protected void TextBox11_TextChanged(object sender, EventArgs e)
         {
             
         }
 
-        protected void TextBox2_TextChanged(object sender, EventArgs e)
+        protected void TextBox12_TextChanged(object sender, EventArgs e)
         {
 
         }
