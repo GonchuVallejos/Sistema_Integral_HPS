@@ -59,5 +59,10 @@ namespace Sistema_Integral_HPS.Deposito
 
            
         }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

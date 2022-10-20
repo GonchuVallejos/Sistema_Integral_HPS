@@ -10,7 +10,7 @@
             <Label class="font-weight-normal">INGRESE UN NUEVO ARTICULO:</Label>
         </div>
         <div class="col-lg-2">
-            <asp:TextBox ID="TextBox1" runat="server" class="form-control"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" required="True" class="form-control"></asp:TextBox>
         </div>
         <div class="col-lg-4">
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" class="btn btn-lg btn-info" Text="Buscar" />
