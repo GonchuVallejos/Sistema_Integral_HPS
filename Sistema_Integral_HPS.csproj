@@ -154,6 +154,7 @@
     <Content Include="Deposito\APedido_Provision.aspx" />
     <Content Include="Deposito\APedido.aspx" />
     <Content Include="Deposito\AServicio.aspx" />
+    <Content Include="Deposito\CPedidos.aspx" />
     <Content Include="Deposito\Deposito.css" />
     <Content Include="Deposito\img\0_9U_PkckAUtKGrb_R.png" />
     <Content Include="Deposito\img\Logo HPS.png" />
@@ -241,6 +242,13 @@
     </Compile>
     <Compile Include="Deposito\AServicio.aspx.designer.cs">
       <DependentUpon>AServicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deposito\CPedidos.aspx.cs">
+      <DependentUpon>CPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deposito\CPedidos.aspx.designer.cs">
+      <DependentUpon>CPedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Deposito\IndexDeposito.aspx.cs">
       <DependentUpon>IndexDeposito.aspx</DependentUpon>
