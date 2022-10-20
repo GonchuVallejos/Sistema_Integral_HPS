@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
-
+//Ver stock id, nombre y por familia
 namespace Sistema_Integral_HPS
 {
     public partial class stock : System.Web.UI.Page

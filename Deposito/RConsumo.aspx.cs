@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-
+//Registro del consumo por servicio
 namespace Sistema_Integral_HPS.Deposito
 {
     public partial class RConsumo : System.Web.UI.Page

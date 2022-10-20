@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-
+//Reporte del consumo por articulo
 namespace Sistema_Integral_HPS.Deposito
 {
     public partial class RArticulo : System.Web.UI.Page

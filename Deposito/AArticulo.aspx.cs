@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-
+//Registra un nuevo articulo 
 namespace Sistema_Integral_HPS.Deposito
 {
     public partial class AArticulo : System.Web.UI.Page

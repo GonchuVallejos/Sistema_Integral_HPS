@@ -6,7 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
-
+//Alta de los pedidos
+//Seleccionar y agregar al detalle del pedido 
 namespace Sistema_Integral_HPS.Deposito
 {
     public partial class APedido : System.Web.UI.Page

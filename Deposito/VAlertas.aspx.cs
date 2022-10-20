@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 using MySql.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-
+//Muestra el listado de los articulos por dejado del minimo de stock y los que deberian reponerse
 namespace Sistema_Integral_HPS.Deposito
 {
     public partial class VAlertas : System.Web.UI.Page

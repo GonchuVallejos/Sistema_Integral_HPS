@@ -7,7 +7,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
-
+//Buscar proveedor 
+//Registrar el nombre de los proveedores si no existen
 namespace Sistema_Integral_HPS.Deposito.Reportes
 {
     public partial class AProveedores : System.Web.UI.Page
@@ -34,7 +35,7 @@ namespace Sistema_Integral_HPS.Deposito.Reportes
 
             if (GridView1.Rows.Count != 0)
             {
-                MessageBox.Show("SERVICIO EXISTENTE !");
+               
 
 
             }

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-
+//Registra los ajustes por cada articulo
 namespace Sistema_Integral_HPS.Deposito
 {
     public partial class Ajustes : System.Web.UI.Page

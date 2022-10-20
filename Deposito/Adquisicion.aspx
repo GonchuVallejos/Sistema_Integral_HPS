@@ -11,7 +11,7 @@
             <asp:Label ID="Label2" class="font-weight-normal" runat="server" Text="SELECCIONE EL TIPO"></asp:Label>
         </div>
         <div class="col-lg-2">
-            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select">
+            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                 <asp:ListItem>PROPIA</asp:ListItem>
                 <asp:ListItem>DONACION</asp:ListItem>
             </asp:DropDownList>

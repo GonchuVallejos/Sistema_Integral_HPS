@@ -6,7 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
-
+//Registrar los pedidos por articulos que no estan cargados 
+//Caja chica
 namespace Sistema_Integral_HPS.Deposito
 {
     public partial class APedido_Provision : System.Web.UI.Page

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-
+//Registra una nueva adquisicion propia o donacion 
 namespace Sistema_Integral_HPS.Deposito
 {
     public partial class Adquisicion : System.Web.UI.Page
@@ -233,6 +233,11 @@ namespace Sistema_Integral_HPS.Deposito
         }
 
         protected void TextBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
