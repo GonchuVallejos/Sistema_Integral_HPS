@@ -27,7 +27,7 @@
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="APedido.aspx">SUMINISTRO</a></li>
                                 <li><a class="dropdown-item" href="APedido_Provision.aspx">PROVISION (CAJA CHICA)</a></li>
-                                <li><a class="dropdown-item" href="CPedidos.aspx">CONSULTAR PEDIDOS</a></li>
+                                
                             </ul>
 
                         </li>
@@ -37,6 +37,7 @@
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="VPedido_Usuario.aspx">PEDIDOS PENDIENTES</a></li>
                                 <li><a class="dropdown-item" href="VPedido_Provision_Usuario.aspx">PEDIDOS PENDIENTES CAJA CHICA</a></li>
+                                <li><a class="dropdown-item" href="CPedidos.aspx">CONSULTAR PEDIDOS</a></li>
                             </ul>
 
                         </li>

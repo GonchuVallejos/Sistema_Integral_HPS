@@ -6,7 +6,7 @@
     <asp:Label ID="Label1" class="justify-content-center h1" runat="server">CONSULTAR PEDIDOS REALIZADOS</asp:Label>
     <hr />
     <div class="row">
-        <div class="col-lg-1">
+        <div class="col-lg-2">
             <asp:Label ID="Label2" runat="server" class="font-weight-normal" Text="SELECCIONE"></asp:Label>
         </div>
         <div class="col-lg-2">
@@ -21,35 +21,33 @@
         <div class="col-lg-2 d-grid">
             <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-select text-uppercase" Visible="false">
             </asp:DropDownList>
-        </div>
-        <div class="col-lg-2 d-grid">
-            <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-select text-uppercase" Visible="false">
-            </asp:DropDownList>
             <asp:Label ID="Label3" runat="server" class="font-weight-normal" Text="" Visible="false"></asp:Label>
             <asp:TextBox ID="TextBox1" CssClass="form-control text-uppercase" runat="server" TextMode="Date" Visible="false"></asp:TextBox>
         </div>
         <div class="col-lg-2 d-grid">
-            <asp:DropDownList ID="DropDownList4" runat="server" CssClass="form-select text-uppercase" Visible="false">
+            <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-select text-uppercase" Visible="false">
             </asp:DropDownList>
             <asp:Label ID="Label4" runat="server" class="font-weight-normal" Text="" Visible="false"></asp:Label>
             <asp:TextBox ID="TextBox2" CssClass="form-control text-uppercase" runat="server" TextMode="Date" Visible="false"></asp:TextBox>
         </div>
         <div class="col-lg-2 d-grid">
+            <asp:DropDownList ID="DropDownList4" runat="server" CssClass="form-select text-uppercase" Visible="false">
+            </asp:DropDownList>
+            
+        </div>
+        <div class="col-lg-2 d-grid">
             <asp:DropDownList ID="DropDownList5" runat="server" CssClass="form-select text-uppercase" Visible="false">
             </asp:DropDownList>
         </div>
-        <div class="col-lg-2 d-grid">
-            <asp:DropDownList ID="DropDownList6" runat="server" CssClass="form-select text-uppercase" Visible="false">
-            </asp:DropDownList>
-        </div>
-        <div class="col-lg-2 d-grid">
-            <asp:Button ID="Button1" CssClass="btn btn-lg btn-info" runat="server" Text="BUSCAR" OnClick="Button1_Click" />
-        </div>
     </div>
+    <br />
+        <div class="col-lg-2 d-grid justify-content-center">
+            <asp:Button ID="Button1" CssClass="btn btn-lg btn-info" runat="server" Text="BUSCAR" OnClick="Button1_Click" Visible="false"/>
+        </div>
     <br />
     <asp:Panel ID="Panel1" runat="server" Visible="false">
         <asp:Label ID="Label5" runat="server" class="font-weight-normal" Text=""></asp:Label>
-        <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="ID" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnPageIndexChanging="GridView1_PageIndexChanging">
+        <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="IDPEDIDO">
             <Columns>
                 <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="IDPEDIDO" HeaderText="ID" />

@@ -51,15 +51,6 @@ namespace Sistema_Integral_HPS.Deposito
         protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
 
         /// <summary>
-        /// Control DropDownList3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
-
-        /// <summary>
         /// Control Label3.
         /// </summary>
         /// <remarks>
@@ -78,13 +69,13 @@ namespace Sistema_Integral_HPS.Deposito
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
-        /// Control DropDownList4.
+        /// Control DropDownList3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
 
         /// <summary>
         /// Control Label4.
@@ -105,6 +96,15 @@ namespace Sistema_Integral_HPS.Deposito
         protected global::System.Web.UI.WebControls.TextBox TextBox2;
 
         /// <summary>
+        /// Control DropDownList4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+
+        /// <summary>
         /// Control DropDownList5.
         /// </summary>
         /// <remarks>
@@ -112,15 +112,6 @@ namespace Sistema_Integral_HPS.Deposito
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList5;
-
-        /// <summary>
-        /// Control DropDownList6.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList6;
 
         /// <summary>
         /// Control Button1.
