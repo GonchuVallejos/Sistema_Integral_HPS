@@ -86,7 +86,7 @@ namespace Sistema_Integral_HPS.Deposito
                 GridView5.Visible = false;
                 MySqlConnection coon = Conexion.getConexion();
 
-                MySqlCommand cm = new MySqlCommand("SELECT pedido.id AS idpedido, fk_pedido, fk_tipo_movimiento, fk_adquisicion, fk_ajuste, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario_confirma, movimiento.estado AS estado, movimiento.observacion AS observacion, pedido.servicio_division AS idservicio, servicio_division.descripcion AS servicio_pide, movimiento.retira AS retira, movimiento.fecha_alta AS fecha_alta FROM `movimiento` INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN pedido ON movimiento.fk_pedido = pedido.id INNER JOIN servicio_division ON servicio_division.id = pedido.servicio_division WHERE `fk_tipo_movimiento` = '" + DropDownList1.SelectedValue + "' ORDER BY pedido.id", coon);
+                MySqlCommand cm = new MySqlCommand("SELECT pedido.id AS idpedido, fk_pedido, fk_tipo_movimiento, fk_adquisicion, fk_ajuste, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario_confirma, movimiento.estado AS estado, movimiento.observacion AS observacion, pedido.servicio_division AS idservicio, servicio_division.descripcion AS servicio_pide, movimiento.retira AS retira, movimiento.fecha_alta AS fecha_alta FROM `movimiento` INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN pedido ON movimiento.fk_pedido = pedido.id INNER JOIN servicio_division ON servicio_division.id = pedido.servicio_division WHERE `fk_tipo_movimiento` = '" + DropDownList1.SelectedValue + "' ORDER BY movimiento.fecha_alta DESC", coon);
                 cm.CommandType = CommandType.Text;
                 cm.ExecuteNonQuery();
 
@@ -116,7 +116,7 @@ namespace Sistema_Integral_HPS.Deposito
                     //FILTRAR POR TIPO DE ADQUISICION: DONACION O PROPIA
                     //********************************************
 
-                    MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento,unidad_seccion.descripcion AS unidad_seccion, adquisicion.tipo AS tipo,adquisicion.dys AS dys FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN unidad_seccion ON usuario.fk_unidad_seccion = unidad_seccion.id INNER JOIN adquisicion ON movimiento.fk_adquisicion = adquisicion.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "' GROUP BY movimiento.fk_pedido, movimiento.fk_adquisicion, movimiento.fk_ajuste ", coon);
+                    MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, movimiento.fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento,unidad_seccion.descripcion AS unidad_seccion, adquisicion.tipo AS tipo,adquisicion.dys AS dys FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN unidad_seccion ON usuario.fk_unidad_seccion = unidad_seccion.id INNER JOIN adquisicion ON movimiento.fk_adquisicion = adquisicion.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "' GROUP BY movimiento.fk_pedido, movimiento.fk_adquisicion, movimiento.fk_ajuste ORDER BY movimiento.fecha_alta DESC", coon);
                     cm.CommandType = CommandType.Text;
                     cm.ExecuteNonQuery();
 
@@ -147,7 +147,7 @@ namespace Sistema_Integral_HPS.Deposito
                         GridView5.Visible = false;
                         MySqlConnection coon = Conexion.getConexion();
 
-                        MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "' GROUP BY movimiento.fk_pedido, movimiento.fk_adquisicion, movimiento.fk_ajuste ", coon);
+                        MySqlCommand cm = new MySqlCommand("SELECT movimiento.id AS id_movimiento, CONCAT(persona.nombre, ' ', persona.apellido) AS usuario, estado, movimiento.fecha_alta, observacion, fk_pedido,fk_adquisicion,fk_ajuste, fk_tipo_movimiento FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE fk_tipo_movimiento = '" + DropDownList1.SelectedValue + "' GROUP BY movimiento.fk_pedido, movimiento.fk_adquisicion, movimiento.fk_ajuste ORDER BY movimiento.fecha_alta DESC", coon);
                         cm.CommandType = CommandType.Text;
                         cm.ExecuteNonQuery();
 
@@ -170,7 +170,7 @@ namespace Sistema_Integral_HPS.Deposito
                         GridView5.Visible = true;
                         MySqlConnection coon = Conexion.getConexion();
 
-                        MySqlCommand cm = new MySqlCommand("SELECT pedido_provision.id AS idpedido, fk_pedido, fk_pedido_provision, fk_tipo_movimiento, fk_adquisicion, fk_ajuste,CONCAT(persona.nombre, ' ', persona.apellido) AS usuario_confirma, movimiento.estado AS estado, movimiento.observacion AS observacion, pedido_provision.servicio_division AS idservicio, servicio_division.descripcion AS servicio_pide, movimiento.retira AS retira, movimiento.fecha_alta AS fecha_alta FROM `movimiento` INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN pedido_provision ON movimiento.fk_pedido_provision = pedido_provision.id INNER JOIN servicio_division ON servicio_division.id = pedido_provision.servicio_division WHERE `fk_tipo_movimiento` = '" + DropDownList1.SelectedValue + "' ORDER BY pedido_provision.id", coon);
+                        MySqlCommand cm = new MySqlCommand("SELECT pedido_provision.id AS idpedido, fk_pedido, fk_pedido_provision, fk_tipo_movimiento, fk_adquisicion, fk_ajuste,CONCAT(persona.nombre, ' ', persona.apellido) AS usuario_confirma, movimiento.estado AS estado, movimiento.observacion AS observacion, pedido_provision.servicio_division AS idservicio, servicio_division.descripcion AS servicio_pide, movimiento.retira AS retira, movimiento.fecha_alta AS fecha_alta FROM `movimiento` INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id INNER JOIN pedido_provision ON movimiento.fk_pedido_provision = pedido_provision.id INNER JOIN servicio_division ON servicio_division.id = pedido_provision.servicio_division WHERE `fk_tipo_movimiento` = '" + DropDownList1.SelectedValue + "' ORDER BY movimiento.fecha_alta DESC", coon);
                         cm.CommandType = CommandType.Text;
                         cm.ExecuteNonQuery();
 
