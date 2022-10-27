@@ -155,21 +155,28 @@ namespace Sistema_Integral_HPS.Deposito
                     {
 
                         consulta = "SELECT " + DropDownList2.SelectedItem.Value + ".id AS IDPEDIDO, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion AS DESCRIPCION, " + DropDownList2.SelectedItem.Value + ".fecha AS FECHA FROM " + DropDownList2.SelectedItem.Value + " INNER JOIN usuario ON " + DropDownList2.SelectedItem.Value + ".fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE " + DropDownList2.SelectedItem.Value + ".id = '" + TextBox1.Text + "' AND " + DropDownList2.SelectedItem.Value + ".servicio_division = '" + Session["servicio_division"].ToString() + "' ORDER BY fecha DESC";
+                        Session["tipo"] = DropDownList2.SelectedItem.Value;
                     }
                     break;
                 case ("FECHA"):
                     {
                         consulta = "SELECT " + DropDownList4.SelectedItem.Value + ".id AS IDPEDIDO, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion AS DESCRIPCION, " + DropDownList4.SelectedItem.Value + ".fecha AS FECHA FROM " + DropDownList4.SelectedItem.Value + " INNER JOIN usuario ON " + DropDownList4.SelectedItem.Value + ".fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE " + DropDownList4.SelectedItem.Value + ".fecha BETWEEN '" + TextBox1.Text + "' AND '" + TextBox2.Text + "' AND " + DropDownList4.SelectedItem.Value + ".estado = '" + DropDownList5.SelectedItem.Value + "' AND " + DropDownList4.SelectedItem.Value + ".servicio_division = '" + Session["servicio_division"].ToString() + "' ORDER BY fecha DESC";
+                        Session["tipo"] = DropDownList4.SelectedItem.Value;
+                        Session["confirmado"] = DropDownList5.SelectedItem.Value;
                     }
                     break;
                 case ("USUARIO ESPECIFICO"):
                     {
                         consulta = "SELECT " + DropDownList3.SelectedItem.Value + ".id AS IDPEDIDO, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion AS DESCRIPCION, " + DropDownList3.SelectedItem.Value + ".fecha AS FECHA FROM " + DropDownList3.SelectedItem.Value + " INNER JOIN usuario ON " + DropDownList3.SelectedItem.Value + ".fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE " + DropDownList3.SelectedItem.Value + ".fk_usuario = '" + DropDownList2.SelectedItem.Value + "' and " + DropDownList3.SelectedItem.Value + ".estado = '" + DropDownList4.SelectedItem.Value + "' AND " + DropDownList3.SelectedItem.Value + ".servicio_division = '" + Session["servicio_division"].ToString() + "' ORDER BY fecha DESC";
+                        Session["tipo"] = DropDownList3.SelectedItem.Value;
+                        Session["confirmado"] = DropDownList4.SelectedItem.Value;
                     }
                     break;
                 default:
                     {
                         consulta = "SELECT " + DropDownList2.SelectedItem.Value + ".id AS IDPEDIDO, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion AS DESCRIPCION, " + DropDownList2.SelectedItem.Value + ".fecha AS FECHA FROM " + DropDownList2.SelectedItem.Value + " INNER JOIN usuario ON " + DropDownList2.SelectedItem.Value + ".fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE " + DropDownList2.SelectedItem.Value + ".estado = '" + DropDownList3.SelectedItem.Value + "' AND " + DropDownList2.SelectedItem.Value + ".servicio_division = '" + Session["servicio_division"].ToString() + "' ORDER BY fecha DESC";
+                        Session["tipo"] = DropDownList2.SelectedItem.Value;
+                        Session["confirmado"] = DropDownList3.SelectedItem.Value;
                     }
                     break;
             }
@@ -187,6 +194,36 @@ namespace Sistema_Integral_HPS.Deposito
             coon.Close();
 
             Panel1.Visible = true;
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string tipod = "";
+            string tipop = "";
+            if (Session["tipo"].ToString() == "pedido")
+            {
+                tipod = "detalle_pedido";
+                tipop = "fk_pedido";
+                
+            }
+            else
+            {
+                tipod = "detalle_pedido_provision";
+                tipop = "fk_pedido_provision";
+            }
+
+
+            string consulta = "";
+
+
+            consulta = "SELECT " + tipod + ".id as iddetalle, " + tipod + "." + tipop + " as idpedido, " + tipod + ".fk_articulo,articulo.descripcion," + tipod + ".cantidad,unidad_medida.descripcion AS unidad_medida, " + tipod + ".observacion FROM " + tipod + " INNER JOIN articulo ON " + tipod + ".fk_articulo = articulo.id INNER JOIN unidad_medida ON articulo.fk_unimedidas = unidad_medida.id INNER JOIN pedido ON " + tipod + "." + tipop + " = '" + Convert.ToString(GridView1.SelectedRow.Cells[1].Text) + "'GROUP BY " + tipod + ".fk_articulo";
+
+            MySqlConnection coon = Conexion.getConexion();
+            MySqlCommand cm = new MySqlCommand(consulta, coon);
+            cm.CommandType = CommandType.Text;
+            cm.ExecuteNonQuery();
+
+
         }
     }
 }

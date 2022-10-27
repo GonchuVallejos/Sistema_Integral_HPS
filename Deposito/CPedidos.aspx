@@ -22,7 +22,7 @@
             <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-select text-uppercase" Visible="false">
             </asp:DropDownList>
             <asp:Label ID="Label3" runat="server" class="font-weight-normal" Text="" Visible="false"></asp:Label>
-            <asp:TextBox ID="TextBox1" CssClass="form-control text-uppercase" runat="server" TextMode="Date" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" CssClass="form-control text-uppercase" required=true runat="server" TextMode="Date" Visible="false"></asp:TextBox>
         </div>
         <div class="col-lg-2 d-grid">
             <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-select text-uppercase" Visible="false">
@@ -47,7 +47,7 @@
     <br />
     <asp:Panel ID="Panel1" runat="server" Visible="false">
         <asp:Label ID="Label5" runat="server" class="font-weight-normal" Text=""></asp:Label>
-        <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="IDPEDIDO">
+        <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="IDPEDIDO" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <Columns>
                 <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="IDPEDIDO" HeaderText="ID" />

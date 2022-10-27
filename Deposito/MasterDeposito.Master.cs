@@ -13,21 +13,34 @@ namespace Sistema_Integral_HPS.Deposito
         {
             string id;
             string usuario;
-            if (!IsPostBack)
-            {
-                if (Session["usuario"] != null)
-                {
-                    id = Session["usuariologgeado"].ToString();
-                    usuario = Session["usuario"].ToString();
+            //if (!IsPostBack)
+            //{
+            //    if (Session["usuario"] != null)
+            //    {
+            //        id = Session["usuariologgeado"].ToString();
+            //        usuario = Session["usuario"].ToString();
 
-                    Label1.Text = usuario;
-                }
-                else
-                {
-                    Response.Redirect("/UserPages/Login.aspx");
-                }
+            //        Label1.Text = usuario;
+            //    }
+            //    else
+            //    {
+            //        Response.Redirect("/UserPages/Login.aspx");
+            //    }
+            //}
+
+
+            if (Session["usuario"] != null)
+            {
+                id = Session["usuariologgeado"].ToString();
+                usuario = Session["usuario"].ToString();
+
+                Label1.Text = usuario;
             }
-            
+            else
+            {
+                Response.Redirect("/UserPages/Login.aspx");
+            }
+
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
