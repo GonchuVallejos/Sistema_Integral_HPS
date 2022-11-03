@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -177,6 +178,7 @@ namespace Sistema_Integral_HPS.Deposito
                         consulta = "SELECT " + DropDownList2.SelectedItem.Value + ".id AS IDPEDIDO, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion AS DESCRIPCION, " + DropDownList2.SelectedItem.Value + ".fecha AS FECHA FROM " + DropDownList2.SelectedItem.Value + " INNER JOIN usuario ON " + DropDownList2.SelectedItem.Value + ".fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE " + DropDownList2.SelectedItem.Value + ".estado = '" + DropDownList3.SelectedItem.Value + "' AND " + DropDownList2.SelectedItem.Value + ".servicio_division = '" + Session["servicio_division"].ToString() + "' ORDER BY fecha DESC";
                         Session["tipo"] = DropDownList2.SelectedItem.Value;
                         Session["confirmado"] = DropDownList3.SelectedItem.Value;
+
                     }
                     break;
             }

@@ -6,7 +6,7 @@
      <asp:Label ID="Label1" class="justify-content-center h1" runat="server">REPORTE CONSUMO POR ARTICULO</asp:Label>
     <hr />
     <asp:Label ID="Label2" runat="server" class="justify-content-center" Text="Ingrese el ID del producto: "></asp:Label>
-     <asp:TextBox ID="TextBox1" runat="server" required="True" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+     <asp:TextBox ID="TextBox1" runat="server" required="True" OnTextChanged="TextBox1_TextChanged" TextMode="Number"></asp:TextBox>
 
     &nbsp;
 
