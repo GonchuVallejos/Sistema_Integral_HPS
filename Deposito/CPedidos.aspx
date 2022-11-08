@@ -57,7 +57,22 @@
             </Columns>
             <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
         </asp:GridView>
+
     </asp:Panel>
     <br />
+    <asp:Panel ID="Panel2" runat="server" Visible="false">
+    <asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" DataKeyNames="iddetalle" OnSelectedIndexChanged="GridView2_SelectedIndexChanged1">
+            <Columns>
 
+                <asp:BoundField DataField="fk_articulo" HeaderText="ID ARTICULO" />
+                <asp:BoundField DataField="descripcion" HeaderText="DESCRIPCION DEL ARTICULO" />
+                <asp:BoundField DataField="cantidad" HeaderText="CANTIDAD" />
+                <asp:BoundField DataField="unidad_medida" HeaderText="UNIDAD DE MEDIDA" />
+                <asp:BoundField DataField="observacion" HeaderText="OBSERVACIONES" />
+                <asp:BoundField DataField="iddetalle" Visible="False" />
+                <asp:BoundField DataField="idpedido" Visible="False" />
+            </Columns>
+            <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+        </asp:GridView>
+        </asp:Panel>
 </asp:Content>

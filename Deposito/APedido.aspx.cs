@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
+using iTextSharp.tool.xml.html;
+using System.Threading;
 //Alta de los pedidos
 //Seleccionar y agregar al detalle del pedido 
 namespace Sistema_Integral_HPS.Deposito
@@ -96,6 +98,8 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button4_Click(object sender, EventArgs e)
         {
+            
+
             int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
             string dir = Session["direccion"].ToString();
             int serdiv = Convert.ToInt32(Session["servicio_division"].ToString());
@@ -126,8 +130,16 @@ namespace Sistema_Integral_HPS.Deposito
                 cm.ExecuteNonQuery();
                 
             }
+
+
+            
+            
             coon.Close();
-            Response.Redirect("/Deposito/IndexDeposito.aspx");
+
+            string msg = "PEDIDO REALIZADO";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = '/Deposito/IndexDeposito.aspx';", true);
+
+            //Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
 
         protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)

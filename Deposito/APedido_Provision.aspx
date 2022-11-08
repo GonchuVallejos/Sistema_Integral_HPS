@@ -11,7 +11,7 @@
             </Label>
         &nbsp;</div>
         <div class="col-lg-2">
-            <asp:TextBox ID="TextBox1" runat="server" required="True" class="form-control"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" class="form-control"></asp:TextBox>
         </div>
         <div class="col-lg-4">
             <asp:Button ID="Button1" runat="server" class="btn btn-lg btn-info" OnClick="Button1_Click" Text="BUSCAR" />
@@ -38,7 +38,7 @@
                 <asp:Label ID="Label4" class="font-weight-normal" runat="server" Text="CANTIDAD:" Visible="False"></asp:Label>
             </div>
             <div class="col-lg-2">
-                <asp:TextBox ID="TextBox2"  class="form-control" runat="server" Visible="False" required="True"></asp:TextBox>
+                <asp:TextBox ID="TextBox2"  class="form-control" runat="server" Visible="False" required="True" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
                 <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-primary" OnClick="Button2_Click" Text="AGREGAR" Visible="False" />
             </div>
         </div>
@@ -54,6 +54,9 @@
             </Columns>
             <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
         </asp:GridView>
+        <br />
+        <asp:Label ID="Label7" runat="server" Text="Label" Visible="False"></asp:Label>
+        <asp:TextBox ID="TextBox5" runat="server" class="form-control" required="True" Visible="False" OnTextChanged="TextBox5_TextChanged"></asp:TextBox>
         <br />
         <div class="row">
             <div class="col-lg-2">

@@ -11,7 +11,7 @@
             </Label>
         &nbsp;</div>
         <div class="col-lg-2">
-            <asp:TextBox ID="TextBox1" runat="server" required="True" class="form-control"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" class="form-control"></asp:TextBox>
         </div>
         <div class="col-lg-4">
             <asp:Button ID="Button1" runat="server" class="btn btn-lg btn-info" OnClick="Button1_Click" Text="BUSCAR" />
@@ -67,7 +67,8 @@
             </div>
             <div class="col-lg-4">
                 <asp:Button ID="Button4" class="btn btn-lg btn-success" runat="server" Text="FINALIZAR" OnClick="Button4_Click" />
+
             </div>
         </div>
-    </asp:Panel>    
+    </asp:Panel> 
 </asp:Content>

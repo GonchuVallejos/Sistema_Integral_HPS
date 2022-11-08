@@ -43,7 +43,17 @@ namespace Sistema_Integral_HPS.UserPages
                             Session["usuario"] = usuario["nombre"].ToString() + " " + usuario["apellido"].ToString();
 
                         }
+                        usuario.Close();
                     }
+
+                    //SACO EL NOMBRE DEL SERVICIO AL QUE PERTENECE EL USUARIO PARA VER QUE SISTEMA MOSTRAR
+                    MySqlCommand cm2 = new MySqlCommand("SELECT * FROM servicio_division WHERE id = '" + Session["servicio_division"].ToString() + "'", coon);
+                    cm2.CommandType = CommandType.Text;
+                    MySqlDataReader dr2 = cm2.ExecuteReader();
+
+                    dr2.Read();
+                    Session["nombresistema"] = dr2["descripcion"].ToString();
+                    dr2.Close();
 
                     Response.Redirect("/Deposito/IndexDeposito.aspx");
 

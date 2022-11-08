@@ -22,13 +22,12 @@
                         <a class="navbar-brand" href="IndexDeposito.aspx">SISTEMA DE DEPOSITO</a>
                     </div>
                     <div id="nombreSoria" runat="server">
-                        <a class="navbar-brand" href="IndexDeposito.aspx">SISTEMA HOSPITAL PABLO SORIA</a>
+                        <a class="navbar-brand" href="IndexDeposito.aspx">SISTEMA HPS</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div id="todosusuarios" runat="server">
-                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
+                        <div id="todosusuarios" runat="server" class="ms-auto mb-2 mb-lg-0">
+                            <ul class="navbar-nav">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">NUEVO PEDIDO</a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -36,10 +35,6 @@
                                         <li><a class="dropdown-item" href="APedido_Provision.aspx">PROVISION (CAJA CHICA)</a></li>
                                     </ul>
                                 </li>
-                            </ul>
-                        </div>
-                        <div id="deposito" runat="server">
-                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">MIS PEDIDOS</a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -48,6 +43,10 @@
                                         <li><a class="dropdown-item" href="CPedidos.aspx">CONSULTAR PEDIDOS</a></li>
                                     </ul>
                                 </li>
+                            </ul>
+                        </div>
+                        <div id="deposito" runat="server" class="ms-auto mb-2 mb-lg-0">
+                            <ul class="navbar-nav">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">MOVIMIENTOS</a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -77,8 +76,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <div id="sesion" runat="server">
-                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <div id="sesion" runat="server" class="ms-auto mb-2 mb-lg-0">
+                            <ul class="navbar-nav">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown6" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <asp:Label ID="Label1" CssClass="text-uppercase" runat="server" Text="Label"></asp:Label></a>

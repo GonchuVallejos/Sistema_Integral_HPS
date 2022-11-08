@@ -39,18 +39,16 @@ namespace Sistema_Integral_HPS.Deposito
 
                 Label1.Text = usuario;
 
-                MySqlCommand cm = new MySqlCommand("SELECT * FROM servicio_division WHERE id = '" + Session["servicio_division"].ToString() + "'", coon);
-                cm.CommandType = CommandType.Text;
-                MySqlDataReader dr = cm.ExecuteReader();
-
-                dr.Read();
-                switch (dr["descripcion"].ToString())
+                
+                switch (Session["nombresistema"].ToString())
                 {
                     case "DEPOSITO":
                         {
                             deposito.Visible = true;
                             todosusuarios.Visible = false;
                             sesion.Visible = true;
+                            nombredepo.Visible = true;
+                            nombreSoria.Visible = false;
                         }
                         break;
                     default:
@@ -58,11 +56,11 @@ namespace Sistema_Integral_HPS.Deposito
                             todosusuarios.Visible = true;
                             deposito.Visible = false;
                             sesion.Visible = true;
+                            nombredepo.Visible = false;
+                            nombreSoria.Visible = true;
                         }
                         break;
                 }
-                dr.Close();
-
             }
             else
             {

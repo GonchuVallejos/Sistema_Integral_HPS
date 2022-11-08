@@ -18,7 +18,7 @@ namespace Sistema_Integral_HPS.Deposito
         {
             DataTable dta1 = new DataTable();
             DataTable dta2 = new DataTable();
-           
+
 
             MySqlConnection coon = Conexion.getConexion();
             MySqlCommand cm = new MySqlCommand("SELECT id AS ID, descripcion AS DESCRIPCION, descripcion_adicional AS 'DESC. ADICIONAL', stock AS 'STOCK ACTUAL', stock_minimo AS 'STOCK MINIMO', ultimo_precio AS 'ULTIMO PRECIO' FROM articulo WHERE stock<=stock_minimo AND habilitado='SI'", coon);
@@ -49,9 +49,9 @@ namespace Sistema_Integral_HPS.Deposito
             ViewState["RECORD3"] = dta2;
 
 
-           
+
             coon.Close();
-            
+
             if (GridView1.Rows.Count > 0)
             {
                 Panel1.Visible = true;
@@ -62,7 +62,14 @@ namespace Sistema_Integral_HPS.Deposito
                 Panel2.Visible = true;
             }
 
-           
+            if (Session["nombresistema"].ToString() == "DEPOSITO")
+            {
+                ideposito.Visible = true;
+            }
+            else
+            {
+                ideposito.Visible = false;
+            }
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

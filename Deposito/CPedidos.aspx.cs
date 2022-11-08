@@ -33,6 +33,7 @@ namespace Sistema_Integral_HPS.Deposito
             DropDownList3.Items.Clear();
             DropDownList4.Items.Clear();
             DropDownList5.Items.Clear();
+            Panel1.Visible = false;
 
             TextBox1.Text = TextBox2.Text = "";
 
@@ -196,6 +197,7 @@ namespace Sistema_Integral_HPS.Deposito
             coon.Close();
 
             Panel1.Visible = true;
+            Panel2.Visible = false;
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -224,7 +226,24 @@ namespace Sistema_Integral_HPS.Deposito
             MySqlCommand cm = new MySqlCommand(consulta, coon);
             cm.CommandType = CommandType.Text;
             cm.ExecuteNonQuery();
+           
+            //copiado
+            //
+            DataTable dta1 = new DataTable();
+            MySqlDataAdapter da1 = new MySqlDataAdapter(cm);
+            da1.Fill(dta1);
 
+            GridView2.DataSource = dta1;
+            GridView2.DataBind();
+            ViewState["RECORD"] = dta1;
+            coon.Close();
+            //copiado
+            //
+            Panel1.Visible = false;
+            Panel2.Visible = true;
+        }
+        protected void GridView2_SelectedIndexChanged1(object sender, EventArgs e)
+        {
 
         }
     }

@@ -162,7 +162,10 @@ namespace Sistema_Integral_HPS.Deposito
                 
             }
             coon.Close();
-            Response.Redirect("/Deposito/IndexDeposito.aspx");
+            string msg = "PEDIDO DE CAJA CHICA REALIZADO";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = '/Deposito/IndexDeposito.aspx';", true);
+
+            //Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
 
         protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -253,6 +256,15 @@ namespace Sistema_Integral_HPS.Deposito
             coon.Close();
 
             Server.Transfer("APedido_Provision.aspx");
+        }
+
+        protected void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void TextBox5_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
