@@ -26,6 +26,7 @@
                 <asp:CommandField ShowSelectButton="True" HeaderText="SELECCIONAR" />
                 <asp:BoundField DataField="id" HeaderText="ID" />
                 <asp:BoundField DataField="descripcion" HeaderText="DESCRIPCIÓN" />
+                <asp:BoundField DataField="unidad_medida" HeaderText="UNIDAD DE MEDIDA" />
                 <asp:BoundField DataField="descripcion_adicional" HeaderText="DESCRIPCIÓN ADICIONAL" />
             </Columns>
             <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
@@ -33,22 +34,30 @@
         <br />
         <asp:Button ID="Button_NoExisteA" runat="server" Text="No existe el articulo" CssClass="btn btn-lg btn-warning" OnClick="Button_NoExisteA_Click" />
         <asp:Label ID="Label2" runat="server" Text="Label" Visible="False"></asp:Label>
-        <div class="row">
-            <div class="col-lg-2">
-                <asp:Label ID="Label4" class="font-weight-normal" runat="server" Text="CANTIDAD:" Visible="False"></asp:Label>
+        
+        <br />
+        <asp:Label ID="Label9" runat="server" Text="Unidad de Medida:" Visible="False"></asp:Label>
+        <asp:Label ID="Label8" runat="server" Text="" Visible="False"></asp:Label>
+        
+        <asp:Panel ID="Panel3" runat="server" Visible="false">
+            <div class="row">
+                <div class="col-lg-2">
+                    <asp:Label ID="Label4" class="font-weight-normal" runat="server" Text="CANTIDAD:" Visible="False"></asp:Label>
+                </div>
+                <div class="col-lg-2">
+                    <asp:TextBox ID="TextBox2" class="form-control" runat="server" Visible="False" required="True" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
+                    <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-primary" OnClick="Button2_Click" Text="AGREGAR" Visible="False" />
+                </div>
             </div>
-            <div class="col-lg-2">
-                <asp:TextBox ID="TextBox2"  class="form-control" runat="server" Visible="False" required="True" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
-                <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-primary" OnClick="Button2_Click" Text="AGREGAR" Visible="False" />
-            </div>
-        </div>
+        </asp:Panel>
         <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
         <br />
         <asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-condensed table-responsive" AutoGenerateColumns="False" OnRowDeleting="GridView2_RowDeleting" OnRowCancelingEdit="GridView2_RowCancelingEdit" OnRowEditing="GridView2_RowEditing" OnRowUpdating="GridView2_RowUpdating" HorizontalAlign="Center" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="id articulo" HeaderText="ID ARTICULO" />
-                <asp:BoundField HeaderText="ARTICULO" DataField="articulo" />
+                <asp:BoundField DataField="articulo" HeaderText="ARTICULO"  />
                 <asp:BoundField DataField="cantidad" HeaderText="CANTIDAD" />
+                <asp:BoundField DataField="unidad_medida" HeaderText="UNIDAD DE MEDIDA" />
                 <asp:CommandField ShowEditButton="True" HeaderText="EDITAR" />
                 <asp:CommandField ShowDeleteButton="True" HeaderText="ELIMINAR" />
             </Columns>
@@ -57,6 +66,9 @@
         <br />
         <asp:Label ID="Label7" runat="server" Text="Label" Visible="False"></asp:Label>
         <asp:TextBox ID="TextBox5" runat="server" class="form-control" required="True" Visible="False" OnTextChanged="TextBox5_TextChanged"></asp:TextBox>
+        <asp:Label ID="Label10" runat="server" Text="Monto aproximado total: " Visible="false"></asp:Label>
+        <br />
+        <asp:TextBox ID="TextBox6" runat="server" class="form-control" OnTextChanged="TextBox5_TextChanged" Visible="False" TextMode="Number"></asp:TextBox>
         <br />
         <div class="row">
             <div class="col-lg-2">

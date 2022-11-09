@@ -22,40 +22,38 @@ namespace Sistema_Integral_HPS.Deposito
                 DataColumn ID = dt.Columns.Add("ID ARTICULO", typeof(Int32));
                 DataColumn ART = dt.Columns.Add("ARTICULO", typeof(string));
                 DataColumn CANTIDAD = dt.Columns.Add("CANTIDAD", typeof(Int32));
+                DataColumn UNIDAD_MEDIDA = dt.Columns.Add("UNIDAD_MEDIDA", typeof(string));
                 ViewState["RECORD"] = dt;
 
                 MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm = new MySqlCommand("SELECT * FROM `familia`", coon);
-            MySqlCommand cm1 = new MySqlCommand("SELECT * FROM `unidad_medida`", coon);
-            cm.CommandType = System.Data.CommandType.Text;
-            cm1.CommandType = System.Data.CommandType.Text;
+                MySqlCommand cm = new MySqlCommand("SELECT * FROM `familia`", coon);
+                MySqlCommand cm1 = new MySqlCommand("SELECT * FROM `unidad_medida`", coon);
+                cm.CommandType = System.Data.CommandType.Text;
+                cm1.CommandType = System.Data.CommandType.Text;
 
 
-            MySqlDataAdapter da = new MySqlDataAdapter(cm);
-            DataTable dt2 = new DataTable();
-            da.Fill(dt2);
+                MySqlDataAdapter da = new MySqlDataAdapter(cm);
+                DataTable dt2 = new DataTable();
+                da.Fill(dt2);
 
-            MySqlDataAdapter da1 = new MySqlDataAdapter(cm1);
-            DataTable dt1 = new DataTable();
-            da1.Fill(dt1);
-
-
-
-            DropDownList1.DataValueField = "id";
-            DropDownList1.DataTextField = "descripcion";
-            DropDownList1.DataSource = dt2;
-            DropDownList1.DataBind();
-
-
-            DropDownList2.DataValueField = "id";
-            DropDownList2.DataTextField = "descripcion";
-            DropDownList2.DataSource = dt1;
-            DropDownList2.DataBind();
+                MySqlDataAdapter da1 = new MySqlDataAdapter(cm1);
+                DataTable dt1 = new DataTable();
+                da1.Fill(dt1);
 
 
 
-            coon.Close();
+                DropDownList1.DataValueField = "id";
+                DropDownList1.DataTextField = "descripcion";
+                DropDownList1.DataSource = dt2;
+                DropDownList1.DataBind();
 
+
+                DropDownList2.DataValueField = "id";
+                DropDownList2.DataTextField = "descripcion";
+                DropDownList2.DataSource = dt1;
+                DropDownList2.DataBind();
+
+                coon.Close();
             }
         }
 
@@ -64,7 +62,7 @@ namespace Sistema_Integral_HPS.Deposito
             
             GridView1.Visible = true;
             MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm = new MySqlCommand("SELECT id,descripcion,descripcion_adicional FROM articulo WHERE descripcion LIKE '%" + TextBox1.Text + "%' AND (habilitado= 'SI' OR habilitado='PENDIENTE')", coon);
+            MySqlCommand cm = new MySqlCommand("SELECT articulo.id as id,articulo.descripcion as descripcion,articulo.descripcion_adicional as descripcion_adicional,unidad_medida.descripcion as unidad_medida FROM articulo INNER JOIN unidad_medida ON unidad_medida.id=articulo.fk_unimedidas WHERE articulo.descripcion LIKE '%" + TextBox1.Text + "%' AND (articulo.habilitado= 'SI' OR articulo.habilitado='PENDIENTE')", coon);
             cm.CommandType = CommandType.Text;
             cm.ExecuteNonQuery();
 
@@ -79,16 +77,19 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 string msg = "ARTÍCULO SIN EXISTENCIA!";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+                Button_NoExisteA.Visible = true;
                 Panel1.Visible = true;
+                Panel3.Visible = false;
             }
             else
             {
                 Label6.Visible = true;
-               Label6.Text = "SELECCIONAR ARTICULO";
+                Label6.Text = "SELECCIONAR ARTICULO";
                 Panel1.Visible = true;
                 Label4.Visible = false;
                 TextBox2.Visible = false;
                 Button2.Visible = false;
+                Panel3.Visible = true;//Panel con Label cantidad, text box int y boton agregar
             }
             coon.Close();
         }
@@ -102,8 +103,10 @@ namespace Sistema_Integral_HPS.Deposito
             Label1.Text = Convert.ToString(idv);
             Label2.Visible = true;
             Label2.Text ="Articulo seleccionado a pedir : " +Convert.ToString(GridView1.SelectedRow.Cells[2].Text);
+            Label8.Visible = true;
+            Label8.Text = Convert.ToString(GridView1.SelectedRow.Cells[3].Text);
             GridView1.Visible = false;
-           Label6.Visible = false;
+            Label6.Visible = false;
             Button_NoExisteA.Visible = false;
         }
 
@@ -116,6 +119,7 @@ namespace Sistema_Integral_HPS.Deposito
             row["ID ARTICULO"] = Label1.Text;
             row["ARTICULO"] = Label2.Text;
             row["CANTIDAD"] = TextBox2.Text;
+            row["UNIDAD_MEDIDA"]=Label8.Text;
 
             dt.Rows.Add(row);
             dt.AcceptChanges();
@@ -127,6 +131,10 @@ namespace Sistema_Integral_HPS.Deposito
             TextBox2.Text = " ";
             Label6.Visible = false;
             Label2.Visible = false;
+            Panel3.Visible = false;//Panel con Label cantidad, text box int y boton agregar
+            Label8.Visible = false;
+            Label10.Visible = true;
+            TextBox6.Visible = true;
         }
 
         protected void Button4_Click(object sender, EventArgs e)
@@ -137,7 +145,7 @@ namespace Sistema_Integral_HPS.Deposito
             int unisec = Convert.ToInt32(Session["unidad_seccion"].ToString());
 
             MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm1 = new MySqlCommand("INSERT INTO pedido_provision(id,fk_usuario, direccion, servicio_division, unidad_seccion) VALUES (NULL,'"+idp+"', '"+dir+ "', '" + serdiv + "', '" + unisec + "')", coon);
+            MySqlCommand cm1 = new MySqlCommand("INSERT INTO pedido_provision(id,fk_usuario, direccion, servicio_division, unidad_seccion,monto_aproximado) VALUES (NULL,'"+idp+"', '"+dir+ "', '" + serdiv + "', '" + unisec + "','" + TextBox6.Text + "')", coon);
             cm1.CommandType = CommandType.Text;
             cm1.ExecuteNonQuery();
 
@@ -165,7 +173,7 @@ namespace Sistema_Integral_HPS.Deposito
             string msg = "PEDIDO DE CAJA CHICA REALIZADO";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = '/Deposito/IndexDeposito.aspx';", true);
 
-            //Response.Redirect("/Deposito/IndexDeposito.aspx");
+                        //Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
 
         protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
