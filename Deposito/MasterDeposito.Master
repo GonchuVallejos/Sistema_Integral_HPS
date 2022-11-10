@@ -31,8 +31,8 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">NUEVO PEDIDO</a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="APedido.aspx">SUMINISTRO</a></li>
-                                        <li><a class="dropdown-item" href="APedido_Provision.aspx">PROVISION (CAJA CHICA)</a></li>
+                                        <li><a class="dropdown-item" href="APedido.aspx">PEDIDO DE PROVISION</a></li>
+                                        <li><a class="dropdown-item" href="APedido_Provision.aspx">PROVISION DE CAJA CHICA</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">

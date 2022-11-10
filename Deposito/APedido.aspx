@@ -3,13 +3,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
-    <asp:Label ID="Label3" class="justify-content-center h1" runat="server">REGISTRAR UN PEDIDO</asp:Label>
+    <asp:Label ID="Label3" class="justify-content-center h1" runat="server">REGISTRAR UN PEDIDO DE PROVISIÓN</asp:Label>
     <hr />
     <div class="row">
         <div class="col-lg-4">
-            <Label class="font-weight-normal">INGRESE NOMBRE DEL ARTICULO A PEDIR:<br />
-            </Label>
-        &nbsp;</div>
+            <asp:Label ID="Label7" runat="server" CssClass="font-weight-normal" Text="INGRESE NOMBRE DEL ARTICULO A PEDIR:"></asp:Label>
+        </div>
         <div class="col-lg-2">
             <asp:TextBox ID="TextBox1" runat="server" class="form-control"></asp:TextBox>
         </div>
@@ -39,6 +38,8 @@
             </div>
             <div class="col-lg-2">
                 <asp:TextBox ID="TextBox2"  class="form-control" runat="server" Visible="False" required="True" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
+            </div>
+            <div class="col-lg-2">
                 <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-primary" OnClick="Button2_Click" Text="AGREGAR" Visible="False" />
             </div>
         </div>
@@ -54,6 +55,13 @@
             </Columns>
             <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
         </asp:GridView>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-lg-2">
+                <asp:Button ID="Button5" runat="server" CssClass="btn btn-info btn-lg" Text="AGREGAR MÁS ARTICULOS" OnClick="Button5_Click" Visible="false"/>
+            </div>
+        </div>
         <br />
         <div class="row">
             <div class="col-lg-2">

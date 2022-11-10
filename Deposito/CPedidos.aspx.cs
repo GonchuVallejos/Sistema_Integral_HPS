@@ -208,7 +208,6 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 tipod = "detalle_pedido";
                 tipop = "fk_pedido";
-                
             }
             else
             {
@@ -236,15 +235,45 @@ namespace Sistema_Integral_HPS.Deposito
             GridView2.DataSource = dta1;
             GridView2.DataBind();
             ViewState["RECORD"] = dta1;
-            coon.Close();
             //copiado
             //
             Panel1.Visible = false;
             Panel2.Visible = true;
+
+            string consulta2 = "SELECT CONCAT(UPPER(persona.nombre), ' ', UPPER(persona.apellido)) AS CONFIRMA, movimiento.retira AS RETIRA, movimiento.estado FROM movimiento INNER JOIN usuario ON movimiento.fk_usuario = usuario.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE movimiento." + tipop + " = " + Convert.ToString(GridView1.SelectedRow.Cells[1].Text);
+
+            MySqlCommand cm2 = new MySqlCommand(consulta2, coon);
+            cm2.CommandType = CommandType.Text;
+
+            MySqlDataReader dr = cm2.ExecuteReader();
+
+            dr.Read();
+            if (dr["estado"].ToString() == "CONFIRMADO")
+            {
+                Panel3.Visible = true;
+                TextBox3.Text = dr["RETIRA"].ToString();
+                TextBox4.Text = dr["CONFIRMA"].ToString();
+            }
+            else
+            {
+                Panel3.Visible = false;
+            }
+            dr.Close();
+            coon.Close();
+
         }
         protected void GridView2_SelectedIndexChanged1(object sender, EventArgs e)
         {
 
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+
+            DataTable dta = (DataTable)ViewState["RECORD"];
+            GridView1.DataSource = dta;
+            GridView1.DataBind();
         }
     }
 }

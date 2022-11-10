@@ -47,7 +47,7 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 DataTable dta = new DataTable();
                 MySqlConnection coon = Conexion.getConexion();
-                MySqlCommand cm = new MySqlCommand("SELECT pedido.id, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion, pedido.fecha FROM pedido INNER JOIN usuario ON pedido.fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE estado = 'PENDIENTE'", coon);
+                MySqlCommand cm = new MySqlCommand("SELECT pedido.id, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion, pedido.fecha FROM pedido INNER JOIN usuario ON pedido.fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE estado = 'PENDIENTE' ORDER BY pedido.id DESC", coon);
                 cm.CommandType = CommandType.Text;
                 cm.ExecuteNonQuery();
 
@@ -281,7 +281,7 @@ namespace Sistema_Integral_HPS.Deposito
                         // byte[] byteimage = DatoLogica.Instancia.ObtenerLogo(out obtenido);
                         if (obtenido)
                         {
-                            System.Drawing.Image newImage = System.Drawing.Image.FromFile("C:/Users/SISTEMAS-SIS/Source/Repos/Sistema_Integral_HPS/Deposito/img/Logo HPS.png");
+                            System.Drawing.Image newImage = System.Drawing.Image.FromFile("C:\\Users\\Administrador\\source\\repos\\Sistema_Integral_HPS\\Deposito\\img\\Logo HPS.png");
                             // iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(byteimage);
                             iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(newImage, System.Drawing.Imaging.ImageFormat.Jpeg);
                             pdfImage.ScaleToFit(60, 60);
@@ -337,7 +337,7 @@ namespace Sistema_Integral_HPS.Deposito
         {
             RectangleF srcRect = new RectangleF(50.0F, 50.0F, 150.0F, 150.0F);
             GraphicsUnit units = GraphicsUnit.Pixel;
-            System.Drawing.Image newImage = System.Drawing.Image.FromFile("C:/Users/SISTEMAS-SIS/Source/Repos/Sistema_Integral_HPS/Deposito/img/Logo HPS.png");
+            System.Drawing.Image newImage = System.Drawing.Image.FromFile("C:\\Users\\Administrador\\source\\repos\\Sistema_Integral_HPS\\Deposito\\img\\Logo HPS.png");
             e.Graphics.PageUnit = GraphicsUnit.Millimeter; //unidades de la impresion
             gfx = e.Graphics;
             gfx.DrawImage(newImage,PosXi,PosYi,15,15);

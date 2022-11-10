@@ -47,7 +47,7 @@ namespace Sistema_Integral_HPS.Deposito
             {
                 DataTable dta = new DataTable();
                 MySqlConnection coon = Conexion.getConexion();
-                MySqlCommand cm = new MySqlCommand("SELECT pedido_provision.id, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion, pedido_provision.fecha FROM pedido_provision INNER JOIN usuario ON pedido_provision.fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE estado = 'PENDIENTE'", coon);
+                MySqlCommand cm = new MySqlCommand("SELECT pedido_provision.id, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion, pedido_provision.fecha FROM pedido_provision INNER JOIN usuario ON pedido_provision.fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE estado = 'PENDIENTE' ORDER BY pedido_provision.id DESC", coon);
                 cm.CommandType = CommandType.Text;
                 cm.ExecuteNonQuery();
 

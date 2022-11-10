@@ -135,6 +135,19 @@ namespace Sistema_Integral_HPS.Deposito
             Label8.Visible = false;
             Label10.Visible = true;
             TextBox6.Visible = true;
+
+            Label7.Visible = false;
+            TextBox1.Visible = false;
+            Button1.Visible = false;
+
+            Button5.Visible = true;
+            Button6.Visible = true;
+
+            Label9.Visible = false;
+            Label8.Visible = false;
+            Label4.Visible = false;
+            TextBox2.Visible=false;
+            Button2.Visible = false;
         }
 
         protected void Button4_Click(object sender, EventArgs e)
@@ -170,7 +183,8 @@ namespace Sistema_Integral_HPS.Deposito
                 
             }
             coon.Close();
-            string msg = "PEDIDO DE CAJA CHICA REALIZADO";
+
+            string msg = "PEDIDO DE CAJA CHICA ID " + idped + " REALIZADO";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = '/Deposito/IndexDeposito.aspx';", true);
 
                         //Response.Redirect("/Deposito/IndexDeposito.aspx");
@@ -273,6 +287,22 @@ namespace Sistema_Integral_HPS.Deposito
         protected void TextBox5_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            Label7.Visible = false;
+            TextBox1.Visible = false;
+            Button1.Visible = false;
+            Panel4.Visible = true;
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            Label7.Visible = true;
+            TextBox1.Visible = true;
+            Button1.Visible = true;
+            Panel4.Visible = false;
         }
     }
 }

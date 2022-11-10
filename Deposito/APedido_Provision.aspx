@@ -3,13 +3,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
-    <asp:Label ID="Label3" class="justify-content-center h1" runat="server">REGISTRAR UN PEDIDO PROVISION</asp:Label>
+    <asp:Label ID="Label3" class="justify-content-center h1" runat="server">REGISTRAR UN PEDIDO PROVISION DE CAJA CHICA</asp:Label>
     <hr />
     <div class="row">
         <div class="col-lg-4">
-            <Label class="font-weight-normal">INGRESE NOMBRE DEL ARTICULO A PEDIR:<br />
-            </Label>
-        &nbsp;</div>
+            <asp:Label ID="Label7" runat="server" CssClass="font-weight-normal" Text="INGRESE NOMBRE DEL ARTICULO A PEDIR:"></asp:Label>
+        </div>
         <div class="col-lg-2">
             <asp:TextBox ID="TextBox1" runat="server" class="form-control"></asp:TextBox>
         </div>
@@ -38,7 +37,6 @@
         <br />
         <asp:Label ID="Label9" runat="server" Text="Unidad de Medida:" Visible="False"></asp:Label>
         <asp:Label ID="Label8" runat="server" Text="" Visible="False"></asp:Label>
-        
         <asp:Panel ID="Panel3" runat="server" Visible="false">
             <div class="row">
                 <div class="col-lg-2">
@@ -46,6 +44,8 @@
                 </div>
                 <div class="col-lg-2">
                     <asp:TextBox ID="TextBox2" class="form-control" runat="server" Visible="False" required="True" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
+                </div>
+                <div class="col-lg-2">
                     <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-primary" OnClick="Button2_Click" Text="AGREGAR" Visible="False" />
                 </div>
             </div>
@@ -64,11 +64,21 @@
             <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
         </asp:GridView>
         <br />
-        <asp:Label ID="Label7" runat="server" Text="Label" Visible="False"></asp:Label>
-        <asp:TextBox ID="TextBox5" runat="server" class="form-control" required="True" Visible="False" OnTextChanged="TextBox5_TextChanged"></asp:TextBox>
-        <asp:Label ID="Label10" runat="server" Text="Monto aproximado total: " Visible="false"></asp:Label>
         <br />
-        <asp:TextBox ID="TextBox6" runat="server" class="form-control" OnTextChanged="TextBox5_TextChanged" Visible="False" TextMode="Number"></asp:TextBox>
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-2">
+                <asp:Button ID="Button5" runat="server" CssClass="btn btn-info btn-lg" Text="AGREGAR MÁS ARTICULOS" OnClick="Button5_Click" Visible="false"/>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-2">
+                <asp:Button ID="Button6" runat="server" CssClass="btn btn-warning btn-lg" Text="FINALIZAR PEDIDO" Visible="false" OnClick="Button6_Click"/>
+             </div>
+        </div>
+        <br />
+        <asp:Panel ID="Panel4" runat="server" Visible="false">
+            <asp:Label ID="Label10" runat="server" Text="Monto aproximado total: " Visible="false"></asp:Label>
+        <br />
+        <asp:TextBox ID="TextBox6" runat="server" class="form-control" OnTextChanged="TextBox5_TextChanged" Visible="False" TextMode="Number" required="true"></asp:TextBox>
         <br />
         <div class="row">
             <div class="col-lg-2">
@@ -84,6 +94,7 @@
                 <asp:Button ID="Button4" class="btn btn-lg btn-success" runat="server" Text="FINALIZAR" OnClick="Button4_Click" />
             </div>
         </div>
+        </asp:Panel>
     </asp:Panel>
 <asp:Panel ID="Panel2" runat="server" CssClass="form-control" Visible="false">
        

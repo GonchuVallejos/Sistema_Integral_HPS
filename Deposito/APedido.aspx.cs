@@ -94,6 +94,16 @@ namespace Sistema_Integral_HPS.Deposito
             TextBox2.Text = " ";
             Label6.Visible = false;
             Label2.Visible = false;
+
+            Button5.Visible = true;
+            Label4.Visible = false;
+            TextBox2.Visible = false;
+            Button2.Visible = false;
+
+            Label7.Visible = false;
+            TextBox1.Visible = false;
+            Button1.Visible = false;
+
         }
 
         protected void Button4_Click(object sender, EventArgs e)
@@ -136,7 +146,7 @@ namespace Sistema_Integral_HPS.Deposito
             
             coon.Close();
 
-            string msg = "PEDIDO REALIZADO";
+            string msg = ("PEDIDO ID " + idped +  " REALIZADO");
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = '/Deposito/IndexDeposito.aspx';", true);
 
             //Response.Redirect("/Deposito/IndexDeposito.aspx");
@@ -199,6 +209,18 @@ namespace Sistema_Integral_HPS.Deposito
         protected void TextBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            Label4.Visible = false;
+            TextBox2.Visible = false;
+            Button2.Visible = false;
+            Button5.Visible = false;
+
+            Label7.Visible = true;
+            TextBox1.Visible = true;
+            Button1.Visible = true;
         }
     }
 }

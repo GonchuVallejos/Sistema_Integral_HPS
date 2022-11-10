@@ -47,7 +47,7 @@
     <br />
     <asp:Panel ID="Panel1" runat="server" Visible="false">
         <asp:Label ID="Label5" runat="server" class="font-weight-normal" Text=""></asp:Label>
-        <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="IDPEDIDO" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+        <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="IDPEDIDO" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnPageIndexChanging="GridView1_PageIndexChanging">
             <Columns>
                 <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="IDPEDIDO" HeaderText="ID" />
@@ -57,10 +57,31 @@
             </Columns>
             <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
         </asp:GridView>
-
     </asp:Panel>
     <br />
     <asp:Panel ID="Panel2" runat="server" Visible="false">
+        <asp:Panel ID="Panel3" runat="server" Visible="false">
+            <asp:Label ID="Label12" class="justify-content-center h2" runat="server" Text="PEDIDO"></asp:Label>
+        <hr />
+        <div class="row">
+            <div class="col-lg-1">
+                <asp:Label ID="Label13" class="font-weight-normal" runat="server" Text="RETIRO:"></asp:Label>
+            </div>
+            <div class="col-lg-3">
+                <asp:TextBox ID="TextBox3" class="form-control text-uppercase" runat="server" Enabled="false"></asp:TextBox>
+            </div>
+            <div class="col-lg-3"></div>
+            <div class="col-lg-2">
+                <asp:Label ID="Label14" class="font-weight-normal" runat="server" Text="CONFIRMADO POR:"></asp:Label>
+            </div>
+            <div class="col-lg-3">
+                <asp:TextBox ID="TextBox4" class="form-control text-uppercase" runat="server" Enabled="false"></asp:TextBox>
+            </div>
+        </div>
+        </asp:Panel>
+        <br />
+        <asp:Label ID="Label15" class="row justify-content-center h2" runat="server" Text="DETALLE"></asp:Label>
+        <hr />
     <asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" DataKeyNames="iddetalle" OnSelectedIndexChanged="GridView2_SelectedIndexChanged1">
             <Columns>
 

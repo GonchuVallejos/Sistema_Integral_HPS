@@ -24,6 +24,15 @@ namespace Sistema_Integral_HPS.Deposito
         protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
+        /// Control Label7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label7;
+
+        /// <summary>
         /// Control TextBox1.
         /// </summary>
         /// <remarks>
@@ -168,22 +177,31 @@ namespace Sistema_Integral_HPS.Deposito
         protected global::System.Web.UI.WebControls.GridView GridView2;
 
         /// <summary>
-        /// Control Label7.
+        /// Control Button5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
+        protected global::System.Web.UI.WebControls.Button Button5;
 
         /// <summary>
-        /// Control TextBox5.
+        /// Control Button6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.Button Button6;
+
+        /// <summary>
+        /// Control Panel4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel4;
 
         /// <summary>
         /// Control Label10.

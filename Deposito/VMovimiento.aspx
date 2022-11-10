@@ -49,7 +49,6 @@
              <asp:BoundField DataField="fk_tipo_movimiento" HeaderText="fk_tipo_movimiento" Visible="False" />
              <asp:BoundField DataField="fk_adquisicion" HeaderText="fk_adquisicion" Visible="False" />
              <asp:BoundField DataField="servicio_pide" HeaderText="DESTINO" />
-             <asp:BoundField DataField="retira" HeaderText="RETIRÓ" />
              <asp:BoundField DataField="idservicio" HeaderText="ID servicio" Visible="False" />
          </Columns>
          <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
