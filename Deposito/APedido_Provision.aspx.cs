@@ -185,7 +185,7 @@ namespace Sistema_Integral_HPS.Deposito
             coon.Close();
 
             string msg = "PEDIDO DE CAJA CHICA ID " + idped + " REALIZADO";
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = '/Deposito/IndexDeposito.aspx';", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = '/Sistema_Integral_HPS/Deposito/IndexDeposito.aspx\r\n';", true);
 
                         //Response.Redirect("/Deposito/IndexDeposito.aspx");
         }
