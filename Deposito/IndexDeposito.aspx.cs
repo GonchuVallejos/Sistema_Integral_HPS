@@ -79,12 +79,12 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void LinkButton3_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Deposito/VAlertas.aspx");
+            Response.Redirect("~/Deposito/VAlertas.aspx");
         }
 
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Deposito/VAlertas.aspx");
+            Response.Redirect("~/Deposito/VAlertas.aspx");
         }
     }
 }

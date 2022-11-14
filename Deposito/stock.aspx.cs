@@ -60,6 +60,7 @@ namespace Sistema_Integral_HPS
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
             }
          
+
             coon.Close();
         }
 

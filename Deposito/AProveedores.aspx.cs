@@ -63,7 +63,7 @@ namespace Sistema_Integral_HPS.Deposito.Reportes
             cm1.CommandType = CommandType.Text;
             cm1.ExecuteNonQuery();
             MessageBox.Show("PROVEEDOR CARGADO CORRECTAMENTE! ");
-            Response.Redirect("IndexDeposito.aspx");
+            Response.Redirect("~/IndexDeposito.aspx");
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

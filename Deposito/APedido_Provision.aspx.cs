@@ -241,7 +241,7 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Deposito/IndexDeposito.aspx");
+            Response.Redirect("~/Deposito/IndexDeposito.aspx");
         }
 
         protected void Button_NoExisteA_Click(object sender, EventArgs e)
@@ -255,7 +255,7 @@ namespace Sistema_Integral_HPS.Deposito
         }
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Deposito/IndexDeposito.aspx");
+            Response.Redirect("~/Deposito/IndexDeposito.aspx");
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)

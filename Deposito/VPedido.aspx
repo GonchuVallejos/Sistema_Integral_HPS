@@ -30,13 +30,13 @@
                 <asp:Label ID="Label13" class="font-weight-normal" runat="server" Text="Usuario solicitante:"></asp:Label>
             </div>
             <div class="col-lg-2">
-                <asp:TextBox ID="TextBox1" class="form-control" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="TextBox1" class="form-control" runat="server" OnTextChanged="TextBox1_TextChanged" Enabled="False"></asp:TextBox>
             </div>
             <div class="col-lg-2">
                 <asp:Label ID="Label14" class="font-weight-normal" runat="server" Text="Fecha de solicitud:"></asp:Label>
             </div>
             <div class="col-lg-2">
-                <asp:TextBox ID="TextBox2" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox2" class="form-control" runat="server" Enabled="False"></asp:TextBox>
             </div>
             <div class="col-lg-1">
                 <asp:Label ID="Label16" class="font-weight-normal" runat="server" Text="Retira:"></asp:Label>

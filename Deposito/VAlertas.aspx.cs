@@ -71,7 +71,7 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Deposito/IndexDeposito.aspx");
+            Response.Redirect("~/Deposito/IndexDeposito.aspx");
         }
     }
 }

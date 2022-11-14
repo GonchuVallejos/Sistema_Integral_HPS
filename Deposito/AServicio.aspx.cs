@@ -27,7 +27,7 @@ namespace Sistema_Integral_HPS.Deposito
             cm1.CommandType = CommandType.Text;
             cm1.ExecuteNonQuery();
             MessageBox.Show("SERVICO CARGADO CORRECTAMENTE! ");
-            Response.Redirect("IndexDeposito.aspx");
+            Response.Redirect("~/IndexDeposito.aspx");
            
         }
 

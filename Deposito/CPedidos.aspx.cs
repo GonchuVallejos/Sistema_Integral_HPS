@@ -1,5 +1,6 @@
 ﻿
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.X509.Qualified;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -162,7 +163,7 @@ namespace Sistema_Integral_HPS.Deposito
                     break;
                 case ("FECHA"):
                     {
-                        consulta = "SELECT " + DropDownList4.SelectedItem.Value + ".id AS IDPEDIDO, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion AS DESCRIPCION, " + DropDownList4.SelectedItem.Value + ".fecha AS FECHA FROM " + DropDownList4.SelectedItem.Value + " INNER JOIN usuario ON " + DropDownList4.SelectedItem.Value + ".fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE " + DropDownList4.SelectedItem.Value + ".fecha BETWEEN '" + TextBox1.Text + "' AND '" + TextBox2.Text + "' AND " + DropDownList4.SelectedItem.Value + ".estado = '" + DropDownList5.SelectedItem.Value + "' AND " + DropDownList4.SelectedItem.Value + ".servicio_division = '" + Session["servicio_division"].ToString() + "' ORDER BY fecha DESC";
+                        consulta = "SELECT " + DropDownList4.SelectedItem.Value + ".id AS IDPEDIDO, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion AS DESCRIPCION, " + DropDownList4.SelectedItem.Value + ".fecha AS FECHA FROM " + DropDownList4.SelectedItem.Value + " INNER JOIN usuario ON " + DropDownList4.SelectedItem.Value + ".fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE " + DropDownList4.SelectedItem.Value + ".fecha BETWEEN ('" + TextBox1.Text + "' AND '" + TextBox2.Text + "') AND " + DropDownList4.SelectedItem.Value + ".estado = '" + DropDownList5.SelectedItem.Value + "' AND " + DropDownList4.SelectedItem.Value + ".servicio_division = '" + Session["servicio_division"].ToString() + "' ORDER BY fecha DESC";
                         Session["tipo"] = DropDownList4.SelectedItem.Value;
                         Session["confirmado"] = DropDownList5.SelectedItem.Value;
                     }
@@ -247,20 +248,26 @@ namespace Sistema_Integral_HPS.Deposito
 
             MySqlDataReader dr = cm2.ExecuteReader();
 
+            
             dr.Read();
-            if (dr["estado"].ToString() == "CONFIRMADO")
+            if (dr.Read())
             {
-                Panel3.Visible = true;
-                TextBox3.Text = dr["RETIRA"].ToString();
-                TextBox4.Text = dr["CONFIRMA"].ToString();
+                if (dr["estado"].ToString() == "CONFIRMADO")
+                {
+                    Panel3.Visible = true;
+                    TextBox3.Text = dr["RETIRA"].ToString();
+                    TextBox4.Text = dr["CONFIRMA"].ToString();
+                }
+                else
+                {
+                    Panel3.Visible = false;
+                }
             }
-            else
-            {
-                Panel3.Visible = false;
-            }
+
+            
             dr.Close();
             coon.Close();
-
+         
         }
         protected void GridView2_SelectedIndexChanged1(object sender, EventArgs e)
         {

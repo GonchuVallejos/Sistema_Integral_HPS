@@ -132,11 +132,11 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void btn_cancelar1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Deposito/IndexDeposito.aspx");
+            Response.Redirect("~/Deposito/IndexDeposito.aspx");
         }
         protected void btn_verpedidos1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Deposito/VPedido.aspx");
+            Response.Redirect("~/Deposito/VPedido.aspx");
         }
         protected void btn_guardar1_Click(object sender, EventArgs e)
         {    // Permito que el usuario seleccione una impresora
@@ -193,7 +193,7 @@ namespace Sistema_Integral_HPS.Deposito
             cm1.ExecuteNonQuery();
 
             coon.Close();
-            Response.Redirect("/Deposito/IndexDeposito.aspx");
+            Response.Redirect("~/Deposito/IndexDeposito.aspx");
 
            
 

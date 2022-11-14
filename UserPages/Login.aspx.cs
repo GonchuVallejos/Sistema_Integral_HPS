@@ -55,7 +55,7 @@ namespace Sistema_Integral_HPS.UserPages
                     Session["nombresistema"] = dr2["descripcion"].ToString();
                     dr2.Close();
 
-                    Response.Redirect("/Deposito/IndexDeposito.aspx");
+                    Response.Redirect("~/Deposito/IndexDeposito.aspx");
 
                 }
                 else
