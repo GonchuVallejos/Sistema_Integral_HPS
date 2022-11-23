@@ -15,10 +15,10 @@ namespace Sistema_Integral_HPS.Deposito
         DataTable dta = new DataTable();
         DataTable dt = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
-        {   
+        {
             if (!IsPostBack)
             {
-                
+
                 DataColumn ID = dt.Columns.Add("ID ARTICULO", typeof(Int32));
                 DataColumn ART = dt.Columns.Add("ARTICULO", typeof(string));
                 DataColumn CANTIDAD = dt.Columns.Add("CANTIDAD", typeof(Int32));
@@ -59,7 +59,7 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
+
             GridView1.Visible = true;
             MySqlConnection coon = Conexion.getConexion();
             MySqlCommand cm = new MySqlCommand("SELECT articulo.id as id,articulo.descripcion as descripcion,articulo.descripcion_adicional as descripcion_adicional,unidad_medida.descripcion as unidad_medida FROM articulo INNER JOIN unidad_medida ON unidad_medida.id=articulo.fk_unimedidas WHERE articulo.descripcion LIKE '%" + TextBox1.Text + "%' AND (articulo.habilitado= 'SI' OR articulo.habilitado='PENDIENTE')", coon);
@@ -102,7 +102,7 @@ namespace Sistema_Integral_HPS.Deposito
             string idv = GridView1.SelectedDataKey.Value.ToString();
             Label1.Text = Convert.ToString(idv);
             Label2.Visible = true;
-            Label2.Text ="Articulo seleccionado a pedir : " +Convert.ToString(GridView1.SelectedRow.Cells[2].Text);
+            Label2.Text = "Articulo seleccionado a pedir : " + Convert.ToString(GridView1.SelectedRow.Cells[2].Text);
             Label8.Visible = true;
             Label8.Text = Convert.ToString(GridView1.SelectedRow.Cells[3].Text);
             GridView1.Visible = false;
@@ -112,21 +112,27 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            dt = (DataTable)ViewState["RECORD"];
+
+            int valor;
+            bool isNum = int.TryParse(TextBox2.Text, out valor);
+
+            if ((isNum == true) && (valor >= 1))
+            {
+                dt = (DataTable)ViewState["RECORD"];
 
             DataRow row = dt.NewRow();
 
             row["ID ARTICULO"] = Label1.Text;
             row["ARTICULO"] = Label2.Text;
             row["CANTIDAD"] = TextBox2.Text;
-            row["UNIDAD_MEDIDA"]=Label8.Text;
+            row["UNIDAD_MEDIDA"] = Label8.Text;
 
             dt.Rows.Add(row);
             dt.AcceptChanges();
             GridView2.DataSource = dt;
             GridView2.DataBind();
             //LIMPIA LOS TEXT BOX DE ARTICULO Y CANTIDAD
-            
+
             TextBox1.Text = null;
             TextBox2.Text = " ";
             Label6.Visible = false;
@@ -146,48 +152,62 @@ namespace Sistema_Integral_HPS.Deposito
             Label9.Visible = false;
             Label8.Visible = false;
             Label4.Visible = false;
-            TextBox2.Visible=false;
+            TextBox2.Visible = false;
             Button2.Visible = false;
+            }
+            else
+            {
+                string msg = ("DEBE INGRESAR UNA CANTIDAD VALIDA");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+            }
         }
 
         protected void Button4_Click(object sender, EventArgs e)
         {
-            int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
-            string dir = Session["direccion"].ToString();
-            int serdiv = Convert.ToInt32(Session["servicio_division"].ToString());
-            int unisec = Convert.ToInt32(Session["unidad_seccion"].ToString());
-
-            MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm1 = new MySqlCommand("INSERT INTO pedido_provision(id,fk_usuario, direccion, servicio_division, unidad_seccion,monto_aproximado) VALUES (NULL,'"+idp+"', '"+dir+ "', '" + serdiv + "', '" + unisec + "','" + TextBox6.Text + "')", coon);
-            cm1.CommandType = CommandType.Text;
-            cm1.ExecuteNonQuery();
-
-            MySqlCommand cm2 = new MySqlCommand("SELECT MAX(id) FROM pedido_provision", coon);
-            cm2.CommandType = System.Data.CommandType.Text;
-
-            MySqlDataAdapter da = new MySqlDataAdapter(cm2);
-            DataTable dt2 = new DataTable();
-            da.Fill(dt2);
-
-            int idped = Convert.ToInt32(dt2.Rows[0].ItemArray.GetValue(0).ToString());
-            
             dt = (DataTable)ViewState["RECORD"];
-
-            for (int i = 0; i < dt.Rows.Count; i++)
+            if (dt.Rows.Count != 0)
             {
-                int ida=Convert.ToInt32(dt.Rows[i]["ID ARTICULO"].ToString());
-                int cant =Convert.ToInt32(dt.Rows[i]["CANTIDAD"].ToString());
-                MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_pedido_provision(id,fk_pedido_provision,fk_articulo,cantidad,observacion) VALUES (NULL,'"+idped+"','" + ida + "','" + cant + "','SIN EXISTENCIA EN DEPOSITO')", coon);
-                cm.CommandType = CommandType.Text;
-                cm.ExecuteNonQuery();
-                
+                int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
+                string dir = Session["direccion"].ToString();
+                int serdiv = Convert.ToInt32(Session["servicio_division"].ToString());
+                int unisec = Convert.ToInt32(Session["unidad_seccion"].ToString());
+
+                MySqlConnection coon = Conexion.getConexion();
+                MySqlCommand cm1 = new MySqlCommand("INSERT INTO pedido_provision(id,fk_usuario, direccion, servicio_division, unidad_seccion,monto_aproximado) VALUES (NULL,'" + idp + "', '" + dir + "', '" + serdiv + "', '" + unisec + "','" + TextBox6.Text + "')", coon);
+                cm1.CommandType = CommandType.Text;
+                cm1.ExecuteNonQuery();
+
+                MySqlCommand cm2 = new MySqlCommand("SELECT MAX(id) FROM pedido_provision", coon);
+                cm2.CommandType = System.Data.CommandType.Text;
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cm2);
+                DataTable dt2 = new DataTable();
+                da.Fill(dt2);
+
+                int idped = Convert.ToInt32(dt2.Rows[0].ItemArray.GetValue(0).ToString());
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    int ida = Convert.ToInt32(dt.Rows[i]["ID ARTICULO"].ToString());
+                    int cant = Convert.ToInt32(dt.Rows[i]["CANTIDAD"].ToString());
+                    MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_pedido_provision(id,fk_pedido_provision,fk_articulo,cantidad,observacion) VALUES (NULL,'" + idped + "','" + ida + "','" + cant + "','SIN EXISTENCIA EN DEPOSITO')", coon);
+                    cm.CommandType = CommandType.Text;
+                    cm.ExecuteNonQuery();
+
+                }
+                coon.Close();
+
+                string msg = "PEDIDO DE CAJA CHICA ID " + idped + " REALIZADO";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = '/Sistema_Integral_HPS/Deposito/IndexDeposito.aspx';", true);
+
+                //Response.Redirect("/Deposito/IndexDeposito.aspx");
+
             }
-            coon.Close();
-
-            string msg = "PEDIDO DE CAJA CHICA ID " + idped + " REALIZADO";
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = '/Sistema_Integral_HPS/Deposito/IndexDeposito.aspx';", true);
-
-                        //Response.Redirect("/Deposito/IndexDeposito.aspx");
+            else
+            {
+                string msg = ("NO SOLICITO NINGÚN ARTICULO");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+            }
         }
 
         protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -206,14 +226,26 @@ namespace Sistema_Integral_HPS.Deposito
             DataTable dt = (DataTable)ViewState["RECORD"];
 
             GridViewRow row = GridView2.Rows[e.RowIndex];
-            dt.Rows[row.DataItemIndex]["CANTIDAD"] = ((TextBox)(row.Cells[2].Controls[0])).Text;
 
-            GridView2.EditIndex = -1;
+            int valor;
+            bool isNum = int.TryParse(((TextBox)(row.Cells[2].Controls[0])).Text, out valor);
 
-            Session["RECORD"] = dt;
+            if ((isNum == true) && (valor >= 1))
+            {
+                dt.Rows[row.DataItemIndex]["CANTIDAD"] = ((TextBox)(row.Cells[2].Controls[0])).Text;
 
-            GridView2.DataSource = dt;
-            GridView2.DataBind();
+                GridView2.EditIndex = -1;
+
+                Session["RECORD"] = dt;
+
+                GridView2.DataSource = dt;
+                GridView2.DataBind();
+            }
+            else
+            {
+                string msg = ("DEBE INGRESAR UNA CANTIDAD VALIDA");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+            }
         }
 
         protected void GridView2_RowEditing(object sender, GridViewEditEventArgs e)
@@ -270,10 +302,10 @@ namespace Sistema_Integral_HPS.Deposito
             //da.Fill(dta);
 
 
-                MySqlCommand cm2 = new MySqlCommand("INSERT INTO articulo (descripcion,descripcion_adicional,fk_familias,fk_unimedidas,fk_deposito,habilitado) VALUES ('" + TextBox3.Text + "','" + TextBox4.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "',1,'PENDIENTE')", coon);
-                cm2.CommandType = System.Data.CommandType.Text;
-                cm2.ExecuteNonQuery();
-               // MessageBox.Show("¡ EL ARTICULO A SIDO CARGADO CORRECTAMENTE !");
+            MySqlCommand cm2 = new MySqlCommand("INSERT INTO articulo (descripcion,descripcion_adicional,fk_familias,fk_unimedidas,fk_deposito,habilitado) VALUES ('" + TextBox3.Text + "','" + TextBox4.Text + "','" + Convert.ToInt32(DropDownList1.SelectedValue) + "','" + Convert.ToInt32(DropDownList2.SelectedValue) + "',1,'PENDIENTE')", coon);
+            cm2.CommandType = System.Data.CommandType.Text;
+            cm2.ExecuteNonQuery();
+            // MessageBox.Show("¡ EL ARTICULO A SIDO CARGADO CORRECTAMENTE !");
 
             coon.Close();
 
@@ -291,10 +323,20 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button6_Click(object sender, EventArgs e)
         {
-            Label7.Visible = false;
+            dt = (DataTable)ViewState["RECORD"];
+            if (dt.Rows.Count != 0)
+            {
+
+                Label7.Visible = false;
             TextBox1.Visible = false;
             Button1.Visible = false;
             Panel4.Visible = true;
+            }
+            else
+            {
+                string msg = ("NO SOLICITO NINGÚN ARTICULO");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+            }
         }
 
         protected void Button5_Click(object sender, EventArgs e)

@@ -7,7 +7,23 @@
     <br />
     <asp:Label ID="Label11" class="justify-content-center h1" runat="server">CONSULTAR PEDIDOS</asp:Label>
     <hr />
-    <asp:Panel ID="Panel1" runat="server">
+    <div class="row">
+        <div class="col-lg-2">
+            <asp:Label ID="Label1" class="font-weight-normal" runat="server" Text="SELECCIONE"></asp:Label>
+        </div>
+        <div class="col-lg-2">
+            <asp:DropDownList ID="DropDownList1" CssClass="form-select text-uppercase" runat="server">
+                <asp:ListItem>SELECCIONE</asp:ListItem>
+                <asp:ListItem>PENDIENTES</asp:ListItem>
+                <asp:ListItem>A RETIRAR</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+        <div class="col-lg-2">
+            <asp:Button ID="Button1" CssClass="btn btn-info btn-lg" runat="server" Text="BUSCAR" OnClick="Button1_Click" />
+        </div>
+    </div>
+    <br />
+    <asp:Panel ID="Panel1" runat="server" Visible="false">
         <asp:GridView ID="GridView11" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView11_SelectedIndexChanged">
             <Columns>
                 <asp:CommandField HeaderText="VER" ShowSelectButton="True" ButtonType="Button">
@@ -30,7 +46,7 @@
                 <asp:Label ID="Label13" class="font-weight-normal" runat="server" Text="Usuario solicitante:"></asp:Label>
             </div>
             <div class="col-lg-2">
-                <asp:TextBox ID="TextBox1" class="form-control" runat="server" OnTextChanged="TextBox1_TextChanged" Enabled="False"></asp:TextBox>
+                <asp:TextBox ID="TextBox1" class="form-control text-uppercase" runat="server" OnTextChanged="TextBox1_TextChanged" Enabled="False"></asp:TextBox>
             </div>
             <div class="col-lg-2">
                 <asp:Label ID="Label14" class="font-weight-normal" runat="server" Text="Fecha de solicitud:"></asp:Label>
@@ -42,7 +58,7 @@
                 <asp:Label ID="Label16" class="font-weight-normal" runat="server" Text="Retira:"></asp:Label>
             </div>
             <div class="col-lg-3">
-                <asp:TextBox ID="TextBox13" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextBox13" class="form-control text-uppercase" runat="server"></asp:TextBox>
             </div>
         </div>
         <br />

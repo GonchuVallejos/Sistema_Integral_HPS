@@ -69,87 +69,105 @@ namespace Sistema_Integral_HPS.Deposito
             string idv = GridView1.SelectedDataKey.Value.ToString();
             Label1.Text = Convert.ToString(idv);
             Label2.Visible = true;
-            Label2.Text ="Articulo seleccionado a pedir : " +Convert.ToString(GridView1.SelectedRow.Cells[2].Text);
+            Label2.Text =Convert.ToString(GridView1.SelectedRow.Cells[2].Text);
             GridView1.Visible = false;
            Label6.Visible = false;
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            dt = (DataTable)ViewState["RECORD"];
+            int valor;
+            bool isNum = int.TryParse(TextBox2.Text, out valor);
 
-            DataRow row = dt.NewRow();
+            if ((isNum == true) && (valor >= 1))
+            {
 
-            row["ID ARTICULO"] = Label1.Text;
-            row["ARTICULO"] = Label2.Text;
-            row["CANTIDAD"] = TextBox2.Text;
+                dt = (DataTable)ViewState["RECORD"];
 
-            dt.Rows.Add(row);
-            dt.AcceptChanges();
-            GridView2.DataSource = dt;
-            GridView2.DataBind();
-            //LIMPIA LOS TEXT BOX DE ARTICULO Y CANTIDAD
-            
-            TextBox1.Text = null;
-            TextBox2.Text = " ";
-            Label6.Visible = false;
-            Label2.Visible = false;
+                DataRow row = dt.NewRow();
 
-            Button5.Visible = true;
-            Label4.Visible = false;
-            TextBox2.Visible = false;
-            Button2.Visible = false;
+                row["ID ARTICULO"] = Label1.Text;
+                row["ARTICULO"] = Label2.Text;
+                row["CANTIDAD"] = TextBox2.Text;
 
-            Label7.Visible = false;
-            TextBox1.Visible = false;
-            Button1.Visible = false;
+                dt.Rows.Add(row);
+                dt.AcceptChanges();
+                GridView2.DataSource = dt;
+                GridView2.DataBind();
+                //LIMPIA LOS TEXT BOX DE ARTICULO Y CANTIDAD
 
+                TextBox1.Text = null;
+                TextBox2.Text = " ";
+                Label6.Visible = false;
+                Label2.Visible = false;
+
+                Button5.Visible = true;
+                Label4.Visible = false;
+                TextBox2.Visible = false;
+                Button2.Visible = false;
+
+                Label7.Visible = false;
+                TextBox1.Visible = false;
+                Button1.Visible = false;
+            }
+            else
+            {
+                string msg = ("DEBE INGRESAR UNA CANTIDAD VALIDA");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+            }
         }
 
         protected void Button4_Click(object sender, EventArgs e)
         {
-            
-
-            int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
-            string dir = Session["direccion"].ToString();
-            int serdiv = Convert.ToInt32(Session["servicio_division"].ToString());
-            int unisec = Convert.ToInt32(Session["unidad_seccion"].ToString());
-
-            MySqlConnection coon = Conexion.getConexion();
-            MySqlCommand cm1 = new MySqlCommand("INSERT INTO pedido(id,fk_usuario, direccion, servicio_division, unidad_seccion) VALUES (NULL,'"+idp+"', '"+dir+ "', '" + serdiv + "', '" + unisec + "')", coon);
-            cm1.CommandType = CommandType.Text;
-            cm1.ExecuteNonQuery();
-
-            MySqlCommand cm2 = new MySqlCommand("SELECT MAX(id) FROM pedido", coon);
-            cm2.CommandType = System.Data.CommandType.Text;
-
-            MySqlDataAdapter da = new MySqlDataAdapter(cm2);
-            DataTable dt2 = new DataTable();
-            da.Fill(dt2);
-
-            int idped = Convert.ToInt32(dt2.Rows[0].ItemArray.GetValue(0).ToString());
-            
             dt = (DataTable)ViewState["RECORD"];
-
-            for (int i = 0; i < dt.Rows.Count; i++)
+            if (dt.Rows.Count != 0)
             {
-                int ida=Convert.ToInt32(dt.Rows[i]["ID ARTICULO"].ToString());
-                int cant =Convert.ToInt32(dt.Rows[i]["CANTIDAD"].ToString());
-                MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_pedido(id,fk_pedido,fk_articulo,cantidad,observacion) VALUES (NULL,'"+idped+"','" + ida + "','" + cant + "','')", coon);
-                cm.CommandType = CommandType.Text;
-                cm.ExecuteNonQuery();
-                
+                int idp = Convert.ToInt32(Session["usuariologgeado"].ToString());
+                string dir = Session["direccion"].ToString();
+                int serdiv = Convert.ToInt32(Session["servicio_division"].ToString());
+                int unisec = Convert.ToInt32(Session["unidad_seccion"].ToString());
+
+                MySqlConnection coon = Conexion.getConexion();
+                MySqlCommand cm1 = new MySqlCommand("INSERT INTO pedido(id,fk_usuario, direccion, servicio_division, unidad_seccion) VALUES (NULL,'" + idp + "', '" + dir + "', '" + serdiv + "', '" + unisec + "')", coon);
+                cm1.CommandType = CommandType.Text;
+                cm1.ExecuteNonQuery();
+
+                MySqlCommand cm2 = new MySqlCommand("SELECT MAX(id) FROM pedido", coon);
+                cm2.CommandType = System.Data.CommandType.Text;
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cm2);
+                DataTable dt2 = new DataTable();
+                da.Fill(dt2);
+
+                int idped = Convert.ToInt32(dt2.Rows[0].ItemArray.GetValue(0).ToString());
+
+
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    int ida = Convert.ToInt32(dt.Rows[i]["ID ARTICULO"].ToString());
+                    int cant = Convert.ToInt32(dt.Rows[i]["CANTIDAD"].ToString());
+                    MySqlCommand cm = new MySqlCommand("INSERT INTO detalle_pedido(id,fk_pedido,fk_articulo,cantidad,observacion) VALUES (NULL,'" + idped + "','" + ida + "','" + cant + "','')", coon);
+                    cm.CommandType = CommandType.Text;
+                    cm.ExecuteNonQuery();
+
+                }
+
+
+
+
+                coon.Close();
+
+                string msg = ("PEDIDO ID " + idped + " REALIZADO");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = '/Sistema_Integral_HPS/Deposito/IndexDeposito.aspx';", true);
+
+                //Response.Redirect("/Deposito/IndexDeposito.aspx");
             }
-
-
-            
-            
-            coon.Close();
-
-            string msg = ("PEDIDO ID " + idped +  " REALIZADO");
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = '/Sistema_Integral_HPS/Deposito/IndexDeposito.aspx';", true);
-            
-            //Response.Redirect("/Deposito/IndexDeposito.aspx");
+            else
+            {
+                string msg = ("NO SOLICITO NINGÚN ARTICULO");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+            }
         }
 
         protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -168,14 +186,28 @@ namespace Sistema_Integral_HPS.Deposito
             DataTable dt = (DataTable)ViewState["RECORD"];
 
             GridViewRow row = GridView2.Rows[e.RowIndex];
-            dt.Rows[row.DataItemIndex]["CANTIDAD"] = ((TextBox)(row.Cells[2].Controls[0])).Text;
 
-            GridView2.EditIndex = -1;
+            int valor;
 
-            Session["RECORD"] = dt;
+            bool isNum = int.TryParse(((TextBox)(row.Cells[2].Controls[0])).Text, out valor);
 
-            GridView2.DataSource = dt;
-            GridView2.DataBind();
+            if ((isNum == true) && (valor >= 1))
+            {
+                dt.Rows[row.DataItemIndex]["CANTIDAD"] = ((TextBox)(row.Cells[2].Controls[0])).Text;
+
+                GridView2.EditIndex = -1;
+
+                Session["RECORD"] = dt;
+
+                GridView2.DataSource = dt;
+                GridView2.DataBind();
+            }
+            else
+            {
+                string msg = ("DEBE INGRESAR UNA CANTIDAD VALIDA");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+            }
+            
         }
 
         protected void GridView2_RowEditing(object sender, GridViewEditEventArgs e)

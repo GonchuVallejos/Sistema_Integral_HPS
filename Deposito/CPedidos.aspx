@@ -22,7 +22,7 @@
             <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-select text-uppercase" Visible="false">
             </asp:DropDownList>
             <asp:Label ID="Label3" runat="server" class="font-weight-normal" Text="" Visible="false"></asp:Label>
-            <asp:TextBox ID="TextBox1" CssClass="form-control text-uppercase" required=true runat="server" TextMode="Date" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" CssClass="form-control text-uppercase" required=true runat="server" TextMode="Date" Visible="false" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
         </div>
         <div class="col-lg-2 d-grid">
             <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-select text-uppercase" Visible="false">
@@ -36,7 +36,7 @@
             
         </div>
         <div class="col-lg-2 d-grid">
-            <asp:DropDownList ID="DropDownList5" runat="server" CssClass="form-select text-uppercase" Visible="false">
+            <asp:DropDownList ID="DropDownList5" runat="server" CssClass="form-select text-uppercase" Visible="false" OnSelectedIndexChanged="DropDownList5_SelectedIndexChanged">
             </asp:DropDownList>
         </div>
     </div>

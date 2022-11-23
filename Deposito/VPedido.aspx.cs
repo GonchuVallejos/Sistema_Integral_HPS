@@ -45,19 +45,19 @@ namespace Sistema_Integral_HPS.Deposito
 		{
             if (!IsPostBack)
             {
-                DataTable dta = new DataTable();
-                MySqlConnection coon = Conexion.getConexion();
-                MySqlCommand cm = new MySqlCommand("SELECT pedido.id, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion, pedido.fecha FROM pedido INNER JOIN usuario ON pedido.fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE estado = 'PENDIENTE' ORDER BY pedido.id DESC", coon);
-                cm.CommandType = CommandType.Text;
-                cm.ExecuteNonQuery();
+                //DataTable dta = new DataTable();
+                //MySqlConnection coon = Conexion.getConexion();
+                //MySqlCommand cm = new MySqlCommand("SELECT pedido.id, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion, pedido.fecha FROM pedido INNER JOIN usuario ON pedido.fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE estado = 'PENDIENTE' ORDER BY pedido.id DESC", coon);
+                //cm.CommandType = CommandType.Text;
+                //cm.ExecuteNonQuery();
 
-                MySqlDataAdapter da = new MySqlDataAdapter(cm);
-                da.Fill(dta);
+                //MySqlDataAdapter da = new MySqlDataAdapter(cm);
+                //da.Fill(dta);
 
-                GridView11.DataSource = dta;
-                GridView11.DataBind();
-                ViewState["RECORD"] = dt;
-                coon.Close();
+                //GridView11.DataSource = dta;
+                //GridView11.DataBind();
+                //ViewState["RECORD"] = dt;
+                //coon.Close();
             }
            
         }
@@ -89,6 +89,23 @@ namespace Sistema_Integral_HPS.Deposito
 
             Panel2.Visible = true;
             GridView11.Visible = false;
+
+            switch (DropDownList1.Text)
+            {
+
+                case "PENDIENTES":
+                    {
+                        Label16.Visible = false;
+                        TextBox13.Visible = false;
+                        break;
+                    }
+                case "A RETIRAR":
+                    {
+                        Label16.Visible = true;
+                        TextBox13.Visible = true;
+                        break;
+                    }
+            }
         }
         protected void GridView12_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
@@ -139,64 +156,90 @@ namespace Sistema_Integral_HPS.Deposito
             Response.Redirect("~/Deposito/VPedido.aspx");
         }
         protected void btn_guardar1_Click(object sender, EventArgs e)
-        {    // Permito que el usuario seleccione una impresora
-            // Abro el cuadro de dialogo
-            System.Windows.Forms.PrintDialog pd = new System.Windows.Forms.PrintDialog();
-
-            // Creo la instacia de la configuarion de impresion
-            pd.PrinterSettings = new PrinterSettings();
-
-            // Creo el tipo de letra que se va a usar
-            printFont = new System.Drawing.Font(fontName, fontSize, FontStyle.Regular);
-
-            //creo el documento con el que vamos a trabjar
-            PrintDocument doc = new PrintDocument();
-
-            //Determina la impresora que vamos a usar es la que seleccionamos en la configuracion
-            doc.PrinterSettings.PrinterName = pd.PrinterSettings.PrinterName;
-
-            //Nombre en del documento
-            doc.DocumentName = "Impresion de Prueba";
-
-            //Organiza la pagina para posteriomente imprimirla
-            doc.PrintPage += new PrintPageEventHandler(pr_PrintPage);
-
-            //Imprime el documento
-            doc.Print();
+        {
             MySqlConnection coon = Conexion.getConexion();
 
             DataTable dta1 = (DataTable)ViewState["RECORD2"];
 
-            for (int i = 0; i < dta1.Rows.Count; i++)
+            string consulta = "";
+            string consulta2 = "";
+
+            switch (DropDownList1.Text)
             {
-                //SE MODIFICA LA CANTIDAD SOLICITADA Y SE AGREGA LA OBSERVACION DE PORQUE SE MODIFICA
-                MySqlCommand cm = new MySqlCommand("UPDATE detalle_pedido SET detalle_pedido.cantidad = '" + dta1.Rows[i]["CANTIDAD"].ToString() + "', detalle_pedido.observacion = '" + dta1.Rows[i]["OBSERVACION"].ToString() + "' WHERE id = '" + dta1.Rows[i]["iddetalle"].ToString() + "';", coon);
-                cm.CommandType = CommandType.Text;
-                cm.ExecuteNonQuery();
+                case "PENDIENTES":
+                    {
+                        for (int i = 0; i < dta1.Rows.Count; i++)
+                        {
+                            //SE MODIFICA LA CANTIDAD SOLICITADA Y SE AGREGA LA OBSERVACION DE PORQUE SE MODIFICA
+                            MySqlCommand cm = new MySqlCommand("UPDATE detalle_pedido SET detalle_pedido.cantidad = '" + dta1.Rows[i]["CANTIDAD"].ToString() + "', detalle_pedido.observacion = '" + dta1.Rows[i]["OBSERVACION"].ToString() + "' WHERE id = '" + dta1.Rows[i]["iddetalle"].ToString() + "';", coon);
+                            cm.CommandType = CommandType.Text;
+                            cm.ExecuteNonQuery();
 
-                //SE ACTUALIZA EL STOCK DE ARTICULOS, RESTANDO EL ACTUAL MENOS LO SUMINISTRADO
-                MySqlCommand cm3 = new MySqlCommand("UPDATE articulo SET stock = stock - '" + Convert.ToInt16(dta1.Rows[i]["CANTIDAD"].ToString()) + "' WHERE id = '" + Convert.ToInt16(dta1.Rows[i]["fk_articulo"].ToString()) + "'", coon);
-                cm3.CommandType = CommandType.Text;
-                cm3.ExecuteNonQuery();
+                            //SE ACTUALIZA EL STOCK DE ARTICULOS, RESTANDO EL ACTUAL MENOS LO SUMINISTRADO
+                            MySqlCommand cm3 = new MySqlCommand("UPDATE articulo SET stock = stock - '" + Convert.ToInt16(dta1.Rows[i]["CANTIDAD"].ToString()) + "' WHERE id = '" + Convert.ToInt16(dta1.Rows[i]["fk_articulo"].ToString()) + "'", coon);
+                            cm3.CommandType = CommandType.Text;
+                            cm3.ExecuteNonQuery();
+                        }
+
+                        
+
+                        consulta = "UPDATE pedido SET estado = 'A RETIRAR' WHERE id = '" + dta1.Rows[0]["idpedido"].ToString() + "'";
+                        
+                        //SE ACTUALIZA EL ESTADO DEL PEDIDO A CONFIRMADO O A RETIRAR
+                        MySqlCommand cm2 = new MySqlCommand(consulta, coon);
+                        cm2.CommandType = CommandType.Text;
+                        cm2.ExecuteNonQuery();
+
+                        break;
+                    }
+                case "A RETIRAR":
+                    {
+                        id = Session["usuariologgeado"].ToString();
+
+                        consulta = "UPDATE pedido SET estado = 'CONFIRMADO' WHERE id = '" + dta1.Rows[0]["idpedido"].ToString() + "'";
+                        consulta2 = "INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado,retira) VALUES (NULL, 1003, '" + dta1.Rows[0]["idpedido"].ToString() + "', NULL, NULL, '" + id + "','CONFIRMADO', '" + TextBox13.Text + "')";
+
+                        //SE ACTUALIZA EL ESTADO DEL PEDIDO A CONFIRMADO O A RETIRAR
+                        MySqlCommand cm2 = new MySqlCommand(consulta, coon);
+                        cm2.CommandType = CommandType.Text;
+                        cm2.ExecuteNonQuery();
+
+                        //SE INSERTA EL MOVIMIENTO O A RETIRAR
+                        MySqlCommand cm1 = new MySqlCommand(consulta2, coon);
+                        cm1.CommandType = CommandType.Text;
+                        cm1.ExecuteNonQuery();
+
+                        // Permito que el usuario seleccione una impresora
+                        // Abro el cuadro de dialogo
+                        System.Windows.Forms.PrintDialog pd = new System.Windows.Forms.PrintDialog();
+
+                        // Creo la instacia de la configuarion de impresion
+                        //pd.PrinterSettings = new PrinterSettings();
+
+                        // Creo el tipo de letra que se va a usar
+                        printFont = new System.Drawing.Font(fontName, fontSize, FontStyle.Regular);
+
+                        //creo el documento con el que vamos a trabjar
+                        PrintDocument doc = new PrintDocument();
+
+                        //Determina la impresora que vamos a usar es la que seleccionamos en la configuracion
+                         doc.PrinterSettings.PrinterName = pd.PrinterSettings.PrinterName;
+
+                        //Nombre en del documento
+                        // doc.DocumentName = "Impresion de Prueba";
+
+                        //Organiza la pagina para posteriomente imprimirla
+                         doc.PrintPage += new PrintPageEventHandler(pr_PrintPage);
+
+                        //Imprime el documento
+                         doc.Print();
+
+                        break;
+                    }
             }
-
-            id = Session["usuariologgeado"].ToString();
-
-            //SE ACTUALIZA EL ESTADO DEL PEDIDO A CONFIRMADO
-            MySqlCommand cm2 = new MySqlCommand("UPDATE pedido SET estado = 'CONFIRMADO' WHERE id = '" + dta1.Rows[0]["idpedido"].ToString() + "'", coon);
-            cm2.CommandType = CommandType.Text;
-            cm2.ExecuteNonQuery();
-
-            //SE INSERTA EL MOVIMIENTO
-            MySqlCommand cm1 = new MySqlCommand("INSERT INTO movimiento (id, fk_tipo_movimiento, fk_pedido, fk_adquisicion, fk_ajuste, fk_usuario, estado,retira) VALUES (NULL, 1003, '" + dta1.Rows[0]["idpedido"].ToString() + "', NULL, NULL, '" + id + "','CONFIRMADO', '" + TextBox13.Text + "')", coon);
-            cm1.CommandType = CommandType.Text;
-            cm1.ExecuteNonQuery();
 
             coon.Close();
             Response.Redirect("~/Deposito/IndexDeposito.aspx");
-
-           
-
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -232,6 +275,57 @@ namespace Sistema_Integral_HPS.Deposito
         protected void GridView12_SelectedIndexChanged1(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (DropDownList1.Text != "SELECCIONE")
+            {
+                DataTable dta = new DataTable();
+                MySqlConnection coon = Conexion.getConexion();
+
+                string consulta = "";
+
+                switch(DropDownList1.Text)
+                {
+                    case "PENDIENTES":
+                    {
+                            consulta = "SELECT pedido.id, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion, pedido.fecha FROM pedido INNER JOIN usuario ON pedido.fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE estado = 'PENDIENTE' ORDER BY pedido.id DESC";
+                            break;
+                    }
+                    case "A RETIRAR":
+                    {
+                            consulta = "SELECT pedido.id, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion, pedido.fecha FROM pedido INNER JOIN usuario ON pedido.fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE estado = 'A RETIRAR' ORDER BY pedido.id DESC";
+                            break;
+                    }
+                    default:
+                        {
+                            break;
+                        }
+
+                }
+
+                MySqlCommand cm = new MySqlCommand(consulta, coon);
+                cm.CommandType = CommandType.Text;
+                cm.ExecuteNonQuery();
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cm);
+                da.Fill(dta);
+
+                GridView11.DataSource = dta;
+                GridView11.DataBind();
+                ViewState["RECORD"] = dt;
+                coon.Close();
+
+                Panel1.Visible = true;
+            }
+            else
+            {
+                Panel1.Visible=false;
+
+                string msg = "DEBE SELECCIONAR UN TIPO DE PEDIDO";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
+                        }
         }
 
         protected void Button12_Click(object sender, EventArgs e)
@@ -281,7 +375,7 @@ namespace Sistema_Integral_HPS.Deposito
                         // byte[] byteimage = DatoLogica.Instancia.ObtenerLogo(out obtenido);
                         if (obtenido)
                         {
-                            System.Drawing.Image newImage = System.Drawing.Image.FromFile("C:\\Users\\Administrador\\source\\repos\\Sistema_Integral_HPS\\Deposito\\img\\Logo HPS.png");
+                            System.Drawing.Image newImage = System.Drawing.Image.FromFile("/img/Logo HPS.png");
                             // iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(byteimage);
                             iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(newImage, System.Drawing.Imaging.ImageFormat.Jpeg);
                             pdfImage.ScaleToFit(60, 60);

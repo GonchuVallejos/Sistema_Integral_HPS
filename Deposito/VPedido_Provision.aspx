@@ -80,7 +80,7 @@
             <br />
             <div>
                 <asp:Button ID="Button11" runat="server" OnClick="Button1_Click" Text="Imprimir" Visible="False" />
-                <asp:Button ID="Button12" runat="server" OnClick="Button2_Click" Text="Imprimir Adriel" Visible="False" />
+                <asp:Button ID="Button12" runat="server" OnClick="Button2_Click" Text="Imprimir Adriel" />
             </div>
         </div>
     </asp:Panel>

@@ -163,7 +163,8 @@ namespace Sistema_Integral_HPS.Deposito
                     break;
                 case ("FECHA"):
                     {
-                        consulta = "SELECT " + DropDownList4.SelectedItem.Value + ".id AS IDPEDIDO, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion AS DESCRIPCION, " + DropDownList4.SelectedItem.Value + ".fecha AS FECHA FROM " + DropDownList4.SelectedItem.Value + " INNER JOIN usuario ON " + DropDownList4.SelectedItem.Value + ".fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE " + DropDownList4.SelectedItem.Value + ".fecha BETWEEN ('" + TextBox1.Text + "' AND '" + TextBox2.Text + "') AND " + DropDownList4.SelectedItem.Value + ".estado = '" + DropDownList5.SelectedItem.Value + "' AND " + DropDownList4.SelectedItem.Value + ".servicio_division = '" + Session["servicio_division"].ToString() + "' ORDER BY fecha DESC";
+                        // SOLUCION AGARRADA DE LOS PELOS DE LA BARBA DE JUANPI (MI BARBA TIENE 3 PELOS, 3 PELOS TIENE MI BARBA) -> consulta = "SELECT " + DropDownList4.SelectedItem.Value + ".id AS IDPEDIDO, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion AS DESCRIPCION, " + DropDownList4.SelectedItem.Value + ".fecha AS FECHA FROM " + DropDownList4.SelectedItem.Value + " INNER JOIN usuario ON " + DropDownList4.SelectedItem.Value + ".fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE " + DropDownList4.SelectedItem.Value + ".fecha BETWEEN '" + Convert.ToDateTime(TextBox1.Text).ToShortDateString() + "' AND DATE_ADD('" + TextBox2.Text + "',INTERVAL 1440 M7RINUTE) AND (" + DropDownList4.SelectedItem.Value + ".estado = '" + DropDownList5.SelectedItem.Value + "' AND " + DropDownList4.SelectedItem.Value + ".servicio_division = '" + Session["servicio_division"].ToString() + "') ORDER BY fecha DESC";
+                        consulta = "SELECT " + DropDownList4.SelectedItem.Value + ".id AS IDPEDIDO, CONCAT(persona.nombre, ' ', persona.apellido) AS 'NOMBRE Y APELLIDO', servicio_division.descripcion AS DESCRIPCION, " + DropDownList4.SelectedItem.Value + ".fecha AS FECHA FROM " + DropDownList4.SelectedItem.Value + " INNER JOIN usuario ON " + DropDownList4.SelectedItem.Value + ".fk_usuario = usuario.id INNER JOIN servicio_division ON usuario.fk_servicio_division = servicio_division.id INNER JOIN persona ON usuario.fk_persona = persona.id WHERE DATE(" + DropDownList4.SelectedItem.Value + ".fecha)  BETWEEN '" + Convert.ToDateTime(TextBox1.Text).ToString("yyyy-MM-dd") + "' AND '" + Convert.ToDateTime(TextBox2.Text).ToString("yyyy-MM-dd") + "' AND (" + DropDownList4.SelectedItem.Value + ".estado = '" + DropDownList5.SelectedItem.Value + "' AND " + DropDownList4.SelectedItem.Value + ".servicio_division = '" + Session["servicio_division"].ToString() + "') ORDER BY fecha DESC";
                         Session["tipo"] = DropDownList4.SelectedItem.Value;
                         Session["confirmado"] = DropDownList5.SelectedItem.Value;
                     }
@@ -281,6 +282,16 @@ namespace Sistema_Integral_HPS.Deposito
             DataTable dta = (DataTable)ViewState["RECORD"];
             GridView1.DataSource = dta;
             GridView1.DataBind();
+        }
+
+        protected void DropDownList5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
