@@ -90,5 +90,6 @@
     <asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" OnSelectedIndexChanged="GridView2_SelectedIndexChanged">
         <HeaderStyle BackColor="#1D7FAC" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
     </asp:GridView>
+    <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-info" OnClick="Button2_Click" Text="IMPRIMIR" Visible="False" />
     <br />
 </asp:Content>

@@ -14,7 +14,11 @@
 
 
 
-        &nbsp;<br />&nbsp;<br /><br />
+        &nbsp;<asp:Label ID="Label4" runat="server" class="justify-content-center" Text="Seleccione la familia: "></asp:Label>
+        &nbsp;<asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-select" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
+            <asp:ListItem Selected="True">TODAS LAS FAMILIAS</asp:ListItem>
+        </asp:DropDownList>
+        <br /><br />
         <div>
             <asp:Label ID="Label3" runat="server" Text="INICIO:"></asp:Label>
             <asp:TextBox ID="TextBox1" runat="server" TextMode="Date"></asp:TextBox>
@@ -29,7 +33,13 @@
         </asp:Panel>
 
     
-        <asp:GridView ID="GridView1" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
+        <asp:GridView ID="GridView1" style="margin-top: 6px; text-align: center; width:90%" HorizontalAlign="Center" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" AutoGenerateColumns="False">
+            <Columns>
+                <asp:BoundField DataField="Id Articulo" HeaderText="ID PRIMER PEDIDO" Visible="False" />
+                <asp:BoundField DataField="Descripcion" HeaderText="DESCRIPCION" />
+                <asp:BoundField DataField="Cantidad" HeaderText="CANTIDAD" />
+                <asp:BoundField DataField="Medida" HeaderText="MEDIDA" />
+            </Columns>
             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
             <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
@@ -39,6 +49,13 @@
             <SortedDescendingCellStyle BackColor="#E5E5E5" />
             <SortedDescendingHeaderStyle BackColor="#242121" />
         </asp:GridView>
+
+
+
+
+  
+    <br />
+    <asp:Button ID="Button2" runat="server" class="btn btn-lg btn-success" Text="IMPRIMIR INFORME" OnClientClick="javascript:window.print();" />
 
 
 

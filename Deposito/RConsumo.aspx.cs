@@ -28,20 +28,33 @@ namespace Sistema_Integral_HPS.Deposito
         {
             MySqlConnection coon = Conexion.getConexion();
             MySqlCommand cm = new MySqlCommand("SELECT * FROM `servicio_division`", coon);
-           
+            MySqlCommand cm1 = new MySqlCommand("SELECT * FROM `familia`", coon);
             cm.CommandType = System.Data.CommandType.Text;
-           
+            cm1.CommandType = System.Data.CommandType.Text;
+
 
             MySqlDataAdapter da = new MySqlDataAdapter(cm);
             DataTable dt = new DataTable();
             da.Fill(dt);
 
-         
+            MySqlDataAdapter da1 = new MySqlDataAdapter(cm1);
+            DataTable dt1 = new DataTable();
+            da1.Fill(dt1);
+
+           
+           
 
             DropDownList1.DataValueField = "id";
             DropDownList1.DataTextField = "descripcion";
             DropDownList1.DataSource = dt;
             DropDownList1.DataBind();
+
+
+            DropDownList2.DataValueField = "id";
+            DropDownList2.DataTextField = "descripcion";
+            DropDownList2.DataSource = dt1;
+            DropDownList2.DataBind();
+
 
             coon.Close();
         }
@@ -57,7 +70,7 @@ namespace Sistema_Integral_HPS.Deposito
                     DateTime fin = Convert.ToDateTime(TextBox2.Text);
                     MySqlConnection coon = Conexion.getConexion();
 
-                    MySqlCommand cm = new MySqlCommand("SELECT pedido.id AS 'Id Pedido',detalle_pedido.fk_articulo AS 'Id Articulo',articulo.descripcion AS 'Descripcion' ,SUM(detalle_pedido.cantidad) AS 'Cantidad',unidad_medida.descripcion AS 'Medida' FROM detalle_pedido INNER JOIN pedido ON pedido.id=detalle_pedido.fk_pedido INNER JOIN articulo ON articulo.id=detalle_pedido.fk_articulo INNER JOIN unidad_medida ON articulo.fk_unimedidas=unidad_medida.id WHERE pedido.servicio_division=" + DropDownList1.Text + " AND pedido.estado='CONFIRMADO' AND DATE(pedido.fecha) >= '" + ini.ToString("yyyy-MM-dd") + "' AND DATE(pedido.fecha) <= '" + fin.ToString("yyyy-MM-dd") + "' GROUP BY articulo.descripcion", coon);
+                    MySqlCommand cm = new MySqlCommand("SELECT pedido.id AS 'Id Pedido',detalle_pedido.fk_articulo AS 'Id Articulo',articulo.descripcion AS 'Descripcion' ,SUM(detalle_pedido.cantidad) AS 'Cantidad',unidad_medida.descripcion AS 'Medida' FROM detalle_pedido INNER JOIN pedido ON pedido.id=detalle_pedido.fk_pedido INNER JOIN articulo ON articulo.id=detalle_pedido.fk_articulo INNER JOIN unidad_medida ON articulo.fk_unimedidas=unidad_medida.id WHERE pedido.servicio_division=" + DropDownList1.Text + " AND pedido.estado='CONFIRMADO' AND DATE(pedido.fecha) >= '" + ini.ToString("yyyy-MM-dd") + "' AND DATE(pedido.fecha) <= '" + fin.ToString("yyyy-MM-dd") + "' AND articulo.fk_familias="+ DropDownList2.Text+" GROUP BY articulo.descripcion", coon);
                     cm.CommandType = CommandType.Text;
                     cm.ExecuteNonQuery();
 
@@ -82,7 +95,20 @@ namespace Sistema_Integral_HPS.Deposito
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
             }
 
+            Button2.Visible = true;
+        }
+
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Button1.Visible = false;
             
         }
+
+       
     }
 }

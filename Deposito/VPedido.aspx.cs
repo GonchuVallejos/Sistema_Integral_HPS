@@ -151,10 +151,7 @@ namespace Sistema_Integral_HPS.Deposito
         {
             Response.Redirect("~/Deposito/IndexDeposito.aspx");
         }
-        protected void btn_verpedidos1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Deposito/VPedido.aspx");
-        }
+
         protected void btn_guardar1_Click(object sender, EventArgs e)
         {
             MySqlConnection coon = Conexion.getConexion();
@@ -239,7 +236,7 @@ namespace Sistema_Integral_HPS.Deposito
             }
 
             coon.Close();
-            Response.Redirect("~/Deposito/IndexDeposito.aspx");
+            Response.Redirect("~/Deposito/VPedido.aspx");
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -279,6 +276,8 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            GridView11.Visible = true;
+            Panel2.Visible = false;
             if (DropDownList1.Text != "SELECCIONE")
             {
                 DataTable dta = new DataTable();
@@ -375,7 +374,7 @@ namespace Sistema_Integral_HPS.Deposito
                         // byte[] byteimage = DatoLogica.Instancia.ObtenerLogo(out obtenido);
                         if (obtenido)
                         {
-                            System.Drawing.Image newImage = System.Drawing.Image.FromFile("/img/Logo HPS.png");
+                            System.Drawing.Image newImage = System.Drawing.Image.FromFile("\\\\SERVERSISTEMAS\\Users\\Administrador\\source\\repos\\Sistema_Integral_HPS\\Deposito\\img\\Logo_HPS.png");
                             // iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(byteimage);
                             iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(newImage, System.Drawing.Imaging.ImageFormat.Jpeg);
                             pdfImage.ScaleToFit(60, 60);
@@ -431,7 +430,7 @@ namespace Sistema_Integral_HPS.Deposito
         {
             RectangleF srcRect = new RectangleF(50.0F, 50.0F, 150.0F, 150.0F);
             GraphicsUnit units = GraphicsUnit.Pixel;
-            System.Drawing.Image newImage = System.Drawing.Image.FromFile("C:\\Users\\Administrador\\source\\repos\\Sistema_Integral_HPS\\Deposito\\img\\Logo HPS.png");
+            System.Drawing.Image newImage = System.Drawing.Image.FromFile("\\\\SERVERSISTEMAS\\Users\\Administrador\\source\\repos\\Sistema_Integral_HPS\\Deposito\\img\\Logo_HPS.png");
             e.Graphics.PageUnit = GraphicsUnit.Millimeter; //unidades de la impresion
             gfx = e.Graphics;
             gfx.DrawImage(newImage,PosXi,PosYi,15,15);

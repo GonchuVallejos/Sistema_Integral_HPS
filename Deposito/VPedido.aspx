@@ -84,7 +84,7 @@
             <div class="col-lg-2">
             </div>
             <div class="col-lg-4">
-                <asp:Button ID="btn_verpedidos1" runat="server" class="btn btn-lg btn-success" OnClick="btn_verpedidos1_Click" Text="VER PEDIDOS" />
+                <asp:Button ID="btn_verpedidos1" runat="server" class="btn btn-lg btn-warning" OnClick="Button1_Click" Text="ATRAS" />
             </div>
             <div class="col-lg-4">
                 <asp:Button ID="btn_guardar1" runat="server" class="btn btn-lg btn-success" Text="CONFIRMAR" OnClick="btn_guardar1_Click" />
