@@ -198,7 +198,7 @@ namespace Sistema_Integral_HPS.Deposito
                 coon.Close();
 
                 string msg = "PEDIDO DE CAJA CHICA ID " + idped + " REALIZADO";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = '/Sistema_Integral_HPS/Deposito/IndexDeposito.aspx';", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = '/Sistema_Integral_HPS/Index.aspx';", true);
 
                 //Response.Redirect("/Deposito/IndexDeposito.aspx");
 
@@ -273,7 +273,7 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Deposito/IndexDeposito.aspx");
+            Response.Redirect("~/Index.aspx");
         }
 
         protected void Button_NoExisteA_Click(object sender, EventArgs e)
@@ -287,7 +287,7 @@ namespace Sistema_Integral_HPS.Deposito
         }
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Deposito/IndexDeposito.aspx");
+            Response.Redirect("~/Index.aspx");
         }
 
         protected void btn_guardar_Click(object sender, EventArgs e)
@@ -309,7 +309,7 @@ namespace Sistema_Integral_HPS.Deposito
 
             coon.Close();
 
-            Server.Transfer("APedido_Provision.aspx");
+            Server.Transfer("~/Deposito/APedido_Provision.aspx");
         }
 
         protected void TextBox2_TextChanged(object sender, EventArgs e)

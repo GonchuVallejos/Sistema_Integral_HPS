@@ -171,36 +171,23 @@
     <Content Include="Deposito\VPedido.aspx" />
     <Content Include="Deposito\stock.aspx" />
     <Content Include="Images\Logo HPS.svg" />
+    <Content Include="Index.aspx" />
     <Content Include="Resources\PDFPedido.html" />
     <Content Include="RexyReport\img\0_9U_PkckAUtKGrb_R.png" />
     <Content Include="RexyReport\img\Logo HPS.png" />
     <Content Include="RexyReport\img\rexy1.jpg" />
     <Content Include="RexyReport\IndexRexy.aspx" />
     <Content Include="RexyReport\Vista.aspx" />
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="UserPages\GAdministrativas.aspx" />
     <Content Include="UserPages\Images\Logo-white.svg" />
-    <Content Include="UserPages\JavaScript.js" />
     <Content Include="UserPages\Login.aspx" />
-    <Content Include="UserPages\Register.aspx" />
-    <Content Include="UserPages\Update.aspx" />
+    <Content Include="UserPages\RUsuarios.aspx" />
+    <Content Include="UserPages\UPass.aspx" />
     <Content Include="UserPages\Users.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Conexion.cs" />
+    <Compile Include="Clases\Conexion.cs" />
     <Compile Include="Deposito\AArticulo.aspx.cs">
       <DependentUpon>AArticulo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -256,13 +243,6 @@
     </Compile>
     <Compile Include="Deposito\IndexDeposito.aspx.designer.cs">
       <DependentUpon>IndexDeposito.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Deposito\MasterDeposito.Master.cs">
-      <DependentUpon>MasterDeposito.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Deposito\MasterDeposito.Master.designer.cs">
-      <DependentUpon>MasterDeposito.Master</DependentUpon>
     </Compile>
     <Compile Include="Deposito\RArticulo.aspx.cs">
       <DependentUpon>RArticulo.aspx</DependentUpon>
@@ -335,6 +315,20 @@
     <Compile Include="Deposito\VPedido.aspx.designer.cs">
       <DependentUpon>VPedido.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterSistemaIntegralSoria.Master.cs">
+      <DependentUpon>MasterSistemaIntegralSoria.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterSistemaIntegralSoria.Master.designer.cs">
+      <DependentUpon>MasterSistemaIntegralSoria.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Deposito\stock.aspx.cs">
       <DependentUpon>stock.aspx</DependentUpon>
@@ -369,7 +363,13 @@
     <Compile Include="RexyReport\Vista.aspx.designer.cs">
       <DependentUpon>Vista.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserPages\GAdministrativas.aspx.cs">
+      <DependentUpon>GAdministrativas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\GAdministrativas.aspx.designer.cs">
+      <DependentUpon>GAdministrativas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserPages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -384,23 +384,23 @@
     <Compile Include="UserPages\MasterUser.Master.designer.cs">
       <DependentUpon>MasterUser.Master</DependentUpon>
     </Compile>
-    <Compile Include="UserPages\Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
+    <Compile Include="UserPages\RUsuarios.aspx.cs">
+      <DependentUpon>RUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserPages\Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
+    <Compile Include="UserPages\RUsuarios.aspx.designer.cs">
+      <DependentUpon>RUsuarios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserPages\Update.aspx.cs">
-      <DependentUpon>Update.aspx</DependentUpon>
+    <Compile Include="UserPages\UPass.aspx.cs">
+      <DependentUpon>UPass.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserPages\Update.aspx.designer.cs">
-      <DependentUpon>Update.aspx</DependentUpon>
+    <Compile Include="UserPages\UPass.aspx.designer.cs">
+      <DependentUpon>UPass.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Deposito\MasterDeposito.Master" />
+    <Content Include="MasterSistemaIntegralSoria.Master" />
     <None Include="packages.config" />
     <Content Include="UserPages\MasterUser.Master" />
     <Content Include="RexyReport\MasterRexy.Master" />
@@ -411,9 +411,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SuperUser\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Deposito\Report1.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">

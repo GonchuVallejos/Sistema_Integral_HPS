@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Deposito/MasterDeposito.Master" AutoEventWireup="true" CodeBehind="CPedidos.aspx.cs" Inherits="Sistema_Integral_HPS.Deposito.CPedidos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterSistemaIntegralSoria.Master" AutoEventWireup="true" CodeBehind="CPedidos.aspx.cs" Inherits="Sistema_Integral_HPS.Deposito.CPedidos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -41,7 +41,8 @@
         </div>
     </div>
     <br />
-        <div class="col-lg-2 d-grid justify-content-center">
+    
+        <div class="d-flex justify-content-center">
             <asp:Button ID="Button1" CssClass="btn btn-lg btn-info" runat="server" Text="BUSCAR" OnClick="Button1_Click" Visible="false"/>
         </div>
     <br />

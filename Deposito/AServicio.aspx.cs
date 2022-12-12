@@ -27,8 +27,10 @@ namespace Sistema_Integral_HPS.Deposito
             cm1.CommandType = CommandType.Text;
             cm1.ExecuteNonQuery();
             MessageBox.Show("SERVICO CARGADO CORRECTAMENTE! ");
-            Response.Redirect("~/IndexDeposito.aspx");
-           
+            Response.Redirect("~/Index.aspx");
+
+            coon.Close();
+
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -61,6 +63,8 @@ namespace Sistema_Integral_HPS.Deposito
                 Label4.Visible = true;
                 TextBox2.Visible = true;
             }
+
+            coon1.Close();
         }
     }
 }

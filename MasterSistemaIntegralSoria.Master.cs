@@ -1,17 +1,15 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Sistema_Integral_HPS.Deposito
+namespace Sistema_Integral_HPS
 {
-    public partial class MasterDeposito : System.Web.UI.MasterPage
+    public partial class MasterSistemaIntegralSoria : System.Web.UI.MasterPage
     {
-        MySqlConnection coon = Conexion.getConexion();
         protected void Page_Load(object sender, EventArgs e)
         {
             string id;
@@ -39,7 +37,7 @@ namespace Sistema_Integral_HPS.Deposito
 
                 Label1.Text = usuario;
 
-                
+
                 switch (Session["nombresistema"].ToString())
                 {
                     case "DEPOSITO":
@@ -58,6 +56,7 @@ namespace Sistema_Integral_HPS.Deposito
                             sesion.Visible = true;
                             nombredepo.Visible = false;
                             nombreSoria.Visible = true;
+                            superusuario.Visible = true;
                         }
                         break;
                 }
@@ -73,8 +72,6 @@ namespace Sistema_Integral_HPS.Deposito
         {
             Session["usuario"] = null;
             Response.Redirect("~/UserPages/Login.aspx");
-
-            //PRUEBA DE SUBIDA
         }
     }
 }

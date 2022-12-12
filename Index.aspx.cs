@@ -1,18 +1,15 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
-using MySql.Data.MySqlClient;
-using MySql.Data;
-using System.Data.SqlClient;
-using System.Windows.Forms;
-//Muestra el listado de los articulos por dejado del minimo de stock y los que deberian reponerse
-namespace Sistema_Integral_HPS.Deposito
+
+namespace Sistema_Integral_HPS
 {
-    public partial class VAlertas : System.Web.UI.Page
+    public partial class Index : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,19 +32,13 @@ namespace Sistema_Integral_HPS.Deposito
             MySqlDataAdapter da2 = new MySqlDataAdapter(cm2);
             da2.Fill(dta2);
 
-
-
-
             GridView1.DataSource = dta1;
             GridView1.DataBind();
             ViewState["RECORD2"] = dta1;
 
-            
             GridView2.DataSource = dta2;
             GridView2.DataBind();
             ViewState["RECORD3"] = dta2;
-
-
 
             coon.Close();
 
@@ -61,16 +52,24 @@ namespace Sistema_Integral_HPS.Deposito
                 Panel2.Visible = true;
             }
 
+            if (Session["nombresistema"].ToString() == "DEPOSITO")
+            {
+                ideposito.Visible = true;
+            }
+            else
+            {
+                ideposito.Visible = false;
+            }
         }
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void LinkButton3_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/Deposito/VAlertas.aspx");
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void LinkButton2_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Index.aspx");
+            Response.Redirect("~/Deposito/VAlertas.aspx");
         }
     }
 }

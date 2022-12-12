@@ -30,8 +30,7 @@ namespace Sistema_Integral_HPS.Deposito
             GridView1.DataSource = dt;
             GridView1.DataBind();
 
-            MySqlConnection coon2 = Conexion.getConexion();
-            MySqlCommand cm1 = new MySqlCommand("SELECT SUM(precio) AS 'TOTAL ADQUISICION DEL ARTICULO' FROM historial_precio  WHERE fk_articulo LIKE '%" + TextBox1.Text + "%'", coon2);
+            MySqlCommand cm1 = new MySqlCommand("SELECT SUM(precio) AS 'TOTAL ADQUISICION DEL ARTICULO' FROM historial_precio  WHERE fk_articulo LIKE '%" + TextBox1.Text + "%'", coon);
             cm1.CommandType = CommandType.Text;
             cm1.ExecuteNonQuery();
 

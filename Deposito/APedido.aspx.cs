@@ -159,7 +159,7 @@ namespace Sistema_Integral_HPS.Deposito
                 coon.Close();
 
                 string msg = ("PEDIDO ID " + idped + " REALIZADO");
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = 'IndexDeposito.aspx';", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "'); window.location = 'Index.aspx';", true);
 
                 //Response.Redirect("/Deposito/IndexDeposito.aspx");
             }
@@ -235,7 +235,7 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Deposito/IndexDeposito.aspx");
+            Response.Redirect("~/Index.aspx");
         }
 
         protected void TextBox2_TextChanged(object sender, EventArgs e)

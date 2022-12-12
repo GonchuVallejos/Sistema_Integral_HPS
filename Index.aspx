@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterSistemaIntegralSoria.Master" AutoEventWireup="true" CodeBehind="IndexDeposito.aspx.cs" Inherits="Sistema_Integral_HPS.Deposito.IndexDeposito" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterSistemaIntegralSoria.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Sistema_Integral_HPS.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -31,7 +30,7 @@
                     <asp:LinkButton ID="LinkButton3" runat="server" ForeColor="Red" OnClick="LinkButton3_Click">EXISTEN ARTICULOS POR DEBAJO DEL MINIMO DE STOCK ! </asp:LinkButton>
                 </div>
             </div>
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Visible="False">
+            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" Visible="False">
                 <HeaderStyle BackColor="#f8d7da" ForeColor="#842029" HorizontalAlign="Center" VerticalAlign="Middle" />
             </asp:GridView>
         </asp:Panel>
@@ -44,7 +43,7 @@
                 &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" ForeColor="Blue" OnClick="LinkButton2_Click">ALGUNOS ARTICULOS DEBERIAN REPONERSE</asp:LinkButton>
 
             </div>
-            <asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Visible="False">
+            <asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-condensed table-responsive" HorizontalAlign="Center" Visible="False">
                 <HeaderStyle BackColor="#cff4fc" ForeColor="#04414d" HorizontalAlign="Center" VerticalAlign="Middle" />
             </asp:GridView>
 
@@ -55,4 +54,3 @@
 
 
 </asp:Content>
-

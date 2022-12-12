@@ -46,6 +46,7 @@ namespace Sistema_Integral_HPS.Deposito
                 DropDownList1.DataSource = dt;
                 DropDownList1.DataBind();
                 
+                coon.Close();
             }
             
         }

@@ -52,6 +52,8 @@ namespace Sistema_Integral_HPS.Deposito.Reportes
                 Label2.Visible = true;
                 Label3.Visible = true;
             }
+
+            coon1.Close();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -63,7 +65,8 @@ namespace Sistema_Integral_HPS.Deposito.Reportes
             cm1.CommandType = CommandType.Text;
             cm1.ExecuteNonQuery();
             MessageBox.Show("PROVEEDOR CARGADO CORRECTAMENTE! ");
-            Response.Redirect("~/IndexDeposito.aspx");
+            Response.Redirect("~/Index.aspx");
+            coon.Close();
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

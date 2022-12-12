@@ -47,7 +47,7 @@ namespace Sistema_Integral_HPS.Deposito
                 string msg = "ARTÍCULO SIN EXISTENCIA!";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alerta", "alert('" + msg + "');", true);
                 MessageBox.Show("ARTICULO SIN EXITENCIA!!");               
-                Response.Redirect("~/AArticulo.aspx");
+                Response.Redirect("~/Deposito/AArticulo.aspx");
             }
             else
             {
@@ -150,7 +150,7 @@ namespace Sistema_Integral_HPS.Deposito
 
 
                 coon.Close();
-                Response.Redirect("~/Deposito/IndexDeposito.aspx");
+                Response.Redirect("~/Index.aspx");
             }
             if (DropDownList1.SelectedValue.Equals("DONACION"))
             {
@@ -194,7 +194,7 @@ namespace Sistema_Integral_HPS.Deposito
                 }
                 MessageBox.Show("¡ EL INGRESO A SIDO CARGADO CORRECTAMENTE !"); 
                 coon.Close();
-                Response.Redirect("~/Deposito/IndexDeposito.aspx");
+                Response.Redirect("~/Index.aspx");
             }
 
         }
@@ -218,6 +218,7 @@ namespace Sistema_Integral_HPS.Deposito
                 DropDownList2.DataTextField = "descripcion";
                 DropDownList2.DataSource = dt2;
                 DropDownList2.DataBind();
+                coon.Close();
             }
             if (DropDownList1.SelectedValue.Equals("DONACION"))
             {

@@ -108,6 +108,8 @@ namespace Sistema_Integral_HPS
 
             GridView1.DataSource = dt;
             GridView1.DataBind();
+
+            coon.Close();
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -123,6 +125,8 @@ namespace Sistema_Integral_HPS
 
             GridView1.DataSource = dt;
             GridView1.DataBind();
+
+            coon.Close();
         }
 
         protected void Button4_Click(object sender, EventArgs e)

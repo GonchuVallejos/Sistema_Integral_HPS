@@ -117,6 +117,7 @@ namespace Sistema_Integral_HPS.Deposito
                             DropDownList4.Items.Insert(2, new ListItem("PENDIENTE", "PENDIENTE"));
 
                             Button1.Visible = true;
+                            coon.Close();
                         }
                         break;
                     default:

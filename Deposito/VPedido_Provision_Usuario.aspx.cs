@@ -141,7 +141,7 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Deposito/IndexDeposito.aspx");
+            Response.Redirect("~/Index.aspx");
         }
         protected void btn_verpedidos_Click(object sender, EventArgs e)
         {
@@ -202,9 +202,9 @@ namespace Sistema_Integral_HPS.Deposito
             cm1.ExecuteNonQuery();
 
             coon.Close();
-            Response.Redirect("~/Deposito/IndexDeposito.aspx");
+            Response.Redirect("~/Index.aspx");
 
-           
+
 
         }
 

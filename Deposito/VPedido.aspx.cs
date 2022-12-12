@@ -149,7 +149,7 @@ namespace Sistema_Integral_HPS.Deposito
 
         protected void btn_cancelar1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Deposito/IndexDeposito.aspx");
+            Response.Redirect("~/Index.aspx");
         }
 
         protected void btn_guardar1_Click(object sender, EventArgs e)
