@@ -45,8 +45,7 @@ namespace Sistema_Integral_HPS
                             deposito.Visible = true;
                             todosusuarios.Visible = false;
                             sesion.Visible = true;
-                            nombredepo.Visible = true;
-                            nombreSoria.Visible = false;
+
                         }
                         break;
                     default:
@@ -54,9 +53,7 @@ namespace Sistema_Integral_HPS
                             todosusuarios.Visible = true;
                             deposito.Visible = false;
                             sesion.Visible = true;
-                            nombredepo.Visible = false;
-                            nombreSoria.Visible = true;
-                            superusuario.Visible = true;
+                            //superusuario.Visible = true;
                         }
                         break;
                 }
