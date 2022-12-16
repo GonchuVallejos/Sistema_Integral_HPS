@@ -16,7 +16,7 @@
     <form id="form1" runat="server">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
-                <a class="navbar-brand" href="/Index.aspx">SISTEMA HPS</a>
+                <a class="navbar-brand" href="/Sistema_Integral_HPS/Index.aspx">SISTEMA HPS</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <div id="todosusuarios" runat="server" class="ms-auto mb-2 mb-lg-0">
@@ -24,8 +24,8 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">NUEVO PEDIDO</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/Deposito/APedido.aspx">PEDIDO DE PROVISION</a></li>
-                                    <li><a class="dropdown-item" href="/Deposito/APedido_Provision.aspx">PROVISION DE CAJA CHICA</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/APedido.aspx">PEDIDO DE PROVISION</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/APedido_Provision.aspx">PROVISION DE CAJA CHICA</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -33,7 +33,7 @@
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <%-- <li><a class="dropdown-item" href="VPedido_Usuario.aspx">PEDIDOS PENDIENTES</a></li>
                                         <li><a class="dropdown-item" href="VPedido_Provision_Usuario.aspx">PEDIDOS PENDIENTES CAJA CHICA</a></li>--%>
-                                    <li><a class="dropdown-item" href="/Deposito/CPedidos.aspx">CONSULTAR PEDIDOS</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/CPedidos.aspx">CONSULTAR PEDIDOS</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -43,28 +43,28 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">MOVIMIENTOS</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/Deposito/VPedido.aspx">REALIZAR SUMINISTRO</a></li>
-                                    <li><a class="dropdown-item" href="/Deposito/Adquisicion.aspx">REALIZAR INGRESO</a></li>
-                                    <li><a class="dropdown-item" href="/Deposito/Ajustes.aspx">REALIZAR AJUSTES</a></li>
-                                    <li><a class="dropdown-item" href="/Deposito/VPedido_Provision.aspx">CONFIRMAR PEDIDO CAJA CHICA</a></li>
-                                    <li><a class="dropdown-item" href="/Deposito/VMovimiento.aspx">CONSULTAR MOVIMIENTOS</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/VPedido.aspx">REALIZAR SUMINISTRO</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/Adquisicion.aspx">REALIZAR INGRESO</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/Ajustes.aspx">REALIZAR AJUSTES</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/VPedido_Provision.aspx">CONFIRMAR PEDIDO CAJA CHICA</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/VMovimiento.aspx">CONSULTAR MOVIMIENTOS</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">ARTICULOS</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/Deposito/AArticulo.aspx">REGISTRAR ARTICULO</a></li>
-                                    <li><a class="dropdown-item" href="/Deposito/stock.aspx">CONSULTAR STOCK</a></li>
-                                    <li><a class="dropdown-item" href="/Deposito/VHistorico.aspx">HISTORICO DE PRECIOS</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/AArticulo.aspx">REGISTRAR ARTICULO</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/stock.aspx">CONSULTAR STOCK</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/VHistorico.aspx">HISTORICO DE PRECIOS</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">VARIOS</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="/Deposito/RConsumo.aspx">CONSULTAR CONSUMOS/SERVICIOS</a></li>
-                                    <li><a class="dropdown-item" href="/Deposito/RArticulo.aspx">CONSULTAR CONSUMOS DE ARTICULO</a></li>
-                                    <li><a class="dropdown-item" href="/Deposito/AServicio.aspx">REGISTRAR SERVICIOS</a></li>
-                                    <li><a class="dropdown-item" href="/Deposito/AProveedores.aspx">REGISTRAR PROVEEDOR</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/RConsumo.aspx">CONSULTAR CONSUMOS/SERVICIOS</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/RArticulo.aspx">CONSULTAR CONSUMOS DE ARTICULO</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/AServicio.aspx">REGISTRAR SERVICIOS</a></li>
+                                    <li><a class="dropdown-item" href="/Sistema_Integral_HPS/Deposito/AProveedores.aspx">REGISTRAR PROVEEDOR</a></li>
                                 </ul>
                             </li>
                         </ul>
